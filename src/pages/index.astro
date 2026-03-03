@@ -1,0 +1,141 @@
+---
+import Layout from '../components/Layout.astro';
+import { siteConfig } from '../config/site';
+import { barrios } from '../data/barrios';
+import { servicios } from '../data/servicios';
+---
+
+<Layout>
+  <section class="grid gap-10 lg:grid-cols-[1.3fr_minmax(0,1fr)] lg:items-start">
+    <div class="space-y-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+        Urgencias 24 horas · Llegamos a tu barrio
+      </p>
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+        Cerrajeros 24h en {siteConfig.ciudadPrincipal}
+      </h1>
+      <p class="text-sm text-slate-300 sm:text-base">
+        Apertura de puertas sin daños, cambios de bombín y asistencia urgente en toda la Comunidad de Madrid.
+        Llama ahora y un cerrajero certificado se desplaza a tu ubicación en minutos.
+      </p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a
+          href={siteConfig.telefonoHref}
+          class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
+        >
+          📞 Llamar ahora · {siteConfig.telefono}
+        </a>
+        <p class="text-xs text-slate-400">
+          Atención inmediata · 24 horas · Todos los días del año
+        </p>
+      </div>
+      <ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+        <li>✔ Apertura de puertas blindadas y acorazadas</li>
+        <li>✔ Cambio de cerraduras y bombines de seguridad</li>
+        <li>✔ Apertura de vehículos sin daños</li>
+        <li>✔ Arreglo de ventanas oscilobatientes y osciloparalelas</li>
+      </ul>
+    </div>
+
+    <aside class="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+      <h2 class="text-base font-semibold tracking-tight">
+        Barrios y zonas iniciales
+      </h2>
+      <p class="text-xs text-slate-400">
+        Empezamos dando cobertura prioritaria en estas zonas. Cada una tendrá su propia página optimizada para
+        aparecer en Google cuando alguien busque un cerrajero cerca.
+      </p>
+      <ul class="grid gap-2 text-sm">
+        {barrios.map((barrio) => (
+          <li>
+            <a
+              href={`/barrios/${barrio.slug}`}
+              class="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2 text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
+            >
+              <span>{barrio.nombre}</span>
+              <span class="text-xs text-slate-500">Ver cerrajero 24h</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </section>
+
+  <section class="mt-12 space-y-4 text-sm text-slate-300">
+    <h2 class="text-lg font-semibold tracking-tight">
+      Por qué elegir {siteConfig.nombreComercial} para tus urgencias
+    </h2>
+    <p>
+      Sabemos que cuando buscas un cerrajero no tienes tiempo que perder. Nuestro objetivo es claro: llegar
+      rápido, abrir tu puerta sin daños siempre que sea posible y explicarte el precio antes de empezar el
+      trabajo.
+    </p>
+    <div class="grid gap-4 sm:grid-cols-3">
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+        <h3 class="text-sm font-semibold">Transparencia en los precios</h3>
+        <p class="mt-1 text-xs text-slate-400">
+          Te indicamos el coste estimado por teléfono y confirmamos el precio definitivo antes de tocar la puerta.
+        </p>
+      </div>
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+        <h3 class="text-sm font-semibold">Formación y herramientas</h3>
+        <p class="mt-1 text-xs text-slate-400">
+          Trabajamos con técnicas actualizadas y herramientas específicas para minimizar daños y tiempos de espera.
+        </p>
+      </div>
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+        <h3 class="text-sm font-semibold">Cobertura real en Madrid</h3>
+        <p class="mt-1 text-xs text-slate-400">
+          Nos movemos por toda la Comunidad de Madrid, empezando por barrios como Getafe, Las Rozas, Pinto y Leganés.
+        </p>
+      </div>
+    </div>
+
+    <section class="mt-6 space-y-3">
+      <h2 class="text-lg font-semibold tracking-tight">
+        Preguntas frecuentes sobre cerrajería urgente en Madrid
+      </h2>
+      <div class="space-y-2 text-xs text-slate-300 sm:text-sm">
+        <p>
+          <strong>¿Cuánto tardáis en llegar?</strong> Depende de la zona, pero normalmente entre 20 y 40 minutos
+          dentro de la Comunidad de Madrid.
+        </p>
+        <p>
+          <strong>¿Rompéis siempre la cerradura?</strong> No. La prioridad es abrir sin daños; solo se sustituye la
+          cerradura cuando es estrictamente necesario o el cliente lo prefiere.
+        </p>
+        <p>
+          <strong>¿Trabajáis noches y festivos?</strong> Sí, ofrecemos servicio 24/7 todos los días del año.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-8 space-y-3">
+      <h2 class="text-lg font-semibold tracking-tight">
+        Servicios destacados de {siteConfig.nombreComercial}
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Estos son algunos de los trabajos que realizamos con más frecuencia. Todos los servicios están
+        disponibles en la mayoría de barrios de la Comunidad de Madrid.
+      </p>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {servicios.slice(0, 6).map((servicio) => (
+          <li class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
+            <h3 class="font-semibold">{servicio.nombre}</h3>
+            <p class="mt-1 text-xs text-slate-400">
+              {servicio.descripcionCorta}
+            </p>
+          </li>
+        ))}
+      </ul>
+      <p class="text-xs text-slate-400">
+        Puedes ver el listado completo en la página de{' '}
+        <a href="/servicios" class="text-emerald-400 hover:underline">
+          servicios de cerrajería
+        </a>
+        .
+      </p>
+    </section>
+  </section>
+</Layout>
+

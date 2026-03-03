@@ -1,0 +1,49 @@
+---
+import Layout from '../components/Layout.astro';
+import { siteConfig } from '../config/site';
+import { servicios } from '../data/servicios';
+
+const title = `Servicios de cerrajería 24h en ${siteConfig.ciudadPrincipal} | ${siteConfig.nombreComercial}`;
+const description =
+  'Listado de servicios de cerrajería urgente y no urgente: apertura de puertas, cambio e instalación de cerraduras, arreglos de ventanas oscilobatientes y más en Madrid.';
+
+const categorias = [
+  { id: 'aperturas', nombre: 'Aperturas y urgencias' },
+  { id: 'cerraduras', nombre: 'Cerraduras y bombines' },
+  { id: 'ventanas', nombre: 'Ventanas y herrajes' },
+  { id: 'otras', nombre: 'Otros trabajos de cerrajería' },
+] as const;
+---
+
+<Layout {title} {description}>
+  <section class="space-y-6">
+    <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
+      Servicios de cerrajería en {siteConfig.ciudadPrincipal}
+    </h1>
+    <p class="text-sm text-slate-300 sm:text-base">
+      Estos son algunos de los servicios que ofrecemos a diario. Si tu problema no aparece en la lista, lo más
+      probable es que también podamos ayudarte: llámanos y cuéntanos qué ha pasado.
+    </p>
+
+    {categorias.map((categoria) => (
+      <section class="mt-4 space-y-3">
+        <h2 class="text-base font-semibold tracking-tight">
+          {categoria.nombre}
+        </h2>
+        <ul class="grid gap-3 sm:grid-cols-2">
+          {servicios
+            .filter((s) => s.categoria === categoria.id)
+            .map((servicio) => (
+              <li class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
+                <h3 class="font-semibold">{servicio.nombre}</h3>
+                <p class="mt-1 text-xs text-slate-400">
+                  {servicio.descripcionCorta}
+                </p>
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))}
+  </section>
+</Layout>
+

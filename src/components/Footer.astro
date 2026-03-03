@@ -1,0 +1,18 @@
+---
+import { siteConfig } from '../config/site';
+---
+
+<footer class="border-t border-slate-800 bg-slate-950/90">
+  <div class="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+    <p>
+      © {new Date().getFullYear()} {siteConfig.nombreComercial}. Cerrajería 24h en {siteConfig.ciudadPrincipal}.
+    </p>
+    <p>
+      Teléfono urgente:
+      <a href={siteConfig.telefonoHref} class="font-semibold text-emerald-400 hover:underline">
+        {siteConfig.telefono}
+      </a>
+    </p>
+  </div>
+</footer>
+

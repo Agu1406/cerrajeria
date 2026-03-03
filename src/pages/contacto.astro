@@ -1,0 +1,93 @@
+---
+import Layout from '../components/Layout.astro';
+import { siteConfig } from '../config/site';
+
+const title = `Contacto | ${siteConfig.nombreComercial} – Cerrajeros 24h en ${siteConfig.ciudadPrincipal}`;
+const description =
+  'Contacta con cerrajerosmadrid para urgencias de cerrajería 24 horas en Madrid. Teléfono directo, formulario de contacto y horario de atención.';
+---
+
+<Layout {title} {description}>
+  <section class="grid gap-8 lg:grid-cols-[1.2fr_minmax(0,1fr)]">
+    <div class="space-y-5">
+      <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
+        Contacto cerrajeros 24h en {siteConfig.ciudadPrincipal}
+      </h1>
+      <p class="text-sm text-slate-300 sm:text-base">
+        Para emergencias, la forma más rápida de hablar con nosotros es por teléfono. Si tu consulta no es urgente,
+        también puedes usar el formulario y te responderemos lo antes posible.
+      </p>
+
+      <div class="space-y-2 rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+          Urgencias 24 horas
+        </p>
+        <p>
+          Teléfono directo:{' '}
+          <a href={siteConfig.telefonoHref} class="font-semibold text-emerald-400 hover:underline">
+            {siteConfig.telefono}
+          </a>
+        </p>
+        <p class="text-slate-400">
+          Disponible todos los días del año, incluyendo noches y festivos.
+        </p>
+      </div>
+    </div>
+
+    <aside class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-sm">
+      <h2 class="text-base font-semibold tracking-tight">
+        Formulario de contacto (no urgente)
+      </h2>
+      <p class="mt-1 text-xs text-slate-400">
+        Úsalo para presupuestos, dudas sobre cerraduras o trabajos planificados.
+      </p>
+
+      <form class="mt-4 space-y-4">
+        <div class="space-y-1">
+          <label for="nombre" class="text-xs font-medium text-slate-300">
+            Nombre
+          </label>
+          <input
+            id="nombre"
+            name="nombre"
+            type="text"
+            class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+            placeholder="Tu nombre"
+          />
+        </div>
+        <div class="space-y-1">
+          <label for="telefono" class="text-xs font-medium text-slate-300">
+            Teléfono
+          </label>
+          <input
+            id="telefono"
+            name="telefono"
+            type="tel"
+            class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+            placeholder="Tu número de contacto"
+          />
+        </div>
+        <div class="space-y-1">
+          <label for="mensaje" class="text-xs font-medium text-slate-300">
+            Mensaje
+          </label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="4"
+            class="w-full resize-none rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+            placeholder="Cuéntanos qué necesitas (no urgente)..."
+          >
+          </textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full rounded-full bg-slate-200 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-white"
+        >
+          Enviar consulta
+        </button>
+      </form>
+    </aside>
+  </section>
+</Layout>
+

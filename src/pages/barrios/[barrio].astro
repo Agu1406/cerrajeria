@@ -1,0 +1,94 @@
+---
+import Layout from '../../components/Layout.astro';
+import type { Barrio } from '../../data/barrios';
+import { barrios } from '../../data/barrios';
+import { siteConfig } from '../../config/site';
+import { servicios } from '../../data/servicios';
+
+export async function getStaticPaths() {
+  return barrios.map((barrio) => ({
+    params: { barrio: barrio.slug },
+    props: { barrio },
+  }));
+}
+
+type Props = {
+  barrio: Barrio;
+};
+
+const { barrio } = Astro.props as Props;
+
+const title = `Cerrajero 24h en ${barrio.nombre} | ${siteConfig.nombreComercial}`;
+const description = `Cerrajero urgente 24 horas en ${barrio.nombre} (${siteConfig.ciudadPrincipal}). Apertura de puertas sin daños, cambios de bombín y asistencia rápida. Llama al ${siteConfig.telefono}.`;
+---
+
+<Layout {title} {description}>
+  <section class="space-y-6">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+      Urgencias 24h · {barrio.nombre}
+    </p>
+    <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+      Cerrajeros 24 horas en {barrio.nombre}
+    </h1>
+    <p class="text-sm text-slate-300 sm:text-base">
+      Servicio de cerrajería urgente en {barrio.nombre} y alrededores. Apertura de puertas sin daños, cambio de
+      cerraduras y refuerzo de seguridad en viviendas, locales y comunidades de vecinos.
+    </p>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <a
+        href={siteConfig.telefonoHref}
+        class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
+      >
+        📞 Llamar ahora · {siteConfig.telefono}
+      </a>
+      <p class="text-xs text-slate-400">
+        Llegamos a tu puerta en pocos minutos dentro de {barrio.nombre}.
+      </p>
+    </div>
+
+    <section class="mt-6 grid gap-4 md:grid-cols-3">
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
+        <h2 class="mb-2 text-sm font-semibold">Urgencias sin daños</h2>
+        <p class="text-slate-300">
+          Apertura de puertas blindadas y acorazadas sin romper la cerradura siempre que sea posible. Explicamos
+          el trabajo antes de empezar.
+        </p>
+      </div>
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
+        <h2 class="mb-2 text-sm font-semibold">Cambio e instalación de cerraduras</h2>
+        <p class="text-slate-300">
+          Cambiamos e instalamos cerraduras y bombines de alta seguridad, con opciones antibumping y antitaladro
+          para viviendas y locales en {barrio.nombre}.
+        </p>
+      </div>
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
+        <h2 class="mb-2 text-sm font-semibold">Ventanas y herrajes</h2>
+        <p class="text-slate-300">
+          Arreglo de ventanas oscilobatientes y osciloparalelas, así como ajuste de herrajes y cierres que no
+          encajan bien.
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-8 space-y-3 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        Servicios habituales de cerrajería en {barrio.nombre}
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Trabajamos a diario con aperturas urgentes, cambios de cerradura y arreglos de ventanas. Estos son algunos
+        de los servicios más demandados:
+      </p>
+      <ul class="grid gap-2 text-xs sm:text-sm">
+        {servicios.slice(0, 5).map((servicio) => (
+          <li>• {servicio.nombre}</li>
+        ))}
+      </ul>
+      <p class="text-xs text-slate-400">
+        Si necesitas un trabajo de cerrajería diferente en {barrio.nombre}, llámanos y te diremos al momento si
+        podemos ayudarte.
+      </p>
+    </section>
+  </section>
+</Layout>
+

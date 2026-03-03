@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import CallButton from './CallButton.astro';
+import { siteConfig } from '../config/site';
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const {
+  title = siteConfig.titleHome,
+  description = siteConfig.descriptionHome,
+} = Astro.props as Props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && (
+      <link rel="canonical" href={`${siteConfig.baseUrl}${Astro.url.pathname}`} />
+    )}
+    <title>{title}</title>
+    {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && (
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          name: siteConfig.nombreComercial,
+          url: siteConfig.baseUrl,
+          telephone: siteConfig.telefono,
+          areaServed: {
+            '@type': 'AdministrativeArea',
+            name: 'Comunidad de Madrid',
+          },
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Madrid',
+            addressRegion: 'Madrid',
+            addressCountry: 'ES',
+          },
+          openingHoursSpecification: [
+            {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: [
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+                'Sunday',
+              ],
+              opens: '00:00',
+              closes: '23:59',
+            },
+          ],
+          serviceArea: {
+            '@type': 'GeoCircle',
+            geoMidpoint: {
+              '@type': 'GeoCoordinates',
+              latitude: 40.4168,
+              longitude: -3.7038,
+            },
+            geoRadius: 50000,
+          },
+        })}
+      </script>
+    )}
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-50">
+    <Header />
+    <main class="mx-auto max-w-5xl px-4 py-10 sm:py-14">
+      <slot />
+    </main>
+    <Footer />
+    <CallButton />
+  </body>
+</html>
+

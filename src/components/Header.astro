@@ -1,0 +1,33 @@
+---
+import { siteConfig } from '../config/site';
+---
+
+<header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4">
+    <a href="/" class="text-lg font-semibold tracking-tight">
+      {siteConfig.nombreComercial}
+    </a>
+    <nav class="hidden items-center gap-6 text-xs font-medium text-slate-300 sm:flex">
+      <a href="/" class="transition hover:text-emerald-300">
+        Inicio
+      </a>
+      <a href="/servicios" class="transition hover:text-emerald-300">
+        Servicios
+      </a>
+      <a href="/barrios" class="transition hover:text-emerald-300">
+        Barrios
+      </a>
+      <a href="/contacto" class="transition hover:text-emerald-300">
+        Contacto
+      </a>
+      <a
+        href={siteConfig.telefonoHref}
+        class="rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
+      >
+        Llamar ahora · {siteConfig.telefono}
+      </a>
+    </nav>
+  </div>
+</header>
+
+

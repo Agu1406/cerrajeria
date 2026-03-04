@@ -1701,6 +1701,336 @@ Estado:
     - Imagen específica para el servicio de ventanas oscilobatientes (ventanas).
 - El sistema de tema y accesibilidad está iniciado (tema en `data-theme`, toggle y foco visible), listo para futuros ajustes visuales más finos si se desea separar completamente modo claro/oscuro.
 
+## Sesión 10 – Enriquecer el contenido de las páginas de barrio existentes
+
+En esta sesión se ha enriquecido el contenido de las landings locales para los barrios/municipios ya definidos: Getafe, Las Rozas, Pinto y Leganés.
+
+### 1. Estructura general de contenido por barrio
+
+Archivo modificado:
+
+```bash
+src/pages/barrios/[barrio].astro
+```
+
+Hasta ahora, la página de barrio incluía:
+
+-Título (H1) y párrafo introductorio genérico con:
+    - Servicio de cerrajería urgente.
+    - Referencia a viviendas, locales y comunidades.
+- Tres tarjetas de servicios:
+    - Urgencias sin daños.
+    - Cambio e instalación de cerraduras.
+    - Ventanas y herrajes.
+- Una lista de servicios habituales basada en `src/data/servicios.ts`.
+
+Cambios introducidos:
+
+- Se ha añadido una **capa de contenido específico por barrio** usando un objeto `contenidoPorBarrio` indexado por `slug`:
+
+```bash
+const contenidoPorBarrio: Record<
+  string,
+  {
+    introExtra: string;
+    llegadaTexto: string;
+    comoTrabajamos: string;
+    faqLlegada: string;
+    faqPrecio: string;
+    faqFestivos: string;
+  }
+> = { ... }
+```
+
+- Se ha definido un `contenido` que toma los textos específicos del barrio si existen, o un contenido por defecto si no:
+
+```bash
+const contenido = contenidoPorBarrio[barrio.slug] ?? {
+  introExtra: '...',
+  llegadaTexto: '...',
+  comoTrabajamos: '...',
+  faqLlegada: '...',
+  faqPrecio: '...',
+  faqFestivos: '...',
+};
+```
+
+### 2. Contenido específico para Getafe, Las Rozas, Pinto y Leganés
+
+En `contenidoPorBarrio` se han añadido entradas para:
+
+- `getafe`
+- `las-rozas`
+- `pinto`
+- `leganes`
+
+Cada una incluye:
+
+- `introExtra`:
+    - Párrafo adicional que describe el tipo de viviendas y situaciones habituales en la zona (bloques de pisos, chalets, urbanizaciones, cerraduras antiguas, etc.).
+- `llegadaTexto`:
+    - Texto más concreto sobre el tiempo medio estimado de llegada a esa zona (rango de minutos y condicionantes de tráfico).
+- `comoTrabajamos`:
+    - Explicación de la forma de trabajar en el barrio/municipio:
+        - Valoración previa por teléfono.
+        - Explicación de opciones y precios.
+        - Foco en minimizar daños y aumentar seguridad.
+- `faqLlegada`, `faqPrecio`, `faqFestivos`:
+    - Respuestas más detalladas y adaptadas al contexto del barrio sobre:
+        - Tiempo de llegada.
+        - Transparencia de precios.
+        - Disponibilidad en noches y festivos.
+
+### 3. Nuevas secciones añadidas a la plantilla `[barrio].astro`
+
+Además de los bloques ya existentes, se han añadido tres secciones nuevas dentro del `<Layout>`:
+
+1. **Párrafo extra tras la intro genérica**:
+
+    - Debajo del primer párrafo que describe el servicio general en `{barrio.nombre}`, se añade:
+
+    ```bash
+    <p class="text-sm text-slate-300 sm:text-base">
+      {contenido.introExtra}
+    </p>
+    ```
+
+2. **Sección “Cómo trabajamos en {barrio.nombre}”**:
+
+    - Nueva sección que explica la forma de trabajo específica:
+
+    ```bash
+    <section class="mt-8 space-y-3 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        Cómo trabajamos en {barrio.nombre}
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        {contenido.comoTrabajamos}
+      </p>
+    </section>
+    ```
+
+3. **Sección de Preguntas Frecuentes localizadas**:
+
+    - Se ha añadido una mini‑FAQ por barrio:
+
+    ```bash
+    <section class="mt-8 space-y-3 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        Preguntas frecuentes sobre cerrajería urgente en {barrio.nombre}
+      </h2>
+      <div class="space-y-2 text-xs text-slate-300 sm:text-sm">
+        <p>
+          <strong>¿Cuánto tardáis en llegar a {barrio.nombre}?</strong> {contenido.faqLlegada}
+        </p>
+        <p>
+          <strong>¿El precio está cerrado antes de empezar?</strong> {contenido.faqPrecio}
+        </p>
+        <p>
+          <strong>¿Trabajáis también de noche y en festivos en {barrio.nombre}?</strong> {contenido.faqFestivos}
+        </p>
+      </div>
+    </section>
+    ```
+
+4. **Ajuste del texto de llegada junto al botón principal**:
+
+    - El texto situado a la derecha del botón “Llamar ahora” pasa de ser una frase genérica a usar `contenido.llegadaTexto`:
+
+    ```bash
+    <p class="text-xs text-slate-400">
+      {contenido.llegadaTexto}
+    </p>
+    ```
+
+### 4. Resultado para las 4 landings actuales
+
+- Cada página `/barrios/[barrio]` (Getafe, Las Rozas, Pinto, Leganés):
+    - Tiene ahora varios párrafos de contexto adicionales.
+    - Menciona tiempos de llegada y situaciones típicas de la zona.
+    - Explica la forma de trabajo y la política de precios de forma más detallada.
+    - Incluye una mini sección de preguntas frecuentes específicas para ese barrio.
+
+Con esto, cada landing local gana longitud y relevancia sin perder enfoque en el servicio de cerrajería urgente, mejorando su potencial SEO y la claridad para el usuario final.
+
+## Sesión 11 – Refactorizar contenido de barrios a `src/data/barrios.ts`
+
+En esta sesión se ha mejorado la **arquitectura** de las páginas de barrio para hacerla más escalable de cara a añadir muchos más barrios en el futuro.
+
+### 1. Problema detectado
+
+Anteriormente, el archivo:
+
+```bash
+src/pages/barrios/[barrio].astro
+```
+
+contenía:
+
+- La plantilla de la página (estructura de secciones, botones, etc.).
+- Un objeto `contenidoPorBarrio` con textos específicos para cada barrio (`getafe`, `las-rozas`, `pinto`, `leganes`).
+- La lógica para elegir entre contenido específico o genérico.
+
+Esto hacía que:
+
+- A medida que se añadiesen más barrios, el archivo `[barrio].astro` fuese creciendo mucho.
+- Se mezclase la lógica de presentación con grandes bloques de contenido, dificultando el mantenimiento.
+
+### 2. Nueva estructura en `src/data/barrios.ts`
+
+Archivo modificado:
+
+```bash
+src/data/barrios.ts
+```
+
+Antes:
+
+```bash
+export type Barrio = {
+  slug: string;
+  nombre: string;
+};
+
+export const barrios: Barrio[] = [
+  { slug: 'getafe', nombre: 'Getafe' },
+  { slug: 'las-rozas', nombre: 'Las Rozas' },
+  { slug: 'pinto', nombre: 'Pinto' },
+  { slug: 'leganes', nombre: 'Leganés' },
+];
+```
+
+Después:
+
+- El tipo `Barrio` se ha ampliado para incluir todos los campos de contenido:
+
+```bash
+export type Barrio = {
+  slug: string;
+  nombre: string;
+  introExtra: string;
+  llegadaTexto: string;
+  comoTrabajamos: string;
+  faqLlegada: string;
+  faqPrecio: string;
+  faqFestivos: string;
+};
+```
+
+- El array `barrios` ahora contiene objetos completos con textos específicos por barrio:
+
+```bash
+export const barrios: Barrio[] = [
+  {
+    slug: 'getafe',
+    nombre: 'Getafe',
+    introExtra: '...',
+    llegadaTexto: '...',
+    comoTrabajamos: '...',
+    faqLlegada: '...',
+    faqPrecio: '...',
+    faqFestivos: '...',
+  },
+  {
+    slug: 'las-rozas',
+    nombre: 'Las Rozas',
+    introExtra: '...',
+    llegadaTexto: '...',
+    comoTrabajamos: '...',
+    faqLlegada: '...',
+    faqPrecio: '...',
+    faqFestivos: '...',
+  },
+  {
+    slug: 'pinto',
+    nombre: 'Pinto',
+    introExtra: '...',
+    llegadaTexto: '...',
+    comoTrabajamos: '...',
+    faqLlegada: '...',
+    faqPrecio: '...',
+    faqFestivos: '...',
+  },
+  {
+    slug: 'leganes',
+    nombre: 'Leganés',
+    introExtra: '...',
+    llegadaTexto: '...',
+    comoTrabajamos: '...',
+    faqLlegada: '...',
+    faqPrecio: '...',
+    faqFestivos: '...',
+  },
+];
+```
+
+*(En el código real, cada campo contiene los textos escritos en la sesión anterior para cada municipio.)*
+
+### 3. Simplificación de la plantilla `[barrio].astro`
+
+Archivo modificado:
+
+```bash
+src/pages/barrios/[barrio].astro
+```
+
+Cambios principales:
+
+- Se ha eliminado el objeto `contenidoPorBarrio` y la lógica de `contenido` que vivían dentro de la plantilla.
+- Ahora la plantilla:
+    - Importa `Barrio` y `barrios` desde `src/data/barrios.ts`.
+    - Recibe el objeto `barrio` ya enriquecido (con todos los campos de texto).
+    - Utiliza directamente las propiedades de `barrio`:
+        - `barrio.introExtra`
+        - `barrio.llegadaTexto`
+        - `barrio.comoTrabajamos`
+        - `barrio.faqLlegada`
+        - `barrio.faqPrecio`
+        - `barrio.faqFestivos`
+
+Ejemplos de uso tras el refactor:
+
+- Párrafo extra:
+
+```bash
+<p class="text-sm text-slate-300 sm:text-base">
+  {barrio.introExtra}
+</p>
+```
+
+- Texto de llegada junto al botón:
+
+```bash
+<p class="text-xs text-slate-400">
+  {barrio.llegadaTexto}
+</p>
+```
+
+- Mini‑FAQ:
+
+```bash
+<strong>¿Cuánto tardáis en llegar a {barrio.nombre}?</strong> {barrio.faqLlegada}
+```
+
+### 4. Ventajas de la nueva arquitectura
+
+- **Separación clara** entre:
+    - Plantilla (`[barrio].astro`): se encarga solo de la estructura y el layout.
+    - Contenido de negocio (`src/data/barrios.ts`): lista de barrios y sus textos.
+
+- **Escalabilidad**:
+    - Añadir un nuevo barrio implica **solo**:
+        - Añadir un nuevo objeto al array `barrios` con sus textos.
+        - No hay que tocar la plantilla.
+
+- **Mantenimiento**:
+    - Cambiar una frase de un barrio es tan simple como editar su entrada en `src/data/barrios.ts`.
+    - El archivo `[barrio].astro` se mantiene mucho más corto y fácil de leer.
+
+Con este refactor, el proyecto está listo para escalar a decenas o cientos de barrios manteniendo una arquitectura limpia y profesional.
+
+
+
 
 
 

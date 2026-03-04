@@ -34,6 +34,9 @@ const description = `Cerrajero urgente 24 horas en ${barrio.nombre} (${siteConfi
       Servicio de cerrajería urgente en {barrio.nombre} y alrededores. Apertura de puertas sin daños, cambio de
       cerraduras y refuerzo de seguridad en viviendas, locales y comunidades de vecinos.
     </p>
+    <p class="text-sm text-slate-300 sm:text-base">
+      {barrio.introExtra}
+    </p>
 
     <div class="flex flex-wrap items-center gap-3">
       <a
@@ -43,7 +46,7 @@ const description = `Cerrajero urgente 24 horas en ${barrio.nombre} (${siteConfi
         📞 Llamar ahora · {siteConfig.telefono}
       </a>
       <p class="text-xs text-slate-400">
-        Llegamos a tu puerta en pocos minutos dentro de {barrio.nombre}.
+        {barrio.llegadaTexto}
       </p>
     </div>
 
@@ -88,6 +91,32 @@ const description = `Cerrajero urgente 24 horas en ${barrio.nombre} (${siteConfi
         Si necesitas un trabajo de cerrajería diferente en {barrio.nombre}, llámanos y te diremos al momento si
         podemos ayudarte.
       </p>
+    </section>
+
+    <section class="mt-8 space-y-3 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        Cómo trabajamos en {barrio.nombre}
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        {barrio.comoTrabajamos}
+      </p>
+    </section>
+
+    <section class="mt-8 space-y-3 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        Preguntas frecuentes sobre cerrajería urgente en {barrio.nombre}
+      </h2>
+      <div class="space-y-2 text-xs text-slate-300 sm:text-sm">
+        <p>
+          <strong>¿Cuánto tardáis en llegar a {barrio.nombre}?</strong> {barrio.faqLlegada}
+        </p>
+        <p>
+          <strong>¿El precio está cerrado antes de empezar?</strong> {barrio.faqPrecio}
+        </p>
+        <p>
+          <strong>¿Trabajáis también de noche y en festivos en {barrio.nombre}?</strong> {barrio.faqFestivos}
+        </p>
+      </div>
     </section>
   </section>
 </Layout>

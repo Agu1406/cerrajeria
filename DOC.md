@@ -1562,6 +1562,146 @@ Resumen:
 
 - Se han aplicado ideas de los diseños IA (cinta de servicio 24h, quick stats, CTA más marcado) sin introducir dependencias externas ni tocar la configuración de Tailwind, manteniendo la arquitectura limpia y el control total sobre el HTML y el SEO.
 
+## Sesión 9 – Tema claro/oscuro básico, accesibilidad y nueva imagen de ventanas
+
+En esta sesión se han introducido mejoras de UX y accesibilidad, además de integrar la nueva imagen de ventanas proporcionada.
+
+### 1. Sistema inicial de tema (claro/oscuro) y detección de preferencia
+
+Archivo modificado:
+
+```bash
+src/components/Layout.astro
+```
+
+Cambios:
+
+- Se ha añadido un script en el `<head>` que:
+    - Lee la preferencia guardada en `localStorage` (`theme`).
+    - Si no hay preferencia guardada:
+        - Consulta `prefers-color-scheme` del sistema (oscuro/claro).
+        - Usa la **hora local** como pista adicional (día → claro, noche → oscuro).
+    - Establece `document.documentElement.dataset.theme` a `'light'` o `'dark'`.
+- Este `data-theme` se utiliza como base para futuros estilos específicos de cada modo.
+
+Archivo modificado:
+
+```bash
+src/styles/global.css
+```
+
+Cambios:
+
+- Se han definido reglas base para el sistema de tema:
+
+```bash
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+```
+
+Objetivo:
+
+- Indicar al navegador el esquema de color activo (mejor renderizado de UI, scrollbars, etc.).
+- Preparar el terreno para futuros ajustes visuales diferenciados entre claro y oscuro.
+
+### 2. Botón de cambio de tema en el header
+
+Archivo modificado:
+
+```bash
+src/components/Header.astro
+```
+
+Cambios:
+
+- Añadido un botón de tipo `button` dentro del `<nav>` de escritorio:
+
+    - Diseño:
+        - Píldora pequeña `🌓 Cambiar tema`.
+        - Bordes y fondo acordes con el diseño actual.
+    - Accesibilidad:
+        - `aria-label="Cambiar entre modo claro y modo oscuro"`.
+    - Función `onclick` inline:
+        - Lee el tema actual de `document.documentElement.dataset.theme`.
+        - Alterna entre `'dark'` y `'light'`.
+        - Guarda la selección en `localStorage` (`theme`), para recordar la preferencia del usuario.
+
+Resultado:
+
+- El usuario puede forzar modo claro/oscuro independientemente del sistema u hora.
+- La preferencia se recuerda en visitas posteriores.
+
+### 3. Mejora básica de accesibilidad del foco
+
+Archivo modificado:
+
+```bash
+src/styles/global.css
+```
+
+Cambios:
+
+- Se ha añadido una regla para que enlaces y botones tengan **focus visible** claro:
+
+```bash
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #22c55e;
+  outline-offset: 2px;
+}
+```
+
+Objetivo:
+
+- Mejorar la navegación por teclado y la accesibilidad para personas que no usan ratón.
+
+### 4. Integración de la imagen de ventana oscilobatiente en `/servicios`
+
+Archivo modificado:
+
+```bash
+src/pages/servicios.astro
+```
+
+Cambios:
+
+- Se ha añadido el uso de la imagen:
+
+    - `public/images/arreglo-ventana-oscilobatiente.png`
+
+- En la categoría `ventanas` dentro de la página de servicios:
+
+```bash
+{categoria.id === 'ventanas' && (
+  <div class="mt-2 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
+    <img
+      src="/images/arreglo-ventana-oscilobatiente.png"
+      alt="Mano ajustando una ventana oscilobatiente de PVC en un piso de Madrid"
+      class="h-full w-full object-cover"
+      loading="lazy"
+    />
+  </div>
+)}
+```
+
+Notas:
+
+- `alt` describe claramente la acción y el contexto (ventana oscilobatiente en piso de Madrid).
+- `loading="lazy"` ayuda a optimizar la carga de la página.
+
+Estado:
+
+- Ahora la página de servicios muestra:
+    - Imagen de apertura de puerta blindada (aperturas).
+    - Imagen específica para el servicio de ventanas oscilobatientes (ventanas).
+- El sistema de tema y accesibilidad está iniciado (tema en `data-theme`, toggle y foco visible), listo para futuros ajustes visuales más finos si se desea separar completamente modo claro/oscuro.
+
+
 
 
 

@@ -7,7 +7,7 @@ import { siteConfig } from '../config/site';
     <a href="/" class="text-lg font-semibold tracking-tight">
       {siteConfig.nombreComercial}
     </a>
-    <nav class="hidden items-center gap-6 text-xs font-medium text-slate-300 sm:flex">
+    <nav class="hidden items-center gap-4 text-xs font-medium text-slate-300 sm:flex">
       <a href="/" class="transition hover:text-emerald-300">
         Inicio
       </a>
@@ -20,6 +20,23 @@ import { siteConfig } from '../config/site';
       <a href="/contacto" class="transition hover:text-emerald-300">
         Contacto
       </a>
+      <button
+        type="button"
+        class="inline-flex items-center gap-1 rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 text-[11px] font-medium text-slate-200 shadow-sm transition hover:border-emerald-400"
+        aria-label="Cambiar entre modo claro y modo oscuro"
+        onclick="
+          (function() {
+            var root = document.documentElement;
+            var current = root.dataset.theme || 'dark';
+            var next = current === 'dark' ? 'light' : 'dark';
+            root.dataset.theme = next;
+            try { localStorage.setItem('theme', next); } catch (e) {}
+          })();
+        "
+      >
+        <span aria-hidden="true">🌓</span>
+        <span>Cambiar tema</span>
+      </button>
       <a
         href={siteConfig.telefonoHref}
         class="rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"

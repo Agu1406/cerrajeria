@@ -1212,13 +1212,13 @@ Cambio:
 - Se añadió una nueva propiedad:
 
 ```bash
-baseUrl: 'https://TU-DOMINIO-AQUI', // TODO: actualizar cuando se compre el dominio real
+baseUrl: 'https://loscerrajerosmadrid.es',
 ```
 
 Uso previsto:
 
 - Cuando se compre el dominio definitivo (por ejemplo, `https://cerrajerosmadrid.es`), será necesario:
-    - Sustituir `https://TU-DOMINIO-AQUI` por ese dominio real.
+    - En este caso ya se ha establecido el dominio real: `https://loscerrajerosmadrid.es`.
 - Esta URL base se utiliza en:
     - `canonical` de cada página.
     - JSON-LD `LocalBusiness`.
@@ -1347,10 +1347,222 @@ Objetivo:
     - `robots.txt` y `sitemap.xml` generados dinámicamente.
 
 - **Pendiente tras compra de dominio**:
-    - Actualizar `siteConfig.baseUrl` con el dominio definitivo.
-    - Verificar en producción:
+    - Verificar en producción (una vez propagado el dominio):
         - Que `/robots.txt` y `/sitemap.xml` sirven el dominio correcto.
         - Que las URLs `canonical` apuntan al dominio final.
+
+## Sesión 6 – Conexión del dominio loscerrajerosmadrid.es con Vercel (pendiente de DNS)
+
+En esta sesión se ha establecido ya el dominio definitivo adquirido:
+
+- Dominio: `loscerrajerosmadrid.es`
+- Proveedor: Dinahosting.
+
+### 1. Actualización de `baseUrl` a `https://loscerrajerosmadrid.es`
+
+Archivo modificado:
+
+```bash
+src/config/site.ts
+```
+
+Cambio realizado:
+
+```bash
+baseUrl: 'https://loscerrajerosmadrid.es',
+```
+
+Efectos:
+
+- A partir de ahora:
+    - Las etiquetas `canonical` generadas en `Layout.astro` usarán `https://loscerrajerosmadrid.es/...`.
+    - El JSON-LD `LocalBusiness` usará la URL `https://loscerrajerosmadrid.es`.
+    - `/robots.txt` y `/sitemap.xml` se generarán apuntando a `https://loscerrajerosmadrid.es`.
+
+### 2. Pasos pendientes en Dinahosting y Vercel (resumen operativo)
+
+> Nota: estos pasos se realizarán desde los paneles web de Dinahosting y Vercel, no desde el código.
+
+**En Vercel (proyecto `cerrajeria`)**
+
+1. Ir a la sección del proyecto en Vercel.
+2. Abrir la pestaña **Domains** o **Settings → Domains**.
+3. Añadir el dominio:
+
+    - `loscerrajerosmadrid.es`
+
+4. Vercel mostrará las instrucciones DNS específicas:
+    - Normalmente:
+        - Si se usan **nameservers de Dinahosting**:
+            - Crear registros `A` o `CNAME` apuntando a Vercel (suelen ser uno o varios registros `A` o un `CNAME` tipo `cname.vercel-dns.com`).
+        - O cambiar los **nameservers** a los de Vercel si se usa Vercel DNS (opcional).
+
+**En Dinahosting (panel de control del dominio)**
+
+1. Localizar el dominio `loscerrajerosmadrid.es`.
+2. Ir a la gestión de **DNS**.
+3. Crear/editar los registros según indique Vercel, por ejemplo:
+    - Un `A` para el root (`@`) apuntando a una IP de Vercel o
+    - Un `CNAME` para `www` apuntando al dominio de Vercel.
+4. Guardar los cambios y esperar la propagación DNS (normalmente minutos, a veces hasta 24 horas).
+
+### 3. Qué comprobar después de configurar el dominio
+
+Una vez propagado:
+
+- Visitar:
+    - `https://loscerrajerosmadrid.es/`
+    - Comprobar que carga la misma web que `https://cerrajeria-eight.vercel.app/`.
+- Verificar:
+    - Código fuente (`<head>`) para ver:
+        - `<link rel="canonical" href="https://loscerrajerosmadrid.es/...">`
+        - El bloque JSON-LD con `"url": "https://loscerrajerosmadrid.es"`.
+    - Ficheros:
+        - `https://loscerrajerosmadrid.es/robots.txt`
+        - `https://loscerrajerosmadrid.es/sitemap.xml`
+
+Si todo apunta correctamente al dominio `loscerrajerosmadrid.es`, la configuración de dominio y SEO técnico quedará completada.
+
+## Sesión 7 – Integración de imágenes en la interfaz
+
+En esta sesión se han empezado a usar las primeras imágenes disponibles en `public/images` para mejorar la confianza visual y seguir cuidando la velocidad de carga:
+
+- `public/images/cerrajero-24h-madrid-hero.png`
+- `public/images/apertura-puerta-blindada.png`
+
+> Nota: en el futuro se recomienda sustituirlas por versiones optimizadas en formato WebP (`.webp`) con menor peso, manteniendo los mismos nombres o ajustando las rutas en el código.
+
+### 1. Imagen principal (hero) en la home
+
+Archivo modificado:
+
+```bash
+src/pages/index.astro
+```
+
+Se ha añadido una nueva sección bajo el bloque principal de hero textual:
+
+- Estructura:
+    - Columna de texto explicando:
+        - Que se trabaja con familias, comunidades y negocios.
+        - Objetivo de abrir la puerta rápido, con poco daño y precio claro.
+    - Columna con una imagen:
+
+```bash
+<img
+  src="/images/cerrajero-24h-madrid-hero.png"
+  alt="Cerrajero 24 horas abriendo una puerta blindada en un portal de Madrid"
+  class="h-full w-full object-cover"
+  loading="lazy"
+/>
+```
+
+Motivos:
+
+- Refuerza visualmente el mensaje de urgencia y profesionalidad.
+- `alt` descriptivo y orientado a contexto real (no keyword stuffing).
+- `loading="lazy"` ayuda a no bloquear el render inicial en móviles.
+
+### 2. Imagen de apertura de puerta en la página de servicios
+
+Archivo modificado:
+
+```bash
+src/pages/servicios.astro
+```
+
+Cambio:
+
+- En la categoría `aperturas` se ha añadido una imagen ilustrativa bajo la lista de servicios:
+
+```bash
+{categoria.id === 'aperturas' && (
+  <div class="mt-2 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
+    <img
+      src="/images/apertura-puerta-blindada.png"
+      alt="Detalle de apertura de cerradura blindada por un cerrajero profesional"
+      class="h-full w-full object-cover"
+      loading="lazy"
+    />
+  </div>
+)}
+```
+
+Objetivo:
+
+- Visualizar mejor el servicio de **apertura de puertas blindadas**.
+- Mantener coherencia estética con el resto de la web (bordes redondeados, fondo oscuro, Tailwind).
+- Mantener buenas prácticas:
+    - `alt` informativo.
+    - `loading="lazy"` para no penalizar rendimiento.
+
+Estado actual de imágenes:
+
+- Se han integrado 2 imágenes claves:
+    - Una para el hero de la home.
+    - Una para la sección de aperturas en `/servicios`.
+- Queda abierta la posibilidad de:
+    - Añadir imágenes específicas para ventanas oscilobatientes y otros servicios.
+    - Sustituir las `.png` actuales por `.webp` más ligeras en el futuro.
+
+## Sesión 8 – Afinado de la home inspirada en diseños de Stitch
+
+Tras revisar los diseños propuestos por Google Stitch, se han incorporado algunas ideas de UI/UX manteniendo la arquitectura y el código actuales en Astro + Tailwind.
+
+### 1. Cinta de “Servicio 24 horas” con indicador de urgencia
+
+Archivo modificado:
+
+```bash
+src/pages/index.astro
+```
+
+Cambio:
+
+- Se ha sustituido el texto simple inicial por una **píldora visual**:
+    - Fondo semitransparente verde.
+    - Pequeño punto animado (`animate-ping`) que transmite sensación de servicio activo.
+
+Objetivo:
+
+- Dar más énfasis visual a la disponibilidad 24h sin recargar la cabecera.
+
+### 2. Botón principal de llamada con micro-interacción
+
+En el mismo archivo:
+
+- Se ha ajustado el CTA principal “Llamar ahora” para:
+    - Aumentar ligeramente el padding.
+    - Añadir efecto `active:scale-95` para una sensación de botón “físico”.
+
+Sin cambiar el contenido ni la estructura SEO, se mejora la percepción de clicabilidad.
+
+### 3. Bloque de “Quick Stats” (tiempo, disponibilidad, satisfacción)
+
+Se ha añadido una nueva sección justo debajo del hero principal:
+
+- Tres tarjetas pequeñas que muestran:
+    - **Llegada media**: “20–30 min”
+    - **Disponibilidad**: “24/7”
+    - **Clientes satisfechos**: “4.9/5” (objetivo basado en reseñas reales futuras)
+
+Características:
+
+- Estilo consistente con el resto de la web (bordes, fondo oscuro, texto pequeño).
+- Pensado como versión simple de los “quick stats” del diseño de Stitch.
+
+Objetivo:
+
+- Reforzar confianza y propuesta de valor en un solo vistazo:
+    - Tiempo de respuesta.
+    - Horario.
+    - Calidad del servicio.
+
+Resumen:
+
+- Se han aplicado ideas de los diseños IA (cinta de servicio 24h, quick stats, CTA más marcado) sin introducir dependencias externas ni tocar la configuración de Tailwind, manteniendo la arquitectura limpia y el control total sobre el HTML y el SEO.
+
+
 
 
 

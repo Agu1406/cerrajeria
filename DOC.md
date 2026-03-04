@@ -1853,181 +1853,208 @@ Además de los bloques ya existentes, se han añadido tres secciones nuevas dent
 
 Con esto, cada landing local gana longitud y relevancia sin perder enfoque en el servicio de cerrajería urgente, mejorando su potencial SEO y la claridad para el usuario final.
 
-## Sesión 11 – Refactorizar contenido de barrios a `src/data/barrios.ts`
+## Sesión 11 – Migrar contenido de barrios a Astro Content Collections (MD)
 
-En esta sesión se ha mejorado la **arquitectura** de las páginas de barrio para hacerla más escalable de cara a añadir muchos más barrios en el futuro.
+En esta sesión se ha dado un paso más profesional en la arquitectura de contenido, pasando de un único archivo `src/data/barrios.ts` a **una colección de contenido de Astro** con un archivo por barrio.
 
-### 1. Problema detectado
+### 1. Configuración de la colección `barrios`
 
-Anteriormente, el archivo:
+Archivo creado:
+
+```bash
+src/content/config.ts
+```
+
+Contenido:
+
+```bash
+import { defineCollection, z } from 'astro:content';
+
+const barrios = defineCollection({
+  type: 'content',
+  schema: z.object({
+    nombre: z.string(),
+    introExtra: z.string(),
+    llegadaTexto: z.string(),
+    comoTrabajamos: z.string(),
+    faqLlegada: z.string(),
+    faqPrecio: z.string(),
+    faqFestivos: z.string(),
+  }),
+});
+
+export const collections = { barrios };
+```
+
+Notas:
+
+- Se define una colección llamada `barrios` de tipo `content`.
+- Se utiliza un esquema `z.object` para validar que todos los documentos de la colección contienen los campos esperados.
+
+### 2. Creación de archivos de contenido por barrio
+
+Se han creado los siguientes archivos:
+
+```bash
+src/content/barrios/getafe.md
+src/content/barrios/las-rozas.md
+src/content/barrios/pinto.md
+src/content/barrios/leganes.md
+```
+
+Cada archivo contiene solo **frontmatter** (campos estructurados) por ahora, por ejemplo `getafe.md`:
+
+```bash
+---
+nombre: "Getafe"
+introExtra: >
+  En Getafe trabajamos a diario en portales de edificios residenciales, comunidades de vecinos y viviendas
+  unifamiliares. Estamos acostumbrados a lidiar con cerraduras antiguas, bombines desgastados y puertas que han
+  sufrido muchos años de uso.
+llegadaTexto: >
+  En Getafe solemos tardar entre 25 y 35 minutos desde que confirmamos el aviso, dependiendo del tráfico y la zona
+  concreta.
+comoTrabajamos: >
+  Cuando recibimos una llamada desde Getafe intentamos siempre hacer una valoración previa por teléfono, explicando las
+  posibles soluciones y un rango de precio aproximado. Al llegar revisamos la puerta o cerradura, confirmamos el
+  presupuesto y solo empezamos a trabajar cuando tú lo aceptas.
+faqLlegada: >
+  En condiciones normales llegamos a cualquier zona de Getafe en unos 25–35 minutos desde que se confirma el aviso. En
+  horas punta o días de lluvia puede alargarse ligeramente, pero te avisamos siempre por teléfono.
+faqPrecio: >
+  Antes de desplazarnos te explicamos el precio orientativo de la apertura o reparación. Una vez vemos la puerta en
+  persona confirmamos el importe final y solo empezamos si estás de acuerdo, sin sorpresas al terminar.
+faqFestivos: >
+  Sí, prestamos servicio de cerrajería urgente en Getafe las 24 horas todos los días del año, incluidos fines de
+  semana, festivos y noches.
+---
+```
+
+Los demás barrios (`las-rozas`, `pinto`, `leganes`) tienen campos equivalentes con sus textos específicos.
+
+### 3. Actualización de `[barrio].astro` para usar `astro:content`
+
+Archivo modificado:
 
 ```bash
 src/pages/barrios/[barrio].astro
 ```
 
-contenía:
+Cambios clave:
 
-- La plantilla de la página (estructura de secciones, botones, etc.).
-- Un objeto `contenidoPorBarrio` con textos específicos para cada barrio (`getafe`, `las-rozas`, `pinto`, `leganes`).
-- La lógica para elegir entre contenido específico o genérico.
+- Se ha eliminado cualquier dependencia de `src/data/barrios.ts`.
+- Ahora se utiliza `getCollection` y `CollectionEntry` de `astro:content`:
 
-Esto hacía que:
+```bash
+import { getCollection, type CollectionEntry } from 'astro:content';
 
-- A medida que se añadiesen más barrios, el archivo `[barrio].astro` fuese creciendo mucho.
-- Se mezclase la lógica de presentación con grandes bloques de contenido, dificultando el mantenimiento.
+export async function getStaticPaths() {
+  const entries = await getCollection('barrios');
+  return entries.map((entry) => ({
+    params: { barrio: entry.slug },
+    props: { entry },
+  }));
+}
 
-### 2. Nueva estructura en `src/data/barrios.ts`
+type Props = {
+  entry: CollectionEntry<'barrios'>;
+};
+
+const { entry } = Astro.props as Props;
+const data = entry.data;
+```
+
+- El resto de la plantilla usa `data` en lugar de `barrio`:
+    - `data.nombre`
+    - `data.introExtra`
+    - `data.llegadaTexto`
+    - `data.comoTrabajamos`
+    - `data.faqLlegada`, `data.faqPrecio`, `data.faqFestivos`
+
+Ejemplo:
+
+```bash
+<p class="text-sm text-slate-300 sm:text-base">
+  {data.introExtra}
+</p>
+```
+
+### 4. Actualización de los listados de barrios (home y `/barrios`)
+
+Archivos modificados:
+
+```bash
+src/pages/index.astro
+src/pages/barrios/index.astro
+```
+
+En ambos casos se ha sustituido la importación de `barrios` desde `src/data/barrios.ts` por llamadas a `getCollection('barrios')`.
+
+Ejemplo en `/barrios/index.astro`:
+
+```bash
+import { getCollection } from 'astro:content';
+
+const barrios = await getCollection('barrios');
+
+{barrios.map((entry) => (
+  <a href={`/barrios/${entry.slug}`}>
+    <span class="font-semibold">{entry.data.nombre}</span>
+    ...
+  </a>
+))}
+```
+
+Y en la home (`/`), el bloque de “Barrios y zonas iniciales” también lee desde la colección `barrios`.
+
+### 5. Actualización del `sitemap.xml` para incluir barrios desde la colección
 
 Archivo modificado:
+
+```bash
+src/pages/sitemap.xml.ts
+```
+
+- Se ha eliminado el uso de `src/data/barrios.ts`.
+- Ahora se llama a `getCollection('barrios')`:
+
+```bash
+import { getCollection } from 'astro:content';
+
+const barrios = await getCollection('barrios');
+
+const urls = [
+  '/',
+  '/servicios',
+  '/barrios',
+  '/contacto',
+  ...barrios.map((entry) => `/barrios/${entry.slug}`),
+];
+```
+
+De esta forma, el sitemap se actualiza automáticamente cuando se añaden nuevos archivos de barrio en `src/content/barrios/`.
+
+### 6. Eliminación de `src/data/barrios.ts`
+
+Archivo eliminado:
 
 ```bash
 src/data/barrios.ts
 ```
 
-Antes:
+Motivo:
 
-```bash
-export type Barrio = {
-  slug: string;
-  nombre: string;
-};
+- Todo el contenido de barrios se gestiona ahora mediante la colección `barrios` de Astro Content.
+- Evita duplicar información y mantiene una única fuente de verdad: los archivos `.md` de contenido.
 
-export const barrios: Barrio[] = [
-  { slug: 'getafe', nombre: 'Getafe' },
-  { slug: 'las-rozas', nombre: 'Las Rozas' },
-  { slug: 'pinto', nombre: 'Pinto' },
-  { slug: 'leganes', nombre: 'Leganés' },
-];
-```
+### 7. Ventajas de esta nueva arquitectura
 
-Después:
-
-- El tipo `Barrio` se ha ampliado para incluir todos los campos de contenido:
-
-```bash
-export type Barrio = {
-  slug: string;
-  nombre: string;
-  introExtra: string;
-  llegadaTexto: string;
-  comoTrabajamos: string;
-  faqLlegada: string;
-  faqPrecio: string;
-  faqFestivos: string;
-};
-```
-
-- El array `barrios` ahora contiene objetos completos con textos específicos por barrio:
-
-```bash
-export const barrios: Barrio[] = [
-  {
-    slug: 'getafe',
-    nombre: 'Getafe',
-    introExtra: '...',
-    llegadaTexto: '...',
-    comoTrabajamos: '...',
-    faqLlegada: '...',
-    faqPrecio: '...',
-    faqFestivos: '...',
-  },
-  {
-    slug: 'las-rozas',
-    nombre: 'Las Rozas',
-    introExtra: '...',
-    llegadaTexto: '...',
-    comoTrabajamos: '...',
-    faqLlegada: '...',
-    faqPrecio: '...',
-    faqFestivos: '...',
-  },
-  {
-    slug: 'pinto',
-    nombre: 'Pinto',
-    introExtra: '...',
-    llegadaTexto: '...',
-    comoTrabajamos: '...',
-    faqLlegada: '...',
-    faqPrecio: '...',
-    faqFestivos: '...',
-  },
-  {
-    slug: 'leganes',
-    nombre: 'Leganés',
-    introExtra: '...',
-    llegadaTexto: '...',
-    comoTrabajamos: '...',
-    faqLlegada: '...',
-    faqPrecio: '...',
-    faqFestivos: '...',
-  },
-];
-```
-
-*(En el código real, cada campo contiene los textos escritos en la sesión anterior para cada municipio.)*
-
-### 3. Simplificación de la plantilla `[barrio].astro`
-
-Archivo modificado:
-
-```bash
-src/pages/barrios/[barrio].astro
-```
-
-Cambios principales:
-
-- Se ha eliminado el objeto `contenidoPorBarrio` y la lógica de `contenido` que vivían dentro de la plantilla.
-- Ahora la plantilla:
-    - Importa `Barrio` y `barrios` desde `src/data/barrios.ts`.
-    - Recibe el objeto `barrio` ya enriquecido (con todos los campos de texto).
-    - Utiliza directamente las propiedades de `barrio`:
-        - `barrio.introExtra`
-        - `barrio.llegadaTexto`
-        - `barrio.comoTrabajamos`
-        - `barrio.faqLlegada`
-        - `barrio.faqPrecio`
-        - `barrio.faqFestivos`
-
-Ejemplos de uso tras el refactor:
-
-- Párrafo extra:
-
-```bash
-<p class="text-sm text-slate-300 sm:text-base">
-  {barrio.introExtra}
-</p>
-```
-
-- Texto de llegada junto al botón:
-
-```bash
-<p class="text-xs text-slate-400">
-  {barrio.llegadaTexto}
-</p>
-```
-
-- Mini‑FAQ:
-
-```bash
-<strong>¿Cuánto tardáis en llegar a {barrio.nombre}?</strong> {barrio.faqLlegada}
-```
-
-### 4. Ventajas de la nueva arquitectura
-
-- **Separación clara** entre:
-    - Plantilla (`[barrio].astro`): se encarga solo de la estructura y el layout.
-    - Contenido de negocio (`src/data/barrios.ts`): lista de barrios y sus textos.
-
-- **Escalabilidad**:
-    - Añadir un nuevo barrio implica **solo**:
-        - Añadir un nuevo objeto al array `barrios` con sus textos.
-        - No hay que tocar la plantilla.
-
-- **Mantenimiento**:
-    - Cambiar una frase de un barrio es tan simple como editar su entrada en `src/data/barrios.ts`.
-    - El archivo `[barrio].astro` se mantiene mucho más corto y fácil de leer.
-
-Con este refactor, el proyecto está listo para escalar a decenas o cientos de barrios manteniendo una arquitectura limpia y profesional.
+- **Un archivo por barrio** → mucho más manejable cuando haya decenas o cientos de barrios.
+- **Validación de esquema** vía `astro:content` → evita olvidos de campos obligatorios.
+- **Tipos fuertes** (`CollectionEntry<'barrios'>`) en TypeScript → menos errores al consumir datos.
+- **Escalabilidad real**:
+    - Para añadir un barrio nuevo, basta con crear `src/content/barrios/nuevo-barrio.md` con el frontmatter correspondiente.
+    - No es necesario tocar la plantilla ni otros archivos de código.
 
 
 

@@ -1,11 +1,13 @@
 ---
 import Layout from '../../components/Layout.astro';
-import { barrios } from '../../data/barrios';
 import { siteConfig } from '../../config/site';
+import { getCollection } from 'astro:content';
 
 const title = `Cerrajeros por barrios en ${siteConfig.ciudadPrincipal} | ${siteConfig.nombreComercial}`;
 const description =
   'Listado de barrios y zonas donde ofrecemos servicio de cerrajería urgente 24 horas en Madrid. Encuentra tu zona y llama al instante.';
+
+const barrios = await getCollection('barrios');
 ---
 
 <Layout {title} {description}>
@@ -19,15 +21,15 @@ const description =
     </p>
 
     <ul class="mt-4 grid gap-3 sm:grid-cols-2">
-      {barrios.map((barrio) => (
+      {barrios.map((entry) => (
         <li>
           <a
-            href={`/barrios/${barrio.slug}`}
+            href={`/barrios/${entry.slug}`}
             class="flex flex-col rounded-lg border border-slate-800 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
           >
-            <span class="font-semibold">{barrio.nombre}</span>
+            <span class="font-semibold">{entry.data.nombre}</span>
             <span class="mt-1 text-xs text-slate-500">
-              Cerrajero urgente 24h en {barrio.nombre}
+              Cerrajero urgente 24h en {entry.data.nombre}
             </span>
           </a>
         </li>

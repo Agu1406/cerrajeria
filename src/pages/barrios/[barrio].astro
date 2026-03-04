@@ -1,41 +1,42 @@
 ---
 import Layout from '../../components/Layout.astro';
-import type { Barrio } from '../../data/barrios';
-import { barrios } from '../../data/barrios';
 import { siteConfig } from '../../config/site';
 import { servicios } from '../../data/servicios';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  return barrios.map((barrio) => ({
-    params: { barrio: barrio.slug },
-    props: { barrio },
+  const entries = await getCollection('barrios');
+  return entries.map((entry) => ({
+    params: { barrio: entry.slug },
+    props: { entry },
   }));
 }
 
 type Props = {
-  barrio: Barrio;
+  entry: CollectionEntry<'barrios'>;
 };
 
-const { barrio } = Astro.props as Props;
+const { entry } = Astro.props as Props;
+const data = entry.data;
 
-const title = `Cerrajero 24h en ${barrio.nombre} | ${siteConfig.nombreComercial}`;
-const description = `Cerrajero urgente 24 horas en ${barrio.nombre} (${siteConfig.ciudadPrincipal}). Apertura de puertas sin daños, cambios de bombín y asistencia rápida. Llama al ${siteConfig.telefono}.`;
+const title = `Cerrajero 24h en ${data.nombre} | ${siteConfig.nombreComercial}`;
+const description = `Cerrajero urgente 24 horas en ${data.nombre} (${siteConfig.ciudadPrincipal}). Apertura de puertas sin daños, cambios de bombín y asistencia rápida. Llama al ${siteConfig.telefono}.`;
 ---
 
 <Layout {title} {description}>
   <section class="space-y-6">
     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-      Urgencias 24h · {barrio.nombre}
+      Urgencias 24h · {data.nombre}
     </p>
     <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
-      Cerrajeros 24 horas en {barrio.nombre}
+      Cerrajeros 24 horas en {data.nombre}
     </h1>
     <p class="text-sm text-slate-300 sm:text-base">
-      Servicio de cerrajería urgente en {barrio.nombre} y alrededores. Apertura de puertas sin daños, cambio de
+      Servicio de cerrajería urgente en {data.nombre} y alrededores. Apertura de puertas sin daños, cambio de
       cerraduras y refuerzo de seguridad en viviendas, locales y comunidades de vecinos.
     </p>
     <p class="text-sm text-slate-300 sm:text-base">
-      {barrio.introExtra}
+      {data.introExtra}
     </p>
 
     <div class="flex flex-wrap items-center gap-3">
@@ -46,7 +47,7 @@ const description = `Cerrajero urgente 24 horas en ${barrio.nombre} (${siteConfi
         📞 Llamar ahora · {siteConfig.telefono}
       </a>
       <p class="text-xs text-slate-400">
-        {barrio.llegadaTexto}
+        {data.llegadaTexto}
       </p>
     </div>
 
@@ -62,7 +63,7 @@ const description = `Cerrajero urgente 24 horas en ${barrio.nombre} (${siteConfi
         <h2 class="mb-2 text-sm font-semibold">Cambio e instalación de cerraduras</h2>
         <p class="text-slate-300">
           Cambiamos e instalamos cerraduras y bombines de alta seguridad, con opciones antibumping y antitaladro
-          para viviendas y locales en {barrio.nombre}.
+          para viviendas y locales en {data.nombre}.
         </p>
       </div>
       <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
@@ -76,7 +77,7 @@ const description = `Cerrajero urgente 24 horas en ${barrio.nombre} (${siteConfi
 
     <section class="mt-8 space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        Servicios habituales de cerrajería en {barrio.nombre}
+        Servicios habituales de cerrajería en {data.nombre}
       </h2>
       <p class="text-xs text-slate-400 sm:text-sm">
         Trabajamos a diario con aperturas urgentes, cambios de cerradura y arreglos de ventanas. Estos son algunos
@@ -88,33 +89,33 @@ const description = `Cerrajero urgente 24 horas en ${barrio.nombre} (${siteConfi
         ))}
       </ul>
       <p class="text-xs text-slate-400">
-        Si necesitas un trabajo de cerrajería diferente en {barrio.nombre}, llámanos y te diremos al momento si
+        Si necesitas un trabajo de cerrajería diferente en {data.nombre}, llámanos y te diremos al momento si
         podemos ayudarte.
       </p>
     </section>
 
     <section class="mt-8 space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        Cómo trabajamos en {barrio.nombre}
+        Cómo trabajamos en {data.nombre}
       </h2>
       <p class="text-xs text-slate-400 sm:text-sm">
-        {barrio.comoTrabajamos}
+        {data.comoTrabajamos}
       </p>
     </section>
 
     <section class="mt-8 space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        Preguntas frecuentes sobre cerrajería urgente en {barrio.nombre}
+        Preguntas frecuentes sobre cerrajería urgente en {data.nombre}
       </h2>
       <div class="space-y-2 text-xs text-slate-300 sm:text-sm">
         <p>
-          <strong>¿Cuánto tardáis en llegar a {barrio.nombre}?</strong> {barrio.faqLlegada}
+          <strong>¿Cuánto tardáis en llegar a {data.nombre}?</strong> {data.faqLlegada}
         </p>
         <p>
-          <strong>¿El precio está cerrado antes de empezar?</strong> {barrio.faqPrecio}
+          <strong>¿El precio está cerrado antes de empezar?</strong> {data.faqPrecio}
         </p>
         <p>
-          <strong>¿Trabajáis también de noche y en festivos en {barrio.nombre}?</strong> {barrio.faqFestivos}
+          <strong>¿Trabajáis también de noche y en festivos en {data.nombre}?</strong> {data.faqFestivos}
         </p>
       </div>
     </section>

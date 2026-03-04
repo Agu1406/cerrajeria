@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { siteConfig } from '../config/site';
-import { barrios } from '../data/barrios';
+import { getCollection } from 'astro:content';
 
 export const GET: APIRoute = async () => {
   const baseUrl =
@@ -8,12 +8,14 @@ export const GET: APIRoute = async () => {
       ? siteConfig.baseUrl.replace(/\/$/, '')
       : 'https://example.com';
 
+  const barrios = await getCollection('barrios');
+
   const urls = [
     '/',
     '/servicios',
     '/barrios',
     '/contacto',
-    ...barrios.map((barrio) => `/barrios/${barrio.slug}`),
+    ...barrios.map((entry) => `/barrios/${entry.slug}`),
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
@@ -35,4 +37,5 @@ ${urls
     },
   });
 };
+
 

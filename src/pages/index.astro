@@ -44,11 +44,12 @@ const barrios = await getCollection('barrios');
     </div>
     <aside class="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
       <h2 class="text-base font-semibold tracking-tight">
-        Barrios y zonas iniciales
+        Barrios y zonas de cobertura
       </h2>
       <p class="text-xs text-slate-400">
-        Empezamos dando cobertura prioritaria en estas zonas. Cada una tendrá su propia página optimizada para
-        aparecer en Google cuando alguien busque un cerrajero cerca.
+        Nuestros servicios están disponible en toda la comunidad de Madrid, recientemente la mayor cantidad de nuestros
+        servicios vienen, por ejemplo de los siguientes barrios donde nos hemos vuelto muy populares y recomendados de
+        boca a boca.
       </p>
       <ul class="grid gap-2 text-sm">
         {barrios.map((entry) => (
@@ -196,6 +197,17 @@ const barrios = await getCollection('barrios');
           servicios de cerrajería
         </a>
         .
+      </p>
+    </section>
+
+    <section class="mt-8 space-y-3">
+      <h2 class="text-lg font-semibold tracking-tight">
+        Zonas de Madrid donde trabajamos
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Además de las zonas iniciales que ves arriba, ofrecemos servicio de cerrajería urgente en los principales
+        distritos de Madrid ciudad, como Centro, Salamanca, Chamberí, Retiro, Chamartín o Tetuán, entre otros. Poco a
+        poco iremos añadiendo páginas específicas por zona con más información detallada.
       </p>
     </section>
   </section>

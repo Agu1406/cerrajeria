@@ -2056,6 +2056,166 @@ Motivo:
     - Para añadir un barrio nuevo, basta con crear `src/content/barrios/nuevo-barrio.md` con el frontmatter correspondiente.
     - No es necesario tocar la plantilla ni otros archivos de código.
 
+## Sesión 12 – Mejora de SEO on-page, tema visual y UX
+
+En esta sesión se han aplicado varias mejoras centradas en SEO on-page, experiencia de usuario y claridad visual.
+
+### 1. Metadatos Open Graph y Twitter Cards
+
+Archivo modificado:
+
+```bash
+src/components/Layout.astro
+```
+
+Cambios:
+
+- Se han añadido metadatos para Open Graph y Twitter cuando `siteConfig.baseUrl` está configurado:
+
+```bash
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={`${siteConfig.baseUrl}${Astro.url.pathname}`} />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content={`${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.png`}
+/>
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta
+  name="twitter:image"
+  content={`${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.png`}
+/>
+```
+
+Objetivo:
+
+- Mejorar el snippet de la web cuando se comparte en redes sociales o apps de mensajería.
+- Mantener título, descripción e imagen coherentes para todas las páginas.
+
+### 2. Conexión real del cambio de tema (claro/oscuro)
+
+Archivos modificados:
+
+```bash
+src/components/Layout.astro
+src/styles/global.css
+```
+
+Cambios en `Layout.astro`:
+
+- Se ha simplificado la clase del `<body>`:
+
+```bash
+<body class="min-h-screen">
+```
+
+- El color de fondo y el color del texto ya no están fijados en el `body`, sino que dependen del atributo
+  `data-theme` en `document.documentElement` (gestionado por el script existente).
+
+Cambios en `global.css`:
+
+- Se han definido estilos específicos para cada tema:
+
+```bash
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+:root[data-theme='dark'] body {
+  background-color: #020617; /* slate-950 */
+  color: #e2e8f0; /* slate-200 */
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='light'] body {
+  background-color: #f3f4f6; /* slate-100 */
+  color: #020617; /* slate-950 */
+}
+```
+
+Resultado:
+
+- El botón “Cambiar tema” en el header, que cambia `document.documentElement.dataset.theme` y guarda la preferencia en
+  `localStorage`, ahora produce un efecto visual claro:
+    - Tema oscuro: fondo oscuro y texto claro.
+    - Tema claro: fondo claro y texto oscuro.
+
+### 3. Página 404 personalizada
+
+Archivo creado:
+
+```bash
+src/pages/404.astro
+```
+
+Contenido:
+
+- Usa el `Layout` global y define:
+    - Título: `Página no encontrada`.
+    - Descripción SEO orientada a urgencias de cerrajería.
+- Incluye:
+    - Mensaje explicando que la página no existe o el enlace está desactualizado.
+    - Botón para llamar (`tel:`) reutilizando `siteConfig.telefono`.
+    - Enlace para volver al inicio (`/`).
+
+Objetivo:
+
+- Mejorar la experiencia de usuario en rutas no existentes y mantener siempre un acceso rápido a la llamada urgente.
+
+### 4. Refuerzo de SEO local y enlazado interno
+
+Archivo modificado:
+
+```bash
+src/pages/servicios.astro
+```
+
+Cambios:
+
+- Se ha añadido un párrafo que:
+    - Menciona explícitamente algunos barrios/municipios actuales (Getafe, Las Rozas, Pinto, Leganés).
+    - Informa de que también se atienden otros distritos de Madrid ciudad.
+    - Enlaza de forma clara hacia la página de `barrios`.
+
+Archivo modificado:
+
+```bash
+src/pages/barrios/[barrio].astro
+```
+
+Cambios:
+
+- Al final de la página de cada barrio se ha añadido una frase que enlaza hacia `/servicios`.
+
+Objetivo:
+
+- Mejorar el enlazado interno entre:
+    - `/servicios`
+    - `/barrios`
+    - `/barrios/[barrio]`
+- Reforzar las páginas clave de conversión desde el contenido local.
+
+### 5. Bloque “Zonas de Madrid donde trabajamos” en la home
+
+Archivo modificado:
+
+```bash
+src/pages/index.astro
+```
+
+Cambios:
+
+- Se ha añadido una sección al final del contenido principal que explica que, además de los municipios actuales, se
+  ofrece servicio en los principales distritos de Madrid ciudad (Centro, Salamanca, Chamberí, Retiro, Chamartín,
+  Tetuán, etc.), preparando el terreno para futuras landings específicas por distrito.
+
 
 
 

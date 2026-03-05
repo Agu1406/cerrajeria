@@ -1,5 +1,6 @@
 ---
 import Layout from '../components/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { siteConfig } from '../config/site';
 
 const title = `Contacto | ${siteConfig.nombreComercial} – Cerrajeros 24h en ${siteConfig.ciudadPrincipal}`;
@@ -34,59 +35,11 @@ const description =
       </div>
     </div>
 
-    <aside class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-sm">
-      <h2 class="text-base font-semibold tracking-tight">
-        Formulario de contacto (no urgente)
-      </h2>
-      <p class="mt-1 text-xs text-slate-400">
-        Úsalo para presupuestos, dudas sobre cerraduras o trabajos planificados.
-      </p>
-
-      <form class="mt-4 space-y-4">
-        <div class="space-y-1">
-          <label for="nombre" class="text-xs font-medium text-slate-300">
-            Nombre
-          </label>
-          <input
-            id="nombre"
-            name="nombre"
-            type="text"
-            class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
-            placeholder="Tu nombre"
-          />
-        </div>
-        <div class="space-y-1">
-          <label for="telefono" class="text-xs font-medium text-slate-300">
-            Teléfono
-          </label>
-          <input
-            id="telefono"
-            name="telefono"
-            type="tel"
-            class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
-            placeholder="Tu número de contacto"
-          />
-        </div>
-        <div class="space-y-1">
-          <label for="mensaje" class="text-xs font-medium text-slate-300">
-            Mensaje
-          </label>
-          <textarea
-            id="mensaje"
-            name="mensaje"
-            rows="4"
-            class="w-full resize-none rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
-            placeholder="Cuéntanos qué necesitas (no urgente)..."
-          >
-          </textarea>
-        </div>
-        <button
-          type="submit"
-          class="w-full rounded-full bg-slate-200 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-white"
-        >
-          Enviar consulta
-        </button>
-      </form>
+    <aside>
+      <ContactForm
+        title="Formulario de contacto (no urgente)"
+        subtitle="Úsalo para presupuestos, dudas sobre cerraduras o trabajos planificados."
+      />
     </aside>
   </section>
 </Layout>

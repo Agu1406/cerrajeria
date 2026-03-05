@@ -1,0 +1,124 @@
+---
+interface Props {
+  barrio?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no urgentes, presupuestos o dudas.' } = Astro.props;
+---
+
+<section class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-sm">
+  <h2 class="text-base font-semibold tracking-tight">
+    {title}
+  </h2>
+  {subtitle && (
+    <p class="mt-1 text-xs text-slate-400">
+      {subtitle}
+    </p>
+  )}
+
+  <form
+    class="contact-form mt-4 space-y-4"
+    action="/api/contact"
+    method="post"
+    data-barrio={barrio}
+  >
+    {barrio && (
+      <input type="hidden" name="barrio" value={barrio} />
+    )}
+    <div class="space-y-1">
+      <label for="contact-nombre" class="text-xs font-medium text-slate-300">
+        Nombre
+      </label>
+      <input
+        id="contact-nombre"
+        name="nombre"
+        type="text"
+        required
+        class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        placeholder="Tu nombre"
+      />
+    </div>
+    <div class="space-y-1">
+      <label for="contact-telefono" class="text-xs font-medium text-slate-300">
+        Teléfono
+      </label>
+      <input
+        id="contact-telefono"
+        name="telefono"
+        type="tel"
+        required
+        class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        placeholder="Tu número de contacto"
+      />
+    </div>
+    <div class="space-y-1">
+      <label for="contact-mensaje" class="text-xs font-medium text-slate-300">
+        Mensaje
+      </label>
+      <textarea
+        id="contact-mensaje"
+        name="mensaje"
+        rows="4"
+        required
+        class="w-full resize-none rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        placeholder={barrio ? `Consulta sobre cerrajería en ${barrio}...` : 'Cuéntanos qué necesitas (no urgente)...'}
+      />
+    </div>
+    <div class="contact-form-feedback hidden" aria-live="polite"></div>
+    <button
+      type="submit"
+      class="contact-form-submit w-full rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400 disabled:opacity-50"
+    >
+      Enviar consulta
+    </button>
+  </form>
+</section>
+
+<script>
+  document.querySelectorAll('.contact-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement;
+      const feedback = form.querySelector('.contact-form-feedback') as HTMLDivElement;
+      const submitBtn = form.querySelector('.contact-form-submit') as HTMLButtonElement;
+      if (!feedback || !submitBtn) return;
+
+      feedback.classList.add('hidden');
+      feedback.classList.remove('text-red-400', 'text-emerald-400');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      const body = new FormData(form);
+      const data = Object.fromEntries(body.entries()) as Record<string, string>;
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const json = await res.json().catch(() => ({}));
+
+        if (res.ok && !json.error) {
+          feedback.textContent = 'Mensaje enviado. Te responderemos lo antes posible.';
+          feedback.classList.add('text-emerald-400');
+          feedback.classList.remove('hidden');
+          form.reset();
+        } else {
+          feedback.textContent = json.message || 'No se pudo enviar. Prueba a llamarnos por teléfono.';
+          feedback.classList.add('text-red-400');
+          feedback.classList.remove('hidden');
+        }
+      } catch {
+        feedback.textContent = 'Error de conexión. Llámanos por teléfono para urgencias.';
+        feedback.classList.add('text-red-400');
+        feedback.classList.remove('hidden');
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar consulta';
+    });
+  });
+</script>

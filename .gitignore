@@ -13,9 +13,11 @@ yarn-error.log*
 pnpm-debug.log*
 
 
-# environment variables
+# environment variables (nunca subir credenciales)
 .env
+.env.local
 .env.production
+.env.*.local
 
 # macOS-specific files
 .DS_Store

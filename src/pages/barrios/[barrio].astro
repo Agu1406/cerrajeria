@@ -1,5 +1,6 @@
 ---
 import Layout from '../../components/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { siteConfig } from '../../config/site';
 import { servicios } from '../../data/servicios';
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -129,6 +130,20 @@ const description = `Cerrajero urgente 24 horas en ${data.nombre} (${siteConfig.
         </a>
         .
       </p>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="mb-3 text-lg font-semibold tracking-tight">
+        Consulta para cerrajería en {data.nombre}
+      </h2>
+      <p class="mb-4 text-xs text-slate-400 sm:text-sm">
+        Si no es urgente, puedes enviarnos tu consulta y te respondemos lo antes posible.
+      </p>
+      <ContactForm
+        barrio={data.nombre}
+        title="Enviar consulta (no urgente)"
+        subtitle="Presupuestos, dudas o trabajos planificados en esta zona."
+      />
     </section>
   </section>
 </Layout>

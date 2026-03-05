@@ -51,11 +51,12 @@ La idea es que esta guía te permita:
 * [**2. Stack tecnológico elegido**](#2-stack-tecnológico-elegido)
     + [**2.1. Resumen rápido del stack**](#21-resumen-rápido-del-stack)
     + [**2.2. Por qué no WordPress / otros**](#22-por-qué-no-wordpress--otros)
+    + [**2.3. Stack y dependencias actuales (resumen)**](#23-stack-y-dependencias-actuales-resumen)
 * [**3. Estructura de archivos y carpetas**](#3-estructura-de-archivos-y-carpetas)
     + [**3.1. Estructura general del proyecto**](#31-estructura-general-del-proyecto)
     + [**3.2. Páginas y rutas principales**](#32-páginas-y-rutas-principales)
     + [**3.3. Componentes clave**](#33-componentes-clave)
-    + [**3.4. Datos (barrios y municipios)**](#34-datos-barrios-y-municipios)
+    + [**3.4. Datos y contenido**](#34-datos-y-contenido)
 * [**4. Preparación del entorno**](#4-preparación-del-entorno)
     + [**4.1. Instalación de Node.js**](#41-instalación-de-nodejs)
     + [**4.2. Verificación de versiones**](#42-verificación-de-versiones)
@@ -108,20 +109,27 @@ No se prioriza (al menos en una primera fase) la complejidad de aplicación web,
 
 **Estilos**
 
-- **Tailwind CSS**:
+- **Tailwind CSS** (v4):
     - Sistema de utilidades CSS que permite **diseños rápidos y consistentes**.
+    - Integrado vía **@tailwindcss/vite** (plugin de Vite), sin `tailwind.config.js` en la configuración actual.
     - Elimina CSS no usado en producción, mejorando el **peso de la página**.
 
 **Contenido**
 
-- Inicialmente, contenido en **archivos `.astro`** y/o **Markdown**.
+- **Astro Content Collections**: contenido de barrios en **archivos Markdown** (`src/content/barrios/*.md`) con schema en `src/content/config.ts`. Datos de servicios en `src/data/servicios.ts`.
 - Posible futura integración de un **Headless CMS** (ej. Decap CMS) si se quiere edición visual desde navegador.
+
+**Backend / envío de formularios**
+
+- **Vercel Serverless Functions**: carpeta `api/` en la raíz del proyecto. La función `api/contact.js` recibe el POST del formulario de contacto y envía correo vía SMTP.
+- **Nodemailer**: librería Node.js para enviar correo desde la función serverless (correo configurado en Dinahosting; credenciales en variables de entorno de Vercel).
 
 **Despliegue**
 
-- **Vercel** o **Netlify**:
-    - Hosting estático con CDN global.
-    - Deploys automáticos conectados a un repositorio (Git, si se desea en el futuro).
+- **Vercel**:
+    - Hosting estático (build de Astro) + ejecución de funciones serverless (`api/`).
+    - Deploys automáticos conectados al repositorio Git.
+    - Variables de entorno para SMTP y `CONTACT_EMAIL`.
 
 ## 2.2. Por qué no WordPress / otros
 
@@ -136,36 +144,83 @@ No se prioriza (al menos en una primera fase) la complejidad de aplicación web,
 
 Conclusión: **Astro + Tailwind** maximiza el equilibrio entre **simplicidad, velocidad y SEO técnico** para una web de cerrajería local.
 
+## 2.3. Stack y dependencias actuales (resumen)
+
+Todo lo que el proyecto **instala o usa** en el estado actual, para tener una referencia única al día.
+
+**Dependencias npm (`package.json`)**
+
+| Paquete            | Uso |
+|--------------------|-----|
+| `astro`            | Framework SSG, componentes, rutas, Content Collections. |
+| `tailwindcss`      | Utilidades CSS (v4). |
+| `@tailwindcss/vite`| Plugin de Vite para Tailwind en Astro. |
+| `nodemailer`       | Envío de correo SMTP en la función `api/contact.js` (solo se ejecuta en Vercel). |
+
+**Configuración**
+
+- `astro.config.mjs`: Astro + plugin de Tailwind (Vite).
+- `tsconfig.json`: TypeScript (para tipos en `.astro` y `.ts`).
+- Sin `tailwind.config.js`: Tailwind v4 se configura vía `@tailwindcss/vite` y `src/styles/global.css` (`@import "tailwindcss"`).
+
+**Funcionalidad sin dependencias extra**
+
+- Iconos: **SVG inline** (teléfono, WhatsApp) en Header y CallButton; no se usa Lucide, Iconify ni otras librerías de iconos.
+- Tema claro/oscuro: **script en Layout** + **CSS en global.css** (`data-theme`); sin librería de temas.
+- Formulario de contacto: **fetch** al endpoint `/api/contact`; el envío real lo hace la función serverless con Nodemailer.
+
+**Servicios externos / configuración operativa**
+
+- **Vercel**: hosting y funciones serverless.
+- **Dinahosting**: dominio y correo (SMTP para el formulario); variables de entorno en Vercel.
+- **Google Search Console**: verificación por TXT en DNS (propiedad tipo Dominio).
+
 | [**Siguiente**](#3-estructura-de-archivos-y-carpetas) | [**Índice**](#índice-de-contenido) | [**Anterior**](#2-stack-tecnológico-elegido) |
 |-------------------------------------------------------|------------------------------------|----------------------------------------------|
 
 # 3. Estructura de archivos y carpetas
 
-Esta estructura es la **meta** del proyecto una vez inicializado Astro y añadidas las piezas específicas para cerrajería:
+Estructura **actual** del proyecto (Astro + Tailwind + Content Collections + API de contacto):
 
 ```bash
 cerrajeria/
-├── public/                     # Recursos estáticos (imágenes, favicon, etc.)
+├── api/                         # Vercel serverless (solo se ejecuta en despliegue)
+│   └── contact.js               # POST: recibe formulario, envía correo con Nodemailer
+├── public/                      # Recursos estáticos (imágenes, favicon)
 ├── src/
-│   ├── components/             # Componentes reutilizables
-│   │   ├── Layout.astro        # Layout global (cabecera, pie, estilos base)
-│   │   ├── CallButton.astro    # Botón flotante de llamada (click-to-call)
-│   │   ├── Header.astro        # Encabezado con marca y navegación básica
-│   │   └── Footer.astro        # Pie de página con datos de contacto / legal
+│   ├── components/
+│   │   ├── Layout.astro         # Layout global (head, tema, body)
+│   │   ├── Header.astro         # Cabecera, nav, menú hamburguesa, tema, WhatsApp/Llamar
+│   │   ├── Footer.astro         # Pie con datos de contacto / legal
+│   │   ├── CallButton.astro     # Botones flotantes WhatsApp + Llamar (móvil)
+│   │   └── ContactForm.astro    # Formulario de contacto reutilizable (nombre, teléfono, mensaje)
+│   ├── config/
+│   │   └── site.ts              # nombreComercial, telefono, telefonoHref, whatsappUrl, baseUrl, títulos SEO
+│   ├── content/
+│   │   ├── config.ts            # Schema (Zod) de la colección barrios
+│   │   └── barrios/             # Contenido por barrio (Markdown)
+│   │       ├── getafe.md
+│   │       ├── las-rozas.md
+│   │       ├── leganes.md
+│   │       └── pinto.md
 │   ├── data/
-│   │   └── barrios.ts          # Lista de barrios/zonas de Madrid (para SSG)
+│   │   └── servicios.ts         # Lista de servicios de cerrajería (para listados)
 │   ├── pages/
-│   │   ├── index.astro         # Página principal "Cerrajero 24h en Madrid"
+│   │   ├── index.astro          # Home
+│   │   ├── servicios.astro       # Página de servicios
+│   │   ├── contacto.astro       # Contacto + formulario
+│   │   ├── 404.astro            # Página de error
+│   │   ├── sitemap.xml.ts       # Sitemap dinámico
+│   │   ├── robots.txt.ts        # robots.txt dinámico
 │   │   └── barrios/
-│   │       └── [barrio].astro  # Plantilla dinámica por barrio
+│   │       ├── index.astro      # Listado de barrios
+│   │       └── [barrio].astro   # Plantilla dinámica por barrio (+ formulario contacto)
 │   └── styles/
-│       └── globals.css         # (opcional) estilos globales adicionales
-├── astro.config.mjs            # Configuración principal de Astro
-├── tailwind.config.mjs         # Configuración de Tailwind CSS
-├── postcss.config.cjs          # Configuración de PostCSS (si la genera Astro)
-├── package.json                # Dependencias del proyecto y scripts npm
-├── tsconfig.json               # Configuración de TypeScript (si se activa)
-└── DOC.md                      # Este documento de referencia
+│       └── global.css           # Tailwind @import + tema claro/oscuro + overrides
+├── astro.config.mjs             # Astro + plugin Tailwind (Vite)
+├── package.json                 # astro, tailwindcss, @tailwindcss/vite, nodemailer
+├── tsconfig.json                # TypeScript
+└── DOC.md                       # Este documento
 ```
 
 ## 3.1. Estructura general del proyecto
@@ -192,31 +247,28 @@ cerrajeria/
 ## 3.3. Componentes clave
 
 - `Layout.astro`
-    - Envuelve todas las páginas.
-    - Define `<html>`, `<head>` y `<body>` comunes.
-    - Punto ideal para inyectar:
-        - Fuentes globales.
-        - `CallButton.astro`.
-        - Scripts de analytics (si se añaden).
+    - Envuelve todas las páginas. Define `<html>`, `<head>` (meta, canonical, OG, tema) y `<body>`.
+    - Incluye script de tema (claro/oscuro) y `CallButton.astro`.
+
+- `Header.astro`
+    - Logo, nav (Inicio, Servicios, Barrios, Contacto), botón tema, WhatsApp y Llamar (escritorio).
+    - En móvil: menú hamburguesa con los mismos enlaces, tema y botones de contacto.
+
+- `Footer.astro`
+    - Pie con nombre comercial, teléfono y año.
 
 - `CallButton.astro`
-    - Botón fijo en la esquina inferior (sobre todo en móvil).
-    - Enlace `tel:+34XXXXXXXXX`.
+    - Botones flotantes en móvil: WhatsApp y Llamar (mismo estilo esmeralda). Solo visibles en viewport pequeño.
 
-- `Header.astro` y `Footer.astro`
-    - Encabezado: nombre comercial, posiblemente breve menú (Inicio, Barrios, Contacto).
-    - Pie: datos legales, NIF, info de contacto, enlaces a políticas cuando existan.
+- `ContactForm.astro`
+    - Formulario reutilizable (nombre, teléfono, mensaje). Props opcionales: `barrio`, `title`, `subtitle`.
+    - Envía por POST (fetch) a `/api/contact`; usado en `/contacto` y al final de cada página de barrio.
 
-## 3.4. Datos (barrios y municipios)
+## 3.4. Datos y contenido
 
-- `src/data/barrios.ts`
-    - Exporta una lista/array de objetos con al menos:
-        - `slug`: cadena para la URL (`"chamberi"`, `"lavapies"`, etc.).
-        - `nombre`: nombre visible del barrio.
-        - (Opcional) `tituloSEO`, `descripcionSEO`, `textoIntro`, etc.
-    - Se usa para:
-        - Generar rutas estáticas de barrios.
-        - Rellenar contenido dinámico dentro de `[barrio].astro`.
+- **Barrios**: `src/content/barrios/*.md` (Astro Content Collections). Schema en `src/content/config.ts`. Cada `.md` tiene frontmatter: `nombre`, `introExtra`, `llegadaTexto`, `comoTrabajamos`, `faqLlegada`, `faqPrecio`, `faqFestivos`. El slug es el nombre del archivo.
+- **Servicios**: `src/data/servicios.ts` (lista de servicios para listados en home y páginas de barrio).
+- **Sitio**: `src/config/site.ts` (nombre comercial, teléfono, WhatsApp, baseUrl, títulos y descripciones por defecto).
 
 | [**Siguiente**](#4-preparación-del-entorno) | [**Índice**](#índice-de-contenido) | [**Anterior**](#3-estructura-de-archivos-y-carpetas) |
 |--------------------------------------------|------------------------------------|------------------------------------------------------|
@@ -272,11 +324,16 @@ Durante el asistente de `npm create astro@latest .`:
 
 ## 5.2. Instalación de dependencias
 
-Si el asistente no las instala automáticamente, ejecutar:
+Tras clonar o crear el proyecto, instalar las dependencias:
 
 ```bash
 npm install
 ```
+
+La lista actual de dependencias (y para qué se usa cada una) está en la [sección 2.3 (Stack y dependencias actuales)](#23-stack-y-dependencias-actuales-resumen). Si en el futuro se añade alguna nueva (por ejemplo otra librería npm), conviene:
+
+1. Ejecutar `npm install <paquete>`.
+2. Actualizar la tabla de la sección 2.3 y, si aplica, el apartado de DOC correspondiente a esa sesión.
 
 ## 5.3. Arranque del servidor de desarrollo
 
@@ -2319,7 +2376,104 @@ Cambios:
 - Se han usado **SVG inline** para el icono de teléfono y el logo de WhatsApp, directamente en los componentes. Ventajas: cero dependencias, sin JS extra, buena accesibilidad con `aria-hidden="true"` en el SVG y `aria-label` en el enlace.
 - Si en el futuro se necesitan más iconos en toda la web, se puede valorar instalar **astro-icon** con Iconify o **Lucide** para reutilizar un conjunto amplio de iconos gratuitos.
 
+## Sesión 15 – Mismo color para botones, formulario de contacto en barrios y API de correo
 
+Se han unificado los botones de WhatsApp y Llamar al mismo color (esmeralda), se ha añadido un formulario de contacto al final de cada página de barrio y se ha creado una API serverless en Vercel para enviar los mensajes por correo usando SMTP (correo de Dinahosting).
+
+### 1. Unificar color de botones (WhatsApp y Llamar)
+
+Archivos modificados: `src/components/CallButton.astro`, `src/components/Header.astro`.
+
+- El botón de WhatsApp pasa a usar el mismo estilo que el de Llamar: `bg-emerald-500`, `text-slate-950`, `hover:bg-emerald-400`. Así ambos botones comparten la misma identidad visual y se distinguen solo por el icono y el texto.
+
+### 2. Componente ContactForm reutilizable
+
+Archivo creado: `src/components/ContactForm.astro`.
+
+- Componente con props opcionales: `barrio`, `title`, `subtitle`.
+- Campos: nombre, teléfono, mensaje. Si se indica `barrio`, se envía como campo oculto y se usa en el placeholder del mensaje.
+- El formulario se envía por POST (fetch) a `/api/contact` en JSON. Muestra mensaje de éxito o error sin recargar la página.
+
+### 3. Formulario al final de cada página de barrio
+
+Archivo modificado: `src/pages/barrios/[barrio].astro`.
+
+- Nueva sección al final: título “Consulta para cerrajería en {nombre}”, texto breve y el componente `<ContactForm barrio={data.nombre} />` con título y subtítulo contextuales.
+
+### 4. Página de contacto
+
+Archivo modificado: `src/pages/contacto.astro`.
+
+- El formulario de la página de contacto pasa a usar el mismo `<ContactForm />` (sin prop `barrio`), de modo que contacto y barrios comparten la misma lógica y la misma API.
+
+### 5. API serverless en Vercel para enviar correo (SMTP)
+
+Archivo creado: `api/contact.js`.
+
+- Función serverless que recibe POST con `nombre`, `telefono`, `mensaje` y opcionalmente `barrio`.
+- Envía un correo usando **Nodemailer** y las variables de entorno de SMTP. Respuesta JSON: `{ ok: true }` o `{ error: true, message: "..." }`.
+- Dependencia añadida: `nodemailer`.
+
+**Dónde meter las credenciales (nunca en el código ni en Git)**
+
+- **En local**: archivo **`.env`** en la raíz del proyecto. Copiar `.env.example` a `.env` y rellenar con los datos reales. El archivo `.env` está en `.gitignore` y no se sube al repositorio.
+- **En producción (Vercel)**: en el proyecto de Vercel → **Settings → Environment Variables** → añadir cada variable (igual que en `.env`). Así la función `api/contact.js` recibe las credenciales en el servidor sin exponerlas en el front.
+
+**Variables necesarias** (nombres que usa `api/contact.js`):
+
+| Variable       | Ejemplo (Dinahosting) | Descripción |
+|----------------|------------------------|-------------|
+| `SMTP_HOST`    | `mail.loscerrajerosmadrid.es` | Host del servidor de correo. |
+| `SMTP_PORT`    | `25` | Puerto SMTP (25, 587 o 465 según el proveedor). |
+| `SMTP_USER`    | `contacto@loscerrajerosmadrid.es` | Usuario del correo. |
+| `SMTP_PASS`    | *(la contraseña que te da Dinahosting)* | Contraseña del correo. |
+| `CONTACT_EMAIL`| `contacto@loscerrajerosmadrid.es` | Dirección donde recibir las consultas del formulario. |
+| `SMTP_FROM`    | (opcional) | Dirección “From”; si no se pone, se usa `SMTP_USER`. |
+| `SMTP_SECURE`  | `false` (para puerto 25) | `true` solo si usas puerto 465. |
+
+### 6. Correo en Dinahosting y uso con Vercel
+
+- **Sí conviene crear un correo en Dinahosting** (ej. `info@loscerrajerosmadrid.es` o `contacto@loscerrajerosmadrid.es`) para enviar y recibir los mensajes del formulario.
+- Vercel (plan gratuito) **no incluye backend tradicional**, pero **sí permite funciones serverless** en la carpeta `api/`. Esas funciones se ejecutan en la nube de Vercel; no hace falta un servidor propio.
+- Flujo: el usuario envía el formulario → el front hace POST a `/api/contact` → la función serverless en Vercel recibe los datos, usa Nodemailer con las credenciales SMTP (las del correo de Dinahosting) y envía el correo a `CONTACT_EMAIL`. Las credenciales no se exponen en el front: se configuran solo como variables de entorno en el proyecto de Vercel.
+- Pasos recomendados:
+  1. En Dinahosting: crear la cuenta de correo (ej. `info@loscerrajerosmadrid.es`) y anotar usuario, contraseña y datos SMTP (host, puerto) que indique el panel.
+  2. En Vercel: en el proyecto, Settings → Environment Variables, añadir las variables anteriores.
+  3. Redesplegar el proyecto para que la función use las nuevas variables.
+- Para probar el formulario en local, se puede usar `vercel dev`, que levanta también las funciones de `api/`; sin eso, en `npm run dev` el POST a `/api/contact` dará 404 en local.
+
+## Sesión 16 – Actualización de DOC: stack, dependencias y estructura
+
+Se ha actualizado `DOC.md` para que refleje **todo lo que el proyecto instala y usa**, y la estructura actual de archivos y componentes.
+
+### Cambios en el DOC
+
+1. **Sección 2.1 (Resumen rápido del stack)**  
+   - Añadidos: Tailwind v4 vía @tailwindcss/vite, Astro Content Collections, Vercel Serverless Functions, Nodemailer, variables de entorno para SMTP.
+
+2. **Nueva sección 2.3 – Stack y dependencias actuales (resumen)**  
+   - Tabla con cada dependencia de `package.json` (astro, tailwindcss, @tailwindcss/vite, nodemailer) y su uso.
+   - Referencia a configuración (astro.config, tsconfig, sin tailwind.config).
+   - Qué se hace sin dependencias extra (iconos SVG inline, tema con CSS, fetch al API).
+   - Servicios externos (Vercel, Dinahosting, Google Search Console).
+
+3. **Sección 3 – Estructura de archivos y carpetas**  
+   - Árbol actualizado: `api/contact.js`, `src/config/`, `src/content/barrios/`, `ContactForm.astro`, `servicios.ts`, páginas `servicios`, `contacto`, `404`, `sitemap.xml.ts`, `robots.txt.ts`, etc.
+   - Eliminadas referencias a `tailwind.config.mjs` y `postcss.config.cjs` (no existen en la configuración actual).
+
+4. **Sección 3.3 (Componentes clave)**  
+   - Descripción actual de Layout, Header (menú hamburguesa, tema, WhatsApp/Llamar), Footer, CallButton (dos botones), ContactForm.
+
+5. **Sección 3.4**  
+   - Renombrada a "Datos y contenido". Contenido de barrios en Content Collections; servicios en `servicios.ts`; configuración en `site.ts`.
+
+6. **Sección 5.2 (Instalación de dependencias)**  
+   - Enlace a la sección 2.3 y nota para mantenerla actualizada al añadir nuevas dependencias.
+
+7. **Índice**  
+   - Añadido enlace a 2.3 y actualizado el de 3.4 a "Datos y contenido".
+
+Criterio a seguir: **cada vez que se instale una librería nueva o se incorpore un servicio al stack, actualizar la sección 2.3 y, si aplica, la estructura en la sección 3.**
 
 
 

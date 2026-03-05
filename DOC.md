@@ -2646,8 +2646,7 @@ En esta sesión se ha añadido la posibilidad de mostrar un crédito al diseñad
 
 Para mejorar el LCP de la home se aplicó lo siguiente:
 
-- **Imagen hero** (`cerrajero-24h-madrid-hero.png`): en la página de inicio ya no se usa `loading="lazy"` (el LCP no debe ser lazy). Se añadieron `fetchpriority="high"` y atributos `width="1200"` y `height="800"` para prioridad de carga y reserva de espacio (menos layout shift).
-- **Preload en el `<head>`**: solo en la ruta `/`, se inserta `<link rel="preload" as="image" href=".../cerrajero-24h-madrid-hero.png" fetchpriority="high" />` para que el navegador descubra y solicite la imagen lo antes posible.
+- **Imagen hero** (`cerrajero-24h-madrid-hero.png`): en la página de inicio ya no se usa `loading="lazy"` (el LCP no debe ser lazy). Se añadieron `fetchpriority="high"` y atributos `width="1200"` y `height="800"` para prioridad de carga y reserva de espacio (menos layout shift). No se usa `link rel="preload"` para esta imagen porque en el layout actual la imagen queda debajo del primer pliego; Chrome avisa "preloaded but not used" si el recurso no se pinta en pantalla en unos segundos.
 
 **Recomendación**: si la imagen hero pesa mucho (p. ej. > 500 KB), conviene optimizarla: formato WebP (o AVIF), ancho máximo 1200–1400 px y calidad 80–85 %. Herramientas: Squoosh, sharp en build, o export desde el editor. Así se reduce el "Resource load duration" y el LCP mejora aún más.
 

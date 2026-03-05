@@ -7,12 +7,25 @@ import { siteConfig } from '../config/site';
     <p>
       © {new Date().getFullYear()} {siteConfig.nombreComercial}. Cerrajería 24h en {siteConfig.ciudadPrincipal}.
     </p>
-    <p>
-      Teléfono urgente:
-      <a href={siteConfig.telefonoHref} class="font-semibold text-emerald-400 hover:underline">
-        {siteConfig.telefono}
-      </a>
-    </p>
+    <div class="flex flex-col gap-1 text-xs text-slate-400 sm:items-end sm:text-right">
+      <p>
+        Teléfono urgente:
+        <a href={siteConfig.telefonoHref} class="font-semibold text-emerald-400 hover:underline">
+          {siteConfig.telefono}
+        </a>
+      </p>
+      <nav class="flex flex-wrap gap-3 text-[11px]">
+        <a href="/aviso-legal" class="hover:text-emerald-300">
+          Aviso legal
+        </a>
+        <a href="/politica-privacidad" class="hover:text-emerald-300">
+          Privacidad
+        </a>
+        <a href="/politica-cookies" class="hover:text-emerald-300">
+          Cookies
+        </a>
+      </nav>
+    </div>
   </div>
 </footer>
 

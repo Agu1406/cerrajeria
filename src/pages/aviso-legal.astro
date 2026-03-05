@@ -1,0 +1,116 @@
+---
+import Layout from '../components/Layout.astro';
+import { siteConfig } from '../config/site';
+
+const title = `Aviso legal | ${siteConfig.nombreComercial}`;
+const description = `Aviso legal e información del prestador de servicios de ${siteConfig.nombreComercial}.`;
+---
+
+<Layout {title} {description}>
+  <section class="space-y-6">
+    <header class="space-y-2">
+      <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
+        Aviso legal
+      </h1>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Esta página contiene la información general que el artículo 10 de la Ley 34/2002, de 11 de julio, de
+        Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE) exige al prestador de
+        servicios de la sociedad de la información.
+      </p>
+    </header>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        1. Datos identificativos
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        A efectos de lo dispuesto en la LSSI-CE, se informa de que el titular de este sitio web es:
+      </p>
+      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
+        <li><span class="font-semibold">Nombre comercial:</span> {siteConfig.nombreComercial}</li>
+        <li><span class="font-semibold">Actividad:</span> servicios de cerrajería 24 horas en {siteConfig.ciudadPrincipal} y alrededores.</li>
+        <li><span class="font-semibold">Teléfono de contacto:</span> {siteConfig.telefono}</li>
+        <li><span class="font-semibold">Correo electrónico:</span> contacto@loscerrajerosmadrid.es</li>
+        <li><span class="font-semibold">Domicilio:</span> [Rellenar domicilio fiscal completo]</li>
+        <li><span class="font-semibold">NIF/CIF:</span> [Rellenar NIF o CIF]</li>
+      </ul>
+      <p class="text-[11px] text-slate-500">
+        Sustituye los campos entre corchetes por tus datos fiscales reales antes de poner esta página en producción.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        2. Condiciones de uso
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        El acceso y/o uso de este sitio web atribuye la condición de usuario, que acepta, desde dicho acceso y/o uso,
+        las presentes condiciones de uso. El usuario se compromete a hacer un uso adecuado de los contenidos y
+        servicios que {siteConfig.nombreComercial} ofrece a través de la web y a no emplearlos para:
+      </p>
+      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
+        <li>Incurrir en actividades ilícitas, ilegales o contrarias a la buena fe y al orden público.</li>
+        <li>Difundir contenidos o propaganda de carácter racista, xenófobo, pornográfico-ilegal, de apología del
+          terrorismo o atentatorio contra los derechos humanos.</li>
+        <li>Provocar daños en los sistemas físicos y lógicos de {siteConfig.nombreComercial}, de sus proveedores o de
+          terceras personas.</li>
+        <li>Intentar acceder y, en su caso, utilizar las cuentas de correo electrónico de otros usuarios y modificar o
+          manipular sus mensajes.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        3. Propiedad intelectual e industrial
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Todos los contenidos del sitio web, entendiendo por estos a título meramente enunciativo los textos, imágenes,
+        fotografías, logotipos, iconos, combinaciones de colores, estructura, diseño, código fuente, así como el
+        software, y demás contenidos audiovisuales o sonoros, son propiedad de {siteConfig.nombreComercial} o de
+        terceros que han autorizado su uso.
+      </p>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Queda prohibida la reproducción, distribución, comunicación pública, incluida su modalidad de puesta a
+        disposición, y la transformación de dichos contenidos sin la autorización previa y expresa de su legítimo
+        titular, salvo en los casos legalmente permitidos.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        4. Enlaces
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        En el caso de que en el sitio web se dispusiesen enlaces o hipervínculos hacia otros sitios de Internet,
+        {siteConfig.nombreComercial} no ejercerá ningún tipo de control sobre dichos sitios y contenidos. En ningún
+        caso {siteConfig.nombreComercial} asumirá responsabilidad alguna por los contenidos de algún enlace
+        perteneciente a un sitio web ajeno, ni garantizará la disponibilidad técnica, calidad, fiabilidad, exactitud,
+        amplitud, veracidad, validez y constitucionalidad de cualquier material o información contenida en ninguno de
+        dichos hipervínculos u otros sitios de Internet.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        5. Limitación de responsabilidad
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        {siteConfig.nombreComercial} no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier
+        naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de
+        disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar
+        de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        6. Ley aplicable y jurisdicción
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Con carácter general, las relaciones entre {siteConfig.nombreComercial} y los usuarios de los servicios
+        telemáticos presentes en este sitio web están sometidas a la legislación y jurisdicción españolas.
+      </p>
+    </section>
+  </section>
+</Layout>
+

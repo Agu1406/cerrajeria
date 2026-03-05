@@ -2541,4 +2541,69 @@ Archivo: `src/pages/index.astro`.
 Para cambiar las zonas visibles en la home basta con editar el array `featuredSlugs` en el frontmatter de `index.astro`.
 
 
+## Sesión 19 – Páginas legales básicas (aviso legal, privacidad y cookies)
+
+En esta sesión se han creado las tres páginas legales mínimas para una web corporativa en España y se han enlazado desde el pie de página.
+
+### 1. Páginas creadas
+
+Archivos en `src/pages/`:
+
+- `aviso-legal.astro`
+- `politica-privacidad.astro`
+- `politica-cookies.astro`
+
+Todas usan el componente `Layout.astro` y `siteConfig` para el nombre comercial, ciudad y teléfono.
+
+### 2. Contenido del aviso legal
+
+Archivo: `src/pages/aviso-legal.astro`.
+
+- Incluye los apartados básicos exigidos por la LSSI:
+  - Datos identificativos del titular (nombre comercial, actividad, teléfono, correo).
+  - Campos marcados entre corchetes para que el usuario rellene su **domicilio fiscal** y **NIF/CIF**.
+  - Condiciones de uso (uso correcto del sitio, actividades prohibidas).
+  - Propiedad intelectual e industrial (textos, imágenes, código, etc.).
+  - Enlaces a sitios de terceros.
+  - Limitación de responsabilidad.
+  - Ley aplicable y jurisdicción (España).
+
+### 3. Contenido de la política de privacidad
+
+Archivo: `src/pages/politica-privacidad.astro`.
+
+- Apartados incluidos:
+  - Responsable del tratamiento (con nombre comercial y contacto; domicilio y NIF marcados para rellenar).
+  - Finalidades: atención de consultas, gestión de presupuestos/servicios y obligaciones legales (facturación/fiscal).
+  - Bases jurídicas: consentimiento, ejecución de contrato/medidas precontractuales y obligación legal.
+  - Plazos de conservación: tiempo necesario para la finalidad + plazos legales.
+  - Destinatarios/encargados: proveedor de hosting (p. ej. Vercel) y correo asociado al dominio.
+  - Derechos de las personas usuarias (ARCO-POL) y forma de ejercicio (correo) + referencia a la AEPD.
+  - Medidas de seguridad.
+  - Posibles actualizaciones de la política.
+
+### 4. Contenido de la política de cookies
+
+Archivo: `src/pages/politica-cookies.astro`.
+
+- Explica:
+  - Qué son las cookies y tipos generales.
+  - Que **actualmente solo se usan cookies técnicas** necesarias para el funcionamiento básico (no se usan cookies de análisis ni de publicidad).
+  - Que, si en el futuro se añaden cookies de análisis o marketing, se actualizará la política y se mostrará un banner de consentimiento cuando sea necesario.
+  - Cómo gestionar cookies desde el navegador.
+  - Que la política puede actualizarse según cambios normativos o de configuración.
+
+### 5. Enlaces en el pie de página
+
+Archivo: `src/components/Footer.astro`.
+
+- Se ha añadido un bloque de enlaces en el footer con:
+  - **Aviso legal** → `/aviso-legal`
+  - **Privacidad** → `/politica-privacidad`
+  - **Cookies** → `/politica-cookies`
+- El teléfono urgente sigue visible en el pie, y los enlaces legales aparecen alineados a la derecha en pantallas grandes.
+
+Recordatorio: es importante que el usuario rellene los campos `[Rellenar domicilio fiscal completo]` y `[Rellenar NIF o CIF]` con sus datos reales antes de considerar los textos como definitivos a efectos legales.
+
+
 

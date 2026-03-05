@@ -1,0 +1,88 @@
+---
+import Layout from '../components/Layout.astro';
+import { siteConfig } from '../config/site';
+
+const title = `Política de cookies | ${siteConfig.nombreComercial}`;
+const description = `Información sobre el uso de cookies en la web de ${siteConfig.nombreComercial}.`;
+---
+
+<Layout {title} {description}>
+  <section class="space-y-6">
+    <header class="space-y-2">
+      <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
+        Política de cookies
+      </h1>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        En esta página te explicamos qué son las cookies, qué tipos existen y cómo las utilizamos (o no) en este sitio
+        web, de acuerdo con la normativa aplicable.
+      </p>
+    </header>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        1. ¿Qué son las cookies?
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Las cookies son pequeños archivos de texto que se descargan en tu dispositivo (ordenador, teléfono móvil,
+        tablet, etc.) cuando accedes a determinadas páginas web. Permiten, entre otras cosas, almacenar y recuperar
+        información sobre los hábitos de navegación de un usuario o de su equipo.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        2. ¿Qué tipos de cookies existen?
+      </h2>
+      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
+        <li><span class="font-semibold">Según la entidad que las gestione</span>: propias (del editor) o de terceros.</li>
+        <li><span class="font-semibold">Según su finalidad</span>: técnicas, de personalización, de análisis, publicitarias,
+          de publicidad comportamental, etc.</li>
+        <li><span class="font-semibold">Según el plazo de tiempo que permanecen activadas</span>: de sesión (desaparecen al
+          cerrar el navegador) o persistentes.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        3. Cookies que utiliza esta web
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        En el momento actual, este sitio web solo utiliza <span class="font-semibold">cookies técnicas</span>
+        estrictamente necesarias para permitir la navegación, el funcionamiento básico del sitio y la seguridad
+        (por ejemplo, las propias de la plataforma de alojamiento o del framework utilizado).
+      </p>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        No utilizamos cookies de análisis (estadísticas), publicitarias ni de seguimiento de usuarios con fines de
+        marketing. En caso de que en el futuro se incorporen este tipo de cookies, se actualizará la presente política
+        y, cuando sea necesario, se mostrará un banner de consentimiento previo.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        4. ¿Cómo modificar la configuración de cookies?
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo mediante la configuración de las
+        opciones de tu navegador. Los pasos pueden variar según el navegador que utilices, pero normalmente se
+        encuentran en los menús \"Opciones\" o \"Preferencias\".
+      </p>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Ten en cuenta que, si bloqueas o borras las cookies técnicas, es posible que algunas funciones del sitio web no
+        estén disponibles o no funcionen correctamente.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        5. Actualizaciones de la política de cookies
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Esta política de cookies puede modificarse en función de nuevas exigencias legislativas o con la finalidad de
+        adaptar dicha política a las instrucciones dictadas por las autoridades de control en materia de protección de
+        datos. Te recomendamos revisar esta política periódicamente.
+      </p>
+    </section>
+  </section>
+</Layout>
+

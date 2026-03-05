@@ -1,0 +1,138 @@
+---
+import Layout from '../components/Layout.astro';
+import { siteConfig } from '../config/site';
+
+const title = `Política de privacidad | ${siteConfig.nombreComercial}`;
+const description = `Política de privacidad y protección de datos personales de ${siteConfig.nombreComercial}.`;
+---
+
+<Layout {title} {description}>
+  <section class="space-y-6">
+    <header class="space-y-2">
+      <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
+        Política de privacidad
+      </h1>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        En esta política se explica cómo tratamos los datos personales que nos facilitas a través de este sitio web,
+        de acuerdo con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).
+      </p>
+    </header>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        1. Responsable del tratamiento
+      </h2>
+      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
+        <li><span class="font-semibold">Responsable:</span> {siteConfig.nombreComercial}</li>
+        <li><span class="font-semibold">Teléfono:</span> {siteConfig.telefono}</li>
+        <li><span class="font-semibold">Correo electrónico:</span> contacto@loscerrajerosmadrid.es</li>
+        <li><span class="font-semibold">Domicilio:</span> [Rellenar domicilio fiscal completo]</li>
+        <li><span class="font-semibold">NIF/CIF:</span> [Rellenar NIF o CIF]</li>
+      </ul>
+      <p class="text-[11px] text-slate-500">
+        Sustituye los campos entre corchetes por tus datos reales antes de usar esta política como documento definitivo.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        2. Finalidades del tratamiento
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Tratamos los datos que nos proporcionas a través de la web con las siguientes finalidades:
+      </p>
+      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
+        <li><span class="font-semibold">Atender tus solicitudes de información</span> enviadas mediante los formularios de contacto
+          o nuestros datos de contacto (teléfono, correo electrónico, WhatsApp).</li>
+        <li><span class="font-semibold">Gestionar presupuestos y servicios</span> de cerrajería que nos solicites.</li>
+        <li><span class="font-semibold">Cumplir con obligaciones legales</span> en materia contable, fiscal y de facturación.</li>
+      </ul>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        No utilizamos los datos para elaborar perfiles comerciales ni para la toma de decisiones automatizadas.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        3. Bases jurídicas del tratamiento
+      </h2>
+      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
+        <li><span class="font-semibold">Consentimiento</span>: cuando rellenas voluntariamente un formulario o nos escribes por correo
+          electrónico o WhatsApp, consientes el tratamiento de tus datos para atender tu consulta.</li>
+        <li><span class="font-semibold">Ejecución de un contrato o medidas precontractuales</span>: cuando nos solicitas un servicio
+          de cerrajería y necesitamos tus datos para preparar un presupuesto o prestar el servicio.</li>
+        <li><span class="font-semibold">Obligación legal</span>: para conservar datos relacionados con facturación y obligaciones
+          fiscales.</li>
+      </ul>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        4. Plazos de conservación
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Conservaremos tus datos durante el tiempo estrictamente necesario para atender tu solicitud o prestar el
+        servicio, y posteriormente durante los plazos legalmente establecidos (por ejemplo, en materia fiscal y
+        contable). Transcurridos dichos plazos, los datos se bloquearán o suprimirán de forma segura.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        5. Destinatarios y encargados de tratamiento
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Con carácter general, no cedemos tus datos a terceros salvo obligación legal. No obstante, para poder prestar
+        el servicio utilizamos proveedores que pueden tratar datos en nuestro nombre (por ejemplo, servicios de
+        alojamiento web, correo electrónico o herramientas de desarrollo):
+      </p>
+      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
+        <li><span class="font-semibold">Proveedor de hosting y despliegue web</span> (por ejemplo, Vercel u otro proveedor similar).
+        </li>
+        <li><span class="font-semibold">Proveedor de correo electrónico</span> asociado al dominio
+          loscerrajerosmadrid.es.</li>
+      </ul>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Estos proveedores actúan como encargados del tratamiento y han asumido contractualmente el compromiso de cumplir
+        con la normativa de protección de datos.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        6. Derechos de las personas usuarias
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Puedes ejercitar en cualquier momento tus derechos de acceso, rectificación, supresión, oposición, limitación
+        del tratamiento y portabilidad enviando una solicitud junto con una copia de tu documento de identidad a:
+        <span class="font-semibold">contacto@loscerrajerosmadrid.es</span>.
+      </p>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos
+        (www.aepd.es) si consideras que el tratamiento de tus datos no se ajusta a la normativa vigente.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        7. Seguridad de los datos
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        {siteConfig.nombreComercial} aplica las medidas técnicas y organizativas necesarias para garantizar un nivel de
+        seguridad adecuado al riesgo, teniendo en cuenta el estado de la técnica, los costes de aplicación y la
+        naturaleza, el alcance, el contexto y los fines del tratamiento.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        8. Actualización de la política de privacidad
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Nos reservamos el derecho a modificar la presente política de privacidad para adaptarla a novedades
+        legislativas o jurisprudenciales, así como a prácticas del sector. Te recomendamos revisarla periódicamente.
+      </p>
+    </section>
+  </section>
+</Layout>
+

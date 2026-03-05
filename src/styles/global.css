@@ -21,6 +21,59 @@ button:focus-visible {
 
 :root[data-theme='light'] body {
   background-color: #f3f4f6; /* slate-100 */
-  color: #020617; /* slate-950 */
+  color: #0f172a; /* slate-900, más legible que 950 */
+}
+
+/* Tema claro: texto más oscuro en toda la página (Tailwind suele usar slate-300/400) */
+:root[data-theme='light'] .text-slate-200,
+:root[data-theme='light'] .text-slate-300,
+:root[data-theme='light'] .text-slate-400,
+:root[data-theme='light'] .text-slate-500 {
+  color: #0f172a !important; /* slate-900 */
+}
+:root[data-theme='light'] h1,
+:root[data-theme='light'] h2,
+:root[data-theme='light'] h3,
+:root[data-theme='light'] h4 {
+  color: #020617 !important; /* slate-950 */
+}
+
+/* Tema claro: header y footer */
+:root[data-theme='light'] header {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a;
+}
+:root[data-theme='light'] header a,
+:root[data-theme='light'] header button {
+  color: #1e293b;
+}
+:root[data-theme='light'] header a:hover,
+:root[data-theme='light'] header button:hover {
+  color: #020617;
+}
+:root[data-theme='light'] footer {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b;
+}
+:root[data-theme='light'] footer a {
+  color: #059669;
+}
+
+/* Tema claro: menú hamburguesa (móvil) */
+:root[data-theme='light'] #mobile-menu {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a;
+}
+:root[data-theme='light'] #mobile-menu a,
+:root[data-theme='light'] #mobile-menu button {
+  color: #1e293b !important;
+}
+:root[data-theme='light'] #mobile-menu a:hover,
+:root[data-theme='light'] #mobile-menu button:hover {
+  background-color: #e2e8f0 !important;
+  color: #020617 !important;
 }
 

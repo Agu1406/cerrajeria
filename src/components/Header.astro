@@ -7,32 +7,16 @@ import { siteConfig } from '../config/site';
     <a href="/" class="text-lg font-semibold tracking-tight">
       {siteConfig.nombreComercial}
     </a>
-    <nav class="hidden items-center gap-4 text-xs font-medium text-slate-300 sm:flex">
-      <a href="/" class="transition hover:text-emerald-300">
-        Inicio
-      </a>
-      <a href="/servicios" class="transition hover:text-emerald-300">
-        Servicios
-      </a>
-      <a href="/barrios" class="transition hover:text-emerald-300">
-        Barrios
-      </a>
-      <a href="/contacto" class="transition hover:text-emerald-300">
-        Contacto
-      </a>
+    <nav class="hidden items-center gap-4 text-xs font-medium text-slate-300 sm:flex" aria-label="Principal">
+      <a href="/" class="transition hover:text-emerald-300">Inicio</a>
+      <a href="/servicios" class="transition hover:text-emerald-300">Servicios</a>
+      <a href="/barrios" class="transition hover:text-emerald-300">Barrios</a>
+      <a href="/contacto" class="transition hover:text-emerald-300">Contacto</a>
       <button
         type="button"
+        id="theme-toggle"
         class="inline-flex items-center gap-1 rounded-full border border-slate-700 bg-slate-900 px-3 py-1.5 text-[11px] font-medium text-slate-200 shadow-sm transition hover:border-emerald-400"
         aria-label="Cambiar entre modo claro y modo oscuro"
-        onclick="
-          (function() {
-            var root = document.documentElement;
-            var current = root.dataset.theme || 'dark';
-            var next = current === 'dark' ? 'light' : 'dark';
-            root.dataset.theme = next;
-            try { localStorage.setItem('theme', next); } catch (e) {}
-          })();
-        "
       >
         <span aria-hidden="true">🌓</span>
         <span>Cambiar tema</span>
@@ -44,7 +28,76 @@ import { siteConfig } from '../config/site';
         Llamar ahora · {siteConfig.telefono}
       </a>
     </nav>
+    <button
+      type="button"
+      id="menu-toggle"
+      class="rounded-lg p-2 text-slate-300 hover:bg-slate-800 hover:text-white sm:hidden"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span id="menu-icon" aria-hidden="true">☰</span>
+    </button>
+  </div>
+  <div
+    id="mobile-menu"
+    class="hidden flex-col gap-1 border-t border-slate-800 bg-slate-950/95 px-4 py-3 sm:hidden"
+    aria-label="Menú móvil"
+  >
+    <a href="/" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Inicio</a>
+    <a href="/servicios" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Servicios</a>
+    <a href="/barrios" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Barrios</a>
+    <a href="/contacto" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Contacto</a>
+    <button
+      type="button"
+      id="theme-toggle-mobile"
+      class="w-full rounded-lg px-3 py-2 text-left text-slate-300 hover:bg-slate-800 hover:text-white"
+      aria-label="Cambiar tema"
+    >
+      🌓 Cambiar tema
+    </button>
+    <a
+      href={siteConfig.telefonoHref}
+      class="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
+    >
+      📞 Llamar ahora · {siteConfig.telefono}
+    </a>
   </div>
 </header>
+
+<script>
+  function getTheme() {
+    try {
+      return localStorage.getItem('theme') || document.documentElement.getAttribute('data-theme') || 'light';
+    } catch (_) {
+      return document.documentElement.getAttribute('data-theme') || 'light';
+    }
+  }
+  function setTheme(next: string) {
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (_) {}
+  }
+  function toggleTheme() {
+    setTheme(getTheme() === 'dark' ? 'light' : 'dark');
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    var t = document.getElementById('theme-toggle');
+    var tm = document.getElementById('theme-toggle-mobile');
+    if (t) t.addEventListener('click', toggleTheme);
+    if (tm) tm.addEventListener('click', toggleTheme);
+    var menuBtn = document.getElementById('menu-toggle');
+    var menu = document.getElementById('mobile-menu');
+    var icon = document.getElementById('menu-icon');
+    if (menuBtn && menu) {
+      menuBtn.addEventListener('click', function () {
+        var open = menu!.classList.toggle('hidden');
+        menu!.classList.toggle('flex', !open);
+        menuBtn!.setAttribute('aria-expanded', String(!open));
+        menuBtn!.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
+        if (icon) icon.textContent = open ? '☰' : '✕';
+      });
+    }
+  });
+</script>
 
 

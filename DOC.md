@@ -2216,7 +2216,59 @@ Cambios:
   ofrece servicio en los principales distritos de Madrid ciudad (Centro, Salamanca, Chamberí, Retiro, Chamartín,
   Tetuán, etc.), preparando el terreno para futuras landings específicas por distrito.
 
+## Sesión 13 – Tema claro legible, menú móvil que respeta el tema, Search Console
 
+En esta sesión se han corregido la legibilidad del tema claro, el aspecto del menú hamburguesa según el tema activo, y se ha documentado la verificación por DNS para Google Search Console.
+
+### 1. Fuentes más oscuras en tema claro
+
+Archivo modificado:
+
+```bash
+src/styles/global.css
+```
+
+Cambios:
+
+- El color de texto del `body` en tema claro pasa a `#0f172a` (slate-900) para mayor contraste.
+- Se han añadido reglas para que las clases Tailwind de texto claro (`.text-slate-200`, `.text-slate-300`, `.text-slate-400`, `.text-slate-500`) se muestren en tema claro como `#0f172a`.
+- Los encabezados `h1`–`h4` en tema claro usan `#020617` (slate-950).
+- Colores del header y footer en tema claro ajustados a tonos más oscuros (`#1e293b`, `#020617` en hover) para mejor legibilidad.
+
+Objetivo:
+
+- Garantizar que en modo claro todo el texto sea suficientemente oscuro y legible.
+
+### 2. Menú hamburguesa que responde al tema
+
+Archivo modificado:
+
+```bash
+src/styles/global.css
+```
+
+Cambios:
+
+- Se han añadido reglas bajo `:root[data-theme='light']` para el contenedor `#mobile-menu`:
+  - Fondo claro (`#f1f5f9`), borde y texto oscuro.
+  - Enlaces y botón “Cambiar tema” en `#1e293b`, con hover en gris claro y texto casi negro.
+
+Objetivo:
+
+- Que el menú desplegable en móvil se vea en modo claro (fondo y texto coherentes con el resto de la página) cuando el usuario tiene activado el tema claro.
+
+### 3. Verificación de propiedad en Google Search Console (DNS TXT)
+
+Documentado para referencia:
+
+- Se recomienda elegir el tipo de propiedad **Dominio** (cubre todas las URL del sitio con una sola verificación).
+- El registro DNS debe ser de **tipo TXT** (no SOA). En el panel del proveedor del dominio (p. ej. Dinahosting):
+  - **Tipo**: TXT  
+  - **Nombre/Host**: según el proveedor puede ser `@` o el dominio (ej. `loscerrajerosmadrid.es`).  
+  - **Valor/Contenido**: exactamente la cadena que indica Search Console, por ejemplo  
+    `google-site-verification=AKnVTlD2lp-EazjmFzbUqWu6RMPwILePS_sjqNB-dTY`  
+    (sin añadir “TXT”, “SOA” ni nada más en el valor).
+- SOA es otro tipo de registro; para la verificación de Google solo se crea un **registro TXT** con ese valor.
 
 
 

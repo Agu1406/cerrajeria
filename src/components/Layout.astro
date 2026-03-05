@@ -88,28 +88,21 @@ const {
         })}
       </script>
     )}
-    <script>
-      {`
-        (function() {
-          try {
-            var stored = localStorage.getItem('theme');
-            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    <script is:inline>
+      (function() {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored;
+          if (!stored) {
             var hour = new Date().getHours();
-            var theme = stored || (prefersDark ? 'dark' : 'light');
-            // Si no hay preferencia guardada, usar hora de Madrid como pista (día=claro, noche=oscuro)
-            if (!stored) {
-              if (hour >= 7 && hour < 19) {
-                theme = 'light';
-              } else {
-                theme = 'dark';
-              }
-            }
-            document.documentElement.dataset.theme = theme;
-          } catch (e) {
-            document.documentElement.dataset.theme = 'dark';
+            theme = (hour >= 7 && hour < 19) ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
           }
-        })();
-      `}
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
     </script>
   </head>
   <body class="min-h-screen">

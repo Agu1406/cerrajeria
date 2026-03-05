@@ -2,6 +2,7 @@ export const siteConfig = {
   nombreComercial: 'cerrajerosmadrid',
   telefono: '659 81 05 70',
   telefonoHref: 'tel:+34659810570',
+  whatsappUrl: 'https://wa.me/34659810570',
   ciudadPrincipal: 'Madrid',
   baseUrl: 'https://loscerrajerosmadrid.es',
   titleHome: 'Cerrajero 24 horas en Madrid | cerrajerosmadrid',

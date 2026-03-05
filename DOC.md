@@ -2270,7 +2270,54 @@ Documentado para referencia:
     (sin añadir “TXT”, “SOA” ni nada más en el valor).
 - SOA es otro tipo de registro; para la verificación de Google solo se crea un **registro TXT** con ese valor.
 
+## Sesión 14 – Botón WhatsApp e iconos SVG
 
+Se ha añadido un botón de contacto por WhatsApp (flotante en móvil y en header/menú) y se han utilizado iconos en SVG inline, sin instalar ninguna librería externa.
+
+### 1. Configuración y enlace WhatsApp
+
+Archivo modificado:
+
+```bash
+src/config/site.ts
+```
+
+Cambios:
+
+- Nueva propiedad `whatsappUrl: 'https://wa.me/34659810570'` (mismo número que el teléfono, formato internacional sin `+`).
+
+### 2. Botones flotantes en móvil (CallButton)
+
+Archivo modificado:
+
+```bash
+src/components/CallButton.astro
+```
+
+Cambios:
+
+- El componente pasa a mostrar **dos botones** en móvil: uno para **WhatsApp** (verde `#25D366`) y otro para **Llamar 24h** (esmeralda), apilados verticalmente.
+- Cada botón incluye un **icono SVG inline** (logo de WhatsApp y icono de teléfono), sin dependencias.
+- Enlaces con `aria-label` adecuados y `target="_blank"` / `rel="noopener noreferrer"` para WhatsApp.
+
+### 3. Header: WhatsApp en escritorio y menú móvil
+
+Archivo modificado:
+
+```bash
+src/components/Header.astro
+```
+
+Cambios:
+
+- En el nav de escritorio: nuevo enlace **WhatsApp** con icono SVG (verde), junto al botón “Llamar ahora”.
+- En el menú hamburguesa: dos botones, **WhatsApp** y **Llamar**, con los mismos iconos SVG.
+
+### 4. Iconos: sin librería
+
+- No se ha instalado ninguna librería de iconos (Lucide, Iconify, etc.).
+- Se han usado **SVG inline** para el icono de teléfono y el logo de WhatsApp, directamente en los componentes. Ventajas: cero dependencias, sin JS extra, buena accesibilidad con `aria-hidden="true"` en el SVG y `aria-label` en el enlace.
+- Si en el futuro se necesitan más iconos en toda la web, se puede valorar instalar **astro-icon** con Iconify o **Lucide** para reutilizar un conjunto amplio de iconos gratuitos.
 
 
 

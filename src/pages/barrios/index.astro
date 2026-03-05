@@ -3,24 +3,28 @@ import Layout from '../../components/Layout.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection } from 'astro:content';
 
-const title = `Cerrajeros por barrios en ${siteConfig.ciudadPrincipal} | ${siteConfig.nombreComercial}`;
+const title = `Cerrajeros 24h por barrios y distritos en Madrid | ${siteConfig.nombreComercial}`;
 const description =
-  'Listado de barrios y zonas donde ofrecemos servicio de cerrajería urgente 24 horas en Madrid. Encuentra tu zona y llama al instante.';
+  'Cerrajero urgente 24 horas en los 21 distritos de Madrid capital (Centro, Salamanca, Chamberí, Vallecas, etc.) y en municipios: Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas, Pinto. Llama al instante.';
 
-const barrios = await getCollection('barrios');
+const barrios = (await getCollection('barrios')).sort((a, b) =>
+  a.data.nombre.localeCompare(b.data.nombre, 'es')
+);
 ---
 
 <Layout {title} {description}>
   <section class="space-y-6">
     <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
-      Cerrajeros 24h por barrios en {siteConfig.ciudadPrincipal}
+      Cerrajeros 24h por barrios y zonas en {siteConfig.ciudadPrincipal}
     </h1>
     <p class="text-sm text-slate-300 sm:text-base">
-      Estas son las primeras zonas en las que ofrecemos servicio prioritario. Cada barrio tiene su propia página
-      con información detallada y un acceso rápido a nuestro teléfono de urgencias.
+      Servicio de cerrajería urgente en los <strong>21 distritos de Madrid capital</strong> (Centro, Salamanca,
+      Chamberí, Retiro, Chamartín, Tetuán, Latina, Carabanchel, Vallecas, Vicálvaro, etc.) y en <strong>municipios
+      del área metropolitana</strong> (Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas, Pinto).
+      Cada zona tiene su propia página con información y teléfono de urgencias.
     </p>
 
-    <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+    <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {barrios.map((entry) => (
         <li>
           <a

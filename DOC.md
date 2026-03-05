@@ -2475,5 +2475,47 @@ Se ha actualizado `DOC.md` para que refleje **todo lo que el proyecto instala y 
 
 Criterio a seguir: **cada vez que se instale una librería nueva o se incorpore un servicio al stack, actualizar la sección 2.3 y, si aplica, la estructura en la sección 3.**
 
+## Sesión 17 – Barrios y distritos de Madrid (SEO y contenido)
+
+Se ha investigado la división oficial de Madrid y se han creado páginas de cerrajería para todos los distritos de la capital y varios municipios más, con mejoras de SEO en el listado y en la home.
+
+### 1. Investigación: barrios y zonas de Madrid
+
+- **Madrid capital**: 21 distritos administrativos (división del Ayuntamiento de Madrid, reestructuración de 1987). Cada distrito se subdivide en barrios (131 en total); para la web se ha optado por **páginas por distrito** (ej. “Cerrajero 24h en Chamberí”) en lugar de por cada barrio, para no multiplicar en exceso las URLs y mantener contenido relevante.
+- **Comunidad de Madrid**: municipios más poblados además de la capital (datos 2024–2025): Móstoles, Alcalá de Henares, Leganés, Getafe, Fuenlabrada, etc. El proyecto ya tenía Getafe, Leganés, Las Rozas y Pinto; se han añadido **Móstoles**, **Alcalá de Henares** y **Fuenlabrada**.
+
+### 2. Nuevos archivos en `src/content/barrios/`
+
+**21 distritos de Madrid capital** (slug = nombre de archivo):
+
+- `centro.md`, `arganzuela.md`, `retiro.md`, `salamanca.md`, `chamartin.md`, `tetuan.md`, `chamberi.md`, `fuencarral-el-pardo.md`, `moncloa-aravaca.md`, `latina.md`, `carabanchel.md`, `usera.md`, `puente-de-vallecas.md`, `moratalaz.md`, `ciudad-lineal.md`, `hortaleza.md`, `villaverde.md`, `villa-de-vallecas.md`, `vicalvaro.md`, `san-blas-canillejas.md`, `barajas.md`.
+
+**3 municipios nuevos**:
+
+- `mostoles.md`, `alcala-de-henares.md`, `fuenlabrada.md`.
+
+Cada archivo usa el mismo schema de la colección `barrios` (nombre, introExtra, llegadaTexto, comoTrabajamos, faqLlegada, faqPrecio, faqFestivos). Los textos están adaptados por zona (tiempos de llegada aproximados: 15–25 min en distritos céntricos, 20–35 en otros distritos, 25–45 min en municipios).
+
+### 3. SEO en la página de listado de barrios
+
+Archivo: `src/pages/barrios/index.astro`.
+
+- **Título**: “Cerrajeros 24h por barrios y distritos en Madrid | …”.
+- **Meta description**: incluye “21 distritos de Madrid capital” y ejemplos de municipios (Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas, Pinto) y CTA “Llama al instante”.
+- **Contenido**: párrafo introductorio que explica “21 distritos de Madrid capital” y “municipios del área metropolitana” con ejemplos, para reforzar palabras clave.
+- **Listado**: barrios ordenados alfabéticamente por nombre (`localeCompare` en español) y grid en 3 columnas en pantallas grandes (`lg:grid-cols-3`).
+
+### 4. SEO y enlaces internos en la home
+
+Archivo: `src/pages/index.astro`.
+
+- **Aside “Barrios y zonas de cobertura”**: texto actualizado para indicar “21 distritos de Madrid capital” y “municipios de la Comunidad de Madrid”; el listado de enlaces se genera igual desde la colección (ahora con 28 zonas).
+- **Sección “Zonas de Madrid donde trabajamos”**: texto reescrito para mencionar explícitamente los 21 distritos y los municipios, y enlace al listado completo: “Ver listado completo de barrios y distritos” → `/barrios`.
+
+### 5. Resumen de cobertura
+
+- **Total de páginas de barrio/zona**: 28 (21 distritos + 7 municipios: Getafe, Leganés, Las Rozas, Pinto, Móstoles, Alcalá de Henares, Fuenlabrada).
+- El **sitemap** y las **rutas estáticas** se generan solas a partir de la colección; no ha sido necesario tocar `sitemap.xml.ts` ni la plantilla `[barrio].astro` más allá de lo ya existente.
+
 
 

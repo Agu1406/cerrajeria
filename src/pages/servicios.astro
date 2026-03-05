@@ -53,22 +53,28 @@ const categorias = [
         </ul>
         {categoria.id === 'aperturas' && (
           <div class="mt-2 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
-            <img
-              src="/images/apertura-puerta-blindada.png"
-              alt="Detalle de apertura de cerradura blindada por un cerrajero profesional"
-              class="h-full w-full object-cover"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset="/images/apertura-puerta-blindada.webp" type="image/webp" />
+              <img
+                src="/images/apertura-puerta-blindada.webp"
+                alt="Detalle de apertura de cerradura blindada por un cerrajero profesional"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </picture>
           </div>
         )}
         {categoria.id === 'ventanas' && (
           <div class="mt-2 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
-            <img
-              src="/images/arreglo-ventana-oscilobatiente.png"
-              alt="Mano ajustando una ventana oscilobatiente de PVC en un piso de Madrid"
-              class="h-full w-full object-cover"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset="/images/arreglo-ventana-oscilobatiente.webp" type="image/webp" />
+              <img
+                src="/images/arreglo-ventana-oscilobatiente.webp"
+                alt="Mano ajustando una ventana oscilobatiente de PVC en un piso de Madrid"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </picture>
           </div>
         )}
       </section>

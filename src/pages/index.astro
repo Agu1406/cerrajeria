@@ -125,14 +125,17 @@ const barriosDestacados = featuredSlugs
       </p>
     </div>
     <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
-      <img
-        src="/images/cerrajero-24h-madrid-hero.png"
-        alt="Cerrajero 24 horas abriendo una puerta blindada en un portal de Madrid"
-        class="h-full w-full object-cover"
-        width="1200"
-        height="800"
-        fetchpriority="high"
-      />
+      <picture>
+        <source srcset="/images/cerrajero-24h-madrid-hero.webp" type="image/webp" />
+        <img
+          src="/images/cerrajero-24h-madrid-hero.webp"
+          alt="Cerrajero 24 horas abriendo una puerta blindada en un portal de Madrid"
+          class="h-full w-full object-cover"
+          width="1200"
+          height="800"
+          fetchpriority="high"
+        />
+      </picture>
     </div>
   </section>
 

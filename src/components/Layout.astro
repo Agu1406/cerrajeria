@@ -8,11 +8,13 @@ import { siteConfig } from '../config/site';
 type Props = {
   title?: string;
   description?: string;
+  noindex?: boolean;
 };
 
 const {
   title = siteConfig.titleHome,
   description = siteConfig.descriptionHome,
+  noindex = false,
 } = Astro.props as Props;
 ---
 
@@ -21,6 +23,7 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && (
       <>
         <link rel="canonical" href={`${siteConfig.baseUrl}${Astro.url.pathname}`} />
@@ -104,6 +107,15 @@ const {
         }
       })();
     </script>
+    <script is:inline>
+      (function() {
+        try {
+          document.documentElement.dataset.cookieConsent = localStorage.getItem('cookie-consent') ? 'given' : 'pending';
+        } catch (e) {
+          document.documentElement.dataset.cookieConsent = 'pending';
+        }
+      })();
+    </script>
   </head>
   <body class="min-h-screen">
     <Header />
@@ -112,6 +124,29 @@ const {
     </main>
     <Footer />
     <CallButton />
+    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+      <p class="cookie-banner-text">
+        Usamos cookies técnicas necesarias para el funcionamiento de la web. Si continúas navegando, aceptas su uso.
+        <a href="/politica-cookies" class="underline hover:no-underline">Más información</a>.
+      </p>
+      <button type="button" id="cookie-banner-accept" class="cookie-banner-btn">
+        Aceptar
+      </button>
+    </div>
+    <script is:inline>
+      (function() {
+        var banner = document.getElementById('cookie-banner');
+        var btn = document.getElementById('cookie-banner-accept');
+        var root = document.documentElement;
+        function hideBanner() {
+          try { localStorage.setItem('cookie-consent', 'accepted'); } catch (e) {}
+          root.dataset.cookieConsent = 'given';
+          if (banner) banner.classList.add('cookie-banner--hidden');
+        }
+        if (btn) btn.addEventListener('click', hideBanner);
+        if (root.dataset.cookieConsent === 'given' && banner) banner.classList.add('cookie-banner--hidden');
+      })();
+    </script>
   </body>
 </html>
 

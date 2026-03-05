@@ -1,5 +1,7 @@
 ---
 import { siteConfig } from '../config/site';
+
+const showDesarrollador = siteConfig.desarrollador?.nombre;
 ---
 
 <footer class="border-t border-slate-800 bg-slate-950/90">
@@ -24,6 +26,11 @@ import { siteConfig } from '../config/site';
         <a href="/politica-cookies" class="hover:text-emerald-300">
           Cookies
         </a>
+        {showDesarrollador && (
+          <a href="/diseno-web" class="hover:text-emerald-300">
+            Diseño web
+          </a>
+        )}
       </nav>
     </div>
   </div>

@@ -1,0 +1,48 @@
+---
+import Layout from '../components/Layout.astro';
+import { siteConfig } from '../config/site';
+
+const title = `Diseño y desarrollo web | ${siteConfig.nombreComercial}`;
+const description = 'Información sobre el diseño y desarrollo de esta web. Contacto para proyectos de diseño o desarrollo web.';
+const dev = siteConfig.desarrollador;
+---
+
+<Layout {title} {description}>
+  <section class="mx-auto max-w-xl space-y-6 text-sm text-slate-300">
+    <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
+      Diseño y desarrollo web
+    </h1>
+    <p class="text-slate-400">
+      Esta web ha sido diseñada y desarrollada para {siteConfig.nombreComercial}. Si buscas a alguien para crear o
+      mejorar tu página web, puedes contactar al responsable del diseño y desarrollo.
+    </p>
+    {dev?.nombre ? (
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-5">
+        <p class="font-semibold text-slate-200">
+          {dev.url ? (
+            <a href={dev.url} class="text-emerald-400 hover:underline" rel="noopener noreferrer">
+              {dev.nombre}
+            </a>
+          ) : (
+            dev.nombre
+          )}
+        </p>
+        {dev.texto && <p class="mt-1 text-xs text-slate-500">{dev.texto}</p>}
+        {dev.url && (
+          <p class="mt-2">
+            <a href={dev.url} class="text-emerald-400 hover:underline" rel="noopener noreferrer">
+              Contactar para diseños o páginas web
+            </a>
+          </p>
+        )}
+      </div>
+    ) : (
+      <p class="text-slate-500">
+        Los datos de contacto del diseñador o desarrollador no están configurados en este momento.
+      </p>
+    )}
+    <p>
+      <a href="/" class="text-emerald-400 hover:underline">Volver al inicio</a>
+    </p>
+  </section>
+</Layout>

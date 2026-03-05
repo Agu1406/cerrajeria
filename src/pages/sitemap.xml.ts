@@ -15,6 +15,10 @@ export const GET: APIRoute = async () => {
     '/servicios',
     '/barrios',
     '/contacto',
+    '/aviso-legal',
+    '/politica-privacidad',
+    '/politica-cookies',
+    '/diseno-web',
     ...barrios.map((entry) => `/barrios/${entry.slug}`),
   ];
 
@@ -25,7 +29,7 @@ ${urls
     (path) => `  <url>
     <loc>${baseUrl}${path}</loc>
     <changefreq>daily</changefreq>
-    <priority>${path === '/' ? '1.0' : '0.8'}</priority>
+    <priority>${path === '/' ? '1.0' : /^\/(aviso-legal|politica-privacidad|politica-cookies|diseno-web)$/.test(path) ? '0.3' : '0.8'}</priority>
   </url>`
   )
   .join('\n')}

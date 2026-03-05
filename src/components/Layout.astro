@@ -23,6 +23,14 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {Astro.url.pathname === '/' && (
+      <link
+        rel="preload"
+        as="image"
+        href={`${siteConfig.baseUrl.replace(/\/$/, '')}/images/cerrajero-24h-madrid-hero.png`}
+        fetchpriority="high"
+      />
+    )}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && (
       <>

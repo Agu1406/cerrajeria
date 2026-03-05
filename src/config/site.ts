@@ -8,11 +8,11 @@ export const siteConfig = {
   titleHome: 'Cerrajero 24 horas en Madrid | cerrajerosmadrid',
   descriptionHome:
     'Cerrajero 24 horas en Madrid. Apertura de puertas sin daños, cambios de bombín y urgencias rápidas en toda la Comunidad de Madrid. Llama ahora y hablamos en minutos.',
-  /** Opcional: crédito al diseñador/desarrollador en el footer. Si no quieres mostrar enlace, deja url vacía o borra desarrollador. */
+  /** Opcional: crédito al diseñador/desarrollador en el footer. Pon null para ocultar el enlace "Diseño web". */
   desarrollador: {
     nombre: 'Tu nombre o estudio',
     url: '', // ej. 'https://tupagina.com' o 'mailto:tu@email.com'
     texto: 'Diseño y desarrollo web',
-  } as { nombre: string; url: string; texto: string } | null,
+  } as { nombre: string; url?: string; texto?: string } | null,
 };
 

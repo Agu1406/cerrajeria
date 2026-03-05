@@ -2605,5 +2605,42 @@ Archivo: `src/components/Footer.astro`.
 
 Recordatorio: es importante que el usuario rellene los campos `[Rellenar domicilio fiscal completo]` y `[Rellenar NIF o CIF]` con sus datos reales antes de considerar los textos como definitivos a efectos legales.
 
+---
+
+## Sesión 20 – Crédito diseñador/desarrollador, auditoría legal y SEO
+
+En esta sesión se ha añadido la posibilidad de mostrar un crédito al diseñador o desarrollador de la web en el pie de página, y se ha realizado una revisión de requisitos legales, buenas prácticas y SEO aplicando las mejoras necesarias.
+
+### 1. Crédito al diseñador/desarrollador
+
+- **¿Afecta al SEO?** No de forma negativa. Una página discreta “Diseño web” en el footer es una práctica habitual; el contenido principal del sitio sigue siendo la cerrajería. Si se desea no indexar esa página se puede añadir `noindex` en el futuro; por defecto se deja indexable para que el desarrollador pueda recibir contactos.
+- **Configuración** en `src/config/site.ts`:
+  - `desarrollador`: objeto opcional con `nombre`, `url` (ej. web o `mailto:`) y `texto` (ej. “Diseño y desarrollo web”). Si se pone `desarrollador: null` o se deja `nombre` vacío, no se muestra el enlace en el footer.
+- **Página** `src/pages/diseno-web.astro`: presenta quién ha hecho la web y un enlace de contacto para pedir diseños o páginas. Usa los datos de `siteConfig.desarrollador`.
+- **Footer** (`src/components/Footer.astro`): se muestra el enlace “Diseño web” solo cuando `siteConfig.desarrollador?.nombre` está definido. El enlace apunta a `/diseno-web`.
+
+### 2. Auditoría legal, buenas prácticas y SEO – Resumen
+
+| Área | Estado | Acción realizada |
+|------|--------|------------------|
+| **LSSI / Aviso legal** | OK | Página `/aviso-legal` con datos identificativos, condiciones de uso, propiedad intelectual, enlaces, limitación de responsabilidad, ley aplicable. Pendiente rellenar domicilio y NIF/CIF. |
+| **RGPD / Privacidad** | OK | Página `/politica-privacidad` con responsable, finalidades, bases jurídicas, plazos, destinatarios, derechos, seguridad. Enlace en footer y junto al formulario de contacto. |
+| **Cookies** | OK | Política en `/politica-cookies`, banner con aceptación y enlace “Más información”, solo cookies técnicas declaradas. |
+| **Formulario de contacto** | OK | Aviso explícito antes de enviar: “Al enviar aceptas nuestra política de privacidad” con enlace a `/politica-privacidad` (RGPD: información previa al tratamiento). |
+| **Sitemap** | Mejorado | Incluidas `/aviso-legal`, `/politica-privacidad`, `/politica-cookies` y `/diseno-web` con prioridad 0,3. |
+| **Página 404** | Mejorado | Añadido `<meta name="robots" content="noindex, nofollow" />` para no indexar errores. |
+| **Canonical y OG** | OK | Layout aplica canonical, og:title, og:description, og:url, og:image y Twitter cards cuando `baseUrl` está configurado. |
+| **Datos estructurados** | OK | JSON-LD LocalBusiness en Layout (nombre, teléfono, área, horario 24h, dirección). |
+| **Accesibilidad** | OK | `lang="es"`, labels en formularios, aria-label en botones y navegación, contraste tema claro/oscuro. |
+| **robots.txt** | OK | Allow / y Sitemap referenciado. |
+
+### 3. Cambios técnicos aplicados
+
+- **Layout.astro**: prop opcional `noindex`; cuando es `true` se inserta `<meta name="robots" content="noindex, nofollow" />`.
+- **404.astro**: se pasa `noindex={true}` al Layout.
+- **sitemap.xml.ts**: añadidas las rutas legales y `/diseno-web`; prioridad 0,3 para estas páginas.
+- **contacto.astro**: descripción meta usa `siteConfig.nombreComercial` y `siteConfig.ciudadPrincipal` en lugar de texto fijo.
+- **ContactForm.astro**: texto “Al enviar aceptas nuestra política de privacidad” con enlace a `/politica-privacidad` encima del botón de envío.
+
 
 

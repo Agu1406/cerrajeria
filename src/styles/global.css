@@ -24,6 +24,16 @@ button:focus-visible {
   color: #0f172a; /* slate-900, más legible que 950 */
 }
 
+/* Espacio inferior para que los botones flotantes (llamada/WhatsApp) no tapen el pie de página */
+body {
+  padding-bottom: 6rem; /* altura botones + margen (solo móvil: sm:hidden en los botones) */
+}
+@media (min-width: 640px) {
+  body {
+    padding-bottom: 0; /* en escritorio no hay botones flotantes */
+  }
+}
+
 /* Tema claro: texto más oscuro en toda la página (Tailwind suele usar slate-300/400) */
 :root[data-theme='light'] .text-slate-200,
 :root[data-theme='light'] .text-slate-300,

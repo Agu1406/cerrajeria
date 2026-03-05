@@ -2517,5 +2517,28 @@ Archivo: `src/pages/index.astro`.
 - **Total de páginas de barrio/zona**: 28 (21 distritos + 7 municipios: Getafe, Leganés, Las Rozas, Pinto, Móstoles, Alcalá de Henares, Fuenlabrada).
 - El **sitemap** y las **rutas estáticas** se generan solas a partir de la colección; no ha sido necesario tocar `sitemap.xml.ts` ni la plantilla `[barrio].astro` más allá de lo ya existente.
 
+## Sesión 18 – Más municipios y rediseño del aside “Barrios y zonas” en la home
+
+Se han añadido los municipios que faltaban y se ha rediseñado el bloque “Barrios y zonas de cobertura” de la home con una muestra fija y botón “Ver más”.
+
+### 1. Nuevos municipios en `src/content/barrios/`
+
+Archivos creados (mismo schema que el resto):
+
+- `alcorcon.md`, `parla.md`, `torrejon-de-ardoz.md`, `alcobendas.md`, `pozuelo-de-alarcon.md`, `rivas-vaciamadrid.md`, `coslada.md`, `majadahonda.md`, `collado-villalba.md`.
+
+**Cobertura total**: 21 distritos de Madrid capital + 16 municipios = **37 páginas de barrio/zona**.
+
+### 2. Rediseño del aside en la home
+
+Archivo: `src/pages/index.astro`.
+
+- **Muestra fija de 8 zonas** en “Barrios y zonas de cobertura”, en este orden (prioridad del usuario): **Getafe**, **Leganés**, **Las Rozas**, **Pinto** (las cuatro iniciales), **Centro**, **Salamanca**, **Chamberí**, **Móstoles**.
+- Lista generada filtrando la colección por `featuredSlugs`; el resto de zonas no se muestra en la home.
+- **Botón “Ver más zonas”** debajo del listado: enlace a `/barrios` con estilo destacado (borde y fondo emerald suave).
+- Texto del aside ajustado: “Aquí, algunas de las zonas donde atendemos con más frecuencia.”
+
+Para cambiar las zonas visibles en la home basta con editar el array `featuredSlugs` en el frontmatter de `index.astro`.
+
 
 

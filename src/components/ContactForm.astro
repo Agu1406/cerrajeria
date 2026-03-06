@@ -29,28 +29,39 @@ const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no 
     )}
     <div class="space-y-1">
       <label for="contact-nombre" class="text-xs font-medium text-slate-300">
-        Nombre
+        Nombre <span class="text-slate-500">(opcional)</span>
       </label>
       <input
         id="contact-nombre"
         name="nombre"
         type="text"
-        required
         class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
         placeholder="Tu nombre"
       />
     </div>
     <div class="space-y-1">
-      <label for="contact-telefono" class="text-xs font-medium text-slate-300">
-        Teléfono
+      <label for="contact-movil" class="text-xs font-medium text-slate-300">
+        Móvil <span class="text-slate-500">(opcional)</span>
       </label>
       <input
-        id="contact-telefono"
-        name="telefono"
+        id="contact-movil"
+        name="movil"
         type="tel"
+        class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        placeholder="Otro número o móvil"
+      />
+    </div>
+    <div class="space-y-1">
+      <label for="contact-email" class="text-xs font-medium text-slate-300">
+        Correo
+      </label>
+      <input
+        id="contact-email"
+        name="email"
+        type="email"
         required
         class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
-        placeholder="Tu número de contacto"
+        placeholder="tu@correo.com"
       />
     </div>
     <div class="space-y-1">

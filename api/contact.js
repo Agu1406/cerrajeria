@@ -74,29 +74,47 @@ export default {
       <p>${escapeHtml(mensaje).replace(/\n/g, '<br>')}</p>
     `;
 
+    const mailOptions = {
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      to,
+      subject,
+      html,
+      replyTo: body.email ? body.email.trim() : undefined,
+    };
+
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || '587', 10),
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+
+    const retryableCodes = new Set(['EBUSY', 'EDNS', 'ETIMEDOUT', 'ECONNRESET', 'ECONNREFUSED', 'ESOCKET']);
+    const maxAttempts = 3;
+    let lastErr;
+
     try {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: parseInt(process.env.SMTP_PORT || '587', 10),
-        secure: process.env.SMTP_SECURE === 'true',
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
-
-      await transporter.sendMail({
-        from: process.env.SMTP_FROM || process.env.SMTP_USER,
-        to,
-        subject,
-        html,
-        replyTo: body.email ? body.email.trim() : undefined,
-      });
-
-      return new Response(JSON.stringify({ ok: true }), {
-        status: 200,
-        headers: { ...getCorsHeaders(), 'Content-Type': 'application/json' },
-      });
+      for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        try {
+          await transporter.sendMail(mailOptions);
+          return new Response(JSON.stringify({ ok: true }), {
+            status: 200,
+            headers: { ...getCorsHeaders(), 'Content-Type': 'application/json' },
+          });
+        } catch (err) {
+          lastErr = err;
+          const code = err.code || '';
+          if (attempt < maxAttempts && retryableCodes.has(code)) {
+            await new Promise((r) => setTimeout(r, 1500 * attempt));
+            continue;
+          }
+          throw err;
+        }
+      }
+      throw lastErr;
     } catch (err) {
       console.error('Error enviando correo:', err);
       return new Response(

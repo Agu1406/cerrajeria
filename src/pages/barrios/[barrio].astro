@@ -20,6 +20,11 @@ type Props = {
 const { entry } = Astro.props as Props;
 const data = entry.data;
 
+const allBlogPosts = await getCollection('blog', ({ data: d }) => !d.draft);
+const latestPosts = allBlogPosts
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
 const title = `Cerrajero 24h en ${data.nombre} | ${siteConfig.nombreComercial}`;
 const description = `Cerrajero urgente 24 horas en ${data.nombre} (${siteConfig.ciudadPrincipal}). Apertura de puertas sin daños, cambios de bombín y asistencia rápida. Llama al ${siteConfig.telefono}.`;
 ---
@@ -131,6 +136,32 @@ const description = `Cerrajero urgente 24 horas en ${data.nombre} (${siteConfig.
         .
       </p>
     </section>
+
+    {latestPosts.length > 0 && (
+      <section class="mt-10 rounded-xl border border-slate-800 bg-slate-900/40 p-4 sm:p-5">
+        <h2 class="mb-3 text-sm font-semibold uppercase tracking-wider text-slate-400">
+          Últimas entradas del blog
+        </h2>
+        <ul class="space-y-2 text-sm">
+          {latestPosts.map((post) => (
+            <li>
+              <a
+                href={`/blog/${post.slug}`}
+                class="text-slate-300 hover:text-emerald-400 hover:underline"
+              >
+                {post.data.title}
+              </a>
+              <time datetime={post.data.pubDate.toISOString()} class="ml-2 text-xs text-slate-500">
+                {post.data.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </time>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-3 text-xs text-slate-500">
+          <a href="/blog" class="text-emerald-400 hover:underline">Ver todo el blog →</a>
+        </p>
+      </section>
+    )}
 
     <section class="mt-10">
       <h2 class="mb-3 text-lg font-semibold tracking-tight">

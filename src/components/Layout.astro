@@ -9,13 +9,19 @@ type Props = {
   title?: string;
   description?: string;
   noindex?: boolean;
+  /** URL completa de la imagen para redes (og:image). Si no se pasa, se usa la imagen por defecto. */
+  ogImage?: string;
 };
 
 const {
   title = siteConfig.titleHome,
   description = siteConfig.descriptionHome,
   noindex = false,
+  ogImage,
 } = Astro.props as Props;
+
+const defaultOgImage = `${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.webp`;
+const imageForSocial = ogImage ?? defaultOgImage;
 ---
 
 <html lang="es" data-theme="dark">
@@ -33,17 +39,11 @@ const {
         <meta property="og:description" content={description} />
         <meta property="og:url" content={`${siteConfig.baseUrl}${Astro.url.pathname}`} />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content={`${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.webp`}
-        />
+        <meta property="og:image" content={imageForSocial} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta
-          name="twitter:image"
-          content={`${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.webp`}
-        />
+        <meta name="twitter:image" content={imageForSocial} />
       </>
     )}
     <title>{title}</title>

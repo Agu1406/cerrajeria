@@ -18,7 +18,7 @@ const {
 } = Astro.props as Props;
 ---
 
-<html lang="es">
+<html lang="es" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -95,22 +95,6 @@ const {
 }
       </script>
     )}
-    <script is:inline>
-      (function() {
-        try {
-          var stored = localStorage.getItem('theme');
-          var theme = stored;
-          if (!stored) {
-            var hour = new Date().getHours();
-            theme = (hour >= 7 && hour < 19) ? 'light' : 'dark';
-            localStorage.setItem('theme', theme);
-          }
-          document.documentElement.setAttribute('data-theme', theme);
-        } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      })();
-    </script>
     <script is:inline>
       (function() {
         try {

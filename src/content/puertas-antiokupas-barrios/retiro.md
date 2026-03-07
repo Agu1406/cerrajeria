@@ -8,4 +8,5 @@ llegadaTexto: >
   Hasta Retiro el tiempo habitual de llegada es de 15–25 minutos desde que confirmamos. La M-30 y
   Menéndez Pelayo pueden congestionarse en hora punta; por la noche el desplazamiento suele ser más corto.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

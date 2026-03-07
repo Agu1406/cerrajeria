@@ -8,4 +8,5 @@ llegadaTexto: >
   A Parla llegamos normalmente en 25–40 minutos desde que confirmamos el aviso. La A-42 y el acceso
   desde Madrid o desde Fuenlabrada influyen en el tiempo; de madrugada el trayecto suele ser más corto.
   Te damos presupuesto orientativo por teléfono.
+actualizado: 2026-03-03
 ---

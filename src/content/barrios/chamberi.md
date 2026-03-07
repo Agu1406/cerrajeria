@@ -20,4 +20,5 @@ faqPrecio: >
 faqFestivos: >
   Cerrajería urgente en Chamberí disponible 24 horas, todos los días del año, incluidos fines de
   semana, festivos y madrugadas.
+actualizado: 2026-03-03
 ---

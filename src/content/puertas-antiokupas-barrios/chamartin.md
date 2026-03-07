@@ -8,4 +8,5 @@ llegadaTexto: >
   Hasta Chamartín el desplazamiento suele ser de 15–25 minutos desde que confirmamos. La zona de
   Chamartín estación y Paseo de la Castellana puede retrasar un poco en hora punta; de madrugada llegamos antes.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

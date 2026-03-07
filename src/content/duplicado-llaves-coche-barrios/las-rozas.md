@@ -9,4 +9,5 @@ llegadaTexto: >
   En Las Rozas nuestro tiempo medio de llegada suele situarse entre 25 y 40 minutos, según el
   tráfico en la A-6 y la localización exacta. En algunos casos puede ser menos si nuestro equipo
   está ya en la zona. Presupuesto orientativo por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

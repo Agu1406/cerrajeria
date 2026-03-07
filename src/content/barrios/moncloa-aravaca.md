@@ -19,4 +19,5 @@ faqPrecio: >
 faqFestivos: >
   Sí: cerrajería urgente en Moncloa-Aravaca las 24 horas, todos los días del año, fines de semana,
   festivos y noches incluidos.
+actualizado: 2026-03-03
 ---

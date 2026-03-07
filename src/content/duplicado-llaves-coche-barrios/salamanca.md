@@ -9,4 +9,5 @@ llegadaTexto: >
   A Salamanca llegamos en general en 16–26 minutos desde la confirmación. Serrano y Velázquez suelen
   tener tráfico denso; en calles interiores o en horario nocturno el tiempo suele reducirse. Precio
   orientativo por teléfono y confirmación al ver el vehículo.
+actualizado: 2026-03-03
 ---

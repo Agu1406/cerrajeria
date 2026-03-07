@@ -8,4 +8,5 @@ llegadaTexto: >
   A Alcobendas llegamos en general en 25–40 minutos desde la confirmación. La A-1 y Valdelasfuentes
   pueden variar con el tráfico; por la noche el desplazamiento suele ser más corto.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

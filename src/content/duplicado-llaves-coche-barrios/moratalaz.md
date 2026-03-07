@@ -8,4 +8,5 @@ llegadaTexto: >
   A Moratalaz llegamos en general en 15–28 minutos desde la confirmación. La zona de Pavones y Vinateros
   suele estar bien comunicada; en hora punta el acceso por la M-30 puede sumar unos minutos. Presupuesto
   orientativo por teléfono.
+actualizado: 2026-03-03
 ---

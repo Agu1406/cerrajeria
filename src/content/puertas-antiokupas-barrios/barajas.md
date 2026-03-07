@@ -8,4 +8,5 @@ llegadaTexto: >
   A Alameda de Osuna y al Casco llegamos en unos 20–28 minutos; a Timón, Corralejos y zonas más al
   norte el trayecto suele ser de 25–35 minutos desde la confirmación. La M-11 y el tráfico del aeropuerto influyen.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

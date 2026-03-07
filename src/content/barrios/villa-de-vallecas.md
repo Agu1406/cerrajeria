@@ -19,4 +19,5 @@ faqPrecio: >
 faqFestivos: >
   Servicio de cerrajería urgente en Villa de Vallecas disponible 24 horas, todos los días del año: fines
   de semana, festivos y noches.
+actualizado: 2026-03-03
 ---

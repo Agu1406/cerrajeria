@@ -8,4 +8,5 @@ llegadaTexto: >
   Hasta Latina el tiempo de llegada habitual es de 15–30 minutos desde que confirmamos. Carabanchel,
   Aluche y las zonas hacia Cuatro Vientos pueden variar según el tráfico; de noche el desplazamiento suele ser más corto.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

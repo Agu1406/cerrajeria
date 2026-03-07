@@ -8,4 +8,5 @@ llegadaTexto: >
   A Villaverde llegamos normalmente en 15–30 minutos desde que confirmamos el aviso. San Cristóbal y
   Butarque pueden variar según el tráfico; en horario nocturno el tiempo suele reducirse.
   Te damos presupuesto orientativo por teléfono.
+actualizado: 2026-03-03
 ---

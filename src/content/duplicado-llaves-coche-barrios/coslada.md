@@ -8,4 +8,5 @@ llegadaTexto: >
   A Coslada llegamos normalmente en 20–35 minutos desde que confirmamos el aviso. La A-2 y la M-40
   pueden variar con el tráfico; en horario nocturno el tiempo suele reducirse. Te indicamos precio
   orientativo por teléfono.
+actualizado: 2026-03-03
 ---

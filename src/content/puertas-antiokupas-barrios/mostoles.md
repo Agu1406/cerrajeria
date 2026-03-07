@@ -8,4 +8,5 @@ llegadaTexto: >
   A Móstoles llegamos normalmente en 25–40 minutos desde que confirmamos la cita. La A-5 y la M-50
   pueden alargar el trayecto en hora punta; por la noche el desplazamiento suele acortarse.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

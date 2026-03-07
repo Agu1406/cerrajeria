@@ -19,4 +19,5 @@ faqPrecio: >
   empezar y ninguna sorpresa al final del trabajo. Cualquier recargo por horario se explica por adelantado.
 faqFestivos: >
   Sí: ofrecemos cerrajería urgente en Leganés las 24 horas, incluyendo fines de semana, noches y festivos.
+actualizado: 2026-03-03
 ---

@@ -8,4 +8,5 @@ llegadaTexto: >
   A Alcorcón llegamos en general en 25–40 minutos desde la confirmación. La A-5 y la M-40 pueden
   retrasar un poco en hora punta; por la noche el desplazamiento suele ser más ágil.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

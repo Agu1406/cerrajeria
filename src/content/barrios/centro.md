@@ -21,4 +21,5 @@ faqPrecio: >
 faqFestivos: >
   Cerrajería urgente en el Centro disponible las 24 horas, todos los días del año: fines de semana,
   festivos y noches incluidos.
+actualizado: 2026-03-03
 ---

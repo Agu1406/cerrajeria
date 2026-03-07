@@ -8,4 +8,5 @@ llegadaTexto: >
   A Arganzuela llegamos en general en 15–25 minutos desde la confirmación. El entorno de Atocha y
   Legazpi puede retrasar un poco en hora punta; Imperial y Acacias suelen estar bien comunicados.
   Presupuesto orientativo por teléfono.
+actualizado: 2026-03-03
 ---

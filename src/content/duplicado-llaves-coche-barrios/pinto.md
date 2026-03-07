@@ -9,4 +9,5 @@ llegadaTexto: >
   A Pinto solemos llegar entre 25 y 35 minutos después de confirmar la cita, siempre que no haya
   incidencias especiales de tráfico. La A-4 y el acceso desde Madrid influyen en el tiempo. Te
   explicamos el precio orientativo por teléfono y lo confirmamos al ver el coche.
+actualizado: 2026-03-03
 ---

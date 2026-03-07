@@ -8,4 +8,5 @@ llegadaTexto: >
   A Leganés nuestro tiempo de llegada suele estar entre 25 y 35 minutos, ajustando rutas según el
   barrio y la hora. La A-42 y las vías de acceso desde Madrid influyen en el trayecto.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

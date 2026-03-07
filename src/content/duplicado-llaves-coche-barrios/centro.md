@@ -9,4 +9,5 @@ llegadaTexto: >
   Desde nuestra base en la zona centro, el tiempo de llegada habitual es de 12 a 22 minutos tras
   confirmar tu cita. Gran Vía y calles peatonales influyen en el trayecto; por la noche el acceso
   suele ser más ágil. Te damos presupuesto orientativo por teléfono.
+actualizado: 2026-03-03
 ---

@@ -19,4 +19,5 @@ faqPrecio: >
 faqFestivos: >
   Sí: prestamos servicio de cerrajería urgente en Arganzuela las 24 horas todos los días del año,
   incluidos fines de semana, festivos y noches.
+actualizado: 2026-03-03
 ---

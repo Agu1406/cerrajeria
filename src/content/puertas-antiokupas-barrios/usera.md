@@ -8,4 +8,5 @@ llegadaTexto: >
   A Usera solemos llegar en 15–30 minutos desde que confirmamos el aviso. La M-40 y el acceso por
   Villaverde o Carabanchel influyen en el tiempo; en horario nocturno el trayecto suele acortarse.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

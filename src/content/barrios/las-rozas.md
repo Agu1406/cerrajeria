@@ -23,4 +23,5 @@ faqPrecio: >
 faqFestivos: >
   Sí: atendemos avisos en Las Rozas las 24 horas, también en festivos y noches. El precio puede variar
   en horario nocturno; siempre lo indicamos antes de desplazarnos.
+actualizado: 2026-03-03
 ---

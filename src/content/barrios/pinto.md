@@ -20,4 +20,5 @@ faqPrecio: >
 faqFestivos: >
   Sí: también trabajamos en Pinto por la noche y en festivos. La tarifa de urgencia se explica siempre
   antes de desplazarnos para que puedas decidir con toda la información.
+actualizado: 2026-03-03
 ---

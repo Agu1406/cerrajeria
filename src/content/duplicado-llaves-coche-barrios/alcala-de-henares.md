@@ -9,4 +9,5 @@ llegadaTexto: >
   A Alcalá de Henares llegamos en general en 30–45 minutos desde la confirmación. El tráfico en la
   A-2 puede retrasar en hora punta; por la noche el desplazamiento suele ser más ágil. Te indicamos
   precio orientativo por teléfono y lo cerramos al ver el vehículo.
+actualizado: 2026-03-03
 ---

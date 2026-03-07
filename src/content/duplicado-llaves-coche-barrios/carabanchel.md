@@ -8,4 +8,5 @@ llegadaTexto: >
   A Carabanchel llegamos normalmente en 15–30 minutos desde que confirmamos el aviso. General Ricardos
   y San Isidro pueden variar con el tráfico; de madrugada el trayecto suele acortarse. Te damos
   presupuesto orientativo por teléfono.
+actualizado: 2026-03-03
 ---

@@ -8,4 +8,5 @@ llegadaTexto: >
   A Hortaleza llegamos normalmente en 20–35 minutos desde que confirmamos el aviso. La M-40 y la zona
   de Canillas pueden variar con el tráfico; El Pardo y Alcobendas quedan bien comunicados por carretera.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

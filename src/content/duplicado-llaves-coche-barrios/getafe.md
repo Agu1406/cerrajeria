@@ -8,4 +8,5 @@ llegadaTexto: >
   A Getafe llegamos normalmente en 25–35 minutos desde que confirmamos la cita. La A-42 y el acceso
   desde Madrid pueden variar con el tráfico; en horario nocturno el tiempo suele reducirse. Te damos
   un presupuesto orientativo por teléfono antes de desplazarnos.
+actualizado: 2026-03-03
 ---

@@ -8,4 +8,5 @@ llegadaTexto: >
   A Tetuán llegamos normalmente en 15–25 minutos desde que confirmamos el aviso. Bravo Murillo y la
   zona de Cuatro Caminos pueden sumar algo en hora punta; el resto del distrito queda bien cubierto.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

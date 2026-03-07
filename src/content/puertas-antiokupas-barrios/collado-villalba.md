@@ -8,4 +8,5 @@ llegadaTexto: >
   A Collado Villalba llegamos normalmente en 35–50 minutos desde que confirmamos el aviso. La A-6 y
   el tramo de sierra pueden variar con el tráfico; te avisamos por teléfono si hay retraso.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

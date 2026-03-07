@@ -8,4 +8,5 @@ llegadaTexto: >
   A San Blas y Canillejas llegamos en general en 15–30 minutos desde la confirmación. La zona de
   Rejas y Canillejas puede retrasar un poco en hora punta; de madrugada el desplazamiento suele ser más corto.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+actualizado: 2026-03-03
 ---

@@ -193,11 +193,11 @@ cerrajeria/
 │   ├── components/
 │   │   ├── Layout.astro         # Layout global (head, favicon, JSON-LD con aggregateRating/review si hay reseñas)
 │   │   ├── Header.astro         # Cabecera, nav (Inicio, Servicios, Barrios, Blog, Contacto), WhatsApp/Llamar
-│   │   ├── Footer.astro         # Pie: teléfono, Cómo llegar (Google), Blog, legal
+│   │   ├── Footer.astro         # Pie: teléfono, Cómo llegar, Blog, Mapa del sitio, legal (aviso, privacidad, cookies)
 │   │   ├── CallButton.astro     # Botones flotantes WhatsApp + Llamar (móvil)
 │   │   └── ContactForm.astro    # Formulario: correo y mensaje obligatorios; nombre y móvil opcionales
 │   ├── config/
-│   │   └── site.ts              # nombreComercial, telefono, whatsappUrl, baseUrl, direccion, googleMapsUrl, reseñas, desarrollador
+│   │   └── site.ts              # nombreComercial, telefono, telefonoHref, whatsappUrl, whatsappMessage, email, nif, baseUrl, titleHome, direccion, googleMapsUrl, reseñas, desarrollador
 │   ├── content/
 │   │   ├── config.ts            # Schema (Zod): colecciones barrios y blog
 │   │   ├── barrios/             # Markdown por barrio
@@ -253,30 +253,30 @@ cerrajeria/
 ## 3.3. Componentes clave
 
 - `Layout.astro`
-    - Envuelve todas las páginas. Define `<html data-theme="dark">`, `<head>` (meta, canonical, OG, favicon, JSON-LD LocalBusiness con `aggregateRating` y `review` si hay reseñas en `siteConfig`), `<body>`.
-    - Prop opcional `ogImage` para páginas que quieran imagen OG propia (p. ej. entradas del blog).
-    - Incluye `CallButton.astro`. Tema único: oscuro (sin selector claro/oscuro).
+    - Envuelve todas las páginas. Define `<html data-theme="dark">`, `<head>` (meta, canonical, OG, favicon, JSON-LD LocalBusiness con datos de `siteConfig`: nombre, url, telephone, email, address, aggregateRating/review si hay reseñas), `<body>`.
+    - Construye el enlace de WhatsApp con mensaje + "Escribo desde: [URL de la página]" y lo pasa a `Header` y `CallButton` (prop `whatsappHref`).
+    - Prop opcional `ogImage`; opcional `breadcrumb` para schema BreadcrumbList. Tema único: oscuro.
 
 - `Header.astro`
-    - Nombre comercial, nav (Inicio, Servicios, Barrios, Blog, Contacto), WhatsApp y Llamar (escritorio).
+    - Nombre comercial, nav (Inicio, Servicios, Barrios, Blog, Contacto), WhatsApp (con mensaje predefinido + "Escribo desde: [url]") y Llamar (escritorio). Acepta prop opcional `whatsappHref` desde Layout.
     - En móvil: menú hamburguesa con los mismos enlaces y botones de contacto.
 
 - `Footer.astro`
-    - Pie con nombre comercial, teléfono, enlace "Cómo llegar" (Google Maps/Business si está configurado), Blog, aviso legal, privacidad, cookies y opcionalmente "Diseño web".
+    - Pie con nombre comercial, teléfono, "Cómo llegar", Blog, **Mapa del sitio** (`/sitemap.xml`), aviso legal, privacidad, cookies y opcionalmente "Diseño web". Todos los datos de contacto salen de `siteConfig`.
 
 - `CallButton.astro`
-    - Botones flotantes en móvil: WhatsApp y Llamar (estilo esmeralda). Solo visibles en viewport pequeño.
+    - Botones flotantes en móvil: WhatsApp (mensaje predefinido + "Escribo desde: [url]") y Llamar (estilo esmeralda). Acepta prop opcional `whatsappHref` desde Layout. Solo visibles en viewport pequeño.
 
 - `ContactForm.astro`
-    - Formulario reutilizable: **correo** y **mensaje** obligatorios; **nombre** y **móvil** opcionales. Props: `barrio`, `title`, `subtitle`.
-    - Envía por POST (fetch) a `/api/contact`; usado en `/contacto` y al final de cada página de barrio.
+    - Formulario reutilizable: **correo** y **mensaje** obligatorios; **nombre** y **móvil** opcionales. Props: `barrio`, `title`, `subtitle`. Envía campo oculto `formTitle` (valor de `title`) para que el asunto del correo identifique el origen.
+    - Envía por POST (fetch) a `/api/contact`; usado en `/contacto` y al final de cada página de barrio. El asunto del correo es "Barrio · formTitle (nombre/email)" o "formTitle (nombre/email)" si no hay barrio.
 
 ## 3.4. Datos y contenido
 
 - **Barrios**: `src/content/barrios/*.md` (Content Collections). Schema en `src/content/config.ts`. Frontmatter: `nombre`, `introExtra`, `llegadaTexto`, `comoTrabajamos`, `faqLlegada`, `faqPrecio`, `faqFestivos`. Slug = nombre del archivo.
 - **Blog**: `src/content/blog/*.md` (Content Collections). Schema: `title`, `description`, `pubDate`, `image` (opcional), `draft` (opcional). Guía de publicación: `BLOG.md` en la raíz.
 - **Servicios**: `src/data/servicios.ts` (lista de servicios para listados).
-- **Sitio**: `src/config/site.ts` — `nombreComercial`, `telefono`, `telefonoHref`, `whatsappUrl`, `ciudadPrincipal`, `baseUrl`, títulos/descripciones; opcionales: `direccion` (calle, localidad, codigoPostal), `googleMapsUrl`, `reseñas` (valoracionMedia, totalResenas, array de reseñas para SEO y sección en home), `desarrollador`.
+- **Sitio**: `src/config/site.ts` — `nombreComercial`, `telefono`, `telefonoHref`, `whatsappUrl`, `whatsappMessage` (mensaje predefinido al abrir WhatsApp; se añade "Escribo desde: [url]"), `email`, `nif`, `ciudadPrincipal`, `baseUrl`, `titleHome`, `descriptionHome`; opcionales: `direccion` (calle, localidad, codigoPostal), `googleMapsUrl`, `reseñas`, `desarrollador`. Aviso legal, privacidad y schema LocalBusiness usan estos datos (un solo lugar para cambiar teléfono, correo, NIF, dirección).
 
 | [**Siguiente**](#4-preparación-del-entorno) | [**Índice**](#índice-de-contenido) | [**Anterior**](#3-estructura-de-archivos-y-carpetas) |
 |--------------------------------------------|------------------------------------|------------------------------------------------------|
@@ -480,8 +480,8 @@ La combinación de estos elementos ayuda a:
 Cada página debe incluir:
 
 - `<title>` descriptivo, por ejemplo:
-    - Home: `Cerrajero 24 horas en Madrid | Aperturas urgentes`
-    - Barrio: `Cerrajero 24h en Chamberí (Madrid) | Aperturas urgentes`
+    - Home: `Cerrajero urgente Madrid 24 horas | Cerrajeros urgentes, apertura de puertas` (configurable en `siteConfig.titleHome`)
+    - Barrio: `Cerrajeros [nombre] 24 horas | Apertura de puertas · [tel]`
 
 - `<meta name="description">` orientada a:
     - Emergencias (`apertura de puertas`, `sin daños`, `llegada en X minutos`).
@@ -491,15 +491,12 @@ En Astro, estas etiquetas pueden declararse en el bloque `<head>` de cada págin
 
 ## 9.2. Schema LocalBusiness (JSON-LD)
 
-Se debe incluir un bloque de **JSON-LD** con el esquema `LocalBusiness` (o `EmergencyService`, según se decida) para:
+En `Layout.astro` se incluye un bloque **JSON-LD** con el esquema `LocalBusiness` construido a partir de `siteConfig`:
 
-- Indicar a Google:
-    - Nombre comercial.
-    - Dirección / área de servicio.
-    - Teléfono.
-    - Horario (24 horas).
+- **Nombre**, **url**, **telephone**, **email** (si está definido), **address** (si hay `direccion`), área de servicio, horario 24h.
+- Si hay **reseñas** en `siteConfig` (`totalResenas > 0`), se añaden `aggregateRating` y hasta 5 `review`.
 
-Este bloque se suele insertar en el `<head>` mediante una etiqueta `<script type="application/ld+json">` con el JSON correspondiente.
+En la **home** (`index.astro`) se añade además un **FAQPage** (JSON-LD) con las tres preguntas frecuentes, para optar a resultados enriquecidos en buscadores.
 
 | [**Siguiente**](#10-despliegue-en-producción-vercel--netlify) | [**Índice**](#índice-de-contenido) | [**Anterior**](#9-seo-técnico-y-datos-estructurados) |
 |----------------------------------------------------------------|------------------------------------|------------------------------------------------------|
@@ -2412,7 +2409,7 @@ Archivo modificado: `src/pages/contacto.astro`.
 
 Archivo creado: `api/contact.js`.
 
-- Función serverless que recibe POST con **correo** y **mensaje** (obligatorios), **nombre** y **móvil** (opcionales), y opcionalmente `barrio`. Soporta envío por Resend (si `RESEND_API_KEY`) o por SMTP (Nodemailer). Usa el correo del formulario como `reply-to` cuando se envía.
+- Función serverless que recibe POST con **correo** y **mensaje** (obligatorios), **nombre** y **móvil** (opcionales), y opcionalmente `barrio` y `formTitle`. El **asunto del correo** se construye como `Barrio · formTitle (nombre/email)` si hay barrio, o `formTitle (nombre/email)` en contacto, para identificar el origen del formulario. Soporta Resend o SMTP (Nodemailer). Usa el correo del formulario como `reply-to`.
 - Envía un correo usando **Nodemailer** y las variables de entorno de SMTP. Respuesta JSON: `{ ok: true }` o `{ error: true, message: "..." }`.
 - Dependencia añadida: `nodemailer`.
 
@@ -2600,6 +2597,7 @@ Archivo: `src/pages/politica-cookies.astro`.
 Archivo: `src/components/Footer.astro`.
 
 - Se ha añadido un bloque de enlaces en el footer con:
+  - **Mapa del sitio** → `/sitemap.xml`
   - **Aviso legal** → `/aviso-legal`
   - **Privacidad** → `/politica-privacidad`
   - **Cookies** → `/politica-cookies`
@@ -2625,9 +2623,9 @@ En esta sesión se ha añadido la posibilidad de mostrar un crédito al diseñad
 
 | Área | Estado | Acción realizada |
 |------|--------|------------------|
-| **LSSI / Aviso legal** | OK | Página `/aviso-legal` con datos identificativos, condiciones de uso, propiedad intelectual, enlaces, limitación de responsabilidad, ley aplicable. Pendiente rellenar domicilio y NIF/CIF. |
-| **RGPD / Privacidad** | OK | Página `/politica-privacidad` con responsable, finalidades, bases jurídicas, plazos, destinatarios, derechos, seguridad. Enlace en footer y junto al formulario de contacto. |
-| **Cookies** | OK | Política en `/politica-cookies`, banner con aceptación y enlace “Más información”, solo cookies técnicas declaradas. |
+| **LSSI / Aviso legal** | OK | Página `/aviso-legal` con datos identificativos, condiciones de uso, propiedad intelectual, enlaces, limitación de responsabilidad, ley aplicable. Datos desde siteConfig (email, direccion, nif). Hoja de reclamaciones (solicitable por email o dirección). |
+| **RGPD / Privacidad** | OK | Página `/politica-privacidad` con responsable (siteConfig), finalidades, bases jurídicas, plazos, destinatarios, derechos (incl. no decisiones automatizadas), menores 13 años, seguridad. Enlace en footer y junto al formulario. |
+| **Cookies** | OK | Política en `/politica-cookies`, banner con aceptación y enlace “Más información”, enlaces a ayuda oficial (Chrome, Firefox, Safari, Edge); solo cookies técnicas. |
 | **Formulario de contacto** | OK | Aviso explícito antes de enviar: “Al enviar aceptas nuestra política de privacidad” con enlace a `/politica-privacidad` (RGPD: información previa al tratamiento). |
 | **Sitemap** | Mejorado | Incluidas `/aviso-legal`, `/politica-privacidad`, `/politica-cookies` y `/diseno-web` con prioridad 0,3. |
 | **Página 404** | Mejorado | Añadido `<meta name="robots" content="noindex, nofollow" />` para no indexar errores. |
@@ -2670,7 +2668,38 @@ Resumen de los cambios aplicados para mantener el DOC al día con la funcionalid
 | **Sitemap** | Incluye `/blog`, `/cerrajero-urgente-24h`, todas las entradas del blog y todas las páginas por zona (`/cerrajero-urgente-24h/[slug]`). Se genera en cada build. |
 | **Google Maps / ubicación** | En `site.ts`: **`direccion`** (calle, localidad, codigoPostal) y **`googleMapsUrl`** (enlace a la ficha de Google Maps o Google Business). En **Contacto**: bloque "Dónde estamos" con dirección y enlace "Ver en Google Maps" o "Cómo llegar". En **Footer**: enlace "Cómo llegar" cuando hay dirección o `googleMapsUrl`. |
 | **Reseñas (SEO y confianza)** | En `site.ts`: **`reseñas`** opcional con `valoracionMedia`, `totalResenas` y array de reseñas (autor, texto, fecha, valoracion). Si `totalResenas > 0`: se añade **aggregateRating** y hasta 5 **Review** al JSON-LD de LocalBusiness en Layout; en la **home** se muestra la sección "Lo que dicen nuestros clientes" (estrellas, enlace a Google, hasta 4 tarjetas de reseñas). La tarjeta "Clientes satisfechos" usa los datos de `reseñas` cuando están configurados. |
-| **Layout y SEO** | Layout acepta prop opcional **`ogImage`** (URL completa) para páginas que quieran imagen OG propia (p. ej. entradas del blog). El JSON-LD de LocalBusiness se construye dinámicamente y se añaden `aggregateRating` y `review` cuando hay reseñas configuradas. |
+| **Layout y SEO** | Layout acepta prop opcional **`ogImage`** (URL completa) para páginas que quieran imagen OG propia (p. ej. entradas del blog). El JSON-LD de LocalBusiness se construye desde **siteConfig** (nombre, url, telephone, email, address). Layout construye el enlace de WhatsApp con mensaje + "Escribo desde: [url]" y lo pasa a Header y CallButton. En la home se añade schema **FAQPage** (JSON-LD) con las 3 preguntas frecuentes. |
 
 Para publicar en el blog y usar imágenes, consultar **`BLOG.md`**.
+
+---
+
+## Actualización DOC – Variables globales, WhatsApp, formulario, legal y mapa del sitio
+
+Resumen de cambios aplicados y reflejados en este documento:
+
+### Configuración centralizada (`src/config/site.ts`)
+
+- **`email`**: correo de contacto usado en aviso legal, privacidad y (si se desea) en el schema. Un solo lugar para cambiarlo.
+- **`nif`**: NIF/CIF para aviso legal y política de privacidad.
+- **`whatsappMessage`**: mensaje que se abre al pulsar WhatsApp; si no está vacío, se añade automáticamente " Escribo desde: [URL de la página]" (Layout construye el enlace con `Astro.url.href` y lo pasa a Header y CallButton).
+- **`titleHome`**: título de la home (ej. "Cerrajero urgente Madrid 24 horas | Cerrajeros urgentes, apertura de puertas").
+
+El **schema LocalBusiness** en Layout usa ahora `siteConfig` para nombre, url, telephone, email y address (ya no valores fijos). Aviso legal y privacidad muestran email, domicilio y NIF desde `siteConfig`.
+
+### Formulario de contacto y API
+
+- **ContactForm**: envía campo oculto `formTitle` (valor del prop `title`) junto con `barrio` (si existe).
+- **api/contact.js**: asunto del correo = `Barrio · formTitle (nombre/email)` en páginas de barrio, o `formTitle (nombre/email)` en contacto, para identificar el origen de cada consulta.
+
+### Páginas legales
+
+- **Aviso legal**: hoja de reclamaciones (solicitable por email o dirección); datos identificativos desde `siteConfig` (email, direccion, nif).
+- **Privacidad**: mención de menores de 13 años; derecho a no ser objeto de decisiones basadas únicamente en tratamiento automatizado; datos del responsable desde `siteConfig`.
+- **Cookies**: enlaces a la ayuda oficial de Chrome, Firefox, Safari y Edge para configurar o eliminar cookies.
+
+### Footer y home
+
+- **Footer**: enlace "Mapa del sitio" → `/sitemap.xml`.
+- **Home**: schema FAQPage (JSON-LD) con las tres preguntas frecuentes para optar a resultados enriquecidos.
 

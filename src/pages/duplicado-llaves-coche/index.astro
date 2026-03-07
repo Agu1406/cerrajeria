@@ -1,0 +1,172 @@
+---
+import Layout from '../../components/Layout.astro';
+import { siteConfig } from '../../config/site';
+import { getCollection } from 'astro:content';
+
+const title = `Duplicado de llaves de coche en Madrid | Llaves y mandos · ${siteConfig.telefono}`;
+const description = `Copia de llaves de coche y mandos a distancia en la Comunidad de Madrid. Llaves de reserva y sustitución. Presupuesto sin compromiso. ${siteConfig.telefono}`;
+const basePath = '/duplicado-llaves-coche';
+const breadcrumb = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Servicios', path: '/servicios' },
+  { name: 'Duplicado llaves de coche', path: basePath },
+];
+
+const barrios = (await getCollection('barrios')).sort((a, b) =>
+  a.data.nombre.localeCompare(b.data.nombre, 'es')
+);
+---
+
+<Layout {title} {description} breadcrumb={breadcrumb}>
+  <article class="space-y-8">
+    <header class="space-y-4">
+      <nav class="text-xs text-slate-400" aria-label="Miga de pan">
+        <a href="/" class="hover:text-emerald-400">Inicio</a>
+        <span class="mx-1">/</span>
+        <a href="/servicios" class="hover:text-emerald-400">Servicios</a>
+        <span class="mx-1">/</span>
+        <span class="text-slate-400">Duplicado de llaves de coche</span>
+      </nav>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+        Servicio a domicilio · Madrid y alrededores
+      </p>
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Duplicado de llaves de coche en Madrid
+      </h1>
+      <p class="text-sm text-slate-300 sm:text-base max-w-2xl">
+        Realizamos copia de llaves de coche y mandos a distancia en toda la Comunidad de Madrid. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
+      </p>
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a
+          href={siteConfig.telefonoHref}
+          class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
+        >
+          📞 Llamar · {siteConfig.telefono}
+        </a>
+        <p class="text-xs text-slate-400">
+          Presupuesto sin compromiso. Atendemos en toda la Comunidad de Madrid.
+        </p>
+      </div>
+    </header>
+
+    <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 space-y-4">
+      <h2 class="text-lg font-semibold tracking-tight">
+        ¿Cuándo necesitas una copia de llave de coche?
+      </h2>
+      <ul class="grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+        <li class="flex gap-2">
+          <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
+          Llave de reserva para dejar en casa o a un familiar.
+        </li>
+        <li class="flex gap-2">
+          <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
+          Has perdido la llave o el mando y necesitas un duplicado o sustitución.
+        </li>
+        <li class="flex gap-2">
+          <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
+          La llave original está desgastada o el mando no responde bien.
+        </li>
+        <li class="flex gap-2">
+          <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
+          Compraste el coche con una sola llave y quieres una copia de seguridad.
+        </li>
+      </ul>
+    </section>
+
+    <section class="space-y-3 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        Llaves con chip y mandos a distancia
+      </h2>
+      <p>
+        Muchos coches actuales llevan llaves con transponder (chip) o mandos a distancia que requieren programación. Trabajamos con equipos adecuados para la mayoría de marcas; al llamar podemos orientarte sobre si tu modelo es viable y el tiempo aproximado. Si el vehículo es muy reciente o de gama alta, a veces hay que derivar a un especialista en tu marca; te lo indicamos con claridad.
+      </p>
+    </section>
+
+    <section class="space-y-3 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        Precio y desplazamiento
+      </h2>
+      <p>
+        El precio depende del tipo de llave (mecánica, con chip, mando a distancia) y de la marca del vehículo. Te damos un presupuesto orientativo por teléfono y lo cerramos al ver el coche. Nos desplazamos por toda la Comunidad de Madrid; si estás en una zona que ya cubrimos para cerrajería urgente (Getafe, Las Rozas, Leganés, Madrid capital, etc.), normalmente podemos atenderte el mismo día o al siguiente según disponibilidad.
+      </p>
+    </section>
+
+    <section class="space-y-3 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        Preguntas frecuentes sobre duplicado de llaves de coche
+      </h2>
+      <dl class="space-y-3 text-slate-300">
+        <div>
+          <dt class="font-semibold text-slate-200">¿Hacéis llaves de coche con chip?</dt>
+          <dd class="mt-1 text-xs sm:text-sm text-slate-400">
+            Sí, para la mayoría de marcas y modelos. En la llamada te indicamos si podemos atender tu vehículo o si conviene acudir a un servicio oficial.
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-slate-200">¿Pueden venir a mi zona?</dt>
+          <dd class="mt-1 text-xs sm:text-sm text-slate-400">
+            Atendemos en toda la Comunidad de Madrid: Madrid capital, Getafe, Leganés, Las Rozas, Móstoles, Alcalá de Henares, Fuenlabrada y resto de municipios. Si tienes dudas, llámanos y te decimos disponibilidad.
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-slate-200">¿Cuánto tarda el trabajo?</dt>
+          <dd class="mt-1 text-xs sm:text-sm text-slate-400">
+            Depende del tipo de llave. Una copia mecánica puede hacerse en el acto; las llaves con chip o mandos a distancia pueden requerir más tiempo. Te lo concretamos al dar el presupuesto.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-lg font-semibold tracking-tight">
+        Disponible en todos estos barrios y zonas
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm">
+        Servicio de duplicado de llaves de coche en toda la Comunidad de Madrid. Elige tu zona para ver información y teléfono:
+      </p>
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {barrios.map((entry) => (
+          <li>
+            <a
+              href={`${basePath}/${entry.slug}`}
+              class="flex flex-col rounded-lg border border-slate-800 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
+            >
+              <span class="font-semibold">{entry.data.nombre}</span>
+              <span class="mt-1 text-xs text-slate-400">
+                Duplicado llaves coche en {entry.data.nombre}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="text-xs text-slate-400">
+        Si necesitas un cerrajero urgente 24 horas por zona:{' '}
+        <a href="/cerrajero-urgente-24h" class="text-emerald-400 hover:underline">ver barrios (cerrajero 24h)</a>.
+      </p>
+    </section>
+
+    <section class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight mb-2">
+        Otros servicios de cerrajería
+      </h2>
+      <p>
+        Además del duplicado de llaves de coche, realizamos apertura de puertas, cambio e instalación de cerraduras y bombines, duplicado de llaves a domicilio (vivienda, portal) y arreglo de ventanas oscilobatientes. Si necesitas un cerrajero urgente 24 horas, tenemos páginas por zona en{' '}
+        <a href="/cerrajero-urgente-24h" class="text-emerald-400 hover:underline">cerrajero 24h por barrios</a>
+        {' '}y el listado completo en{' '}
+        <a href="/servicios" class="text-emerald-400 hover:underline">servicios de cerrajería</a>.
+      </p>
+    </section>
+
+    <div class="flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-4">
+      <p class="text-sm text-slate-300">
+        ¿Necesitas presupuesto o tienes dudas? Llámanos.
+      </p>
+      <a
+        href={siteConfig.telefonoHref}
+        class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
+      >
+        📞 {siteConfig.telefono}
+      </a>
+    </div>
+  </article>
+</Layout>

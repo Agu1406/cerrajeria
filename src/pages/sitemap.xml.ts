@@ -14,6 +14,7 @@ export const GET: APIRoute = async () => {
   const urls = [
     '/',
     '/servicios',
+    '/duplicado-llaves-coche',
     '/cerrajero-urgente-24h',
     '/blog',
     '/contacto',
@@ -22,6 +23,7 @@ export const GET: APIRoute = async () => {
     '/politica-cookies',
     '/diseno-web',
     ...barrios.map((entry) => `/cerrajero-urgente-24h/${entry.slug}`),
+    ...barrios.map((entry) => `/duplicado-llaves-coche/${entry.slug}`),
     ...blogPosts.map((entry) => `/blog/${entry.slug}`),
   ];
 

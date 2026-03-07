@@ -30,9 +30,22 @@ const breadcrumb = [
 
 const allBarrios = await getCollection('duplicado-llaves-coche-barrios');
 const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
+
+const faqSchemaDuplicadoBarrio = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: '¿Hacéis llaves de coche con chip?', acceptedAnswer: { '@type': 'Answer', text: 'Sí, para la mayoría de marcas y modelos. En la llamada te indicamos si podemos atender tu vehículo o si conviene acudir a un servicio oficial.' } },
+    { '@type': 'Question', name: `¿Atienden en ${data.nombre}?`, acceptedAnswer: { '@type': 'Answer', text: `Sí, atendemos en ${data.nombre} y alrededores. Nos desplazamos a domicilio con el equipo; si tienes dudas sobre disponibilidad, llámanos y te lo confirmamos.` } },
+    { '@type': 'Question', name: '¿Cuánto tarda el trabajo?', acceptedAnswer: { '@type': 'Answer', text: 'Depende del tipo de llave. Una copia mecánica puede hacerse en el acto; las llaves con chip o mandos a distancia pueden requerir más tiempo. Te lo concretamos al dar el presupuesto.' } },
+  ],
+  ...(entry.data.actualizado && { dateModified: entry.data.actualizado.toISOString().slice(0, 10) }),
+};
+const dateModified = entry.data.actualizado?.toISOString().slice(0, 10);
 ---
 
-<Layout {title} {description} breadcrumb={breadcrumb}>
+<Layout {title} {description} breadcrumb={breadcrumb} dateModified={dateModified}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchemaDuplicadoBarrio)} />
   <article class="space-y-8">
     <header class="space-y-4">
       <nav class="text-xs text-slate-400" aria-label="Miga de pan">
@@ -135,6 +148,11 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
           </dd>
         </div>
       </dl>
+      {entry.data.actualizado && (
+        <p class="mt-3 text-[11px] text-slate-500">
+          Contenido revisado: <time datetime={entry.data.actualizado.toISOString()}>{entry.data.actualizado.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+        </p>
+      )}
     </section>
 
     <section class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 text-sm text-slate-300">

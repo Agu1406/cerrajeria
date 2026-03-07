@@ -16,9 +16,20 @@ const breadcrumb = [
 const barrios = (await getCollection('duplicado-llaves-coche-barrios')).sort((a, b) =>
   a.data.nombre.localeCompare(b.data.nombre, 'es')
 );
+
+const faqSchemaDuplicado = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: '¿Hacéis llaves de coche con chip?', acceptedAnswer: { '@type': 'Answer', text: 'Sí, para la mayoría de marcas y modelos. En la llamada te indicamos si podemos atender tu vehículo o si conviene acudir a un servicio oficial.' } },
+    { '@type': 'Question', name: '¿Pueden venir a mi zona?', acceptedAnswer: { '@type': 'Answer', text: 'Atendemos en toda la Comunidad de Madrid: Madrid capital, Getafe, Leganés, Las Rozas, Móstoles, Alcalá de Henares, Fuenlabrada y resto de municipios. Si tienes dudas, llámanos y te decimos disponibilidad.' } },
+    { '@type': 'Question', name: '¿Cuánto tarda el trabajo?', acceptedAnswer: { '@type': 'Answer', text: 'Depende del tipo de llave. Una copia mecánica puede hacerse en el acto; las llaves con chip o mandos a distancia pueden requerir más tiempo. Te lo concretamos al dar el presupuesto.' } },
+  ],
+};
 ---
 
 <Layout {title} {description} breadcrumb={breadcrumb}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchemaDuplicado)} />
   <article class="space-y-8">
     <header class="space-y-4">
       <nav class="text-xs text-slate-400" aria-label="Miga de pan">

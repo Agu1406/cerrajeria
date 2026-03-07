@@ -30,9 +30,22 @@ const breadcrumb = [
 
 const allBarrios = await getCollection('puertas-antiokupas-barrios');
 const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
+
+const faqSchemaAntiokupasBarrio = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: '¿Qué incluye una puerta antiokupa?', acceptedAnswer: { '@type': 'Answer', text: 'Depende del caso: refuerzo de cerraduras, bombines de alta seguridad, puertas blindadas o de seguridad que cumplen normativa. Te asesoramos según tu situación.' } },
+    { '@type': 'Question', name: `¿Atienden en ${data.nombre}?`, acceptedAnswer: { '@type': 'Answer', text: `Sí, atendemos en ${data.nombre} y alrededores. Si tienes dudas sobre disponibilidad, llámanos y te lo confirmamos.` } },
+    { '@type': 'Question', name: '¿Cuánto tarda la instalación?', acceptedAnswer: { '@type': 'Answer', text: 'Varía según el trabajo: un refuerzo de cerradura puede hacerse en una visita; una puerta nueva puede requerir medición y posterior instalación. Te lo concretamos al dar el presupuesto.' } },
+  ],
+  ...(entry.data.actualizado && { dateModified: entry.data.actualizado.toISOString().slice(0, 10) }),
+};
+const dateModified = entry.data.actualizado?.toISOString().slice(0, 10);
 ---
 
-<Layout {title} {description} breadcrumb={breadcrumb}>
+<Layout {title} {description} breadcrumb={breadcrumb} dateModified={dateModified}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchemaAntiokupasBarrio)} />
   <article class="space-y-8">
     <header class="space-y-4">
       <nav class="text-xs text-slate-400" aria-label="Miga de pan">
@@ -135,6 +148,11 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
           </dd>
         </div>
       </dl>
+      {entry.data.actualizado && (
+        <p class="mt-3 text-[11px] text-slate-500">
+          Contenido revisado: <time datetime={entry.data.actualizado.toISOString()}>{entry.data.actualizado.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+        </p>
+      )}
     </section>
 
     <section class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 text-sm text-slate-300">

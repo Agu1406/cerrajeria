@@ -10,6 +10,8 @@ const barrios = defineCollection({
     faqLlegada: z.string(),
     faqPrecio: z.string(),
     faqFestivos: z.string(),
+    /** Fecha de última revisión del contenido (SEO frescura). Opcional. */
+    actualizado: z.coerce.date().optional(),
   }),
 });
 
@@ -21,6 +23,8 @@ const duplicadoLlavesCocheBarrios = defineCollection({
     intro: z.string(),
     llegadaTexto: z.string(),
     faqPrecio: z.string().optional(),
+    /** Fecha de última revisión del contenido (SEO frescura). Opcional. */
+    actualizado: z.coerce.date().optional(),
   }),
 });
 
@@ -32,6 +36,8 @@ const puertasAntiokupasBarrios = defineCollection({
     intro: z.string(),
     llegadaTexto: z.string(),
     faqPrecio: z.string().optional(),
+    /** Fecha de última revisión del contenido (SEO frescura). Opcional. */
+    actualizado: z.coerce.date().optional(),
   }),
 });
 

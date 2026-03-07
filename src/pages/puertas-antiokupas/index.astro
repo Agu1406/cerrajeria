@@ -16,9 +16,20 @@ const breadcrumb = [
 const barrios = (await getCollection('puertas-antiokupas-barrios')).sort((a, b) =>
   a.data.nombre.localeCompare(b.data.nombre, 'es')
 );
+
+const faqSchemaAntiokupas = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: '¿Qué incluye una puerta antiokupa?', acceptedAnswer: { '@type': 'Answer', text: 'Depende del caso: refuerzo de cerraduras, bombines de alta seguridad, puertas blindadas o de seguridad que cumplen normativa. Te asesoramos según tu situación.' } },
+    { '@type': 'Question', name: '¿Pueden venir a mi zona?', acceptedAnswer: { '@type': 'Answer', text: 'Atendemos en toda la Comunidad de Madrid. Si tienes dudas sobre disponibilidad, llámanos y te lo confirmamos.' } },
+    { '@type': 'Question', name: '¿Cuánto tarda la instalación?', acceptedAnswer: { '@type': 'Answer', text: 'Varía según el trabajo: un refuerzo de cerradura puede hacerse en una visita; una puerta nueva puede requerir medición y posterior instalación. Te lo concretamos al dar el presupuesto.' } },
+  ],
+};
 ---
 
 <Layout {title} {description} breadcrumb={breadcrumb}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchemaAntiokupas)} />
   <article class="space-y-8">
     <header class="space-y-4">
       <nav class="text-xs text-slate-400" aria-label="Miga de pan">

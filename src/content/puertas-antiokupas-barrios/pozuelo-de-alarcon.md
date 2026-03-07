@@ -8,3 +8,4 @@ llegadaTexto: >
   A Pozuelo llegamos en general en 25–40 minutos desde la confirmación. El tráfico en la A-6 y la
   zona de Somosaguas pueden variar; de madrugada el tiempo suele reducirse.
   Te indicamos opciones y precios por teléfono antes del desplazamiento.
+---

@@ -13,6 +13,8 @@ type Props = {
   ogImage?: string;
   /** Breadcrumb para schema (ej. [{ name: 'Inicio', path: '/' }, { name: 'Cerrajero 24h', path: '/cerrajero-urgente-24h' }, { name: 'Las Rozas', path: '/cerrajero-urgente-24h/las-rozas' }]). */
   breadcrumb?: Array<{ name: string; path: string }>;
+  /** Fecha ISO de última actualización del contenido (SEO frescura). Opcional. */
+  dateModified?: string;
 };
 
 const {
@@ -21,6 +23,7 @@ const {
   noindex = false,
   ogImage,
   breadcrumb,
+  dateModified,
 } = Astro.props as Props;
 
 const defaultOgImage = `${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.webp`;
@@ -121,6 +124,14 @@ const whatsappHref = siteConfig.whatsappMessage
           name: item.name,
           item: `${siteConfig.baseUrl}${item.path}`,
         })),
+      })} />
+    )}
+    {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && dateModified && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        url: `${siteConfig.baseUrl.replace(/\/$/, '')}${Astro.url.pathname}`,
+        dateModified,
       })} />
     )}
     <script is:inline>

@@ -44,8 +44,16 @@ const categorias = [
           {servicios
             .filter((s) => s.categoria === categoria.id)
             .map((servicio) => {
-              const href = servicio.slug === 'duplicado-llaves-coche' ? '/duplicado-llaves-coche' : `/servicios/${servicio.slug}`;
-              const textoEnlace = servicio.slug === 'duplicado-llaves-coche' ? 'Ver zonas donde está disponible →' : 'Más información →';
+              const href =
+                servicio.slug === 'duplicado-llaves-coche'
+                  ? '/duplicado-llaves-coche'
+                  : servicio.slug === 'puertas-antiokupas'
+                    ? '/puertas-antiokupas'
+                    : `/servicios/${servicio.slug}`;
+              const textoEnlace =
+                servicio.slug === 'duplicado-llaves-coche' || servicio.slug === 'puertas-antiokupas'
+                  ? 'Ver zonas donde está disponible →'
+                  : 'Más información →';
               return (
                 <li class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
                   <a href={href} class="block hover:border-slate-700">

@@ -5,7 +5,7 @@ import { servicios } from '../../data/servicios';
 
 export async function getStaticPaths() {
   return servicios
-    .filter((s) => s.slug !== 'duplicado-llaves-coche')
+    .filter((s) => s.slug !== 'duplicado-llaves-coche' && s.slug !== 'puertas-antiokupas')
     .map((servicio) => ({
       params: { servicio: servicio.slug },
       props: { servicio },
@@ -26,7 +26,9 @@ const breadcrumb = [
   { name: servicio.nombre, path: `${basePath}/${servicio.slug}` },
 ];
 
-const otrosServicios = servicios.filter((s) => s.slug !== servicio.slug && s.slug !== 'duplicado-llaves-coche').slice(0, 4);
+const otrosServicios = servicios
+  .filter((s) => s.slug !== servicio.slug && s.slug !== 'duplicado-llaves-coche' && s.slug !== 'puertas-antiokupas')
+  .slice(0, 4);
 ---
 
 <Layout {title} {description} breadcrumb={breadcrumb}>

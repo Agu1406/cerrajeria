@@ -3,16 +3,16 @@ import Layout from '../../components/Layout.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection } from 'astro:content';
 
-const title = `Duplicado de llaves de coche en Madrid | Llaves y mandos · ${siteConfig.telefono}`;
-const description = `Copia de llaves de coche y mandos a distancia en la Comunidad de Madrid. Llaves de reserva y sustitución. Presupuesto sin compromiso. ${siteConfig.telefono}`;
-const basePath = '/duplicado-llaves-coche';
+const title = `Puertas antiokupas en Madrid | Refuerzo e instalación · ${siteConfig.telefono}`;
+const description = `Instalación y refuerzo de puertas antiokupas en la Comunidad de Madrid. Viviendas y locales vacíos. Presupuesto sin compromiso. ${siteConfig.telefono}`;
+const basePath = '/puertas-antiokupas';
 const breadcrumb = [
   { name: 'Inicio', path: '/' },
   { name: 'Servicios', path: '/servicios' },
-  { name: 'Duplicado llaves de coche', path: basePath },
+  { name: 'Puertas antiokupas', path: basePath },
 ];
 
-const barrios = (await getCollection('duplicado-llaves-coche-barrios')).sort((a, b) =>
+const barrios = (await getCollection('puertas-antiokupas-barrios')).sort((a, b) =>
   a.data.nombre.localeCompare(b.data.nombre, 'es')
 );
 ---
@@ -25,16 +25,16 @@ const barrios = (await getCollection('duplicado-llaves-coche-barrios')).sort((a,
         <span class="mx-1">/</span>
         <a href="/servicios" class="hover:text-emerald-400">Servicios</a>
         <span class="mx-1">/</span>
-        <span class="text-slate-400">Duplicado de llaves de coche</span>
+        <span class="text-slate-400">Puertas antiokupas</span>
       </nav>
       <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-        Servicio a domicilio · Madrid y alrededores
+        Refuerzo e instalación · Madrid y alrededores
       </p>
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
-        Duplicado de llaves de coche en Madrid
+        Puertas antiokupas en Madrid
       </h1>
       <p class="text-sm text-slate-300 sm:text-base max-w-2xl">
-        Realizamos copia de llaves de coche y mandos a distancia en toda la Comunidad de Madrid. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
+        Instalamos y reforzamos puertas antiokupas para viviendas y locales vacíos en toda la Comunidad de Madrid. Refuerzo de cerraduras, instalación de puertas de seguridad y asesoramiento para disuadir intrusiones.
       </p>
       <div class="flex flex-wrap items-center gap-3 pt-2">
         <a
@@ -51,34 +51,34 @@ const barrios = (await getCollection('duplicado-llaves-coche-barrios')).sort((a,
 
     <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 space-y-4">
       <h2 class="text-lg font-semibold tracking-tight">
-        ¿Cuándo necesitas una copia de llave de coche?
+        ¿Cuándo instalar puertas antiokupas?
       </h2>
       <ul class="grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
         <li class="flex gap-2">
           <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
-          Llave de reserva para dejar en casa o a un familiar.
+          Vivienda o local vacío que quieres proteger frente a ocupación ilegal.
         </li>
         <li class="flex gap-2">
           <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
-          Has perdido la llave o el mando y necesitas un duplicado o sustitución.
+          Refuerzo de cerraduras y bombines para mayor resistencia.
         </li>
         <li class="flex gap-2">
           <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
-          La llave original está desgastada o el mando no responde bien.
+          Instalación de puertas de seguridad o blindadas en segunda vivienda.
         </li>
         <li class="flex gap-2">
           <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
-          Compraste el coche con una sola llave y quieres una copia de seguridad.
+          Asesoramiento para combinar cerraduras, herrajes y disuasión visual.
         </li>
       </ul>
     </section>
 
     <section class="space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        Llaves con chip y mandos a distancia
+        Refuerzo e instalación
       </h2>
       <p>
-        Muchos coches actuales llevan llaves con transponder (chip) o mandos a distancia que requieren programación. Trabajamos con equipos adecuados para la mayoría de marcas; al llamar podemos orientarte sobre si tu modelo es viable y el tiempo aproximado. Si el vehículo es muy reciente o de gama alta, a veces hay que derivar a un especialista en tu marca; te lo indicamos con claridad.
+        Trabajamos con cerraduras de alta seguridad, bombines antibumping y puertas que cumplen normativa antiokupa cuando aplica. Te indicamos opciones y precios por teléfono; al visitar el inmueble concretamos la solución más adecuada al tipo de puerta y nivel de protección que busques.
       </p>
     </section>
 
@@ -87,31 +87,31 @@ const barrios = (await getCollection('duplicado-llaves-coche-barrios')).sort((a,
         Precio y desplazamiento
       </h2>
       <p>
-        El precio depende del tipo de llave (mecánica, con chip, mando a distancia) y de la marca del vehículo. Te damos un presupuesto orientativo por teléfono y lo cerramos al ver el coche. Nos desplazamos por toda la Comunidad de Madrid; si estás en una zona que ya cubrimos para cerrajería urgente (Getafe, Las Rozas, Leganés, Madrid capital, etc.), normalmente podemos atenderte el mismo día o al siguiente según disponibilidad.
+        El precio depende del tipo de refuerzo (solo cerradura, cambio de puerta, blindaje) y de las características del inmueble. Te damos un presupuesto orientativo por teléfono y lo cerramos en la visita. Nos desplazamos por toda la Comunidad de Madrid.
       </p>
     </section>
 
     <section class="space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        Preguntas frecuentes sobre duplicado de llaves de coche
+        Preguntas frecuentes sobre puertas antiokupas
       </h2>
       <dl class="space-y-3 text-slate-300">
         <div>
-          <dt class="font-semibold text-slate-200">¿Hacéis llaves de coche con chip?</dt>
+          <dt class="font-semibold text-slate-200">¿Qué incluye una puerta antiokupa?</dt>
           <dd class="mt-1 text-xs sm:text-sm text-slate-400">
-            Sí, para la mayoría de marcas y modelos. En la llamada te indicamos si podemos atender tu vehículo o si conviene acudir a un servicio oficial.
+            Depende del caso: refuerzo de cerraduras, bombines de alta seguridad, puertas blindadas o de seguridad que cumplen normativa. Te asesoramos según tu situación.
           </dd>
         </div>
         <div>
           <dt class="font-semibold text-slate-200">¿Pueden venir a mi zona?</dt>
           <dd class="mt-1 text-xs sm:text-sm text-slate-400">
-            Atendemos en toda la Comunidad de Madrid: Madrid capital, Getafe, Leganés, Las Rozas, Móstoles, Alcalá de Henares, Fuenlabrada y resto de municipios. Si tienes dudas, llámanos y te decimos disponibilidad.
+            Atendemos en toda la Comunidad de Madrid. Si tienes dudas sobre disponibilidad, llámanos y te lo confirmamos.
           </dd>
         </div>
         <div>
-          <dt class="font-semibold text-slate-200">¿Cuánto tarda el trabajo?</dt>
+          <dt class="font-semibold text-slate-200">¿Cuánto tarda la instalación?</dt>
           <dd class="mt-1 text-xs sm:text-sm text-slate-400">
-            Depende del tipo de llave. Una copia mecánica puede hacerse en el acto; las llaves con chip o mandos a distancia pueden requerir más tiempo. Te lo concretamos al dar el presupuesto.
+            Varía según el trabajo: un refuerzo de cerradura puede hacerse en una visita; una puerta nueva puede requerir medición y posterior instalación. Te lo concretamos al dar el presupuesto.
           </dd>
         </div>
       </dl>
@@ -122,7 +122,7 @@ const barrios = (await getCollection('duplicado-llaves-coche-barrios')).sort((a,
         Disponible en todos estos barrios y zonas
       </h2>
       <p class="text-xs text-slate-400 sm:text-sm">
-        Servicio de duplicado de llaves de coche en toda la Comunidad de Madrid. Elige tu zona para ver información y teléfono:
+        Servicio de puertas antiokupas en toda la Comunidad de Madrid. Elige tu zona para ver información y teléfono:
       </p>
       <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {barrios.map((entry) => (
@@ -133,7 +133,7 @@ const barrios = (await getCollection('duplicado-llaves-coche-barrios')).sort((a,
             >
               <span class="font-semibold">{entry.data.nombre}</span>
               <span class="mt-1 text-xs text-slate-400">
-                Duplicado llaves coche en {entry.data.nombre}
+                Puertas antiokupas en {entry.data.nombre}
               </span>
             </a>
           </li>
@@ -150,9 +150,9 @@ const barrios = (await getCollection('duplicado-llaves-coche-barrios')).sort((a,
         Otros servicios de cerrajería
       </h2>
       <p>
-        Además del duplicado de llaves de coche, realizamos apertura de puertas, cambio e instalación de cerraduras y bombines, duplicado de llaves a domicilio (vivienda, portal) y arreglo de ventanas oscilobatientes. Si necesitas un cerrajero urgente 24 horas, tenemos páginas por zona en{' '}
+        Además de puertas antiokupas, realizamos apertura de puertas, cambio e instalación de cerraduras y bombines, duplicado de llaves a domicilio y de coche, y arreglo de ventanas oscilobatientes. Cerrajero urgente 24 horas por zona en{' '}
         <a href="/cerrajero-urgente-24h" class="text-emerald-400 hover:underline">cerrajero 24h por barrios</a>
-        {' '}y el listado completo en{' '}
+        {' '}y listado completo en{' '}
         <a href="/servicios" class="text-emerald-400 hover:underline">servicios de cerrajería</a>.
       </p>
     </section>

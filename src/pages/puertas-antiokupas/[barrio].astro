@@ -4,7 +4,7 @@ import { siteConfig } from '../../config/site';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  const entries = await getCollection('duplicado-llaves-coche-barrios');
+  const entries = await getCollection('puertas-antiokupas-barrios');
   return entries.map((entry) => ({
     params: { barrio: entry.slug },
     props: { entry },
@@ -12,22 +12,22 @@ export async function getStaticPaths() {
 }
 
 type Props = {
-  entry: CollectionEntry<'duplicado-llaves-coche-barrios'>;
+  entry: CollectionEntry<'puertas-antiokupas-barrios'>;
 };
 
 const { entry } = Astro.props as Props;
 const data = entry.data;
-const basePath = '/duplicado-llaves-coche';
-const title = `Duplicado de llaves de coche en ${data.nombre} | Llaves y mandos · ${siteConfig.telefono}`;
-const description = `Copia de llaves de coche y mandos en ${data.nombre} y alrededores. Llaves de reserva y sustitución. Presupuesto sin compromiso. ${siteConfig.telefono}`;
+const basePath = '/puertas-antiokupas';
+const title = `Puertas antiokupas en ${data.nombre} | Refuerzo e instalación · ${siteConfig.telefono}`;
+const description = `Instalación y refuerzo de puertas antiokupas en ${data.nombre} y alrededores. Viviendas y locales vacíos. Presupuesto sin compromiso. ${siteConfig.telefono}`;
 const breadcrumb = [
   { name: 'Inicio', path: '/' },
   { name: 'Servicios', path: '/servicios' },
-  { name: 'Duplicado llaves de coche', path: basePath },
+  { name: 'Puertas antiokupas', path: basePath },
   { name: data.nombre, path: `${basePath}/${entry.slug}` },
 ];
 
-const allBarrios = await getCollection('duplicado-llaves-coche-barrios');
+const allBarrios = await getCollection('puertas-antiokupas-barrios');
 const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
 ---
 
@@ -39,15 +39,15 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
         <span class="mx-1">/</span>
         <a href="/servicios" class="hover:text-emerald-400">Servicios</a>
         <span class="mx-1">/</span>
-        <a href={basePath} class="hover:text-emerald-400">Duplicado llaves de coche</a>
+        <a href={basePath} class="hover:text-emerald-400">Puertas antiokupas</a>
         <span class="mx-1">/</span>
         <span class="text-slate-400">{data.nombre}</span>
       </nav>
       <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-        Servicio a domicilio · {data.nombre}
+        Refuerzo e instalación · {data.nombre}
       </p>
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
-        Duplicado de llaves de coche en {data.nombre}
+        Puertas antiokupas en {data.nombre}
       </h1>
       <p class="text-sm text-slate-300 sm:text-base max-w-2xl">
         {data.intro}
@@ -70,34 +70,34 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
 
     <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 space-y-4">
       <h2 class="text-lg font-semibold tracking-tight">
-        ¿Cuándo necesitas una copia de llave de coche en {data.nombre}?
+        ¿Cuándo instalar puertas antiokupas en {data.nombre}?
       </h2>
       <ul class="grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
         <li class="flex gap-2">
           <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
-          Llave de reserva para dejar en casa o a un familiar.
+          Vivienda o local vacío que quieres proteger frente a ocupación ilegal.
         </li>
         <li class="flex gap-2">
           <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
-          Has perdido la llave o el mando y necesitas un duplicado o sustitución.
+          Refuerzo de cerraduras y bombines para mayor resistencia.
         </li>
         <li class="flex gap-2">
           <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
-          La llave original está desgastada o el mando no responde bien.
+          Instalación de puertas de seguridad o blindadas en segunda vivienda.
         </li>
         <li class="flex gap-2">
           <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
-          Compraste el coche con una sola llave y quieres una copia de seguridad.
+          Asesoramiento para combinar cerraduras, herrajes y disuasión visual.
         </li>
       </ul>
     </section>
 
     <section class="space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        Llaves con chip y mandos a distancia
+        Refuerzo e instalación en {data.nombre}
       </h2>
       <p>
-        Muchos coches actuales llevan llaves con transponder (chip) o mandos a distancia que requieren programación. Trabajamos con equipos adecuados para la mayoría de marcas; al llamar podemos orientarte sobre si tu modelo es viable y el tiempo aproximado. Si el vehículo es muy reciente o de gama alta, a veces hay que derivar a un especialista en tu marca; te lo indicamos con claridad.
+        Trabajamos con cerraduras de alta seguridad, bombines antibumping y puertas que cumplen normativa antiokupa cuando aplica. Te indicamos opciones y precios por teléfono; al visitar el inmueble en {data.nombre} concretamos la solución más adecuada al tipo de puerta y nivel de protección que busques.
       </p>
     </section>
 
@@ -106,31 +106,31 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
         Precio y desplazamiento en {data.nombre}
       </h2>
       <p>
-        El precio depende del tipo de llave (mecánica, con chip, mando a distancia) y de la marca del vehículo. Te damos un presupuesto orientativo por teléfono y lo cerramos al ver el coche. Nos desplazamos a {data.nombre} y alrededores; normalmente podemos atenderte el mismo día o al siguiente según disponibilidad.
+        El precio depende del tipo de refuerzo (solo cerradura, cambio de puerta, blindaje) y de las características del inmueble. Te damos un presupuesto orientativo por teléfono y lo cerramos en la visita. Nos desplazamos a {data.nombre} y alrededores.
       </p>
     </section>
 
     <section class="space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        Preguntas frecuentes sobre duplicado de llaves de coche en {data.nombre}
+        Preguntas frecuentes sobre puertas antiokupas en {data.nombre}
       </h2>
       <dl class="space-y-3 text-slate-300">
         <div>
-          <dt class="font-semibold text-slate-200">¿Hacéis llaves de coche con chip?</dt>
+          <dt class="font-semibold text-slate-200">¿Qué incluye una puerta antiokupa?</dt>
           <dd class="mt-1 text-xs sm:text-sm text-slate-400">
-            Sí, para la mayoría de marcas y modelos. En la llamada te indicamos si podemos atender tu vehículo o si conviene acudir a un servicio oficial.
+            Depende del caso: refuerzo de cerraduras, bombines de alta seguridad, puertas blindadas o de seguridad que cumplen normativa. Te asesoramos según tu situación.
           </dd>
         </div>
         <div>
           <dt class="font-semibold text-slate-200">¿Atienden en {data.nombre}?</dt>
           <dd class="mt-1 text-xs sm:text-sm text-slate-400">
-            Sí, atendemos en {data.nombre} y alrededores. Nos desplazamos a domicilio con el equipo; si tienes dudas sobre disponibilidad, llámanos y te lo confirmamos.
+            Sí, atendemos en {data.nombre} y alrededores. Si tienes dudas sobre disponibilidad, llámanos y te lo confirmamos.
           </dd>
         </div>
         <div>
-          <dt class="font-semibold text-slate-200">¿Cuánto tarda el trabajo?</dt>
+          <dt class="font-semibold text-slate-200">¿Cuánto tarda la instalación?</dt>
           <dd class="mt-1 text-xs sm:text-sm text-slate-400">
-            Depende del tipo de llave. Una copia mecánica puede hacerse en el acto; las llaves con chip o mandos a distancia pueden requerir más tiempo. Te lo concretamos al dar el presupuesto.
+            Varía según el trabajo: un refuerzo de cerradura puede hacerse en una visita; una puerta nueva puede requerir medición y posterior instalación. Te lo concretamos al dar el presupuesto.
           </dd>
         </div>
       </dl>
@@ -141,7 +141,7 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
         Otros servicios de cerrajería
       </h2>
       <p>
-        Además del duplicado de llaves de coche, realizamos apertura de puertas, cambio e instalación de cerraduras y bombines, duplicado de llaves a domicilio (vivienda, portal) y arreglo de ventanas oscilobatientes. Si necesitas un cerrajero urgente 24 horas en {data.nombre}, tenemos página específica:{' '}
+        Además de puertas antiokupas, realizamos apertura de puertas, cambio e instalación de cerraduras y bombines, duplicado de llaves a domicilio y de coche, y arreglo de ventanas oscilobatientes. Si necesitas un cerrajero urgente 24 horas en {data.nombre}, tenemos página específica:{' '}
         <a href={`/cerrajero-urgente-24h/${entry.slug}`} class="text-emerald-400 hover:underline">cerrajero 24h en {data.nombre}</a>. Listado completo en{' '}
         <a href="/servicios" class="text-emerald-400 hover:underline">servicios de cerrajería</a>.
       </p>
@@ -150,7 +150,7 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
     {otrasZonas.length > 0 && (
       <section class="space-y-3">
         <h2 class="text-base font-semibold tracking-tight">
-          Duplicado de llaves de coche en otras zonas
+          Puertas antiokupas en otras zonas
         </h2>
         <ul class="grid gap-2 text-sm sm:grid-cols-2">
           {otrasZonas.map((other) => (
@@ -159,13 +159,13 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
                 href={`${basePath}/${other.slug}`}
                 class="text-slate-300 hover:text-emerald-400 hover:underline"
               >
-                Duplicado llaves coche en {other.data.nombre}
+                Puertas antiokupas en {other.data.nombre}
               </a>
             </li>
           ))}
         </ul>
         <p class="text-xs text-slate-400">
-          <a href={basePath} class="text-emerald-400 hover:underline">Ver duplicado de llaves de coche en Madrid →</a>
+          <a href={basePath} class="text-emerald-400 hover:underline">Ver puertas antiokupas en Madrid →</a>
         </p>
       </section>
     )}

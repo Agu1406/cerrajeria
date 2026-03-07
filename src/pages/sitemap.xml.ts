@@ -10,13 +10,18 @@ export const GET: APIRoute = async () => {
       : 'https://example.com';
 
   const barrios = await getCollection('barrios');
+  const duplicadoBarrios = await getCollection('duplicado-llaves-coche-barrios');
+  const antiokupasBarrios = await getCollection('puertas-antiokupas-barrios');
   const blogPosts = await getCollection('blog', ({ data }) => !data.draft);
 
   const urls = [
     '/',
     '/servicios',
-    ...servicios.filter((s) => s.slug !== 'duplicado-llaves-coche').map((s) => `/servicios/${s.slug}`),
+    ...servicios
+      .filter((s) => s.slug !== 'duplicado-llaves-coche' && s.slug !== 'puertas-antiokupas')
+      .map((s) => `/servicios/${s.slug}`),
     '/duplicado-llaves-coche',
+    '/puertas-antiokupas',
     '/cerrajero-urgente-24h',
     '/blog',
     '/contacto',
@@ -25,7 +30,8 @@ export const GET: APIRoute = async () => {
     '/politica-cookies',
     '/diseno-web',
     ...barrios.map((entry) => `/cerrajero-urgente-24h/${entry.slug}`),
-    ...barrios.map((entry) => `/duplicado-llaves-coche/${entry.slug}`),
+    ...duplicadoBarrios.map((entry) => `/duplicado-llaves-coche/${entry.slug}`),
+    ...antiokupasBarrios.map((entry) => `/puertas-antiokupas/${entry.slug}`),
     ...blogPosts.map((entry) => `/blog/${entry.slug}`),
   ];
 

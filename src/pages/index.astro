@@ -13,9 +13,41 @@ const barriosDestacados: CollectionEntry<'barrios'>[] = featuredSlugs
 
 const reseñas = siteConfig.reseñas;
 const showReseñas = reseñas && reseñas.totalResenas > 0;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Cuánto tardáis en llegar?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Depende de la zona, pero normalmente entre 20 y 40 minutos dentro de la Comunidad de Madrid.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Rompéis siempre la cerradura?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. La prioridad es abrir sin daños; solo se sustituye la cerradura cuando es estrictamente necesario o el cliente lo prefiere.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Trabajáis noches y festivos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí, ofrecemos servicio 24/7 todos los días del año.',
+      },
+    },
+  ],
+};
 ---
 
 <Layout>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="grid gap-10 lg:grid-cols-[1.3fr_minmax(0,1fr)] lg:items-start">
     <div class="space-y-6">
       <div class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-emerald-400">

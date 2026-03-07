@@ -25,8 +25,8 @@ const latestPosts = allBlogPosts
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 
-const title = `Cerrajero urgente 24h en ${data.nombre} | ${siteConfig.telefono}`;
-const description = `Cerrajero urgente 24 horas en ${data.nombre}. Apertura de puertas sin daños, cambios de bombín, a domicilio. Llama al ${siteConfig.telefono}.`;
+const title = `Cerrajeros ${data.nombre} 24 horas | Apertura de puertas · ${siteConfig.telefono}`;
+const description = `Cerrajeros ${data.nombre} 24 horas. Apertura de puertas sin daños, cambio de bombín. Llama al ${siteConfig.telefono}.`;
 const basePath = '/cerrajero-urgente-24h';
 const breadcrumb = [
   { name: 'Inicio', path: '/' },
@@ -35,6 +35,9 @@ const breadcrumb = [
 ];
 const reseñas = siteConfig.reseñas;
 const showReseñas = reseñas && reseñas.totalResenas > 0;
+
+const allBarrios = await getCollection('barrios');
+const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
 ---
 
 <Layout {title} {description} breadcrumb={breadcrumb}>
@@ -50,7 +53,7 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
       Urgencias 24h · {data.nombre}
     </p>
     <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
-      Cerrajero urgente 24 horas en {data.nombre}
+      Cerrajeros en {data.nombre} · 24 horas
     </h1>
     <p class="text-sm text-slate-300 sm:text-base">
       Servicio de cerrajería urgente en {data.nombre} y alrededores. Apertura de puertas sin daños, cambio de
@@ -88,7 +91,7 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
 
     <section class="mt-8 space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        Cerrajero urgente y a domicilio en {data.nombre}
+        Cerrajeros en {data.nombre}: urgente y a domicilio
       </h2>
       <p>
         Servicio de <strong>cerrajero urgente 24 horas</strong> en {data.nombre} y alrededores: apertura de puertas sin daños, cambio de cerraduras y bombines, y arreglo de ventanas. Atendemos a domicilio las 24 horas todos los días del año.
@@ -174,6 +177,29 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
         .
       </p>
     </section>
+
+    {otrasZonas.length > 0 && (
+      <section class="mt-8 space-y-3">
+        <h2 class="text-base font-semibold tracking-tight">
+          Otras zonas donde atendemos
+        </h2>
+        <ul class="grid gap-2 text-sm sm:grid-cols-2">
+          {otrasZonas.map((other) => (
+            <li>
+              <a
+                href={`${basePath}/${other.slug}`}
+                class="text-slate-300 hover:text-emerald-400 hover:underline"
+              >
+                Cerrajero 24h en {other.data.nombre}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="text-xs text-slate-400">
+          <a href={basePath} class="text-emerald-400 hover:underline">Ver todas las zonas →</a>
+        </p>
+      </section>
+    )}
 
     {latestPosts.length > 0 && (
       <section class="mt-10 rounded-xl border border-slate-800 bg-slate-900/40 p-4 sm:p-5">

@@ -90,8 +90,8 @@ html[data-cookie-consent="pending"] .floating-btn {
   flex-shrink: 0;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
-  /* emerald-600 para contraste ≥4.5:1 con blanco (WCAG AA) */
-  background-color: #059669;
+  /* emerald-700 para contraste ≥4.5:1 con blanco (WCAG AA) */
+  background-color: #047857;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.875rem;
@@ -100,7 +100,7 @@ html[data-cookie-consent="pending"] .floating-btn {
   transition: background-color 0.2s;
 }
 .cookie-banner-btn:hover {
-  background-color: #10b981;
+  background-color: #059669;
 }
 @media (min-width: 640px) {
   .cookie-banner {

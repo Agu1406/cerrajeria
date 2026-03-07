@@ -3,7 +3,7 @@ title: "Cómo elegir un cerrajero urgente de confianza"
 description: "Consejos para no llevarte sorpresas cuando necesitas un cerrajero a domicilio: presupuesto previo, certificación y qué preguntar por teléfono."
 pubDate: 2025-03-07
 actualizado: 2026-03-07
-image: "/images/cerrajero-24h-madrid-hero.webp"
+image: "/images/como-elegir-cerrajero-urgente.webp"
 ---
 
 Cuando te quedas fuera de casa o se te rompe la cerradura, lo último que quieres es perder tiempo con profesionales que no inspiran confianza. Aquí van unas pautas que te ayudan a elegir bien.

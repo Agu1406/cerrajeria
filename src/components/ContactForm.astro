@@ -24,6 +24,7 @@ const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no 
     method="post"
     data-barrio={barrio}
   >
+    <input type="hidden" name="formTitle" value={title} />
     {barrio && (
       <input type="hidden" name="barrio" value={barrio} />
     )}

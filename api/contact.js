@@ -60,6 +60,7 @@ export default {
     const email = (body.email || '').trim();
     const mensaje = (body.mensaje || '').trim();
     const barrio = (body.barrio || '').trim();
+    const formTitle = (body.formTitle || '').trim() || 'Formulario de contacto';
 
     if (!email || !mensaje) {
       return jsonResponse({ error: true, message: 'Indica correo y mensaje' }, 400);
@@ -67,8 +68,8 @@ export default {
 
     const quien = nombre || email;
     const subject = barrio
-      ? `Consulta cerrajería - ${barrio} (${quien})`
-      : `Consulta contacto (${quien})`;
+      ? `${barrio} · ${formTitle} (${quien})`
+      : `${formTitle} (${quien})`;
     const html = `
       ${nombre ? `<p><strong>Nombre:</strong> ${escapeHtml(nombre)}</p>` : ''}
       ${movil ? `<p><strong>Móvil:</strong> ${escapeHtml(movil)}</p>` : ''}

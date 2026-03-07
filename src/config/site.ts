@@ -3,6 +3,8 @@ export const siteConfig = {
   telefono: '659 81 05 70',
   telefonoHref: 'tel:+34659810570',
   whatsappUrl: 'https://wa.me/34659810570',
+  /** Mensaje que se abre al pulsar WhatsApp. Vacío = sin mensaje prefijado. */
+  whatsappMessage: 'Hola, os escribo desde la web. Necesito un cerrajero urgente.',
   ciudadPrincipal: 'Madrid',
   baseUrl: 'https://loscerrajerosmadrid.es',
   titleHome: 'Cerrajero urgente Madrid 24 horas | Cerrajeros urgentes, apertura de puertas',

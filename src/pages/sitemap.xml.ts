@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { siteConfig } from '../config/site';
+import { servicios } from '../data/servicios';
 import { getCollection } from 'astro:content';
 
 export const GET: APIRoute = async () => {
@@ -14,6 +15,7 @@ export const GET: APIRoute = async () => {
   const urls = [
     '/',
     '/servicios',
+    ...servicios.filter((s) => s.slug !== 'duplicado-llaves-coche').map((s) => `/servicios/${s.slug}`),
     '/duplicado-llaves-coche',
     '/cerrajero-urgente-24h',
     '/blog',

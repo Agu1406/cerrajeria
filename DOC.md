@@ -206,7 +206,12 @@ cerrajeria/
 │   │   └── servicios.ts         # Lista de servicios de cerrajería
 │   ├── pages/
 │   │   ├── index.astro          # Home (incl. sección reseñas si configuradas)
-│   │   ├── servicios.astro      # Página de servicios
+│   │   ├── servicios.astro      # Listado de servicios (cada uno enlaza a su página o a duplicado-llaves-coche)
+│   │   ├── servicios/
+│   │   │   └── [servicio].astro # Una página por servicio (apertura-puertas, cambio-cerradura, etc.); duplicado-llaves-coche tiene sección propia
+│   │   ├── duplicado-llaves-coche/
+│   │   │   ├── index.astro      # Duplicado llaves coche en Madrid + listado de todos los barrios
+│   │   │   └── [barrio].astro   # Duplicado llaves coche por barrio (plantilla distinta a cerrajero-urgente-24h)
 │   │   ├── contacto.astro       # Contacto + formulario + bloque "Dónde estamos" (Maps)
 │   │   ├── blog/
 │   │   │   ├── index.astro      # Listado de entradas del blog
@@ -215,7 +220,7 @@ cerrajeria/
 │   │   │   ├── index.astro      # Listado de zonas (barrios y distritos)
 │   │   │   └── [barrio].astro   # Plantilla por zona (+ últimas entradas blog + formulario)
 │   │   ├── 404.astro
-│   │   ├── sitemap.xml.ts       # Sitemap (páginas fijas, cerrajero-urgente-24h, blog)
+│   │   ├── sitemap.xml.ts       # Sitemap: fijas, /servicios, /servicios/[slug], /duplicado-llaves-coche, barrios (cerrajero + llaves coche), blog
 │   │   └── robots.txt.ts
 │   └── styles/
 │       └── global.css           # Tailwind + tema oscuro (único)
@@ -244,6 +249,14 @@ cerrajeria/
     - Listado de entradas del blog (ordenadas por fecha, más recientes primero).
 - `/blog/[slug]` → `src/pages/blog/[slug].astro`
     - Página de cada entrada (título, descripción, imagen destacada opcional, contenido Markdown).
+- `/servicios` → `src/pages/servicios.astro`
+    - Listado de servicios por categoría; cada servicio enlaza a su página o (duplicado llaves coche) a `/duplicado-llaves-coche`.
+- `/servicios/[servicio]` → `src/pages/servicios/[servicio].astro`
+    - Una página por servicio (ej. `/servicios/apertura-puertas`, `/servicios/cambio-cerradura`). No se genera para `duplicado-llaves-coche` (tiene sección propia). Incluye bloque "Atendemos en toda la Comunidad" con enlace a barrios.
+- `/duplicado-llaves-coche` → `src/pages/duplicado-llaves-coche/index.astro`
+    - Duplicado de llaves de coche en Madrid; listado de todos los barrios con enlaces a `/duplicado-llaves-coche/[barrio]`.
+- `/duplicado-llaves-coche/[barrio]` → `src/pages/duplicado-llaves-coche/[barrio].astro`
+    - Plantilla específica para "duplicado llaves coche" por zona (contenido y estructura distintos a cerrajero-urgente-24h); usa `barrios` para datos y `llegadaTexto`.
 - `/cerrajero-urgente-24h` → `src/pages/cerrajero-urgente-24h/index.astro`
     - Listado de todas las zonas (barrios y distritos) con enlaces a cada página.
 - `/cerrajero-urgente-24h/[barrio]` → `src/pages/cerrajero-urgente-24h/[barrio].astro`
@@ -275,7 +288,7 @@ cerrajeria/
 
 - **Barrios**: `src/content/barrios/*.md` (Content Collections). Schema en `src/content/config.ts`. Frontmatter: `nombre`, `introExtra`, `llegadaTexto`, `comoTrabajamos`, `faqLlegada`, `faqPrecio`, `faqFestivos`. Slug = nombre del archivo.
 - **Blog**: `src/content/blog/*.md` (Content Collections). Schema: `title`, `description`, `pubDate`, `image` (opcional), `draft` (opcional). Guía de publicación: `BLOG.md` en la raíz.
-- **Servicios**: `src/data/servicios.ts` (lista de servicios para listados).
+- **Servicios**: `src/data/servicios.ts` — lista con `slug`, `nombre`, `categoria` (aperturas, cerraduras, llaves, ventanas, otras), `descripcionCorta`. Cada servicio (salvo duplicado-llaves-coche) tiene página en `/servicios/[slug]`; duplicado-llaves-coche tiene sección propia `/duplicado-llaves-coche` con índice y página por barrio.
 - **Sitio**: `src/config/site.ts` — `nombreComercial`, `telefono`, `telefonoHref`, `whatsappUrl`, `whatsappMessage` (mensaje predefinido al abrir WhatsApp; se añade "Escribo desde: [url]"), `email`, `nif`, `ciudadPrincipal`, `baseUrl`, `titleHome`, `descriptionHome`; opcionales: `direccion` (calle, localidad, codigoPostal), `googleMapsUrl`, `reseñas`, `desarrollador`. Aviso legal, privacidad y schema LocalBusiness usan estos datos (un solo lugar para cambiar teléfono, correo, NIF, dirección).
 
 | [**Siguiente**](#4-preparación-del-entorno) | [**Índice**](#índice-de-contenido) | [**Anterior**](#3-estructura-de-archivos-y-carpetas) |
@@ -2702,4 +2715,30 @@ El **schema LocalBusiness** en Layout usa ahora `siteConfig` para nombre, url, t
 
 - **Footer**: enlace "Mapa del sitio" → `/sitemap.xml`.
 - **Home**: schema FAQPage (JSON-LD) con las tres preguntas frecuentes para optar a resultados enriquecidos.
+
+---
+
+## Actualización DOC – Servicios: una página por servicio y sección duplicado llaves coche
+
+Cambios documentados en este documento (secciones 3 y Bitácora):
+
+### Servicios con página propia
+
+- **`/servicios/[servicio].astro`**: ruta dinámica que genera una página por cada servicio en `src/data/servicios.ts`, **excepto** `duplicado-llaves-coche` (que tiene sección propia).
+- **URLs generadas**: `/servicios/apertura-puertas`, `/servicios/apertura-vehiculos`, `/servicios/cambio-cerradura`, `/servicios/instalacion-cerradura`, `/servicios/bombines-seguridad`, `/servicios/duplicado-llaves-domicilio`, `/servicios/ventanas-oscilobatientes`, `/servicios/ventanas-osciloparalelas`, `/servicios/ajuste-puertas`.
+- **Contenido de cada página**: migas (Inicio / Servicios / nombre), H1 "{Servicio} en Madrid", descripción, CTA, bloque "Atendemos en toda la Comunidad de Madrid" con enlace a "Ver barrios y zonas donde atendemos" (`/cerrajero-urgente-24h`), bloque "Otros servicios" con enlaces a otros servicios y a `/servicios`.
+
+### Sección duplicado de llaves de coche
+
+- **`/duplicado-llaves-coche`** (índice): página con contenido propio (cuándo necesitas copia, llaves con chip, precio, FAQs) y **listado de todos los barrios** con enlaces a `/duplicado-llaves-coche/[barrio]`.
+- **`/duplicado-llaves-coche/[barrio].astro`**: una página por barrio con **plantilla distinta** a la de cerrajero urgente; usa `llegadaTexto` del contenido de barrios para un párrafo único por zona. Ataca keywords tipo "duplicado llaves coche [barrio]".
+- **Acceso**: desde `/servicios`, el servicio "Duplicado de llaves de coche" enlaza a `/duplicado-llaves-coche` con texto "Ver zonas donde está disponible →". El resto de servicios enlazan a `/servicios/[slug]` con "Más información →".
+
+### Datos de servicios
+
+- En `servicios.ts` se añadieron: **Duplicado de llaves a domicilio**, **Duplicado de llaves de coche**, y la categoría **llaves**. Todas las tarjetas de `/servicios` son enlaces a su página correspondiente.
+
+### Sitemap
+
+- Incluye: `/servicios`, todas las URLs `/servicios/[slug]` (las 9 anteriores), `/duplicado-llaves-coche`, y todas las `/duplicado-llaves-coche/[barrio]` (una por barrio).
 

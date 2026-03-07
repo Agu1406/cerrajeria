@@ -44,25 +44,17 @@ const categorias = [
           {servicios
             .filter((s) => s.categoria === categoria.id)
             .map((servicio) => {
-              const enlaceServicio = servicio.slug === 'duplicado-llaves-coche' ? '/duplicado-llaves-coche' : null;
+              const href = servicio.slug === 'duplicado-llaves-coche' ? '/duplicado-llaves-coche' : `/servicios/${servicio.slug}`;
+              const textoEnlace = servicio.slug === 'duplicado-llaves-coche' ? 'Ver zonas donde está disponible →' : 'Más información →';
               return (
                 <li class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
-                  {enlaceServicio ? (
-                    <a href={enlaceServicio} class="block hover:border-slate-700">
-                      <h3 class="font-semibold text-emerald-400 hover:underline">{servicio.nombre}</h3>
-                      <p class="mt-1 text-xs text-slate-400">
-                        {servicio.descripcionCorta}
-                      </p>
-                      <p class="mt-2 text-xs text-emerald-400/80">Ver zonas donde está disponible →</p>
-                    </a>
-                  ) : (
-                    <>
-                      <h3 class="font-semibold">{servicio.nombre}</h3>
-                      <p class="mt-1 text-xs text-slate-400">
-                        {servicio.descripcionCorta}
-                      </p>
-                    </>
-                  )}
+                  <a href={href} class="block hover:border-slate-700">
+                    <h3 class="font-semibold text-emerald-400 hover:underline">{servicio.nombre}</h3>
+                    <p class="mt-1 text-xs text-slate-400">
+                      {servicio.descripcionCorta}
+                    </p>
+                    <p class="mt-2 text-xs text-emerald-400/80">{textoEnlace}</p>
+                  </a>
                 </li>
               );
             })}

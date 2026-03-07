@@ -1,0 +1,109 @@
+---
+import Layout from '../../components/Layout.astro';
+import { siteConfig } from '../../config/site';
+import { servicios } from '../../data/servicios';
+
+export async function getStaticPaths() {
+  return servicios
+    .filter((s) => s.slug !== 'duplicado-llaves-coche')
+    .map((servicio) => ({
+      params: { servicio: servicio.slug },
+      props: { servicio },
+    }));
+}
+
+type Props = {
+  servicio: (typeof servicios)[number];
+};
+
+const { servicio } = Astro.props as Props;
+const title = `${servicio.nombre} en Madrid | ${siteConfig.nombreComercial}`;
+const description = `${servicio.nombre} en la Comunidad de Madrid. ${servicio.descripcionCorta} Llama al ${siteConfig.telefono}.`;
+const basePath = '/servicios';
+const breadcrumb = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Servicios', path: basePath },
+  { name: servicio.nombre, path: `${basePath}/${servicio.slug}` },
+];
+
+const otrosServicios = servicios.filter((s) => s.slug !== servicio.slug && s.slug !== 'duplicado-llaves-coche').slice(0, 4);
+---
+
+<Layout {title} {description} breadcrumb={breadcrumb}>
+  <article class="space-y-8">
+    <header class="space-y-4">
+      <nav class="text-xs text-slate-400" aria-label="Miga de pan">
+        <a href="/" class="hover:text-emerald-400">Inicio</a>
+        <span class="mx-1">/</span>
+        <a href={basePath} class="hover:text-emerald-400">Servicios</a>
+        <span class="mx-1">/</span>
+        <span class="text-slate-400">{servicio.nombre}</span>
+      </nav>
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+        {servicio.nombre} en Madrid
+      </h1>
+      <p class="text-sm text-slate-300 sm:text-base max-w-2xl">
+        {servicio.descripcionCorta} Trabajamos en toda la Comunidad de Madrid y nos desplazamos a domicilio cuando hace falta.
+      </p>
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a
+          href={siteConfig.telefonoHref}
+          class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
+        >
+          📞 Llamar · {siteConfig.telefono}
+        </a>
+        <p class="text-xs text-slate-400">
+          Presupuesto sin compromiso. Urgencias 24 horas.
+        </p>
+      </div>
+    </header>
+
+    <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 space-y-3">
+      <h2 class="text-lg font-semibold tracking-tight">
+        Atendemos en toda la Comunidad de Madrid
+      </h2>
+      <p class="text-sm text-slate-300">
+        Este servicio está disponible en los mismos barrios y zonas donde prestamos cerrajería urgente: Madrid capital (21 distritos), Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas, Pinto y resto de municipios. Puedes consultar zonas, tiempos de llegada y teléfono de urgencias en la página de barrios.
+      </p>
+      <p>
+        <a href="/cerrajero-urgente-24h" class="font-semibold text-emerald-400 hover:underline">
+          Ver barrios y zonas donde atendemos →
+        </a>
+      </p>
+    </section>
+
+    <section class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight mb-2">
+        Otros servicios de cerrajería
+      </h2>
+      <p class="mb-3">
+        Si necesitas otro trabajo (apertura de puertas, cambio de cerradura, duplicado de llaves, arreglo de ventanas, etc.), tenemos el listado completo en la página de servicios. Para urgencias 24 horas por zona, consulta los barrios.
+      </p>
+      <ul class="flex flex-wrap gap-x-2 gap-y-1">
+        {otrosServicios.map((s, i) => (
+          <li class="inline">
+            <a href={`${basePath}/${s.slug}`} class="text-emerald-400 hover:underline">
+              {s.nombre}
+            </a>
+            {i < otrosServicios.length - 1 && <span class="text-slate-500"> · </span>}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-2">
+        <a href={basePath} class="text-emerald-400 hover:underline">Ver todos los servicios →</a>
+      </p>
+    </section>
+
+    <div class="flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-4">
+      <p class="text-sm text-slate-300">
+        ¿Necesitas presupuesto o es una urgencia? Llámanos.
+      </p>
+      <a
+        href={siteConfig.telefonoHref}
+        class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
+      >
+        📞 {siteConfig.telefono}
+      </a>
+    </div>
+  </article>
+</Layout>

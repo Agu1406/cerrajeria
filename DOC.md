@@ -2742,3 +2742,8 @@ Cambios documentados en este documento (secciones 3 y Bitácora):
 
 - Incluye: `/servicios`, todas las URLs `/servicios/[slug]` (las 9 anteriores), `/duplicado-llaves-coche`, y todas las `/duplicado-llaves-coche/[barrio]` (una por barrio).
 
+### Repaso del día (mejoras y consideraciones)
+
+- **Mejoras**: Más rutas útiles para SEO (servicio + Madrid, duplicado llaves coche + barrio); contenido diferenciado por intención; acceso claro desde Servicios a cada servicio y a zonas; sitemap actualizado.
+- **Consideraciones**: Mantener contenido único en cada plantilla; no multiplicar "una página por servicio por barrio" para el resto de servicios para evitar contenido fino; revisar en Search Console qué URLs reciben impresiones con el tiempo.
+

@@ -1,7 +1,7 @@
 export type Servicio = {
   slug: string;
   nombre: string;
-  categoria: 'aperturas' | 'cerraduras' | 'ventanas' | 'otras';
+  categoria: 'aperturas' | 'cerraduras' | 'llaves' | 'ventanas' | 'otras';
   descripcionCorta: string;
 };
 
@@ -36,6 +36,18 @@ export const servicios: Servicio[] = [
     nombre: 'Bombines de alta seguridad',
     categoria: 'cerraduras',
     descripcionCorta: 'Montaje de bombines antibumping, antiganzúa y antitaladro con llaves patentadas.',
+  },
+  {
+    slug: 'duplicado-llaves-domicilio',
+    nombre: 'Duplicado de llaves a domicilio',
+    categoria: 'llaves',
+    descripcionCorta: 'Copia de llaves de vivienda, portal o negocio; nos desplazamos a tu domicilio con la máquina.',
+  },
+  {
+    slug: 'duplicado-llaves-coche',
+    nombre: 'Duplicado de llaves de coche',
+    categoria: 'llaves',
+    descripcionCorta: 'Copia de llaves de coche y mandos; llaves de reserva y sustitución cuando se pierde la original.',
   },
   {
     slug: 'ventanas-oscilobatientes',

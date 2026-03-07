@@ -27,21 +27,25 @@ const defaultOgImage = `${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.w
 const imageForSocial = ogImage ?? defaultOgImage;
 
 const reseñas = siteConfig.reseñas;
+const direccion = siteConfig.direccion;
 const schemaLocalBusiness: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'cerrajerosmadrid',
-  url: 'https://loscerrajerosmadrid.es',
-  telephone: '659 81 05 70',
+  name: siteConfig.nombreComercial,
+  url: siteConfig.baseUrl,
+  telephone: siteConfig.telefono,
+  ...(siteConfig.email && { email: siteConfig.email }),
   areaServed: { '@type': 'AdministrativeArea', name: 'Comunidad de Madrid' },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Getafe',
-    addressRegion: 'Madrid',
-    addressCountry: 'ES',
-    streetAddress: 'Calle Progreso 2, Puerta 2, Oficina 825',
-    postalCode: '28906',
-  },
+  ...(direccion && {
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: direccion.localidad,
+      addressRegion: siteConfig.ciudadPrincipal,
+      addressCountry: 'ES',
+      streetAddress: direccion.calle,
+      postalCode: direccion.codigoPostal,
+    },
+  }),
   openingHoursSpecification: [{
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -72,6 +76,12 @@ if (reseñas && reseñas.totalResenas > 0) {
     }));
   }
 }
+
+const whatsappHref = siteConfig.whatsappMessage
+  ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(
+      siteConfig.whatsappMessage + ' Escribo desde: ' + Astro.url.href
+    )}`
+  : siteConfig.whatsappUrl;
 ---
 
 <html lang="es" data-theme="dark">
@@ -123,12 +133,12 @@ if (reseñas && reseñas.totalResenas > 0) {
     </script>
   </head>
   <body class="min-h-screen">
-    <Header />
+    <Header whatsappHref={whatsappHref} />
     <main class="mx-auto max-w-5xl px-4 py-10 sm:py-14">
       <slot />
     </main>
     <Footer />
-    <CallButton />
+    <CallButton whatsappHref={whatsappHref} />
     <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
       <p class="cookie-banner-text">
         Usamos cookies técnicas necesarias para el funcionamiento de la web. Si continúas navegando, aceptas su uso.

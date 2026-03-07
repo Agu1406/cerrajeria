@@ -29,9 +29,9 @@ const description = `Política de privacidad y protección de datos personales d
       <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
         <li><span class="font-semibold">Responsable:</span> {siteConfig.nombreComercial}</li>
         <li><span class="font-semibold">Teléfono:</span> {siteConfig.telefono}</li>
-        <li><span class="font-semibold">Correo electrónico:</span> contacto@loscerrajerosmadrid.es</li>
-        <li><span class="font-semibold">Domicilio:</span> Calle Progreso 2, Puerta 2, Oficina 825, 28906 Getafe (Madrid)</li>
-        <li><span class="font-semibold">NIF/CIF:</span> Y7574386V</li>
+        <li><span class="font-semibold">Correo electrónico:</span> {siteConfig.email}</li>
+        <li><span class="font-semibold">Domicilio:</span> {siteConfig.direccion ? `${siteConfig.direccion.calle}, ${siteConfig.direccion.codigoPostal} ${siteConfig.direccion.localidad} (${siteConfig.ciudadPrincipal})` : '—'}</li>
+        <li><span class="font-semibold">NIF/CIF:</span> {siteConfig.nif}</li>
       </ul>
       <p class="text-[11px] text-slate-500">
         Sustituye los campos entre corchetes por tus datos reales antes de usar esta política como documento definitivo.
@@ -110,7 +110,7 @@ const description = `Política de privacidad y protección de datos personales d
         Puedes ejercitar en cualquier momento tus derechos de acceso, rectificación, supresión, oposición, limitación
         del tratamiento, portabilidad y derecho a no ser objeto de decisiones basadas únicamente en tratamiento
         automatizado, enviando una solicitud junto con una copia de tu documento de identidad a:
-        <span class="font-semibold">contacto@loscerrajerosmadrid.es</span>.
+        <span class="font-semibold">{siteConfig.email}</span>.
       </p>
       <p class="text-xs text-slate-400 sm:text-sm">
         También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos

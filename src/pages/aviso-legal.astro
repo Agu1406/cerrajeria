@@ -30,13 +30,13 @@ const description = `Aviso legal e información del prestador de servicios de ${
         <li><span class="font-semibold">Nombre comercial:</span> {siteConfig.nombreComercial}</li>
         <li><span class="font-semibold">Actividad:</span> servicios de cerrajería 24 horas en {siteConfig.ciudadPrincipal} y alrededores.</li>
         <li><span class="font-semibold">Teléfono de contacto:</span> {siteConfig.telefono}</li>
-        <li><span class="font-semibold">Correo electrónico:</span> contacto@loscerrajerosmadrid.es</li>
-        <li><span class="font-semibold">Domicilio:</span> Calle Progreso 2, Puerta 2, Oficina 825, 28906 Getafe (Madrid)</li>
-        <li><span class="font-semibold">NIF/CIF:</span> Y7574386V</li>
+        <li><span class="font-semibold">Correo electrónico:</span> {siteConfig.email}</li>
+        <li><span class="font-semibold">Domicilio:</span> {siteConfig.direccion ? `${siteConfig.direccion.calle}, ${siteConfig.direccion.codigoPostal} ${siteConfig.direccion.localidad} (${siteConfig.ciudadPrincipal})` : '—'}</li>
+        <li><span class="font-semibold">NIF/CIF:</span> {siteConfig.nif}</li>
       </ul>
       <p class="text-xs text-slate-400 sm:text-sm">
         A disposición del consumidor existe hoja de reclamaciones. Puedes solicitarla por correo electrónico a
-        contacto@loscerrajerosmadrid.es o por escrito a la dirección indicada.
+        {siteConfig.email} o por escrito a la dirección indicada.
       </p>
       <p class="text-[11px] text-slate-500">
         Sustituye los campos entre corchetes por tus datos fiscales reales antes de poner esta página en producción.

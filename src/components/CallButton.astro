@@ -1,9 +1,17 @@
 ---
 import { siteConfig } from '../config/site';
 
-const whatsappHref = siteConfig.whatsappMessage
-  ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`
-  : siteConfig.whatsappUrl;
+interface Props {
+  /** Si Layout lo pasa, incluye ya "Escribo desde: [url]". */
+  whatsappHref?: string;
+}
+
+const { whatsappHref: whatsappHrefProp } = Astro.props;
+const whatsappHref =
+  whatsappHrefProp ??
+  (siteConfig.whatsappMessage
+    ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`
+    : siteConfig.whatsappUrl);
 ---
 
 <a

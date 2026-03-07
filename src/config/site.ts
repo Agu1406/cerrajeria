@@ -28,11 +28,22 @@ export const siteConfig = {
    * Si es null, no se muestra la sección de reseñas ni aggregateRating.
    */
   reseñas: {
-    valoracionMedia: 4.9,
-    totalResenas: 0, // actualiza con el número real de reseñas en Google
+    valoracionMedia: 4.5,
+    totalResenas: 2,
     /** Reseñas que quieras mostrar (cópialas de tu perfil de Google). Fecha en formato YYYY-MM-DD. */
     reseñas: [
-      // { autor: 'Nombre', texto: 'Texto de la reseña...', fecha: '2025-02-01', valoracion: 5 },
+      {
+        autor: 'Vanessa Vidal',
+        texto: 'La única pega fue que tardaron más de lo que esperaba en llegar.',
+        fecha: '2026-03-06',
+        valoracion: 4,
+      },
+      {
+        autor: 'ronny bernal',
+        texto: 'Excelente atención, muy rápidos y atentos!',
+        fecha: '2026-03-06',
+        valoracion: 5,
+      },
     ],
   } as {
     valoracionMedia: number;

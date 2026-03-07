@@ -50,11 +50,13 @@ export const siteConfig = {
     totalResenas: number;
     reseñas: Array<{ autor: string; texto: string; fecha: string; valoracion: number }>;
   } | null,
-  /** Opcional: crédito al diseñador/desarrollador en el footer. Pon null para ocultar el enlace "Diseño web". */
+  /** Opcional: crédito al diseñador/desarrollador en el footer y en /diseno-web. Pon null para ocultar el enlace "Diseño web". */
   desarrollador: {
-    nombre: 'Tu nombre o estudio',
-    url: '', // ej. 'https://tupagina.com' o 'mailto:tu@email.com'
+    nombre: 'Agustín',
+    url: 'https://www.linkedin.com/in/agustin6041/',
     texto: 'Diseño y desarrollo web',
-  } as { nombre: string; url?: string; texto?: string } | null,
+    telefono: '691 64 36 61',
+    email: 'agustin6041@outlook.com',
+  } as { nombre: string; url?: string; texto?: string; telefono?: string; email?: string } | null,
 };
 

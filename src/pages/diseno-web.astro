@@ -17,24 +17,43 @@ const dev = siteConfig.desarrollador;
       mejorar tu página web, puedes contactar al responsable del diseño y desarrollo.
     </p>
     {dev?.nombre ? (
-      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-5">
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-5 space-y-3">
         <p class="font-semibold text-slate-200">
           {dev.url ? (
-            <a href={dev.url} class="text-emerald-400 hover:underline" rel="noopener noreferrer">
+            <a href={dev.url} class="text-emerald-400 hover:underline" target="_blank" rel="noopener noreferrer">
               {dev.nombre}
             </a>
           ) : (
             dev.nombre
           )}
         </p>
-        {dev.texto && <p class="mt-1 text-xs text-slate-500">{dev.texto}</p>}
-        {dev.url && (
-          <p class="mt-2">
-            <a href={dev.url} class="text-emerald-400 hover:underline" rel="noopener noreferrer">
-              Contactar para diseños o páginas web
-            </a>
-          </p>
-        )}
+        {dev.texto && <p class="text-xs text-slate-400">{dev.texto}</p>}
+        <ul class="space-y-1.5 text-sm text-slate-300">
+          {dev.url && (
+            <li>
+              <a href={dev.url} class="text-emerald-400 hover:underline" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+            </li>
+          )}
+          {dev.telefono && (
+            <li>
+              <a href={`tel:+34${dev.telefono.replace(/\s/g, '')}`} class="text-emerald-400 hover:underline">
+                {dev.telefono}
+              </a>
+            </li>
+          )}
+          {dev.email && (
+            <li>
+              <a href={`mailto:${dev.email}`} class="text-emerald-400 hover:underline break-all">
+                {dev.email}
+              </a>
+            </li>
+          )}
+        </ul>
+        <p class="pt-1 text-xs text-slate-500">
+          Si quieres una web como esta o necesitas diseño o desarrollo a medida, contacta sin compromiso.
+        </p>
       </div>
     ) : (
       <p class="text-slate-500">

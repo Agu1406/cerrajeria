@@ -1,8 +1,8 @@
 ---
 title: "Cómo elegir un cerrajero urgente de confianza"
 description: "Consejos para no llevarte sorpresas cuando necesitas un cerrajero a domicilio: presupuesto previo, certificación y qué preguntar por teléfono."
-pubDate: 2025-03-07
-actualizado: 2026-03-07
+pubDate: 2025-03-06
+actualizado: 2026-03-06
 image: "/images/como-elegir-cerrajero-urgente.webp"
 ---
 

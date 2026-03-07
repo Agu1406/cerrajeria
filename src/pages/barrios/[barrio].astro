@@ -25,17 +25,31 @@ const latestPosts = allBlogPosts
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 
-const title = `Cerrajero 24h en ${data.nombre} | ${siteConfig.nombreComercial}`;
-const description = `Cerrajero urgente 24 horas en ${data.nombre} (${siteConfig.ciudadPrincipal}). Apertura de puertas sin daños, cambios de bombín y asistencia rápida. Llama al ${siteConfig.telefono}.`;
+const title = `Cerrajero urgente 24h en ${data.nombre} | ${siteConfig.telefono}`;
+const description = `Cerrajero urgente 24 horas en ${data.nombre}. Apertura de puertas sin daños, cambios de bombín, a domicilio. Llama al ${siteConfig.telefono}.`;
+const breadcrumb = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Barrios', path: '/barrios' },
+  { name: data.nombre, path: `/barrios/${entry.slug}` },
+];
+const reseñas = siteConfig.reseñas;
+const showReseñas = reseñas && reseñas.totalResenas > 0;
 ---
 
-<Layout {title} {description}>
+<Layout {title} {description} breadcrumb={breadcrumb}>
   <section class="space-y-6">
+    <nav class="text-xs text-slate-500" aria-label="Miga de pan">
+      <a href="/" class="hover:text-emerald-400">Inicio</a>
+      <span class="mx-1">/</span>
+      <a href="/barrios" class="hover:text-emerald-400">Barrios</a>
+      <span class="mx-1">/</span>
+      <span class="text-slate-400">{data.nombre}</span>
+    </nav>
     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
       Urgencias 24h · {data.nombre}
     </p>
     <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
-      Cerrajeros 24 horas en {data.nombre}
+      Cerrajero urgente 24 horas en {data.nombre}
     </h1>
     <p class="text-sm text-slate-300 sm:text-base">
       Servicio de cerrajería urgente en {data.nombre} y alrededores. Apertura de puertas sin daños, cambio de
@@ -56,6 +70,29 @@ const description = `Cerrajero urgente 24 horas en ${data.nombre} (${siteConfig.
         {data.llegadaTexto}
       </p>
     </div>
+
+    {showReseñas && (
+      <div class="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm">
+        <span class="flex items-center gap-1 text-slate-200" aria-label={`Valoración: ${reseñas.valoracionMedia} de 5`}>
+          {[1, 2, 3, 4, 5].map((i) => (
+            <span class={i <= Math.round(reseñas.valoracionMedia) ? 'text-amber-400' : 'text-slate-600'}>★</span>
+          ))}
+        </span>
+        <span class="text-slate-400">{reseñas.valoracionMedia} · {reseñas.totalResenas} reseñas en Google</span>
+        {siteConfig.googleMapsUrl && (
+          <a href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">Ver reseñas →</a>
+        )}
+      </div>
+    )}
+
+    <section class="mt-8 space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        Cerrajero urgente y a domicilio en {data.nombre}
+      </h2>
+      <p>
+        Servicio de <strong>cerrajero urgente 24 horas</strong> en {data.nombre} y alrededores: apertura de puertas sin daños, cambio de cerraduras y bombines, y arreglo de ventanas. Atendemos a domicilio las 24 horas todos los días del año.
+      </p>
+    </section>
 
     <section class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
@@ -162,6 +199,18 @@ const description = `Cerrajero urgente 24 horas en ${data.nombre} (${siteConfig.
         </p>
       </section>
     )}
+
+    <div class="mt-10 flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-4">
+      <p class="text-sm text-slate-300">
+        ¿Urgencia ahora? Llámanos y te atendemos en minutos.
+      </p>
+      <a
+        href={siteConfig.telefonoHref}
+        class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
+      >
+        📞 {siteConfig.telefono}
+      </a>
+    </div>
 
     <section class="mt-10">
       <h2 class="mb-3 text-lg font-semibold tracking-tight">

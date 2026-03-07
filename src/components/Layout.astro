@@ -11,6 +11,8 @@ type Props = {
   noindex?: boolean;
   /** URL completa de la imagen para redes (og:image). Si no se pasa, se usa la imagen por defecto. */
   ogImage?: string;
+  /** Breadcrumb para schema (ej. [{ name: 'Inicio', path: '/' }, { name: 'Barrios', path: '/barrios' }, { name: 'Las Rozas', path: '/barrios/las-rozas' }]). */
+  breadcrumb?: Array<{ name: string; path: string }>;
 };
 
 const {
@@ -18,6 +20,7 @@ const {
   description = siteConfig.descriptionHome,
   noindex = false,
   ogImage,
+  breadcrumb,
 } = Astro.props as Props;
 
 const defaultOgImage = `${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.webp`;
@@ -96,6 +99,18 @@ if (reseñas && reseñas.totalResenas > 0) {
     <title>{title}</title>
     {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && (
       <script type="application/ld+json" set:html={JSON.stringify(schemaLocalBusiness)} />
+    )}
+    {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && breadcrumb && breadcrumb.length > 0 && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumb.map((item, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: item.name,
+          item: `${siteConfig.baseUrl}${item.path}`,
+        })),
+      })} />
     )}
     <script is:inline>
       (function() {

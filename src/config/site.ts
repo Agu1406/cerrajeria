@@ -5,9 +5,9 @@ export const siteConfig = {
   whatsappUrl: 'https://wa.me/34659810570',
   ciudadPrincipal: 'Madrid',
   baseUrl: 'https://loscerrajerosmadrid.es',
-  titleHome: 'Cerrajero 24 horas en Madrid | cerrajerosmadrid',
+  titleHome: 'Cerrajero 24 horas en Madrid | Cerrajeros urgentes, apertura de puertas',
   descriptionHome:
-    'Cerrajero 24 horas en Madrid. Apertura de puertas sin daños, cambios de bombín y urgencias rápidas en toda la Comunidad de Madrid. Llama ahora y hablamos en minutos.',
+    'Cerrajero 24 horas y cerrajeros urgentes en Madrid. Apertura de puertas sin daños, cambio de bombín. Toda la Comunidad. Llama ahora.',
   /**
    * Dirección para mostrar en contacto y en "Cómo llegar".
    * Si no pones nada, no se muestra el bloque de ubicación.

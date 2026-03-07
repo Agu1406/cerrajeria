@@ -77,9 +77,10 @@ if (reseñas && reseñas.totalResenas > 0) {
   }
 }
 
+const pageUrl = `${siteConfig.baseUrl.replace(/\/$/, '')}${Astro.url.pathname}`;
 const whatsappHref = siteConfig.whatsappMessage
   ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(
-      siteConfig.whatsappMessage + ' Escribo desde: ' + Astro.url.href
+      siteConfig.whatsappMessage + ' Escribo desde: ' + pageUrl
     )}`
   : siteConfig.whatsappUrl;
 ---

@@ -1,5 +1,11 @@
 ---
 nombre: Retiro
-intro: En Retiro realizamos duplicado de llaves de coche y mandos a domicilio. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
-llegadaTexto: A Retiro llegamos normalmente en 20–40 minutos desde que confirmamos la cita. Te damos un presupuesto orientativo por teléfono.
+intro: >
+  En Retiro damos servicio de duplicado de llaves de coche y mandos en Pacífico, Adelfas, Estrella,
+  Ibiza, Jerónimos y Niño Jesús. Bloques antiguos y edificios renovados; nos coordinamos para
+  aparcamiento o garaje. Llave de reserva o sustitución para la mayoría de marcas y modelos.
+llegadaTexto: >
+  Hasta Retiro el tiempo habitual de llegada es de 15–25 minutos desde que confirmamos. La M-30 y
+  Menéndez Pelayo pueden congestionarse en hora punta; por la noche el desplazamiento suele ser más corto.
+  Te damos presupuesto orientativo por teléfono.
 ---

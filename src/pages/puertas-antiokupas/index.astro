@@ -1,5 +1,6 @@
 ---
 import Layout from '../../components/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection } from 'astro:content';
 
@@ -168,5 +169,12 @@ const barrios = (await getCollection('puertas-antiokupas-barrios')).sort((a, b) 
         📞 {siteConfig.telefono}
       </a>
     </div>
+
+    <section class="mt-8">
+      <ContactForm
+        title="Solicitar presupuesto o consulta"
+        subtitle="Para puertas antiokupas: indícanos tipo de vivienda o local y qué refuerzo buscas. Te respondemos lo antes posible."
+      />
+    </section>
   </article>
 </Layout>

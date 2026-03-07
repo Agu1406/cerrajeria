@@ -1,5 +1,6 @@
 ---
 import Layout from '../../components/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
@@ -181,5 +182,13 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
         📞 {siteConfig.telefono}
       </a>
     </div>
+
+    <section class="mt-8">
+      <ContactForm
+        barrio={data.nombre}
+        title={`Solicitar presupuesto en ${data.nombre}`}
+        subtitle="Para puertas antiokupas: indícanos tipo de vivienda o local. Te respondemos lo antes posible."
+      />
+    </section>
   </article>
 </Layout>

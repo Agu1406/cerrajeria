@@ -1,5 +1,11 @@
 ---
 nombre: Latina
-intro: En Latina realizamos duplicado de llaves de coche y mandos a domicilio. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
-llegadaTexto: A Latina llegamos normalmente en 20–40 minutos desde que confirmamos la cita. Te damos un presupuesto orientativo por teléfono.
+intro: >
+  En el distrito Latina damos servicio de duplicado de llaves de coche y mandos en Los Cármenes,
+  Puerta del Ángel, Lucero, Aluche, Campamento, Cuatro Vientos y Las Águilas. Mezcla de bloques y
+  edificios recientes; nos coordinamos para aparcamiento o garaje. Llave de reserva o sustitución.
+llegadaTexto: >
+  Hasta Latina el tiempo de llegada habitual es de 15–30 minutos desde que confirmamos. Carabanchel,
+  Aluche y las zonas hacia Cuatro Vientos pueden variar según el tráfico; de noche el desplazamiento
+  suele ser más corto. Presupuesto orientativo por teléfono.
 ---

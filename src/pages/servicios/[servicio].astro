@@ -1,5 +1,6 @@
 ---
 import Layout from '../../components/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { siteConfig } from '../../config/site';
 import { servicios } from '../../data/servicios';
 
@@ -107,5 +108,12 @@ const otrosServicios = servicios
         📞 {siteConfig.telefono}
       </a>
     </div>
+
+    <section class="mt-8">
+      <ContactForm
+        title={`Solicitar presupuesto de ${servicio.nombre}`}
+        subtitle="Para consultas no urgentes o presupuestos. Te respondemos lo antes posible."
+      />
+    </section>
   </article>
 </Layout>

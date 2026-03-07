@@ -1,5 +1,12 @@
 ---
-nombre: Salamanca
-intro: En Salamanca realizamos duplicado de llaves de coche y mandos a domicilio. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
-llegadaTexto: A Salamanca llegamos normalmente en 20–40 minutos desde que confirmamos la cita. Te damos un presupuesto orientativo por teléfono.
+nombre: "Salamanca"
+intro: >
+  En el distrito Salamanca realizamos duplicado de llaves de coche y mandos a domicilio: Recoletos,
+  Goya, Fuente del Berro, Guindalera, Lista y Castellana. Muchos vehículos son de gama alta; trabajamos
+  con equipos adecuados para llaves con chip y mandos. Nos coordinamos contigo para el punto de
+  encuentro (aparcamiento, garaje) y te damos presupuesto antes de desplazarnos.
+llegadaTexto: >
+  A Salamanca llegamos en general en 16–26 minutos desde la confirmación. Serrano y Velázquez suelen
+  tener tráfico denso; en calles interiores o en horario nocturno el tiempo suele reducirse. Precio
+  orientativo por teléfono y confirmación al ver el vehículo.
 ---

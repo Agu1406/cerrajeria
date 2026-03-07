@@ -1,5 +1,11 @@
 ---
 nombre: Chamberí
-intro: En Chamberí realizamos duplicado de llaves de coche y mandos a domicilio. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
-llegadaTexto: A Chamberí llegamos normalmente en 20–40 minutos desde que confirmamos la cita. Te damos un presupuesto orientativo por teléfono.
+intro: >
+  En Chamberí damos servicio de duplicado de llaves de coche y mandos en Gaztambide, Arapiles,
+  Trafalgar, Almagro, Ríos Rosas y Vallehermoso. Distrito con mucho bloque residencial; nos coordinamos
+  para aparcamiento o garaje. Llave de reserva o sustitución para la mayoría de marcas y modelos.
+llegadaTexto: >
+  A Chamberí llegamos normalmente en 14–24 minutos desde la confirmación del aviso. Bravo Murillo y
+  Quevedo pueden sumar minutos en hora punta; el resto del distrito suele estar bien comunicado.
+  Presupuesto orientativo por teléfono.
 ---

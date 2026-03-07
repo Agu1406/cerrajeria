@@ -1,5 +1,11 @@
 ---
 nombre: Fuencarral-El Pardo
-intro: En Fuencarral-El Pardo realizamos duplicado de llaves de coche y mandos a domicilio. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
-llegadaTexto: A Fuencarral-El Pardo llegamos normalmente en 20–40 minutos desde que confirmamos la cita. Te damos un presupuesto orientativo por teléfono.
+intro: >
+  En Fuencarral-El Pardo atendemos duplicado de llaves de coche y mandos desde El Pardo y Fuentelarreina
+  hasta Peñagrande, El Pilar, La Paz, Valverde, Mirasierra y El Goloso. Distrito muy extenso; en Mirasierra
+  y El Pardo es habitual cerrajería de alta gama. Nos desplazamos con equipos para la mayoría de marcas.
+llegadaTexto: >
+  A El Pilar, La Paz y Peñagrande llegamos en unos 18–26 minutos; a El Pardo, Mirasierra y El Goloso
+  el trayecto suele ser de 22–35 minutos desde la confirmación. La M-607 y la carretera de El Pardo
+  marcan el tiempo. Presupuesto por teléfono.
 ---

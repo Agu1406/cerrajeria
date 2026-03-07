@@ -1,5 +1,6 @@
 ---
 import Layout from '../../components/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection } from 'astro:content';
 
@@ -168,5 +169,12 @@ const barrios = (await getCollection('duplicado-llaves-coche-barrios')).sort((a,
         📞 {siteConfig.telefono}
       </a>
     </div>
+
+    <section class="mt-8">
+      <ContactForm
+        title="Solicitar presupuesto o consulta"
+        subtitle="Para duplicado de llaves de coche: indícanos marca y modelo si lo sabes. Te respondemos lo antes posible."
+      />
+    </section>
   </article>
 </Layout>

@@ -1,5 +1,11 @@
 ---
 nombre: Villaverde
-intro: En Villaverde realizamos duplicado de llaves de coche y mandos a domicilio. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
-llegadaTexto: A Villaverde llegamos normalmente en 20–40 minutos desde que confirmamos la cita. Te damos un presupuesto orientativo por teléfono.
+intro: >
+  En Villaverde atendemos duplicado de llaves de coche y mandos en Villaverde Alto, San Cristóbal,
+  Butarque, Los Rosales y Los Ángeles. Distrito residencial con bloques de distintas épocas; la M-40
+  y la Carretera de Toledo facilitan el desplazamiento. Llave de reserva o sustitución para la mayoría de marcas.
+llegadaTexto: >
+  A Villaverde llegamos normalmente en 15–30 minutos desde que confirmamos el aviso. San Cristóbal y
+  Butarque pueden variar según el tráfico; en horario nocturno el tiempo suele reducirse.
+  Te damos presupuesto orientativo por teléfono.
 ---

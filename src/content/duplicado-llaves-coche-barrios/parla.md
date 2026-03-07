@@ -1,5 +1,11 @@
 ---
 nombre: Parla
-intro: En Parla realizamos duplicado de llaves de coche y mandos a domicilio. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
-llegadaTexto: A Parla llegamos normalmente en 20–40 minutos desde que confirmamos la cita. Te damos un presupuesto orientativo por teléfono.
+intro: >
+  En Parla atendemos duplicado de llaves de coche y mandos en portales, comunidades y viviendas en todo
+  el municipio. Casco y zonas residenciales con la misma rapidez; muchos clientes piden llave de reserva
+  o sustitución. Nos desplazamos con equipos para la mayoría de marcas y te asesoramos sin compromiso.
+llegadaTexto: >
+  A Parla llegamos normalmente en 25–40 minutos desde que confirmamos el aviso. La A-42 y el acceso
+  desde Madrid o desde Fuenlabrada influyen en el tiempo; de madrugada el trayecto suele ser más corto.
+  Te damos presupuesto orientativo por teléfono.
 ---

@@ -1,5 +1,11 @@
 ---
 nombre: Ciudad Lineal
-intro: En Ciudad Lineal realizamos duplicado de llaves de coche y mandos a domicilio. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
-llegadaTexto: A Ciudad Lineal llegamos normalmente en 20–40 minutos desde que confirmamos la cita. Te damos un presupuesto orientativo por teléfono.
+intro: >
+  En Ciudad Lineal atendemos duplicado de llaves de coche y mandos en Ventas, Pueblo Nuevo, Quintana,
+  Concepción, San Pascual, San Juan Bautista, Colina, Atalaya y Costillares. Distrito largo con mezcla
+  de edificios; la calle Alcalá y la M-40 marcan nuestras rutas. Presupuesto sin compromiso por teléfono.
+llegadaTexto: >
+  A Ventas y Quintana llegamos en unos 15–22 minutos; a Pueblo Nuevo, Costillares y zonas más al este
+  el trayecto suele ser de 20–30 minutos desde la confirmación. El tráfico en Alcalá puede alargar
+  en hora punta. Te indicamos precio orientativo antes de salir.
 ---

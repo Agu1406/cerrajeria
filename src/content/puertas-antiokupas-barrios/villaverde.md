@@ -1,5 +1,11 @@
 ---
 nombre: Villaverde
-intro: En Villaverde instalamos y reforzamos puertas antiokupas para viviendas y locales vacíos. Refuerzo de cerraduras, instalación de puertas de seguridad y asesoramiento para disuadir intrusiones.
-llegadaTexto: A Villaverde llegamos en 25–45 minutos desde la confirmación. Te indicamos opciones y precios por teléfono antes del desplazamiento.
+intro: >
+  En Villaverde instalamos y reforzamos puertas antiokupas en Villaverde Alto, San Cristóbal, Butarque,
+  Los Rosales y Los Ángeles. Distrito residencial con bloques y portales de distintas épocas; la M-40
+  y la Carretera de Toledo facilitan el desplazamiento. Refuerzo de cerraduras e instalación de puertas de seguridad.
+llegadaTexto: >
+  A Villaverde llegamos normalmente en 15–30 minutos desde que confirmamos el aviso. San Cristóbal y
+  Butarque pueden variar según el tráfico; en horario nocturno el tiempo suele reducirse.
+  Te indicamos opciones y precios por teléfono antes del desplazamiento.
 ---

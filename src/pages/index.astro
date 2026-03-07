@@ -1,5 +1,6 @@
 ---
 import Layout from '../components/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { siteConfig } from '../config/site';
 import { servicios } from '../data/servicios';
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -324,6 +325,13 @@ const faqSchema = {
           Ver listado completo de barrios y distritos →
         </a>
       </p>
+    </section>
+
+    <section class="mt-10 max-w-xl">
+      <ContactForm
+        title="Consulta o presupuesto (no urgente)"
+        subtitle="Si no es una emergencia, puedes escribirnos y te respondemos lo antes posible."
+      />
     </section>
   </section>
 </Layout>

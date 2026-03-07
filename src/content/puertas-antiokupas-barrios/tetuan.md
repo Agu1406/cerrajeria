@@ -1,5 +1,11 @@
 ---
 nombre: Tetuán
-intro: En Tetuán instalamos y reforzamos puertas antiokupas para viviendas y locales vacíos. Refuerzo de cerraduras, instalación de puertas de seguridad y asesoramiento para disuadir intrusiones.
-llegadaTexto: A Tetuán llegamos en 25–45 minutos desde la confirmación. Te indicamos opciones y precios por teléfono antes del desplazamiento.
+intro: >
+  En Tetuán instalamos y reforzamos puertas antiokupas en Bellas Vistas, Cuatro Caminos, Castillejos,
+  Almenara, Valdeacederas y Berruguete. Uno de los distritos con más portales antiguos; cerraduras de
+  toda época y puertas blindadas; refuerzo e instalación de puertas de seguridad.
+llegadaTexto: >
+  A Tetuán llegamos normalmente en 15–25 minutos desde que confirmamos el aviso. Bravo Murillo y la
+  zona de Cuatro Caminos pueden sumar algo en hora punta; el resto del distrito queda bien cubierto.
+  Te indicamos opciones y precios por teléfono antes del desplazamiento.
 ---

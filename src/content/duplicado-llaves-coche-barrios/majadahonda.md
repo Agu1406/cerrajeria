@@ -1,5 +1,11 @@
 ---
 nombre: Majadahonda
-intro: En Majadahonda realizamos duplicado de llaves de coche y mandos a domicilio. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
-llegadaTexto: A Majadahonda llegamos normalmente en 20–40 minutos desde que confirmamos la cita. Te damos un presupuesto orientativo por teléfono.
+intro: >
+  En Majadahonda atendemos duplicado de llaves de coche y mandos en portales, comunidades y urbanizaciones
+  del noroeste. En muchas urbanizaciones la cerrajería y los vehículos son de gama media-alta; la A-6
+  y la M-503 marcan nuestras rutas. Nos desplazamos con equipos para la mayoría de marcas.
+llegadaTexto: >
+  A Majadahonda llegamos normalmente en 25–40 minutos desde que confirmamos el aviso. La A-6 puede
+  alargar el trayecto en hora punta; por la noche el desplazamiento suele acortarse. Te explicamos
+  precio orientativo por teléfono antes de salir.
 ---

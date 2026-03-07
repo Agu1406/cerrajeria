@@ -39,7 +39,7 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
 
 <Layout {title} {description} breadcrumb={breadcrumb}>
   <section class="space-y-6">
-    <nav class="text-xs text-slate-500" aria-label="Miga de pan">
+    <nav class="text-xs text-slate-400" aria-label="Miga de pan">
       <a href="/" class="hover:text-emerald-400">Inicio</a>
       <span class="mx-1">/</span>
       <a href={basePath} class="hover:text-emerald-400">Cerrajero 24h</a>
@@ -168,7 +168,7 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
       <p>
         Si quieres ver el detalle de todos los trabajos que realizamos como aperturas, cambios de cerradura o arreglos
         de ventanas, puedes visitar la página de{' '}
-        <a href="/servicios" class="text-emerald-400 hover:underline">
+        <a href="/servicios" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">
           servicios de cerrajería
         </a>
         .
@@ -189,13 +189,13 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
               >
                 {post.data.title}
               </a>
-              <time datetime={post.data.pubDate.toISOString()} class="ml-2 text-xs text-slate-500">
+              <time datetime={post.data.pubDate.toISOString()} class="ml-2 text-xs text-slate-400">
                 {post.data.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
               </time>
             </li>
           ))}
         </ul>
-        <p class="mt-3 text-xs text-slate-500">
+        <p class="mt-3 text-xs text-slate-400">
           <a href="/blog" class="text-emerald-400 hover:underline">Ver todo el blog →</a>
         </p>
       </section>

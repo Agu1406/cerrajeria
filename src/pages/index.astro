@@ -66,7 +66,7 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
               class="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2 text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
             >
               <span>{entry.data.nombre}</span>
-              <span class="text-xs text-slate-500">Ver cerrajero 24h</span>
+              <span class="text-xs text-slate-400">Ver cerrajero 24h</span>
             </a>
           </li>
         ))}
@@ -154,7 +154,7 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
                 </span>
               </div>
               <p class="text-slate-400 leading-relaxed">"{r.texto}"</p>
-              <time datetime={r.fecha} class="mt-2 block text-xs text-slate-500">
+              <time datetime={r.fecha} class="mt-2 block text-xs text-slate-400">
                 {new Date(r.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
               </time>
             </li>
@@ -177,7 +177,11 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
     </div>
     <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
       <picture>
-        <source srcset="/images/cerrajero-24h-madrid-hero.webp" type="image/webp" />
+        <source
+          srcset="/images/cerrajero-24h-madrid-hero.webp 1536w"
+          type="image/webp"
+          sizes="(max-width: 768px) 100vw, min(662px, 90vw)"
+        />
         <img
           src="/images/cerrajero-24h-madrid-hero.webp"
           alt="Cerrajero 24 horas abriendo una puerta blindada en un portal de Madrid"
@@ -185,6 +189,7 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
           width="1200"
           height="800"
           fetchpriority="high"
+          sizes="(max-width: 768px) 100vw, min(662px, 90vw)"
         />
       </picture>
     </div>
@@ -259,7 +264,7 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
       </ul>
       <p class="text-xs text-slate-400">
         Puedes ver el listado completo en la página de{' '}
-        <a href="/servicios" class="text-emerald-400 hover:underline">
+        <a href="/servicios" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">
           servicios de cerrajería
         </a>
         .

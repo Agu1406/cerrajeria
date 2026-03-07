@@ -47,6 +47,8 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    /** Fecha de última revisión del contenido (SEO frescura). Opcional. */
+    actualizado: z.coerce.date().optional(),
     /** Imagen destacada (ruta desde public, ej. /images/blog/mi-post.webp). Opcional. */
     image: z.string().optional(),
     /** Si es true, no se muestra en el listado ni en producción. */

@@ -53,7 +53,7 @@ const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
         Realizamos copia de llaves de coche y mandos a distancia en {data.nombre} y alrededores. Tanto si necesitas una llave de reserva como si has perdido la original, nos desplazamos a tu ubicación con el equipo necesario para la mayoría de marcas y modelos.
       </p>
       <p class="text-sm text-slate-400">
-        {data.llegadaTexto}
+        {data.introDuplicadoLlavesCoche ?? data.llegadaTexto}
       </p>
       <div class="flex flex-wrap items-center gap-3 pt-2">
         <a

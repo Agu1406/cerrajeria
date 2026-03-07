@@ -10,6 +10,10 @@ const barrios = defineCollection({
     faqLlegada: z.string(),
     faqPrecio: z.string(),
     faqFestivos: z.string(),
+    /** Opcional: párrafo extra para la página "Duplicado llaves coche" en este barrio. Si no se rellena, se usa llegadaTexto. */
+    introDuplicadoLlavesCoche: z.string().optional(),
+    /** Opcional: párrafo extra para la página "Puertas antiokupas" en este barrio (si se añade sección por barrio). */
+    introPuertasAntiokupas: z.string().optional(),
   }),
 });
 

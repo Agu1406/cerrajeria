@@ -211,12 +211,12 @@ cerrajeria/
 │   │   ├── blog/
 │   │   │   ├── index.astro      # Listado de entradas del blog
 │   │   │   └── [slug].astro     # Página de cada entrada
+│   │   ├── cerrajero-urgente-24h/
+│   │   │   ├── index.astro      # Listado de zonas (barrios y distritos)
+│   │   │   └── [barrio].astro   # Plantilla por zona (+ últimas entradas blog + formulario)
 │   │   ├── 404.astro
-│   │   ├── sitemap.xml.ts       # Sitemap (páginas fijas, barrios, entradas blog)
-│   │   ├── robots.txt.ts
-│   │   └── barrios/
-│   │       ├── index.astro      # Listado de barrios
-│   │       └── [barrio].astro   # Plantilla por barrio (+ últimas entradas blog + formulario)
+│   │   ├── sitemap.xml.ts       # Sitemap (páginas fijas, cerrajero-urgente-24h, blog)
+│   │   └── robots.txt.ts
 │   └── styles/
 │       └── global.css           # Tailwind + tema oscuro (único)
 ├── astro.config.mjs
@@ -244,9 +244,11 @@ cerrajeria/
     - Listado de entradas del blog (ordenadas por fecha, más recientes primero).
 - `/blog/[slug]` → `src/pages/blog/[slug].astro`
     - Página de cada entrada (título, descripción, imagen destacada opcional, contenido Markdown).
-- `/barrios/[barrio]` → `src/pages/barrios/[barrio].astro`
-    - Plantilla dinámica por barrio; incluye bloque "Últimas entradas del blog" (3 más recientes) y formulario de contacto.
-    - Ejemplos: `/barrios/chamberi`, `/barrios/getafe`, `/barrios/carabanchel`
+- `/cerrajero-urgente-24h` → `src/pages/cerrajero-urgente-24h/index.astro`
+    - Listado de todas las zonas (barrios y distritos) con enlaces a cada página.
+- `/cerrajero-urgente-24h/[barrio]` → `src/pages/cerrajero-urgente-24h/[barrio].astro`
+    - Plantilla dinámica por zona; incluye bloque "Últimas entradas del blog" (3 más recientes) y formulario de contacto.
+    - Ejemplos: `/cerrajero-urgente-24h/chamberi`, `/cerrajero-urgente-24h/las-rozas`, `/cerrajero-urgente-24h/getafe`
 
 ## 3.3. Componentes clave
 
@@ -2663,8 +2665,9 @@ Resumen de los cambios aplicados para mantener el DOC al día con la funcionalid
 | **Formulario de contacto** | **Obligatorios:** correo y mensaje. **Opcionales:** nombre y móvil. Eliminado el campo "teléfono" (solo móvil opcional). La API valida correo y mensaje; incluye móvil y nombre en el cuerpo del correo si se envían. |
 | **API de contacto** | Acepta `email`, `mensaje`, `nombre`, `movil`, `barrio`. Soporta Resend (prioritario si `RESEND_API_KEY`) o SMTP (Nodemailer). Reply-to con el correo del formulario cuando se proporciona. |
 | **Blog** | Content Collection `blog` en `src/content/blog/*.md` con schema: `title`, `description`, `pubDate`, `image` (opcional), `draft` (opcional). Páginas: `/blog` (listado) y `/blog/[slug]` (entrada). Guía de publicación: **`BLOG.md`** en la raíz (cómo crear entradas e incluir imágenes). Enlace "Blog" en Header y Footer. |
-| **Barrios y blog** | Cada página de barrio incluye un bloque **"Últimas entradas del blog"** con las 3 entradas más recientes y enlace "Ver todo el blog". Solo visible si hay al menos una entrada publicada. |
-| **Sitemap** | Incluye `/blog`, todas las entradas del blog (excluye borradores) y las páginas de barrio. Se genera en cada build. |
+| **URLs por zona** | Las páginas de cerrajero urgente por barrio/distrito usan la ruta **`/cerrajero-urgente-24h/[barrio]`** (ej. `/cerrajero-urgente-24h/las-rozas`) para reforzar SEO. El listado está en `/cerrajero-urgente-24h`. El menú sigue mostrando "Barrios" y enlaza a esa ruta. |
+| **Zonas y blog** | Cada página de zona incluye un bloque **"Últimas entradas del blog"** con las 3 entradas más recientes y enlace "Ver todo el blog". Solo visible si hay al menos una entrada publicada. |
+| **Sitemap** | Incluye `/blog`, `/cerrajero-urgente-24h`, todas las entradas del blog y todas las páginas por zona (`/cerrajero-urgente-24h/[slug]`). Se genera en cada build. |
 | **Google Maps / ubicación** | En `site.ts`: **`direccion`** (calle, localidad, codigoPostal) y **`googleMapsUrl`** (enlace a la ficha de Google Maps o Google Business). En **Contacto**: bloque "Dónde estamos" con dirección y enlace "Ver en Google Maps" o "Cómo llegar". En **Footer**: enlace "Cómo llegar" cuando hay dirección o `googleMapsUrl`. |
 | **Reseñas (SEO y confianza)** | En `site.ts`: **`reseñas`** opcional con `valoracionMedia`, `totalResenas` y array de reseñas (autor, texto, fecha, valoracion). Si `totalResenas > 0`: se añade **aggregateRating** y hasta 5 **Review** al JSON-LD de LocalBusiness en Layout; en la **home** se muestra la sección "Lo que dicen nuestros clientes" (estrellas, enlace a Google, hasta 4 tarjetas de reseñas). La tarjeta "Clientes satisfechos" usa los datos de `reseñas` cuando están configurados. |
 | **Layout y SEO** | Layout acepta prop opcional **`ogImage`** (URL completa) para páginas que quieran imagen OG propia (p. ej. entradas del blog). El JSON-LD de LocalBusiness se construye dinámicamente y se añaden `aggregateRating` y `review` cuando hay reseñas configuradas. |

@@ -14,14 +14,14 @@ export const GET: APIRoute = async () => {
   const urls = [
     '/',
     '/servicios',
-    '/barrios',
+    '/cerrajero-urgente-24h',
     '/blog',
     '/contacto',
     '/aviso-legal',
     '/politica-privacidad',
     '/politica-cookies',
     '/diseno-web',
-    ...barrios.map((entry) => `/barrios/${entry.slug}`),
+    ...barrios.map((entry) => `/cerrajero-urgente-24h/${entry.slug}`),
     ...blogPosts.map((entry) => `/blog/${entry.slug}`),
   ];
 

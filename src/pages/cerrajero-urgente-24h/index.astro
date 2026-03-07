@@ -3,7 +3,7 @@ import Layout from '../../components/Layout.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection } from 'astro:content';
 
-const title = `Cerrajeros 24h por barrios y distritos en Madrid | ${siteConfig.nombreComercial}`;
+const title = `Cerrajero urgente 24h por barrios y distritos en Madrid | ${siteConfig.nombreComercial}`;
 const description =
   'Cerrajero urgente 24 horas en los 21 distritos de Madrid capital (Centro, Salamanca, Chamberí, Vallecas, etc.) y en municipios: Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas, Pinto. Llama al instante.';
 
@@ -15,7 +15,7 @@ const barrios = (await getCollection('barrios')).sort((a, b) =>
 <Layout {title} {description}>
   <section class="space-y-6">
     <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
-      Cerrajeros 24h por barrios y zonas en {siteConfig.ciudadPrincipal}
+      Cerrajero urgente 24h por barrios y zonas en {siteConfig.ciudadPrincipal}
     </h1>
     <p class="text-sm text-slate-300 sm:text-base">
       Servicio de cerrajería urgente en los <strong>21 distritos de Madrid capital</strong> (Centro, Salamanca,
@@ -28,7 +28,7 @@ const barrios = (await getCollection('barrios')).sort((a, b) =>
       {barrios.map((entry) => (
         <li>
           <a
-            href={`/barrios/${entry.slug}`}
+            href={`/cerrajero-urgente-24h/${entry.slug}`}
             class="flex flex-col rounded-lg border border-slate-800 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
           >
             <span class="font-semibold">{entry.data.nombre}</span>
@@ -41,4 +41,3 @@ const barrios = (await getCollection('barrios')).sort((a, b) =>
     </ul>
   </section>
 </Layout>
-

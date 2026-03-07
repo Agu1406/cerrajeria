@@ -27,10 +27,11 @@ const latestPosts = allBlogPosts
 
 const title = `Cerrajero urgente 24h en ${data.nombre} | ${siteConfig.telefono}`;
 const description = `Cerrajero urgente 24 horas en ${data.nombre}. Apertura de puertas sin daños, cambios de bombín, a domicilio. Llama al ${siteConfig.telefono}.`;
+const basePath = '/cerrajero-urgente-24h';
 const breadcrumb = [
   { name: 'Inicio', path: '/' },
-  { name: 'Barrios', path: '/barrios' },
-  { name: data.nombre, path: `/barrios/${entry.slug}` },
+  { name: 'Cerrajero 24h', path: basePath },
+  { name: data.nombre, path: `${basePath}/${entry.slug}` },
 ];
 const reseñas = siteConfig.reseñas;
 const showReseñas = reseñas && reseñas.totalResenas > 0;
@@ -41,7 +42,7 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
     <nav class="text-xs text-slate-500" aria-label="Miga de pan">
       <a href="/" class="hover:text-emerald-400">Inicio</a>
       <span class="mx-1">/</span>
-      <a href="/barrios" class="hover:text-emerald-400">Barrios</a>
+      <a href={basePath} class="hover:text-emerald-400">Cerrajero 24h</a>
       <span class="mx-1">/</span>
       <span class="text-slate-400">{data.nombre}</span>
     </nav>
@@ -227,4 +228,3 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
     </section>
   </section>
 </Layout>
-

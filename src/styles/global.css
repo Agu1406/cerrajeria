@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+/* Enlace "Saltar al contenido": visible solo al recibir foco (teclado/lector de pantalla) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 0.75rem 1rem;
+  background: #059669;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  outline: 2px solid #22c55e;
+  outline-offset: 2px;
+}
+
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid #22c55e;

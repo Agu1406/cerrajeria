@@ -68,5 +68,12 @@ export const servicios: Servicio[] = [
     categoria: 'otras',
     descripcionCorta: 'Ajuste de puertas que rozan, cambian de posición o no cierran correctamente.',
   },
+  {
+    slug: 'puertas-antiokupas',
+    nombre: 'Puertas antiokupas',
+    categoria: 'otras',
+    descripcionCorta:
+      'Refuerzo e instalación de puertas y cerraduras de seguridad para proteger viviendas y locales vacíos.',
+  },
 ];
 

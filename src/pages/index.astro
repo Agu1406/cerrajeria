@@ -177,6 +177,12 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
     </div>
     <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
       <picture>
+        <!-- Móvil: imagen 662px de ancho para ahorrar ancho de banda -->
+        <source
+          media="(max-width: 768px)"
+          srcset="/images/cerrajero-24h-madrid-hero-662w.webp"
+          type="image/webp"
+        />
         <source
           srcset="/images/cerrajero-24h-madrid-hero.webp 1536w"
           type="image/webp"

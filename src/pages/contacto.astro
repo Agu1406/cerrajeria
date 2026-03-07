@@ -6,6 +6,14 @@ import { siteConfig } from '../config/site';
 const title = `Contacto | ${siteConfig.nombreComercial} – Cerrajeros 24h en ${siteConfig.ciudadPrincipal}`;
 const description =
   `Contacta con ${siteConfig.nombreComercial} para urgencias de cerrajería 24 horas en ${siteConfig.ciudadPrincipal}. Teléfono directo, formulario de contacto y horario de atención.`;
+
+const direccion = siteConfig.direccion;
+const mapsHref = siteConfig.googleMapsUrl
+  ? siteConfig.googleMapsUrl
+  : direccion
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${direccion.calle}, ${direccion.codigoPostal} ${direccion.localidad}`)}`
+    : '';
+const showMapBlock = direccion || siteConfig.googleMapsUrl;
 ---
 
 <Layout {title} {description}>
@@ -33,6 +41,33 @@ const description =
           Disponible todos los días del año, incluyendo noches y festivos.
         </p>
       </div>
+
+      {showMapBlock && (
+        <div class="space-y-2 rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+            Dónde estamos
+          </p>
+          {direccion && (
+            <p class="text-slate-300">
+              {direccion.calle}<br />
+              {direccion.codigoPostal} {direccion.localidad}, {siteConfig.ciudadPrincipal}
+            </p>
+          )}
+          {mapsHref && (
+            <p>
+              <a
+                href={mapsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 font-semibold text-emerald-400 hover:underline"
+              >
+                <span aria-hidden="true">📍</span>
+                {siteConfig.googleMapsUrl ? 'Ver en Google Maps' : 'Cómo llegar (Google Maps)'}
+              </a>
+            </p>
+          )}
+        </div>
+      )}
     </div>
 
     <aside>

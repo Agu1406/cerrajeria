@@ -8,6 +8,37 @@ export const siteConfig = {
   titleHome: 'Cerrajero 24 horas en Madrid | cerrajerosmadrid',
   descriptionHome:
     'Cerrajero 24 horas en Madrid. Apertura de puertas sin daños, cambios de bombín y urgencias rápidas en toda la Comunidad de Madrid. Llama ahora y hablamos en minutos.',
+  /**
+   * Dirección para mostrar en contacto y en "Cómo llegar".
+   * Si no pones nada, no se muestra el bloque de ubicación.
+   */
+  direccion: {
+    calle: 'Calle Progreso 2, Puerta 2, Oficina 825',
+    localidad: 'Getafe',
+    codigoPostal: '28906',
+  } as { calle: string; localidad: string; codigoPostal: string } | null,
+  /**
+   * Enlace a tu ficha de Google Maps o Google Business.
+   * Si lo dejas vacío, se usará un enlace de búsqueda con la dirección (si tienes direccion).
+   */
+  googleMapsUrl: 'https://share.google/5mLzrpAUUKo3yviLh',
+  /**
+   * Reseñas de Google para mostrar en la web y en el schema (SEO).
+   * Copia valoración y número de reseñas de tu perfil de Google. Opcionalmente añade 2–5 reseñas (texto, autor, fecha).
+   * Si es null, no se muestra la sección de reseñas ni aggregateRating.
+   */
+  reseñas: {
+    valoracionMedia: 4.9,
+    totalResenas: 0, // actualiza con el número real de reseñas en Google
+    /** Reseñas que quieras mostrar (cópialas de tu perfil de Google). Fecha en formato YYYY-MM-DD. */
+    reseñas: [
+      // { autor: 'Nombre', texto: 'Texto de la reseña...', fecha: '2025-02-01', valoracion: 5 },
+    ],
+  } as {
+    valoracionMedia: number;
+    totalResenas: number;
+    reseñas: Array<{ autor: string; texto: string; fecha: string; valoracion: number }>;
+  } | null,
   /** Opcional: crédito al diseñador/desarrollador en el footer. Pon null para ocultar el enlace "Diseño web". */
   desarrollador: {
     nombre: 'Tu nombre o estudio',

@@ -2,14 +2,17 @@
 import Layout from '../components/Layout.astro';
 import { siteConfig } from '../config/site';
 import { servicios } from '../data/servicios';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 
 const allBarrios = await getCollection('barrios');
 // Zonas que se muestran en la home (prioridad: las iniciales + distritos y municipios clave)
 const featuredSlugs = ['getafe', 'leganes', 'las-rozas', 'pinto', 'centro', 'salamanca', 'chamberi', 'mostoles'];
-const barriosDestacados = featuredSlugs
+const barriosDestacados: CollectionEntry<'barrios'>[] = featuredSlugs
   .map((slug) => allBarrios.find((b) => b.slug === slug))
-  .filter(Boolean);
+  .filter((e): e is CollectionEntry<'barrios'> => Boolean(e));
+
+const reseñas = siteConfig.reseñas;
+const showReseñas = reseñas && reseñas.totalResenas > 0;
 ---
 
 <Layout>
@@ -105,13 +108,61 @@ const barriosDestacados = featuredSlugs
         Clientes satisfechos
       </p>
       <p class="text-lg font-bold text-slate-50">
-        4.9/5
+        {showReseñas ? `${reseñas.valoracionMedia}/5` : '4.9/5'}
       </p>
       <p class="text-[11px] text-slate-400">
-        Valoración media objetivo basada en reseñas reales de clientes.
+        {showReseñas && reseñas.totalResenas
+          ? `${reseñas.totalResenas} reseñas en Google`
+          : 'Valoración media basada en reseñas reales de clientes.'}
       </p>
     </div>
   </section>
+
+  {showReseñas && (
+    <section class="mt-10 space-y-4">
+      <h2 class="text-lg font-semibold tracking-tight">
+        Lo que dicen nuestros clientes
+      </h2>
+      <div class="flex flex-wrap items-center gap-3 text-sm">
+        <span class="flex items-center gap-1 text-slate-200" aria-label={`Valoración: ${reseñas.valoracionMedia} de 5`}>
+          {[1, 2, 3, 4, 5].map((i) => (
+            <span class={i <= Math.round(reseñas.valoracionMedia) ? 'text-amber-400' : 'text-slate-600'}>★</span>
+          ))}
+        </span>
+        <span class="text-slate-400">
+          {reseñas.valoracionMedia} · {reseñas.totalResenas} reseñas en Google
+        </span>
+        {siteConfig.googleMapsUrl && (
+          <a
+            href={siteConfig.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-emerald-400 hover:underline"
+          >
+            Ver todas en Google →
+          </a>
+        )}
+      </div>
+      {reseñas.reseñas?.length > 0 && (
+        <ul class="grid gap-4 sm:grid-cols-2">
+          {reseñas.reseñas.slice(0, 4).map((r) => (
+            <li class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-sm">
+              <div class="mb-2 flex items-center justify-between">
+                <span class="font-medium text-slate-200">{r.autor}</span>
+                <span class="flex text-amber-400" aria-hidden="true">
+                  {'★'.repeat(r.valoracion)}{'☆'.repeat(5 - r.valoracion)}
+                </span>
+              </div>
+              <p class="text-slate-400 leading-relaxed">"{r.texto}"</p>
+              <time datetime={r.fecha} class="mt-2 block text-xs text-slate-500">
+                {new Date(r.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </time>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )}
 
   <section class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
     <div class="space-y-3 text-sm text-slate-300">

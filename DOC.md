@@ -166,8 +166,9 @@ Todo lo que el proyecto **instala o usa** en el estado actual, para tener una re
 **Funcionalidad sin dependencias extra**
 
 - Iconos: **SVG inline** (teléfono, WhatsApp) en Header y CallButton; no se usa Lucide, Iconify ni otras librerías de iconos.
-- Tema claro/oscuro: **script en Layout** + **CSS en global.css** (`data-theme`); sin librería de temas.
-- Formulario de contacto: **fetch** al endpoint `/api/contact`; el envío real lo hace la función serverless con Nodemailer.
+- Tema: **solo oscuro** (`data-theme="dark"` en `<html>`); sin selector claro/oscuro. Estilos en `global.css` para tema oscuro.
+- Favicon: **`/favicon.ico`** (enlace en Layout); se recomienda usar el logotipo en formato .ico.
+- Formulario de contacto: **fetch** a `/api/contact`; la función serverless envía correo (Resend o Nodemailer/SMTP).
 
 **Servicios externos / configuración operativa**
 
@@ -185,41 +186,43 @@ Estructura **actual** del proyecto (Astro + Tailwind + Content Collections + API
 ```bash
 cerrajeria/
 ├── api/                         # Vercel serverless (solo se ejecuta en despliegue)
-│   └── contact.js               # POST: recibe formulario, envía correo con Nodemailer
-├── public/                      # Recursos estáticos (imágenes, favicon)
+│   └── contact.js               # POST: recibe formulario, envía correo (Resend o SMTP)
+├── public/                      # Recursos estáticos (imágenes, favicon.ico)
+│   └── images/                  # Hero, servicios, blog, logotipos
 ├── src/
 │   ├── components/
-│   │   ├── Layout.astro         # Layout global (head, tema, body)
-│   │   ├── Header.astro         # Cabecera, nav, menú hamburguesa, tema, WhatsApp/Llamar
-│   │   ├── Footer.astro         # Pie con datos de contacto / legal
+│   │   ├── Layout.astro         # Layout global (head, favicon, JSON-LD con aggregateRating/review si hay reseñas)
+│   │   ├── Header.astro         # Cabecera, nav (Inicio, Servicios, Barrios, Blog, Contacto), WhatsApp/Llamar
+│   │   ├── Footer.astro         # Pie: teléfono, Cómo llegar (Google), Blog, legal
 │   │   ├── CallButton.astro     # Botones flotantes WhatsApp + Llamar (móvil)
-│   │   └── ContactForm.astro    # Formulario de contacto reutilizable (nombre, teléfono, mensaje)
+│   │   └── ContactForm.astro    # Formulario: correo y mensaje obligatorios; nombre y móvil opcionales
 │   ├── config/
-│   │   └── site.ts              # nombreComercial, telefono, telefonoHref, whatsappUrl, baseUrl, títulos SEO
+│   │   └── site.ts              # nombreComercial, telefono, whatsappUrl, baseUrl, direccion, googleMapsUrl, reseñas, desarrollador
 │   ├── content/
-│   │   ├── config.ts            # Schema (Zod) de la colección barrios
-│   │   └── barrios/             # Contenido por barrio (Markdown)
-│   │       ├── getafe.md
-│   │       ├── las-rozas.md
-│   │       ├── leganes.md
-│   │       └── pinto.md
+│   │   ├── config.ts            # Schema (Zod): colecciones barrios y blog
+│   │   ├── barrios/             # Markdown por barrio
+│   │   └── blog/                # Markdown por entrada (title, description, pubDate, image, draft)
 │   ├── data/
-│   │   └── servicios.ts         # Lista de servicios de cerrajería (para listados)
+│   │   └── servicios.ts         # Lista de servicios de cerrajería
 │   ├── pages/
-│   │   ├── index.astro          # Home
-│   │   ├── servicios.astro       # Página de servicios
-│   │   ├── contacto.astro       # Contacto + formulario
-│   │   ├── 404.astro            # Página de error
-│   │   ├── sitemap.xml.ts       # Sitemap dinámico
-│   │   ├── robots.txt.ts        # robots.txt dinámico
+│   │   ├── index.astro          # Home (incl. sección reseñas si configuradas)
+│   │   ├── servicios.astro      # Página de servicios
+│   │   ├── contacto.astro       # Contacto + formulario + bloque "Dónde estamos" (Maps)
+│   │   ├── blog/
+│   │   │   ├── index.astro      # Listado de entradas del blog
+│   │   │   └── [slug].astro     # Página de cada entrada
+│   │   ├── 404.astro
+│   │   ├── sitemap.xml.ts       # Sitemap (páginas fijas, barrios, entradas blog)
+│   │   ├── robots.txt.ts
 │   │   └── barrios/
 │   │       ├── index.astro      # Listado de barrios
-│   │       └── [barrio].astro   # Plantilla dinámica por barrio (+ formulario contacto)
+│   │       └── [barrio].astro   # Plantilla por barrio (+ últimas entradas blog + formulario)
 │   └── styles/
-│       └── global.css           # Tailwind @import + tema claro/oscuro + overrides
-├── astro.config.mjs             # Astro + plugin Tailwind (Vite)
+│       └── global.css           # Tailwind + tema oscuro (único)
+├── astro.config.mjs
 ├── package.json                 # astro, tailwindcss, @tailwindcss/vite, nodemailer
-├── tsconfig.json                # TypeScript
+├── BLOG.md                      # Guía para publicar entradas e imágenes en el blog
+├── tsconfig.json
 └── DOC.md                       # Este documento
 ```
 
@@ -237,38 +240,41 @@ cerrajeria/
     - Presentación de servicios y llamada a la acción principal (teléfono).
     - Listado sintetizado de barrios con enlaces a cada landing.
 
+- `/blog` → `src/pages/blog/index.astro`
+    - Listado de entradas del blog (ordenadas por fecha, más recientes primero).
+- `/blog/[slug]` → `src/pages/blog/[slug].astro`
+    - Página de cada entrada (título, descripción, imagen destacada opcional, contenido Markdown).
 - `/barrios/[barrio]` → `src/pages/barrios/[barrio].astro`
-    - Plantilla dinámica.
-    - Ejemplos de URLs:
-        - `/barrios/chamberi`
-        - `/barrios/vallecas`
-        - `/barrios/carabanchel`
+    - Plantilla dinámica por barrio; incluye bloque "Últimas entradas del blog" (3 más recientes) y formulario de contacto.
+    - Ejemplos: `/barrios/chamberi`, `/barrios/getafe`, `/barrios/carabanchel`
 
 ## 3.3. Componentes clave
 
 - `Layout.astro`
-    - Envuelve todas las páginas. Define `<html>`, `<head>` (meta, canonical, OG, tema) y `<body>`.
-    - Incluye script de tema (claro/oscuro) y `CallButton.astro`.
+    - Envuelve todas las páginas. Define `<html data-theme="dark">`, `<head>` (meta, canonical, OG, favicon, JSON-LD LocalBusiness con `aggregateRating` y `review` si hay reseñas en `siteConfig`), `<body>`.
+    - Prop opcional `ogImage` para páginas que quieran imagen OG propia (p. ej. entradas del blog).
+    - Incluye `CallButton.astro`. Tema único: oscuro (sin selector claro/oscuro).
 
 - `Header.astro`
-    - Logo, nav (Inicio, Servicios, Barrios, Contacto), botón tema, WhatsApp y Llamar (escritorio).
-    - En móvil: menú hamburguesa con los mismos enlaces, tema y botones de contacto.
+    - Nombre comercial, nav (Inicio, Servicios, Barrios, Blog, Contacto), WhatsApp y Llamar (escritorio).
+    - En móvil: menú hamburguesa con los mismos enlaces y botones de contacto.
 
 - `Footer.astro`
-    - Pie con nombre comercial, teléfono y año.
+    - Pie con nombre comercial, teléfono, enlace "Cómo llegar" (Google Maps/Business si está configurado), Blog, aviso legal, privacidad, cookies y opcionalmente "Diseño web".
 
 - `CallButton.astro`
-    - Botones flotantes en móvil: WhatsApp y Llamar (mismo estilo esmeralda). Solo visibles en viewport pequeño.
+    - Botones flotantes en móvil: WhatsApp y Llamar (estilo esmeralda). Solo visibles en viewport pequeño.
 
 - `ContactForm.astro`
-    - Formulario reutilizable (nombre, teléfono, mensaje). Props opcionales: `barrio`, `title`, `subtitle`.
+    - Formulario reutilizable: **correo** y **mensaje** obligatorios; **nombre** y **móvil** opcionales. Props: `barrio`, `title`, `subtitle`.
     - Envía por POST (fetch) a `/api/contact`; usado en `/contacto` y al final de cada página de barrio.
 
 ## 3.4. Datos y contenido
 
-- **Barrios**: `src/content/barrios/*.md` (Astro Content Collections). Schema en `src/content/config.ts`. Cada `.md` tiene frontmatter: `nombre`, `introExtra`, `llegadaTexto`, `comoTrabajamos`, `faqLlegada`, `faqPrecio`, `faqFestivos`. El slug es el nombre del archivo.
-- **Servicios**: `src/data/servicios.ts` (lista de servicios para listados en home y páginas de barrio).
-- **Sitio**: `src/config/site.ts` (nombre comercial, teléfono, WhatsApp, baseUrl, títulos y descripciones por defecto).
+- **Barrios**: `src/content/barrios/*.md` (Content Collections). Schema en `src/content/config.ts`. Frontmatter: `nombre`, `introExtra`, `llegadaTexto`, `comoTrabajamos`, `faqLlegada`, `faqPrecio`, `faqFestivos`. Slug = nombre del archivo.
+- **Blog**: `src/content/blog/*.md` (Content Collections). Schema: `title`, `description`, `pubDate`, `image` (opcional), `draft` (opcional). Guía de publicación: `BLOG.md` en la raíz.
+- **Servicios**: `src/data/servicios.ts` (lista de servicios para listados).
+- **Sitio**: `src/config/site.ts` — `nombreComercial`, `telefono`, `telefonoHref`, `whatsappUrl`, `ciudadPrincipal`, `baseUrl`, títulos/descripciones; opcionales: `direccion` (calle, localidad, codigoPostal), `googleMapsUrl`, `reseñas` (valoracionMedia, totalResenas, array de reseñas para SEO y sección en home), `desarrollador`.
 
 | [**Siguiente**](#4-preparación-del-entorno) | [**Índice**](#índice-de-contenido) | [**Anterior**](#3-estructura-de-archivos-y-carpetas) |
 |--------------------------------------------|------------------------------------|------------------------------------------------------|
@@ -422,14 +428,13 @@ Este archivo:
     - Título principal (H1) adaptado al barrio.
     - Bloques de texto orientados a emergencias, tiempos de llegada, etc.
     - Listado de servicios (aperturas de puertas, cambio de bombines, etc.).
-- Recibe datos desde:
-    - `src/data/barrios.ts`, donde vive la lista de barrios con su slug y otros datos.
+- Recibe datos desde la **Content Collection** `barrios` (`src/content/barrios/*.md`); el slug es el nombre del archivo.
 
 ## 7.3. Generación estática de páginas
 
 Para que Astro genere **todas las páginas de barrio en build**, se usa la función de `getStaticPaths` (o equivalente según versión de Astro) en `[barrio].astro`:
 
-- Recorre el array de `barrios` de `src/data/barrios.ts`.
+- Obtiene las entradas con `getCollection('barrios')` desde `src/content/barrios/`.
 - Devuelve una ruta estática por cada barrio.
 
 De esta forma:
@@ -1370,15 +1375,10 @@ Características:
 - También implementa un handler `GET` (tipo `APIRoute`).
 - Usa `siteConfig.baseUrl` (o `https://example.com` como fallback) para construir URLs absolutas.
 - Incluye las rutas:
-    - `/`
-    - `/servicios`
-    - `/barrios`
-    - `/contacto`
-    - Todas las páginas de barrio dinámico a partir de `src/data/barrios.ts`:
-        - `/barrios/getafe`
-        - `/barrios/las-rozas`
-        - `/barrios/pinto`
-        - `/barrios/leganes`
+    - `/`, `/servicios`, `/barrios`, `/blog`, `/contacto`, aviso legal, privacidad, cookies, diseño web.
+    - Todas las páginas de barrio desde la colección `barrios`: `/barrios/[slug]`.
+    - Todas las entradas del blog (no borrador) desde la colección `blog`: `/blog/[slug]`.
+- El sitemap se genera en cada build; al añadir barrios o entradas de blog, se actualiza solo.
 - Para cada URL se define:
     - `<loc>`: `baseUrl + path`
     - `<changefreq>`: `daily` (se puede ajustar después)
@@ -2410,7 +2410,7 @@ Archivo modificado: `src/pages/contacto.astro`.
 
 Archivo creado: `api/contact.js`.
 
-- Función serverless que recibe POST con `nombre`, `telefono`, `mensaje` y opcionalmente `barrio`.
+- Función serverless que recibe POST con **correo** y **mensaje** (obligatorios), **nombre** y **móvil** (opcionales), y opcionalmente `barrio`. Soporta envío por Resend (si `RESEND_API_KEY`) o por SMTP (Nodemailer). Usa el correo del formulario como `reply-to` cuando se envía.
 - Envía un correo usando **Nodemailer** y las variables de entorno de SMTP. Respuesta JSON: `{ ok: true }` o `{ error: true, message: "..." }`.
 - Dependencia añadida: `nodemailer`.
 
@@ -2631,7 +2631,7 @@ En esta sesión se ha añadido la posibilidad de mostrar un crédito al diseñad
 | **Página 404** | Mejorado | Añadido `<meta name="robots" content="noindex, nofollow" />` para no indexar errores. |
 | **Canonical y OG** | OK | Layout aplica canonical, og:title, og:description, og:url, og:image y Twitter cards cuando `baseUrl` está configurado. |
 | **Datos estructurados** | OK | JSON-LD LocalBusiness en Layout (nombre, teléfono, área, horario 24h, dirección). |
-| **Accesibilidad** | OK | `lang="es"`, labels en formularios, aria-label en botones y navegación, contraste tema claro/oscuro. |
+| **Accesibilidad** | OK | `lang="es"`, labels en formularios, aria-label en botones y navegación, contraste en tema oscuro. |
 | **robots.txt** | OK | Allow / y Sitemap referenciado. |
 
 ### 3. Cambios técnicos aplicados
@@ -2650,4 +2650,24 @@ Para mejorar el LCP de la home se aplicó lo siguiente:
 
 **Recomendación**: si la imagen hero pesa mucho (p. ej. > 500 KB), conviene optimizarla: formato WebP (o AVIF), ancho máximo 1200–1400 px y calidad 80–85 %. Herramientas: Squoosh, sharp en build, o export desde el editor. Así se reduce el "Resource load duration" y el LCP mejora aún más.
 
+---
+
+## Estado actual del proyecto (actualización reciente)
+
+Resumen de los cambios aplicados para mantener el DOC al día con la funcionalidad actual:
+
+| Área | Estado actual |
+|------|----------------|
+| **Tema** | Solo **tema oscuro**. Eliminado el selector claro/oscuro; `<html data-theme="dark">` fijo. En `global.css` solo se mantienen estilos para tema oscuro. |
+| **Favicon** | Uso de **`/favicon.ico`** (definido en Layout). El archivo en `public/` puede ser el logotipo en formato .ico. |
+| **Formulario de contacto** | **Obligatorios:** correo y mensaje. **Opcionales:** nombre y móvil. Eliminado el campo "teléfono" (solo móvil opcional). La API valida correo y mensaje; incluye móvil y nombre en el cuerpo del correo si se envían. |
+| **API de contacto** | Acepta `email`, `mensaje`, `nombre`, `movil`, `barrio`. Soporta Resend (prioritario si `RESEND_API_KEY`) o SMTP (Nodemailer). Reply-to con el correo del formulario cuando se proporciona. |
+| **Blog** | Content Collection `blog` en `src/content/blog/*.md` con schema: `title`, `description`, `pubDate`, `image` (opcional), `draft` (opcional). Páginas: `/blog` (listado) y `/blog/[slug]` (entrada). Guía de publicación: **`BLOG.md`** en la raíz (cómo crear entradas e incluir imágenes). Enlace "Blog" en Header y Footer. |
+| **Barrios y blog** | Cada página de barrio incluye un bloque **"Últimas entradas del blog"** con las 3 entradas más recientes y enlace "Ver todo el blog". Solo visible si hay al menos una entrada publicada. |
+| **Sitemap** | Incluye `/blog`, todas las entradas del blog (excluye borradores) y las páginas de barrio. Se genera en cada build. |
+| **Google Maps / ubicación** | En `site.ts`: **`direccion`** (calle, localidad, codigoPostal) y **`googleMapsUrl`** (enlace a la ficha de Google Maps o Google Business). En **Contacto**: bloque "Dónde estamos" con dirección y enlace "Ver en Google Maps" o "Cómo llegar". En **Footer**: enlace "Cómo llegar" cuando hay dirección o `googleMapsUrl`. |
+| **Reseñas (SEO y confianza)** | En `site.ts`: **`reseñas`** opcional con `valoracionMedia`, `totalResenas` y array de reseñas (autor, texto, fecha, valoracion). Si `totalResenas > 0`: se añade **aggregateRating** y hasta 5 **Review** al JSON-LD de LocalBusiness en Layout; en la **home** se muestra la sección "Lo que dicen nuestros clientes" (estrellas, enlace a Google, hasta 4 tarjetas de reseñas). La tarjeta "Clientes satisfechos" usa los datos de `reseñas` cuando están configurados. |
+| **Layout y SEO** | Layout acepta prop opcional **`ogImage`** (URL completa) para páginas que quieran imagen OG propia (p. ej. entradas del blog). El JSON-LD de LocalBusiness se construye dinámicamente y se añaden `aggregateRating` y `review` cuando hay reseñas configuradas. |
+
+Para publicar en el blog y usar imágenes, consultar **`BLOG.md`**.
 

@@ -1,22 +1,22 @@
 ---
 nombre: "Moncloa-Aravaca"
 introExtra: >
-  En Moncloa-Aravaca trabajamos a diario en portales, comunidades y viviendas en Casa de Campo, Argüelles,
-  Ciudad Universitaria, Valdezarza, Valdemarín, El Plantío, Aravaca y alrededores. Cerraduras, bombines
-  y puertas blindadas.
+  Moncloa-Aravaca abarca desde Casa de Campo y Argüelles hasta Ciudad Universitaria, Valdezarza,
+  Valdemarín, El Plantío y Aravaca. Atendemos portales, comunidades y viviendas con cerraduras clásicas,
+  bombines y puertas blindadas; en Aravaca y El Plantío es habitual encontrar cerrajería de mayor gama.
 llegadaTexto: >
-  En Moncloa-Aravaca solemos tardar entre 15 y 30 minutos desde que confirmamos el aviso; en Aravaca o
-  El Plantío puede ser algo más según el tráfico.
+  A Moncloa y zonas cercanas llegamos en unos 15–22 minutos; a Aravaca y El Plantío el trayecto suele
+  ser de 22–30 minutos desde la confirmación. La A-6 y el tráfico de entrada a Madrid pueden alargar en hora punta.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Al recibir tu llamada hacemos una valoración: soluciones posibles y rango de precio. En el lugar
+  inspeccionamos puerta y cerradura, confirmamos el presupuesto contigo y solo empezamos con tu visto bueno.
 faqLlegada: >
-  Llegamos a cualquier zona de Moncloa-Aravaca en unos 15–30 minutos desde que se confirma el aviso. En
-  Aravaca o zonas más alejadas puede alargarse ligeramente.
+  Llegamos a Moncloa, Argüelles, Ciudad Universitaria y Valdezarza en unos 15–22 minutos; a Aravaca y
+  El Plantío en unos 22–30 minutos desde que se confirma el aviso. En hora punta puede alargarse.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Orientación de precio por teléfono; importe final cuando vemos la cerradura. Actuamos solo si estás
+  de acuerdo; no hay cargos sorpresa al terminar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Moncloa-Aravaca las 24 horas todos los días del año, incluidos fines
-  de semana, festivos y noches.
+  Sí: cerrajería urgente en Moncloa-Aravaca las 24 horas, todos los días del año, fines de semana,
+  festivos y noches incluidos.
 ---

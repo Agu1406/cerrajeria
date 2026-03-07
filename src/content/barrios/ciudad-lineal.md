@@ -1,22 +1,22 @@
 ---
 nombre: "Ciudad Lineal"
 introExtra: >
-  En Ciudad Lineal trabajamos a diario en portales, comunidades y viviendas en Ventas, Pueblo Nuevo, Quintana,
-  Concepción, San Pascual, San Juan Bautista, Colina, Atalaya, Costillares y alrededores. Cerraduras,
-  bombines y puertas blindadas.
+  Ciudad Lineal es un distrito largo: Ventas, Pueblo Nuevo, Quintana, Concepción, San Pascual, San Juan
+  Bautista, Colina, Atalaya y Costillares. Hay mezcla de edificios antiguos y bloques recientes; trabajamos
+  cerraduras de portal, bombines y puertas blindadas. La calle Alcalá y la M-40 marcan buena parte de nuestras rutas.
 llegadaTexto: >
-  En Ciudad Lineal solemos tardar entre 15 y 30 minutos desde que confirmamos el aviso, dependiendo del
-  tráfico y la zona concreta.
+  A Ventas y Quintana llegamos en unos 15–22 minutos; a Pueblo Nuevo, Costillares y zonas más al este
+  el trayecto suele ser de 20–30 minutos desde la confirmación. El tráfico en Alcalá puede alargar en hora punta.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Primero valoramos por teléfono: opciones y rango de precio. En el portal revisamos puerta y cerradura,
+  te damos el presupuesto definitivo y solo actuamos cuando tú lo apruebas.
 faqLlegada: >
-  Llegamos a cualquier zona de Ciudad Lineal en unos 15–30 minutos desde que se confirma el aviso. En horas
-  punta puede alargarse ligeramente.
+  Cubrimos Ventas, Pueblo Nuevo, Quintana, Concepción, San Pascual, San Juan Bautista, Colina, Atalaya,
+  Costillares y resto de Ciudad Lineal en unos 15–30 minutos desde la confirmación; en hora punta puede aumentar.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Te damos un precio orientativo por teléfono. Al ver la cerradura in situ fijamos el importe final;
+  solo trabajamos con tu conformidad y sin cargos ocultos al finalizar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Ciudad Lineal las 24 horas todos los días del año, incluidos fines de
-  semana, festivos y noches.
+  Cerrajería urgente en Ciudad Lineal disponible las 24 horas, todos los días del año, incluidos fines de
+  semana, festivos y madrugadas.
 ---

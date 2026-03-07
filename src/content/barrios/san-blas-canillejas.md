@@ -1,22 +1,22 @@
 ---
 nombre: "San Blas-Canillejas"
 introExtra: >
-  En San Blas-Canillejas trabajamos a diario en portales, comunidades y viviendas en Simancas, Hellín,
-  Amposta, Arcos, Rosas, Rejas, Canillejas, Salvador y alrededores. Cerraduras antiguas, bombines y puertas
-  de todo tipo.
+  San Blas-Canillejas incluye Simancas, Hellín, Amposta, Arcos, Rosas, Rejas, Canillejas y Salvador:
+  distrito con mucho bloque residencial y portales de los 70–80. Trabajamos cerraduras antiguas, bombines
+  y puertas blindadas; la A-2 y la M-40 facilitan el acceso.
 llegadaTexto: >
-  En San Blas-Canillejas solemos tardar entre 15 y 30 minutos desde que confirmamos el aviso, dependiendo
-  del tráfico y la zona concreta.
+  A San Blas y Canillejas llegamos en general en 15–30 minutos desde la confirmación. La zona de
+  Rejas y Canillejas puede retrasar un poco en hora punta; de madrugada el desplazamiento suele ser más corto.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Valoración por teléfono con opciones y rango de precio. Al llegar revisamos la puerta o cerradura,
+  te confirmamos el presupuesto y solo ejecutamos el trabajo cuando tú lo aceptas.
 faqLlegada: >
-  Llegamos a cualquier zona de San Blas-Canillejas en unos 15–30 minutos desde que se confirma el aviso.
-  En horas punta puede alargarse ligeramente.
+  Llegamos a Simancas, Hellín, Amposta, Arcos, Rosas, Rejas, Canillejas, Salvador y resto del distrito
+  en unos 15–30 minutos tras confirmar el aviso; en horas punta puede tardar algo más.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Precio orientativo por teléfono; el importe final se confirma en persona tras ver la cerradura. Solo
+  trabajamos con tu conformidad y sin sorpresas en la factura final.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en San Blas-Canillejas las 24 horas todos los días del año, incluidos
-  fines de semana, festivos y noches.
+  Servicio de cerrajería urgente en San Blas-Canillejas disponible 24 horas, todos los días del año: fines
+  de semana, festivos y noches.
 ---

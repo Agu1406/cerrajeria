@@ -1,21 +1,22 @@
 ---
 nombre: "Torrejón de Ardoz"
 introExtra: >
-  En Torrejón de Ardoz trabajamos a diario en portales, comunidades de vecinos y viviendas. Cerraduras
-  antiguas, bombines y puertas blindadas en todo el municipio.
+  Torrejón de Ardoz está en el corredor del Henares: portales, comunidades de vecinos y viviendas con
+  cerraduras antiguas, bombines y puertas blindadas. Atendemos el casco y las zonas residenciales; la
+  A-2 y la M-206 marcan el acceso desde Madrid.
 llegadaTexto: >
-  En Torrejón de Ardoz solemos tardar entre 30 y 45 minutos desde que confirmamos el aviso, dependiendo del
-  tráfico desde Madrid y la zona concreta.
+  A Torrejón de Ardoz llegamos normalmente en 30–45 minutos desde que confirmamos el aviso. El tráfico
+  desde Madrid y la A-2 pueden alargar en hora punta; te avisamos por teléfono si hay retraso.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Al recibir tu llamada hacemos una valoración: soluciones posibles y rango de precio. En el lugar
+  inspeccionamos puerta y cerradura, confirmamos el presupuesto contigo y solo empezamos con tu visto bueno.
 faqLlegada: >
-  Llegamos a Torrejón de Ardoz en unos 30–45 minutos desde que se confirma el aviso. Te avisamos por teléfono
-  si hay retraso.
+  Llegamos a Torrejón de Ardoz en unos 30–45 minutos desde que se confirma el aviso. En hora punta
+  puede alargarse; te avisamos por teléfono si hay retraso.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Orientación de precio por teléfono; importe final cuando vemos la cerradura. Actuamos solo si estás
+  de acuerdo; no hay cargos sorpresa al terminar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Torrejón de Ardoz las 24 horas todos los días del año, incluidos
-  fines de semana, festivos y noches.
+  Servicio de cerrajería urgente en Torrejón de Ardoz disponible 24 horas, todos los días del año: fines
+  de semana, festivos y noches.
 ---

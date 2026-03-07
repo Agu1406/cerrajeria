@@ -1,21 +1,22 @@
 ---
 nombre: "Hortaleza"
 introExtra: >
-  En Hortaleza trabajamos a diario en portales, comunidades y viviendas en Palomas, Piovera, Canillas, Pinar
-  del Rey, Apóstol Santiago, Valdefuentes y alrededores. Cerraduras antiguas, bombines y puertas de todo tipo.
+  Hortaleza agrupa Palomas, Piovera, Canillas, Pinar del Rey, Apóstol Santiago y Valdefuentes: distrito
+  residencial con bloques y urbanizaciones. Atendemos cerraduras antiguas, bombines y puertas blindadas;
+  en Pinar del Rey y Valdefuentes es habitual encontrar cerrajería de mayor gama.
 llegadaTexto: >
-  En Hortaleza solemos tardar entre 20 y 35 minutos desde que confirmamos el aviso, dependiendo del tráfico
-  y la zona concreta.
+  A Hortaleza llegamos normalmente en 20–35 minutos desde que confirmamos el aviso. La M-40 y la zona
+  de Canillas pueden variar con el tráfico; El Pardo y Alcobendas quedan bien comunicados por carretera.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Al recibir tu llamada hacemos una valoración: soluciones posibles y rango de precio. En el lugar
+  inspeccionamos puerta y cerradura, confirmamos el presupuesto contigo y solo empezamos con tu visto bueno.
 faqLlegada: >
-  Llegamos a cualquier zona de Hortaleza en unos 20–35 minutos desde que se confirma el aviso. En horas punta
-  puede alargarse ligeramente.
+  Llegamos a Palomas, Piovera, Canillas, Pinar del Rey, Apóstol Santiago, Valdefuentes y resto de
+  Hortaleza en unos 20–35 minutos desde que se confirma el aviso; en hora punta puede alargarse.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Orientación de precio por teléfono; importe final cuando vemos la cerradura. Actuamos solo si estás
+  de acuerdo; no hay cargos sorpresa al terminar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Hortaleza las 24 horas todos los días del año, incluidos fines de
-  semana, festivos y noches.
+  Sí: cerrajería urgente en Hortaleza las 24 horas, todos los días del año, fines de semana, festivos y
+  noches incluidos.
 ---

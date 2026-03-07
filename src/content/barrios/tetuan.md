@@ -1,22 +1,22 @@
 ---
 nombre: "Tetuán"
 introExtra: >
-  En Tetuán trabajamos a diario en portales, comunidades y viviendas en Bellas Vistas, Cuatro Caminos,
-  Castillejos, Almenara, Valdeacederas, Berruguete y alrededores. Cerraduras antiguas, bombines y puertas
-  de todo tipo.
+  Tetuán es uno de los distritos con más portales antiguos: Bellas Vistas, Cuatro Caminos, Castillejos,
+  Almenara, Valdeacederas y Berruguete. Trabajamos cerraduras de toda época, bombines estándar y de
+  seguridad, y puertas blindadas; muchas intervenciones son en comunidades con rejas y portales de los años 60–70.
 llegadaTexto: >
-  En Tetuán solemos tardar entre 15 y 25 minutos desde que confirmamos el aviso, dependiendo del tráfico y
-  la zona concreta.
+  A Tetuán llegamos normalmente en 15–25 minutos desde que confirmamos el aviso. Bravo Murillo y la
+  zona de Cuatro Caminos pueden sumar algo en hora punta; el resto del distrito queda bien cubierto.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Primero valoramos por teléfono: te explicamos opciones y un rango de precio. En el portal revisamos
+  puerta y cerradura, te damos el presupuesto definitivo y solo actuamos cuando tú lo apruebas.
 faqLlegada: >
-  Llegamos a cualquier zona de Tetuán en unos 15–25 minutos desde que se confirma el aviso. En horas punta
-  puede alargarse ligeramente.
+  Cubrimos todo Tetuán (Bellas Vistas, Cuatro Caminos, Castillejos, Almenara, Valdeacederas, Berruguete)
+  en unos 15–25 minutos desde la confirmación; en hora punta el tiempo puede aumentar un poco.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Te damos un precio orientativo por teléfono. Al ver la cerradura in situ fijamos el importe final;
+  solo trabajamos con tu conformidad y sin cargos ocultos al finalizar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Tetuán las 24 horas todos los días del año, incluidos fines de semana,
-  festivos y noches.
+  Cerrajería urgente en Tetuán disponible las 24 horas, todos los días del año, incluidos fines de
+  semana, festivos y madrugadas.
 ---

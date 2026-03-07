@@ -1,22 +1,22 @@
 ---
 nombre: "Latina"
 introExtra: >
-  En el distrito Latina trabajamos a diario en portales, comunidades y viviendas en Los Cármenes, Puerta
-  del Ángel, Lucero, Aluche, Campamento, Cuatro Vientos, Las Águilas y alrededores. Cerraduras antiguas,
-  bombines y puertas de todo tipo.
+  En el distrito Latina cubrimos Los Cármenes, Puerta del Ángel, Lucero, Aluche, Campamento, Cuatro
+  Vientos y Las Águilas. Hay mezcla de bloques de los 70–80 y edificios más recientes; trabajamos
+  cerraduras de portal, bombines y puertas blindadas, y también cierres de garajes y locales.
 llegadaTexto: >
-  En Latina solemos tardar entre 15 y 30 minutos desde que confirmamos el aviso, dependiendo del tráfico
-  y la zona concreta.
+  Hasta Latina el tiempo de llegada habitual es de 15–30 minutos desde que confirmamos. Carabanchel,
+  Aluche y las zonas hacia Cuatro Vientos pueden variar según el tráfico; de noche el desplazamiento suele ser más corto.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Valoración por teléfono con opciones y rango de precio. Al llegar revisamos la puerta o cerradura,
+  te confirmamos el presupuesto y solo ejecutamos el trabajo cuando tú lo aceptas.
 faqLlegada: >
-  Llegamos a cualquier zona de Latina en unos 15–30 minutos desde que se confirma el aviso. En horas punta
-  puede alargarse ligeramente.
+  Llegamos a cualquier barrio de Latina (Los Cármenes, Puerta del Ángel, Lucero, Aluche, Campamento,
+  Cuatro Vientos, Las Águilas) en unos 15–30 minutos tras confirmar el aviso; en horas punta puede tardar algo más.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Precio orientativo por teléfono; el importe final se confirma en persona tras ver la cerradura. Solo
+  trabajamos con tu conformidad y sin sorpresas en la factura final.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Latina las 24 horas todos los días del año, incluidos fines de
+  Servicio de cerrajería urgente en Latina disponible 24 horas, todos los días del año: fines de
   semana, festivos y noches.
 ---

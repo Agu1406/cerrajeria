@@ -1,21 +1,22 @@
 ---
 nombre: "Carabanchel"
 introExtra: >
-  En Carabanchel trabajamos a diario en portales, comunidades y viviendas en Comillas, Opañel, San Isidro,
-  Vista Alegre, Puerta Bonita, Buenavista, Abrantes y alrededores. Cerraduras, bombines y puertas blindadas.
+  Carabanchel incluye Comillas, Opañel, San Isidro, Vista Alegre, Puerta Bonita, Buenavista y Abrantes:
+  muchos bloques de los 70–80 con portales y cerraduras clásicas. Atendemos bombines, puertas blindadas
+  y cierres de comunidades; la zona de Vista Alegre y Opañel concentra buena parte de nuestras salidas.
 llegadaTexto: >
-  En Carabanchel solemos tardar entre 15 y 30 minutos desde que confirmamos el aviso, dependiendo del tráfico
-  y la zona concreta.
+  A Carabanchel llegamos normalmente en 15–30 minutos desde que confirmamos el aviso. General Ricardos
+  y la zona de San Isidro pueden variar con el tráfico; de madrugada el trayecto suele acortarse.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Primero valoramos por teléfono: opciones y rango de precio. En el portal revisamos puerta y cerradura,
+  te damos el presupuesto definitivo y solo actuamos cuando tú lo apruebas.
 faqLlegada: >
-  Llegamos a cualquier zona de Carabanchel en unos 15–30 minutos desde que se confirma el aviso. En horas
-  punta puede alargarse ligeramente.
+  Cubrimos todo Carabanchel (Comillas, Opañel, San Isidro, Vista Alegre, Puerta Bonita, Buenavista,
+  Abrantes) en unos 15–30 minutos desde la confirmación; en hora punta el tiempo puede aumentar un poco.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Te damos un precio orientativo por teléfono. Al ver la cerradura in situ fijamos el importe final;
+  solo trabajamos con tu conformidad y sin cargos ocultos al finalizar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Carabanchel las 24 horas todos los días del año, incluidos fines de
-  semana, festivos y noches.
+  Cerrajería urgente en Carabanchel disponible las 24 horas, todos los días del año, incluidos fines de
+  semana, festivos y madrugadas.
 ---

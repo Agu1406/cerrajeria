@@ -1,22 +1,22 @@
 ---
 nombre: "Fuencarral-El Pardo"
 introExtra: >
-  En Fuencarral-El Pardo trabajamos a diario en portales, comunidades y viviendas en El Pardo, Fuentelarreina,
-  Peñagrande, El Pilar, La Paz, Valverde, Mirasierra, El Goloso y alrededores. Cerraduras, bombines y
-  puertas de todo tipo.
+  Fuencarral-El Pardo va desde El Pardo y Fuentelarreina hasta Peñagrande, El Pilar, La Paz, Valverde,
+  Mirasierra y El Goloso: distrito muy extenso con zonas residenciales y urbanizaciones. Trabajamos
+  cerraduras, bombines y puertas blindadas; en Mirasierra y El Pardo es habitual cerrajería de alta gama.
 llegadaTexto: >
-  En Fuencarral-El Pardo solemos tardar entre 20 y 35 minutos desde que confirmamos el aviso, dependiendo
-  del tráfico y de si es zona más céntrica o El Pardo / Mirasierra.
+  A El Pilar, La Paz y Peñagrande llegamos en unos 18–26 minutos; a El Pardo, Mirasierra y El Goloso
+  el trayecto suele ser de 22–35 minutos desde la confirmación. La M-607 y la carretera de El Pardo marcan el tiempo.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Cuando recibimos una llamada desde Fuencarral-El Pardo hacemos una valoración previa por teléfono:
+  soluciones y rango de precio. Al llegar revisamos la puerta, confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
 faqLlegada: >
-  Llegamos a cualquier zona de Fuencarral-El Pardo en unos 20–35 minutos desde que se confirma el aviso.
-  En horas punta o en zonas más alejadas puede alargarse ligeramente.
+  En condiciones normales llegamos a El Pardo, Fuentelarreina, Peñagrande, El Pilar, La Paz, Valverde,
+  Mirasierra, El Goloso y resto del distrito en unos 20–35 minutos desde que se confirma el aviso.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Antes de desplazarnos te explicamos el precio orientativo. Al ver la puerta confirmamos el importe
+  final y solo actuamos si estás de acuerdo, sin sorpresas al terminar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Fuencarral-El Pardo las 24 horas todos los días del año, incluidos
-  fines de semana, festivos y noches.
+  Sí: prestamos servicio de cerrajería urgente en Fuencarral-El Pardo las 24 horas todos los días del año,
+  incluidos fines de semana, festivos y noches.
 ---

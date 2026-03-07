@@ -1,20 +1,22 @@
 ---
 nombre: "Rivas-Vaciamadrid"
 introExtra: >
-  En Rivas-Vaciamadrid trabajamos a diario en portales, comunidades de vecinos y viviendas. Cerraduras,
-  bombines y puertas blindadas en todo el municipio.
+  Rivas-Vaciamadrid es un municipio en crecimiento: portales, comunidades de vecinos y viviendas con
+  cerraduras, bombines y puertas blindadas de todo tipo. Atendemos el casco, Rivas Futura, Covibar y
+  las zonas residenciales; la A-3 facilita el acceso desde Madrid.
 llegadaTexto: >
-  En Rivas-Vaciamadrid solemos tardar entre 25 y 40 minutos desde que confirmamos el aviso, dependiendo del
-  tráfico y la zona concreta.
+  A Rivas-Vaciamadrid llegamos en general en 25–40 minutos desde la confirmación. La A-3 y la M-50
+  pueden retrasar un poco en hora punta; de madrugada el trayecto suele ser más ágil.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Primero valoramos por teléfono: opciones y rango de precio. En el portal revisamos puerta y cerradura,
+  te damos el presupuesto definitivo y solo actuamos cuando tú lo apruebas.
 faqLlegada: >
   Llegamos a cualquier zona de Rivas-Vaciamadrid en unos 25–40 minutos desde que se confirma el aviso.
+  En hora punta puede alargarse; te avisamos por teléfono.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Te damos un precio orientativo por teléfono. Al ver la cerradura in situ fijamos el importe final;
+  solo trabajamos con tu conformidad y sin cargos ocultos al finalizar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Rivas-Vaciamadrid las 24 horas todos los días del año, incluidos
+  Cerrajería urgente en Rivas-Vaciamadrid disponible las 24 horas, todos los días del año, incluidos
   fines de semana, festivos y noches.
 ---

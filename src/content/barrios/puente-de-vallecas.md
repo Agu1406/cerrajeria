@@ -1,22 +1,23 @@
 ---
 nombre: "Puente de Vallecas"
 introExtra: >
-  En Puente de Vallecas trabajamos a diario en portales, comunidades y viviendas en Entrevías, San Diego,
-  Palomeras Bajas, Palomeras Sureste, Portazgo, Numancia y alrededores. Cerraduras, bombines y puertas
-  blindadas.
+  Puente de Vallecas abarca Entrevías, San Diego, Palomeras Bajas, Palomeras Sureste, Portazgo y
+  Numancia: distrito con mucho bloque residencial y portales con cerraduras de toda clase. Trabajamos
+  bombines desgastados, puertas blindadas y cierres de comunidades; la M-30 y Avenida de la Albufera
+  nos permiten llegar con rapidez.
 llegadaTexto: >
-  En Puente de Vallecas solemos tardar entre 15 y 30 minutos desde que confirmamos el aviso, dependiendo
-  del tráfico y la zona concreta.
+  Hasta Puente de Vallecas el tiempo habitual es de 15–30 minutos desde que confirmamos. Entrevías y
+  Palomeras pueden variar según el tráfico en la M-30; por la noche el desplazamiento suele ser más corto.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Al recibir tu llamada hacemos una valoración: soluciones posibles y rango de precio. En el lugar
+  inspeccionamos puerta y cerradura, confirmamos el presupuesto contigo y solo empezamos con tu visto bueno.
 faqLlegada: >
-  Llegamos a cualquier zona de Puente de Vallecas en unos 15–30 minutos desde que se confirma el aviso. En
-  horas punta puede alargarse ligeramente.
+  Llegamos a Entrevías, San Diego, Palomeras, Portazgo, Numancia y resto de Puente de Vallecas en unos
+  15–30 minutos tras confirmar el aviso; en horas punta puede tardar algo más.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Orientación de precio por teléfono; importe final cuando vemos la cerradura. Actuamos solo si estás
+  de acuerdo; no hay cargos sorpresa al terminar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Puente de Vallecas las 24 horas todos los días del año, incluidos
-  fines de semana, festivos y noches.
+  Sí: cerrajería urgente en Puente de Vallecas las 24 horas, todos los días del año, fines de semana,
+  festivos y noches incluidos.
 ---

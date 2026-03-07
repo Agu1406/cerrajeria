@@ -1,21 +1,22 @@
 ---
 nombre: "Alcobendas"
 introExtra: >
-  En Alcobendas trabajamos a diario en portales, comunidades de vecinos y viviendas. Cerraduras, bombines
-  y puertas blindadas en todo el municipio.
+  Alcobendas combina zonas residenciales y de negocio: portales, comunidades de vecinos y viviendas
+  con cerraduras, bombines y puertas blindadas. Atendemos el casco, Valdelasfuentes, Arroyo de la Vega
+  y el polígono; la M-607 y la A-1 facilitan el acceso.
 llegadaTexto: >
-  En Alcobendas solemos tardar entre 25 y 40 minutos desde que confirmamos el aviso, dependiendo del tráfico
-  y la zona concreta.
+  A Alcobendas llegamos en general en 25–40 minutos desde la confirmación. La A-1 y la zona de
+  Valdelasfuentes pueden variar con el tráfico; por la noche el desplazamiento suele ser más corto.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Te hacemos una valoración por teléfono con soluciones y rango de precio. En el lugar revisamos la
+  puerta o cerradura, te damos el presupuesto definitivo y solo intervenimos cuando tú lo apruebas.
 faqLlegada: >
-  Llegamos a cualquier zona de Alcobendas en unos 25–40 minutos desde que se confirma el aviso. En horas punta
-  puede alargarse ligeramente.
+  Llegamos a cualquier zona de Alcobendas en unos 25–40 minutos desde que se confirma el aviso. En
+  hora punta puede alargarse ligeramente; te avisamos por teléfono.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Indicamos un precio orientativo por teléfono; el importe final se confirma al ver la cerradura.
+  Trabajamos solo con tu acuerdo y sin cargos adicionales inesperados al terminar.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Alcobendas las 24 horas todos los días del año, incluidos fines de
+  Servicio de cerrajería urgente en Alcobendas disponible 24 horas, todos los días del año: fines de
   semana, festivos y noches.
 ---

@@ -1,23 +1,22 @@
 ---
 nombre: "Fuenlabrada"
 introExtra: >
-  En Fuenlabrada trabajamos a diario en portales de edificios residenciales, comunidades de vecinos y
-  viviendas unifamiliares. Estamos acostumbrados a cerraduras antiguas, bombines desgastados y puertas de
-  todo tipo en el municipio.
+  Fuenlabrada es un municipio grande con muchos portales residenciales, comunidades de vecinos y
+  viviendas unifamiliares. Atendemos cerraduras antiguas, bombines desgastados y puertas de todo tipo;
+  conocemos el casco, Loranca, El Naranjo y las zonas de expansión.
 llegadaTexto: >
-  En Fuenlabrada solemos tardar entre 25 y 40 minutos desde que confirmamos el aviso, dependiendo del tráfico
-  y la zona concreta.
+  A Fuenlabrada llegamos en general en 25–40 minutos desde la confirmación. La A-42 y la M-50 pueden
+  alargar el trayecto en hora punta; por la noche el desplazamiento suele acortarse.
 comoTrabajamos: >
-  Cuando recibimos una llamada desde Fuenlabrada intentamos siempre hacer una valoración previa por teléfono,
-  explicando las posibles soluciones y un rango de precio aproximado. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos a trabajar cuando tú lo aceptas.
+  Al recibir tu llamada hacemos una valoración: soluciones posibles y rango de precio aproximado. En el
+  lugar inspeccionamos puerta y cerradura, confirmamos el presupuesto contigo y solo empezamos con tu visto bueno.
 faqLlegada: >
-  En condiciones normales llegamos a cualquier zona de Fuenlabrada en unos 25–40 minutos desde que se
-  confirma el aviso. En horas punta o días de lluvia puede alargarse ligeramente, pero te avisamos por teléfono.
+  Llegamos a cualquier zona de Fuenlabrada en unos 25–40 minutos desde que se confirma el aviso. En hora
+  punta o días de lluvia puede alargarse; te avisamos por teléfono.
 faqPrecio: >
-  Antes de desplazarnos te explicamos el precio orientativo de la apertura o reparación. Una vez vemos la
-  puerta en persona confirmamos el importe final y solo empezamos si estás de acuerdo, sin sorpresas al terminar.
+  Orientación de precio por teléfono; importe final cuando vemos la cerradura. Actuamos solo si estás
+  de acuerdo; no hay cargos sorpresa al terminar.
 faqFestivos: >
-  Sí, prestamos servicio de cerrajería urgente en Fuenlabrada las 24 horas todos los días del año, incluidos
-  fines de semana, festivos y noches.
+  Servicio de cerrajería urgente en Fuenlabrada disponible 24 horas, todos los días del año: fines de
+  semana, festivos y noches.
 ---

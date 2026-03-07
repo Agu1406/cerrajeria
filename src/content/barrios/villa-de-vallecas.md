@@ -1,22 +1,22 @@
 ---
 nombre: "Villa de Vallecas"
 introExtra: >
-  En Villa de Vallecas trabajamos a diario en portales, comunidades y viviendas en el Casco Histórico de
-  Vallecas, Santa Eugenia, Ensanche de Vallecas y alrededores. Cerraduras antiguas, bombines y puertas
-  de todo tipo.
+  Villa de Vallecas incluye el Casco Histórico de Vallecas, Santa Eugenia y el Ensanche de Vallecas:
+  mezcla de edificios antiguos y bloques nuevos. Atendemos cerraduras de portal, bombines y puertas
+  blindadas; en el Ensanche es habitual encontrar cerrajería más reciente y de mayor gama.
 llegadaTexto: >
-  En Villa de Vallecas solemos tardar entre 20 y 35 minutos desde que confirmamos el aviso, dependiendo
-  del tráfico y de si es el casco histórico o el Ensanche.
+  Al Casco Histórico y Santa Eugenia llegamos en unos 20–30 minutos; al Ensanche de Vallecas el trayecto
+  suele ser de 25–35 minutos desde la confirmación. La A-3 y el tráfico de acceso influyen en el tiempo.
 comoTrabajamos: >
-  Valoración previa por teléfono con soluciones y rango de precio. Al llegar revisamos la puerta o cerradura,
-  confirmamos el presupuesto y solo empezamos cuando tú lo aceptas.
+  Valoración por teléfono con opciones y rango de precio. Al llegar revisamos la puerta o cerradura,
+  te confirmamos el presupuesto y solo ejecutamos el trabajo cuando tú lo aceptas.
 faqLlegada: >
-  Llegamos a cualquier zona de Villa de Vallecas en unos 20–35 minutos desde que se confirma el aviso. En
-  horas punta o en el Ensanche puede alargarse ligeramente.
+  Llegamos al Casco Histórico y Santa Eugenia en unos 20–30 minutos; al Ensanche de Vallecas en unos
+  25–35 minutos desde que se confirma el aviso. En hora punta puede alargarse.
 faqPrecio: >
-  Precio orientativo por teléfono; importe final confirmado en persona. Solo trabajamos si estás de acuerdo,
-  sin sorpresas al terminar.
+  Precio orientativo por teléfono; el importe final se confirma en persona tras ver la cerradura. Solo
+  trabajamos con tu conformidad y sin sorpresas en la factura final.
 faqFestivos: >
-  Sí, servicio de cerrajería urgente en Villa de Vallecas las 24 horas todos los días del año, incluidos
-  fines de semana, festivos y noches.
+  Servicio de cerrajería urgente en Villa de Vallecas disponible 24 horas, todos los días del año: fines
+  de semana, festivos y noches.
 ---

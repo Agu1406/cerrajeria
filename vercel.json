@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/barrios",
+      "destination": "/cerrajero-urgente-24h",
+      "permanent": true
+    },
+    {
       "source": "/barrios/:path*",
       "destination": "/cerrajero-urgente-24h/:path*",
       "permanent": true

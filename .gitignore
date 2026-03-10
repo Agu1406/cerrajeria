@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# exportaciones de Google Search Console (datos de rendimiento/cobertura)
+gsc/

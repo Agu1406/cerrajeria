@@ -37,4 +37,4 @@ El texto de cada página está adaptado al municipio: zonas concretas, vías de 
 
 Queremos que, cuando busques cerrajero en Aranjuez, Arganda, Arroyomolinos, Boadilla, Colmenar Viejo, San Sebastián de los Reyes, Tres Cantos o Valdemoro, encuentres **información clara y local**: no una página genérica, sino tiempos, zonas y servicios explicados para tu municipio. Así puedes decidir con más tranquilidad y saber a qué atenerte en precio y llegada.
 
-Si necesitas cerrajero urgente, duplicado de llaves de coche o refuerzo antiokupas en alguno de estos municipios, [consulta la página de tu zona](/barrios/) o [llámanos](/contacto) y te atendemos.
+Si necesitas cerrajero urgente, duplicado de llaves de coche o refuerzo antiokupas en alguno de estos municipios, [consulta el listado de barrios y zonas](/cerrajero-urgente-24h) o [llámanos](/contacto) y te atendemos.

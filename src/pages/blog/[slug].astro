@@ -17,11 +17,23 @@ const data = entry.data;
 
 const title = `${data.title} | ${siteConfig.nombreComercial}`;
 const description = data.description;
-const canonicalUrl = `${siteConfig.baseUrl}/blog/${entry.slug}`;
 const ogImage = data.image ? `${siteConfig.baseUrl}${data.image}` : `${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.webp`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: data.title,
+  description: data.description,
+  datePublished: data.pubDate.toISOString(),
+  dateModified: (data.actualizado ?? data.pubDate).toISOString(),
+  author: { '@type': 'Organization', name: siteConfig.nombreComercial, url: siteConfig.baseUrl },
+  publisher: { '@type': 'Organization', name: siteConfig.nombreComercial, url: siteConfig.baseUrl },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteConfig.baseUrl}/blog/${entry.slug}` },
+};
 ---
 
 <Layout {title} {description} ogImage={ogImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <article class="mx-auto max-w-3xl">
     <header class="mb-10 space-y-4">
       <time datetime={data.pubDate.toISOString()} class="block text-xs font-medium uppercase tracking-wider text-slate-500">

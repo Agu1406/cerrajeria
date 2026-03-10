@@ -1,25 +1,28 @@
 ---
 nombre: "Boadilla del Monte"
 introExtra: >
-  En Boadilla del Monte son muy habituales los chalets, adosados y urbanizaciones con puertas y cerraduras
-  modernas. Trabajamos en viviendas unifamiliares, comunidades y locales, con especial atención a sistemas
-  de alta seguridad y bombines antibumping.
+  En Boadilla del Monte trabajamos en urbanizaciones de chalets y adosados (Las Lomas, Montepríncipe,
+  Parque Boadilla, etc.) y en el casco. Es muy habitual encontrar puertas blindadas, bombines antibumping
+  y cerraduras de alta seguridad; tenemos experiencia con estos sistemas y priorizamos aperturas sin daños
+  o sustitución por modelos equivalentes cuando hace falta.
 llegadaTexto: >
-  A Boadilla del Monte llegamos normalmente en 30–45 minutos desde la confirmación del aviso. La M-40, la
-  M-50 y la M-501 influyen en el tiempo de llegada; por la noche el trayecto suele ser más fluido.
+  A Boadilla llegamos normalmente en 30–45 minutos desde la confirmación del aviso. La M-40 (salida 42),
+  la M-50 y la M-501 son el acceso habitual; por la noche el trayecto suele ser más fluido; en hora punta
+  la M-40 puede retrasar algo.
 comoTrabajamos: >
-  Cuando recibimos una llamada desde Boadilla hacemos una valoración previa por teléfono: opciones posibles
-  y un rango de precio aproximado. Al llegar revisamos puerta y cerradura, te explicamos alternativas y
-  confirmamos el presupuesto antes de empezar a trabajar.
+  Cuando recibimos una llamada desde Boadilla hacemos una valoración previa: tipo de puerta o cerradura
+  y rango de precio. Al llegar revisamos, te explicamos alternativas (apertura sin daños, cambio de bombín,
+  refuerzo) y confirmamos el presupuesto antes de actuar. En chalets con varias puertas buscamos la opción
+  menos invasiva.
 faqLlegada: >
-  En condiciones normales llegamos a las distintas zonas de Boadilla del Monte en unos 30–45 minutos desde
-  que se confirma el aviso. En momentos de tráfico intenso puede alargarse; te mantenemos informado por teléfono.
+  Llegamos a Boadilla (Las Lomas, Montepríncipe, Parque Boadilla, casco) en unos 30–45 minutos desde que
+  se confirma el aviso. Si el tráfico puede retrasarnos, te avisamos por teléfono.
 faqPrecio: >
-  Te damos un precio orientativo por teléfono y fijamos el importe final tras ver en persona la cerradura o
-  la puerta. Si es recomendable cambiar el bombín por uno de mayor seguridad, te lo explicamos y decides tú.
+  Precio orientativo por teléfono; importe final al ver la cerradura. Si conviene cambiar a bombín de
+  mayor seguridad, te lo explicamos y decides tú. Sin sorpresas al terminar.
 faqFestivos: >
-  Sí: prestamos servicio de cerrajería urgente en Boadilla del Monte las 24 horas, también en fines de semana,
-  festivos y noches. La tarifa de urgencia se indica siempre antes de salir hacia tu domicilio.
+  Sí: cerrajería urgente en Boadilla del Monte las 24 horas, fines de semana, festivos y noches. La
+  tarifa de urgencia se indica siempre antes de salir.
 actualizado: 2026-03-10
 ---
 

@@ -1,25 +1,27 @@
 ---
 nombre: "Colmenar Viejo"
 introExtra: >
-  En Colmenar Viejo trabajamos en portales, comunidades de vecinos y viviendas unifamiliares de todo el
-  municipio. Es una zona donde conviven edificios más antiguos con urbanizaciones recientes; tratamos
-  cerraduras y bombines de todo tipo, desde modelos clásicos hasta sistemas de alta seguridad.
+  En Colmenar Viejo atendemos el casco (centro histórico, barrio de El Mirador), urbanizaciones de la
+  sierra y polígonos. Hay mezcla de edificios de toda la vida con cerraduras y bombines antiguos y bloques
+  y chalets más recientes con puertas blindadas; conocemos la zona y te asesoramos para elegir la solución
+  que mejor encaje con tu vivienda.
 llegadaTexto: >
-  A Colmenar Viejo llegamos por lo general en 30–45 minutos desde que confirmamos el aviso. La M-607 y
-  el tráfico de entrada y salida de Madrid influyen en el tiempo de llegada.
+  A Colmenar Viejo llegamos por lo general en 30–45 minutos desde que confirmamos el aviso. La M-607
+  (Colmenar Viejo–Madrid) y el tráfico de la sierra norte marcan el tiempo; en invierno, con nieve o
+  hielo, el trayecto puede alargarse; te avisamos si hay incidencias.
 comoTrabajamos: >
-  Al recibir una llamada desde Colmenar Viejo hacemos una valoración previa: qué ha sucedido, qué tipo de
-  puerta tienes y un rango de precio orientativo. En la visita revisamos puerta y cerradura, te damos el
-  presupuesto definitivo y solo actuamos con tu aprobación.
+  Al recibir una llamada desde Colmenar Viejo hacemos una valoración previa: qué ha sucedido, tipo de
+  puerta y rango de precio. En la visita revisamos puerta y cerradura, te damos el presupuesto definitivo
+  y solo actuamos con tu aprobación. En edificios antiguos priorizamos técnicas que no dañen marcos.
 faqLlegada: >
-  Nuestro tiempo medio de llegada a Colmenar Viejo se sitúa entre 30 y 45 minutos desde que se confirma
-  el aviso. En horas punta el trayecto puede alargarse; te avisamos por teléfono si vemos retraso.
+  Tiempo medio de llegada a Colmenar Viejo (casco, El Mirador, urbanizaciones): 30–45 minutos desde que
+  se confirma el aviso. En horas punta o condiciones adversas puede alargarse; te avisamos por teléfono.
 faqPrecio: >
-  Te indicamos un precio orientativo por teléfono y, al ver la cerradura en persona, fijamos el importe
-  final. Si es recomendable cambiar bombín o reforzar la puerta, te lo explicamos antes para que decidas.
+  Precio orientativo por teléfono; importe final al ver la cerradura. Si conviene cambiar bombín o
+  reforzar la puerta, te lo explicamos antes para que decidas. Sin sorpresas.
 faqFestivos: >
-  Sí: prestamos servicio de cerrajería urgente en Colmenar Viejo las 24 horas, todos los días del año,
-  incluidos fines de semana, festivos y noches.
+  Sí: cerrajería urgente en Colmenar Viejo las 24 horas, fines de semana, festivos y noches. La tarifa
+  de urgencia se comenta siempre por adelantado.
 actualizado: 2026-03-10
 ---
 

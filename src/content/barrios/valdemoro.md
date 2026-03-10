@@ -1,25 +1,27 @@
 ---
 nombre: "Valdemoro"
 introExtra: >
-  En Valdemoro atendemos portales, comunidades de vecinos y viviendas unifamiliares en todo el municipio.
-  Es frecuente encontrarnos con cerraduras antiguas en el casco y bombines de seguridad más recientes en
-  urbanizaciones y promociones nuevas; te asesoramos sobre cuándo conviene actualizar.
+  En Valdemoro trabajamos en el casco histórico, en barrios como El Restón y en urbanizaciones y
+  promociones nuevas (Valderrey, Valle de la Oliva, etc.). En el centro hay portales con cerraduras
+  y bombines antiguos; en las zonas de expansión es habitual encontrar puertas blindadas y sistemas
+  modernos; te asesoramos según tu tipo de vivienda y si conviene actualizar.
 llegadaTexto: >
-  A Valdemoro llegamos normalmente en 30–45 minutos desde que confirmamos el aviso. La A-4 y la M-423
-  pueden afectar al tiempo de desplazamiento, especialmente en hora punta.
+  A Valdemoro llegamos normalmente en 30–45 minutos desde que confirmamos el aviso. La A-4 (salida 32)
+  y la M-423 son el acceso habitual; en hora punta el tramo sur de Madrid puede retrasar; por la noche
+  el trayecto suele ser más fluido.
 comoTrabajamos: >
-  Cuando nos llamas desde Valdemoro realizamos una valoración previa por teléfono: posibles soluciones y
-  un rango de precio aproximado. En la vivienda revisamos puerta y cerradura, te damos el presupuesto
-  definitivo y solo empezamos cuando tú lo apruebas.
+  Cuando nos llamas desde Valdemoro hacemos una valoración previa: qué ha pasado, tipo de puerta y
+  rango de precio. En la vivienda revisamos puerta y cerradura, te damos el presupuesto definitivo y
+  solo empezamos cuando tú lo apruebas. Sin cargos sorpresa al finalizar.
 faqLlegada: >
-  Llegamos a las distintas zonas de Valdemoro en unos 30–45 minutos desde que se confirma el aviso. En
-  momentos de tráfico intenso puede alargarse; te mantenemos informado por teléfono.
+  Llegamos a Valdemoro (casco, El Restón, Valderrey, Valle de la Oliva, etc.) en unos 30–45 minutos
+  desde que se confirma el aviso. Si el tráfico puede retrasarnos, te avisamos por teléfono.
 faqPrecio: >
-  Te explicamos el precio orientativo antes de desplazarnos. Tras ver la cerradura fijamos el importe final
-  y solo trabajamos si estás de acuerdo, sin cargos sorpresa al finalizar.
+  Precio orientativo antes de desplazarnos; importe final al ver la cerradura. Solo trabajamos con tu
+  conformidad; sin sorpresas al finalizar.
 faqFestivos: >
-  Sí: prestamos servicio de cerrajería urgente en Valdemoro las 24 horas, todos los días del año, incluidos
-  fines de semana, festivos y noches. La tarifa de urgencia se comenta siempre por adelantado.
+  Sí: cerrajería urgente en Valdemoro las 24 horas, fines de semana, festivos y noches. La tarifa de
+  urgencia se comenta siempre por adelantado.
 actualizado: 2026-03-10
 ---
 

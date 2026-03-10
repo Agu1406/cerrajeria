@@ -1,26 +1,27 @@
 ---
 nombre: "Arganda del Rey"
 introExtra: >
-  En Arganda del Rey atendemos portales de edificios residenciales, comunidades de vecinos y viviendas
-  unifamiliares tanto en el casco como en las zonas de expansión. Es frecuente encontrarnos con cerraduras
-  antiguas, bombines muy usados y puertas con muchos años de servicio; te ayudamos a mejorar la seguridad
-  cuando es buen momento para renovar.
+  En Arganda del Rey atendemos el casco (centro, barrio del Castillo), polígonos y zonas residenciales como
+  El Mirador de Arganda y Valderrivas. Hay mezcla de edificios de toda la vida con cerraduras y bombines
+  desgastados y bloques más recientes con puertas blindadas; te proponemos la solución que mejor encaje
+  con tu vivienda y tu presupuesto.
 llegadaTexto: >
-  A Arganda del Rey llegamos normalmente en 30–45 minutos desde que confirmamos el aviso. La A-3 y la M-300
-  pueden alargar algo el trayecto en hora punta; por la noche el desplazamiento suele ser más ágil.
+  A Arganda llegamos normalmente en 30–45 minutos desde que confirmamos el aviso. La A-3 (salida 22) y la
+  M-300 son el acceso habitual; en hora punta el tramo desde la M-50 puede retrasar; por la noche el
+  desplazamiento suele ser más ágil.
 comoTrabajamos: >
-  Cuando nos llamas desde Arganda hacemos una valoración previa por teléfono: alternativas posibles y rango
-  de precio orientativo. En la visita revisamos puerta y cerradura, te damos el presupuesto definitivo y solo
-  empezamos cuando tú das el visto bueno.
+  Cuando nos llamas desde Arganda hacemos una valoración previa por teléfono: qué ha pasado, tipo de puerta
+  y rango de precio. En la visita revisamos puerta y cerradura, te damos el presupuesto definitivo y solo
+  empezamos cuando tú das el visto bueno. Sin cargos ocultos.
 faqLlegada: >
-  En condiciones normales llegamos a cualquier zona de Arganda del Rey en unos 30–45 minutos desde que se
-  confirma el aviso. Si vemos que el tráfico puede retrasarnos, te avisamos por teléfono.
+  Llegamos a Arganda (centro, El Mirador, Valderrivas, polígonos) en unos 30–45 minutos desde que se
+  confirma el aviso. Si el tráfico puede retrasarnos, te avisamos por teléfono.
 faqPrecio: >
-  Antes de desplazarnos te explicamos el precio orientativo. Al ver la cerradura en persona fijamos el importe
-  final y solo trabajamos si estás de acuerdo, sin cargos sorpresa al terminar.
+  Precio orientativo por teléfono; importe final al ver la cerradura in situ. Solo trabajamos con tu
+  conformidad y sin sorpresas al terminar.
 faqFestivos: >
-  Sí: prestamos servicio de cerrajería urgente en Arganda del Rey las 24 horas todos los días del año, incluidos
-  fines de semana, festivos y noches. La tarifa de nocturnidad o festivos se comenta siempre por adelantado.
+  Sí: cerrajería urgente en Arganda del Rey las 24 horas, fines de semana, festivos y noches. La tarifa
+  de nocturnidad o festivos se comenta siempre por adelantado.
 actualizado: 2026-03-10
 ---
 

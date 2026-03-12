@@ -2747,3 +2747,88 @@ Cambios documentados en este documento (secciones 3 y Bitácora):
 - **Mejoras**: Más rutas útiles para SEO (servicio + Madrid, duplicado llaves coche + barrio); contenido diferenciado por intención; acceso claro desde Servicios a cada servicio y a zonas; sitemap actualizado.
 - **Consideraciones**: Mantener contenido único en cada plantilla; no multiplicar "una página por servicio por barrio" para el resto de servicios para evitar contenido fino; revisar en Search Console qué URLs reciben impresiones con el tiempo.
 
+---
+
+## Actualización DOC – Nuevos barrios, colecciones por barrio y mejoras SEO (marzo 2026)
+
+### Nuevos barrios y contenido único
+
+- Se han añadido barrios / municipios nuevos a la colección `barrios` (ej. Aranjuez, Arganda del Rey, Arroyomolinos, Boadilla del Monte, Colmenar Viejo, San Sebastián de los Reyes, Tres Cantos, Valdemoro).
+- Cada `.md` en `src/content/barrios/` tiene ahora **texto más específico por zona**:
+  - Referencias a barrios internos (ej. La Montaña, Nuevo Aranjuez, Dehesa Vieja, sectores de Tres Cantos, etc.).
+  - Vías de acceso y salidas concretas (A-3, A-4, A-5, M-40, M-50, M-607, etc.).
+  - Tiempos de llegada adaptados por municipio.
+- Objetivo: **reducir contenido parecido entre barrios** y reforzar SEO local con detalles reales de cada zona.
+
+### Nuevas colecciones por barrio: duplicado de llaves coche y puertas antiokupas
+
+- Además de `barrios`, hay dos colecciones adicionales de contenido por barrio:
+  - `duplicado-llaves-coche-barrios`
+  - `puertas-antiokupas-barrios`
+- Cada una tiene un `.md` por barrio con su propio `nombre`, `intro`, `llegadaTexto` y `actualizado`.
+- Se usan en:
+  - `/duplicado-llaves-coche` y `/duplicado-llaves-coche/[barrio]`
+  - `/puertas-antiokupas` y `/puertas-antiokupas/[barrio]`
+- Idea: **texto exclusivo por servicio y por zona**, separado del contenido de cerrajero urgente.
+
+### Entrada de blog sobre ampliación de cobertura
+
+- Nuevo post en `src/content/blog/`:
+  - `ampliacion-cobertura-8-municipios-madrid.md`
+  - Explica que se han añadido páginas específicas para 8 municipios adicionales (Aranjuez, Arganda, Arroyomolinos, Boadilla, Colmenar Viejo, San Sebastián de los Reyes, Tres Cantos y Valdemoro).
+  - Refuerza el mensaje de cobertura y enlaza a `/cerrajero-urgente-24h` y `/contacto`.
+- Sirve como contenido de blog orientado a **SEO + comunicación de cambios** en la web.
+
+### Entrada de blog de precios y configuración global de precios
+
+- Nuevo post:
+  - `precios-cerrajero-madrid-orientativos.md`
+  - Ataca keywords tipo: “cuánto cuesta un cerrajero en Madrid”, “precio abrir puerta Madrid”, “precio cambiar cerradura Madrid”, “precio cerrajero urgente”.
+- Los rangos de precio (apertura, cambio de bombín) **no están hardcodeados** en el .md; se leen desde `src/config/site.ts`:
+  - `siteConfig.precios.aperturaMin`, `aperturaMax`
+  - `siteConfig.precios.cambioBombinMin`, `cambioBombinMax`
+- Implementación:
+  - Se añadió un objeto `precios` a `siteConfig`.
+  - El post de precios se renderiza con un componente específico (`BlogPreciosContent.astro`) que usa estos valores.
+  - Para actualizar los rangos en el futuro basta con cambiar los números en `siteConfig.precios`.
+
+### Ajustes de copy y long-tail SEO
+
+- Home:
+  - H1: se mantiene “Cerrajero 24 horas en Madrid”, pero el párrafo destaca “cerrajero urgente cerca de ti”.
+  - Se añade sección “Precios orientativos” que enlaza al post de precios del blog.
+  - FAQ extra en schema y en la home: “¿Cuánto cuesta un cerrajero urgente en Madrid?”.
+- `/cerrajero-urgente-24h`:
+  - Meta description y texto inicial reforzando “cerrajero urgente cerca de ti”.
+- `src/data/servicios.ts`:
+  - Descripciones cortas enriquecidas con long-tail:
+    - Apertura de puertas → incluye “abrir puerta sin romper en Madrid” y “precio orientativo por teléfono”.
+    - Cambio de cerradura → incluye “cambiar bombín en Madrid” y “antibumping”.
+    - Apertura de vehículos → incluye “abrir coche Madrid sin llaves” y “cerrajero coche a domicilio”.
+    - Bombines de seguridad → incluye “bombín antibumping Madrid” y “cerraduras seguridad”.
+
+### Vercel Analytics
+
+- Se ha integrado **Vercel Web Analytics**:
+  - `npm i @vercel/analytics`
+  - Import en `Layout.astro`: `import Analytics from '@vercel/analytics/astro';`
+  - Uso: `<Analytics />` antes de `</body>`.
+- No afecta al SEO (no cambia contenido ni meta tags); sirve para ver **páginas vistas, visitantes y rutas** desde el panel de Vercel.
+
+### Redirecciones legacy de /barrios
+
+- En `vercel.json` se definieron redirecciones:
+  - `/barrios` → `/cerrajero-urgente-24h`
+  - `/barrios/:path*` → `/cerrajero-urgente-24h/:path*`
+- Objetivo:
+  - Consolidar señales SEO de URLs antiguas (`/barrios/...`) en las nuevas rutas de cerrajero 24h.
+  - Evitar errores 404 para usuarios que lleguen desde enlaces antiguos.
+
+### Notas finales
+
+- La estructura general del proyecto (Astro + Tailwind, Layout con schema, content collections para barrios y blog, sitemap y robots) **se mantiene**, pero:
+  - Hay **más barrios** con contenido diferenciado.
+  - Hay **nuevas colecciones por barrio** para duplicado de llaves de coche y puertas antiokupas.
+  - El blog tiene ahora posts orientados a **SEO de cobertura y precios**.
+  - Algunos textos de home, cerrajero 24h y servicios se han ajustado para atacar **keywords long-tail** sin perder naturalidad.
+

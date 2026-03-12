@@ -1,5 +1,7 @@
 ---
 import Layout from '../../components/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CtaLlamar from '../../components/CtaLlamar.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -48,15 +50,7 @@ const dateModified = entry.data.actualizado?.toISOString().slice(0, 10);
   <script type="application/ld+json" set:html={JSON.stringify(faqSchemaDuplicadoBarrio)} />
   <article class="space-y-8">
     <header class="space-y-4">
-      <nav class="text-xs text-slate-400" aria-label="Miga de pan">
-        <a href="/" class="hover:text-emerald-400">Inicio</a>
-        <span class="mx-1">/</span>
-        <a href="/servicios" class="hover:text-emerald-400">Servicios</a>
-        <span class="mx-1">/</span>
-        <a href={basePath} class="hover:text-emerald-400">Duplicado llaves de coche</a>
-        <span class="mx-1">/</span>
-        <span class="text-slate-400">{data.nombre}</span>
-      </nav>
+      <Breadcrumb items={breadcrumb} />
       <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
         Servicio a domicilio · {data.nombre}
       </p>
@@ -70,12 +64,7 @@ const dateModified = entry.data.actualizado?.toISOString().slice(0, 10);
         {data.llegadaTexto}
       </p>
       <div class="flex flex-wrap items-center gap-3 pt-2">
-        <a
-          href={siteConfig.telefonoHref}
-          class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
-        >
-          📞 Llamar · {siteConfig.telefono}
-        </a>
+        <CtaLlamar />
         <p class="text-xs text-slate-400">
           Presupuesto sin compromiso en {data.nombre}.
         </p>

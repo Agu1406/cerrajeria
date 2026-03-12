@@ -123,7 +123,7 @@ const whatsappHref = siteConfig.whatsappMessage
           '@type': 'ListItem',
           position: i + 1,
           name: item.name,
-          item: `${siteConfig.baseUrl}${item.path}`,
+          item: `${siteConfig.baseUrl}${item.path ?? Astro.url.pathname}`,
         })),
       })} />
     )}

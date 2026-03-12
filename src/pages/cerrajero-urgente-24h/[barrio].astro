@@ -1,6 +1,9 @@
 ---
 import Layout from '../../components/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CtaLlamar from '../../components/CtaLlamar.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import BarrioLink from '../../components/BarrioLink.astro';
 import { siteConfig } from '../../config/site';
 import { servicios } from '../../data/servicios';
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -55,13 +58,7 @@ const dateModified = entry.data.actualizado?.toISOString().slice(0, 10);
 <Layout {title} {description} breadcrumb={breadcrumb} dateModified={dateModified}>
   <script type="application/ld+json" set:html={JSON.stringify(faqSchemaBarrio)} />
   <section class="space-y-6">
-    <nav class="text-xs text-slate-400" aria-label="Miga de pan">
-      <a href="/" class="hover:text-emerald-400">Inicio</a>
-      <span class="mx-1">/</span>
-      <a href={basePath} class="hover:text-emerald-400">Cerrajero 24h</a>
-      <span class="mx-1">/</span>
-      <span class="text-slate-400">{data.nombre}</span>
-    </nav>
+    <Breadcrumb items={breadcrumb} />
     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
       Urgencias 24h · {data.nombre}
     </p>
@@ -77,12 +74,7 @@ const dateModified = entry.data.actualizado?.toISOString().slice(0, 10);
     </p>
 
     <div class="flex flex-wrap items-center gap-3">
-      <a
-        href={siteConfig.telefonoHref}
-        class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
-      >
-        📞 Llamar ahora · {siteConfig.telefono}
-      </a>
+      <CtaLlamar label="Llamar ahora" />
       <p class="text-xs text-slate-400">
         {data.llegadaTexto}
       </p>

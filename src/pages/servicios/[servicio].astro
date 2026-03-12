@@ -1,5 +1,7 @@
 ---
 import Layout from '../../components/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CtaLlamar from '../../components/CtaLlamar.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import { siteConfig } from '../../config/site';
 import { servicios } from '../../data/servicios';
@@ -35,13 +37,7 @@ const otrosServicios = servicios
 <Layout {title} {description} breadcrumb={breadcrumb}>
   <article class="space-y-8">
     <header class="space-y-4">
-      <nav class="text-xs text-slate-400" aria-label="Miga de pan">
-        <a href="/" class="hover:text-emerald-400">Inicio</a>
-        <span class="mx-1">/</span>
-        <a href={basePath} class="hover:text-emerald-400">Servicios</a>
-        <span class="mx-1">/</span>
-        <span class="text-slate-400">{servicio.nombre}</span>
-      </nav>
+      <Breadcrumb items={breadcrumb} />
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
         {servicio.nombre} en Madrid
       </h1>
@@ -49,12 +45,7 @@ const otrosServicios = servicios
         {servicio.descripcionCorta} Trabajamos en toda la Comunidad de Madrid y nos desplazamos a domicilio cuando hace falta.
       </p>
       <div class="flex flex-wrap items-center gap-3 pt-2">
-        <a
-          href={siteConfig.telefonoHref}
-          class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
-        >
-          📞 Llamar · {siteConfig.telefono}
-        </a>
+        <CtaLlamar />
         <p class="text-xs text-slate-400">
           Presupuesto sin compromiso. Urgencias 24 horas.
         </p>

@@ -1,0 +1,28 @@
+---
+/** Items de la miga. El último se muestra como página actual (sin enlace); el resto con `path` como enlace. */
+interface Item {
+  name: string;
+  path?: string;
+}
+interface Props {
+  items: Item[];
+}
+const { items } = Astro.props as Props;
+---
+
+<nav class="text-xs text-slate-400" aria-label="Miga de pan">
+  {items.map((item, i) => {
+    const isLast = i === items.length - 1;
+    const showLink = !isLast && item.path;
+    return (
+      <>
+        {i > 0 ? <span class="mx-1">/</span> : null}
+        {showLink ? (
+          <a href={item.path!} class="hover:text-emerald-400">{item.name}</a>
+        ) : (
+          <span class="text-slate-400">{item.name}</span>
+        )}
+      </>
+    );
+  })}
+</nav>

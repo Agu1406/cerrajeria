@@ -1,6 +1,9 @@
 ---
 import Layout from '../../components/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CtaLlamar from '../../components/CtaLlamar.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import BarrioLink from '../../components/BarrioLink.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection } from 'astro:content';
 
@@ -32,13 +35,7 @@ const faqSchemaAntiokupas = {
   <script type="application/ld+json" set:html={JSON.stringify(faqSchemaAntiokupas)} />
   <article class="space-y-8">
     <header class="space-y-4">
-      <nav class="text-xs text-slate-400" aria-label="Miga de pan">
-        <a href="/" class="hover:text-emerald-400">Inicio</a>
-        <span class="mx-1">/</span>
-        <a href="/servicios" class="hover:text-emerald-400">Servicios</a>
-        <span class="mx-1">/</span>
-        <span class="text-slate-400">Puertas antiokupas</span>
-      </nav>
+      <Breadcrumb items={breadcrumb} />
       <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
         Refuerzo e instalación · Madrid y alrededores
       </p>
@@ -49,12 +46,7 @@ const faqSchemaAntiokupas = {
         Instalamos y reforzamos puertas antiokupas para viviendas y locales vacíos en toda la Comunidad de Madrid. Refuerzo de cerraduras, instalación de puertas de seguridad y asesoramiento para disuadir intrusiones.
       </p>
       <div class="flex flex-wrap items-center gap-3 pt-2">
-        <a
-          href={siteConfig.telefonoHref}
-          class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
-        >
-          📞 Llamar · {siteConfig.telefono}
-        </a>
+        <CtaLlamar />
         <p class="text-xs text-slate-400">
           Presupuesto sin compromiso. Atendemos en toda la Comunidad de Madrid.
         </p>
@@ -150,15 +142,11 @@ const faqSchemaAntiokupas = {
       <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {barrios.map((entry) => (
           <li>
-            <a
+            <BarrioLink
               href={`${basePath}/${entry.slug}`}
-              class="flex flex-col rounded-lg border border-slate-800 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
-            >
-              <span class="font-semibold">{entry.data.nombre}</span>
-              <span class="mt-1 text-xs text-slate-400">
-                Puertas antiokupas en {entry.data.nombre}
-              </span>
-            </a>
+              title={entry.data.nombre}
+              subtitle={`Puertas antiokupas en ${entry.data.nombre}`}
+            />
           </li>
         ))}
       </ul>

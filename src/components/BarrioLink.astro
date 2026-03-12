@@ -1,0 +1,12 @@
+---
+/** Enlace a una página de barrio/zona. Usado en listados de cerrajero 24h, duplicado llaves coche, puertas antiokupas. */
+const { href, title, subtitle } = Astro.props;
+---
+
+<a
+  href={href}
+  class="flex flex-col rounded-lg border border-slate-800 bg-slate-900/80 px-4 py-3 text-sm text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
+>
+  <span class="font-semibold">{title}</span>
+  {subtitle && <span class="mt-1 text-xs text-slate-400">{subtitle}</span>}
+</a>

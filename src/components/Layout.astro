@@ -91,6 +91,17 @@ const whatsappHref = siteConfig.whatsappMessage
 
 <html lang="es" data-theme="dark">
   <head>
+    <!-- Google Tag Manager -->
+    {siteConfig.googleTagManagerId && (
+      <script is:inline define:vars={{ gtmId: siteConfig.googleTagManagerId }}>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer',gtmId);
+      </script>
+    )}
+    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -112,6 +123,14 @@ const whatsappHref = siteConfig.whatsappMessage
       </>
     )}
     <title>{title}</title>
+    {!siteConfig.googleTagManagerId && siteConfig.googleAnalyticsId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalyticsId}`} />
+        <script is:inline define:vars={{ gaId: siteConfig.googleAnalyticsId }}>
+          window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',gaId,{anonymize_ip:true});
+        </script>
+      </>
+    )}
     {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && (
       <script type="application/ld+json" set:html={JSON.stringify(schemaLocalBusiness)} />
     )}
@@ -146,6 +165,19 @@ const whatsappHref = siteConfig.whatsappMessage
     </script>
   </head>
   <body class="min-h-screen">
+    <!-- Google Tag Manager (noscript) -->
+    {siteConfig.googleTagManagerId && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${siteConfig.googleTagManagerId}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+          title="Google Tag Manager"
+        />
+      </noscript>
+    )}
+    <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     <Header whatsappHref={whatsappHref} />
     <main id="main-content" class="mx-auto max-w-5xl px-4 py-10 sm:py-14" tabindex="-1">

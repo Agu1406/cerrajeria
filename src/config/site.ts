@@ -11,7 +11,8 @@ export const siteConfig = {
   nif: 'Y7574386V',
   ciudadPrincipal: 'Madrid',
   baseUrl: 'https://loscerrajerosmadrid.es',
-  titleHome: 'Cerrajero urgente Madrid 24 horas | Cerrajeros urgentes, apertura de puertas',
+  /** Título de la portada (ideal 50–60 caracteres para SEO). */
+  titleHome: 'Cerrajero urgente Madrid 24h | Apertura puertas, cerrajeros',
   descriptionHome:
     'Cerrajero 24 horas y cerrajeros urgentes en Madrid. Apertura de puertas sin daños, cambio de bombín. Toda la Comunidad. Llama ahora.',
   /**
@@ -56,6 +57,16 @@ export const siteConfig = {
     totalResenas: number;
     reseñas: Array<{ autor: string; texto: string; fecha: string; valoracion: number }>;
   } | null,
+  /**
+   * Google Tag Manager: ID del contenedor (ej. GTM-W244C2BN).
+   * Si lo rellenas, se inserta el snippet de GTM en todas las páginas. Luego puedes añadir GA4, Facebook Pixel, etc. desde la interfaz de GTM.
+   */
+  googleTagManagerId: 'GTM-W244C2BN',
+  /**
+   * Opcional: ID de medición de Google Analytics (GA4). Ej: G-XXXXXXXXXX.
+   * Solo se usa si no hay googleTagManagerId (en GTM puedes configurar GA4 como etiqueta).
+   */
+  googleAnalyticsId: '' as string,
   /** Opcional: crédito al diseñador/desarrollador en el footer y en /diseno-web. Pon null para ocultar el enlace "Diseño web". */
   desarrollador: {
     nombre: 'Agustín',

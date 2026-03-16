@@ -1,6 +1,12 @@
 {
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.loscerrajerosmadrid.es" }],
+      "destination": "https://loscerrajerosmadrid.es/:path*",
+      "permanent": true
+    },
+    {
       "source": "/barrios",
       "destination": "/cerrajero-urgente-24h",
       "permanent": true

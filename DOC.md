@@ -2815,6 +2815,13 @@ Cambios documentados en este documento (secciones 3 y Bitácora):
   - Uso: `<Analytics />` antes de `</body>`.
 - No afecta al SEO (no cambia contenido ni meta tags); sirve para ver **páginas vistas, visitantes y rutas** desde el panel de Vercel.
 
+### Google Tag Manager (GTM) y Google Analytics 4 (GA4)
+
+- **GTM** está instalado en `Layout.astro`: script en `<head>` y noscript tras `<body>` (contenedor `GTM-W244C2BN`). Configuración en `src/config/site.ts` → `googleTagManagerId`. Si está vacío, no se inserta el snippet.
+- **GA4** se configura **dentro de GTM**: etiqueta tipo “Etiqueta de Google” con el ID de medición del flujo web (ej. `G-LM2ZHRN69Y`), activador “Initialization - All Pages”. Así no hace falta duplicar el script de GA4 en el código.
+- Opcionalmente, si no se usa GTM, se puede usar **Google Analytics directo** vía `siteConfig.googleAnalyticsId` (solo se inyecta cuando no hay `googleTagManagerId`).
+- **Entrada de blog** que explica el montaje y para qué sirve: [`src/content/blog/medir-visitas-web-google-tag-manager-ga4.md`](src/content/blog/medir-visitas-web-google-tag-manager-ga4.md) → publicada en `/blog/medir-visitas-web-google-tag-manager-ga4`.
+
 ### Redirecciones legacy de /barrios
 
 - En `vercel.json` se definieron redirecciones:

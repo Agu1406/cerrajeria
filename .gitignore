@@ -30,3 +30,6 @@ gsc/
 
 # no versionar PNG de public/images (solo usamos .webp)
 public/images/*.png
+
+# excepción: permitimos el Apple touch icon en la raíz de public
+!public/apple-touch-icon.png

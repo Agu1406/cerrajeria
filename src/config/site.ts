@@ -1,3 +1,6 @@
+/** Valor por defecto al clonar la plantilla: no emitir canonical/og/schema hasta tener dominio real. */
+const BASE_URL_PLACEHOLDER = 'https://TU-DOMINIO-AQUI';
+
 export const siteConfig = {
   nombreComercial: 'cerrajerosmadrid',
   telefono: '659 81 05 70',
@@ -11,6 +14,10 @@ export const siteConfig = {
   nif: 'Y7574386V',
   ciudadPrincipal: 'Madrid',
   baseUrl: 'https://loscerrajerosmadrid.es',
+  /** true cuando baseUrl es tu dominio real; false si sigue el placeholder (no se emiten canonical, og, schema). */
+  get isProductionSeo(): boolean {
+    return this.baseUrl !== BASE_URL_PLACEHOLDER;
+  },
   /** Título de la portada (ideal 50–60 caracteres para SEO). */
   titleHome: 'Cerrajero urgente Madrid 24h | Apertura puertas, cerrajeros',
   descriptionHome:

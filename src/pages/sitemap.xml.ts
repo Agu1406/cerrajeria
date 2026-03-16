@@ -4,10 +4,9 @@ import { servicios } from '../data/servicios';
 import { getCollection } from 'astro:content';
 
 export const GET: APIRoute = async () => {
-  const baseUrl =
-    siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI'
-      ? siteConfig.baseUrl.replace(/\/$/, '')
-      : 'https://example.com';
+  const baseUrl = siteConfig.isProductionSeo
+    ? siteConfig.baseUrl.replace(/\/$/, '')
+    : 'https://example.com';
 
   const barrios = await getCollection('barrios');
   const duplicadoBarrios = await getCollection('duplicado-llaves-coche-barrios');

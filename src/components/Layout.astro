@@ -108,7 +108,7 @@ const whatsappHref = siteConfig.whatsappMessage
     <meta name="description" content={description} />
     <meta name="google-site-verification" content="AKnVTlD2lp-EazjmFzbUqWu6RMPwILePS_sjqNB-dTY" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && (
+    {siteConfig.isProductionSeo && (
       <>
         <link rel="canonical" href={`${siteConfig.baseUrl}${Astro.url.pathname}`} />
         <meta property="og:title" content={title} />
@@ -131,10 +131,10 @@ const whatsappHref = siteConfig.whatsappMessage
         </script>
       </>
     )}
-    {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && (
+    {siteConfig.isProductionSeo && (
       <script type="application/ld+json" set:html={JSON.stringify(schemaLocalBusiness)} />
     )}
-    {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && breadcrumb && breadcrumb.length > 0 && (
+    {siteConfig.isProductionSeo && breadcrumb && breadcrumb.length > 0 && (
       <script type="application/ld+json" set:html={JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
@@ -146,7 +146,7 @@ const whatsappHref = siteConfig.whatsappMessage
         })),
       })} />
     )}
-    {siteConfig.baseUrl !== 'https://TU-DOMINIO-AQUI' && dateModified && (
+    {siteConfig.isProductionSeo && dateModified && (
       <script type="application/ld+json" set:html={JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebPage',

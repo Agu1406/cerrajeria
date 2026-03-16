@@ -13,7 +13,7 @@ export const siteConfig = {
   /** NIF/CIF para aviso legal y privacidad. */
   nif: 'Y7574386V',
   ciudadPrincipal: 'Madrid',
-  baseUrl: 'https://loscerrajerosmadrid.es',
+  baseUrl: 'https://www.loscerrajerosmadrid.es',
   /** true cuando baseUrl es tu dominio real; false si sigue el placeholder (no se emiten canonical, og, schema). */
   get isProductionSeo(): boolean {
     return this.baseUrl !== BASE_URL_PLACEHOLDER;

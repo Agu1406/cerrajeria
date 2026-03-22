@@ -42,20 +42,47 @@ export const siteConfig = {
    * Si es null, no se muestra la sección de reseñas ni aggregateRating.
    */
   reseñas: {
-    valoracionMedia: 4.5,
-    totalResenas: 2,
+    /** Copia el total y la media desde tu ficha de Google Business si difieren. */
+    valoracionMedia: 4.8,
+    totalResenas: 8,
     /** Reseñas que quieras mostrar (cópialas de tu perfil de Google). Fecha en formato YYYY-MM-DD. */
     reseñas: [
       {
-        autor: 'Vanessa Vidal',
-        texto: 'La única pega fue que tardaron más de lo que esperaba en llegar.',
-        fecha: '2026-03-06',
+        autor: 'Patricia Turcios Lovos',
+        texto:
+          'Atención excelente, servicio de calidad y precios muy razonables. Solucionaron mi problema en un pispas.',
+        fecha: '2026-03-23',
         valoracion: 4,
+      },
+      {
+        autor: 'Carlos Alonso',
+        texto: 'Reseña de 5 estrellas en Google.',
+        fecha: '2026-03-19',
+        valoracion: 5,
+      },
+      {
+        autor: 'Adribf35',
+        texto: 'Reseña de 5 estrellas en Google.',
+        fecha: '2026-03-16',
+        valoracion: 5,
+      },
+      {
+        autor: 'Agustín Antonio Márquez Piña',
+        texto:
+          'Excelente servicio, me han reparado la persiana de la habitación por nada, un menú del día, increíble, no doy crédito, cuando otros abusadores querían quitarme hasta 80€ porque "hacía falta una pieza nueva", muchas gracias al cerrajero Erickson.',
+        fecha: '2026-03-16',
+        valoracion: 5,
+      },
+      {
+        autor: 'Bárbara F',
+        texto: 'Excelente atención y servicio.. recomendados',
+        fecha: '2026-03-09',
+        valoracion: 5,
       },
       {
         autor: 'ronny bernal',
         texto: 'Excelente atención, muy rápidos y atentos!',
-        fecha: '2026-03-06',
+        fecha: '2026-03-09',
         valoracion: 5,
       },
     ],

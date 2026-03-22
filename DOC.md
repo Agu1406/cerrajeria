@@ -1363,9 +1363,9 @@ User-agent: *
 Allow: /
 
 Sitemap: https://TU-DOMINIO-REAL/sitemap.xml
-Host: TU-DOMINIO-REAL
 ```
 
+- No se usa la directiva `Host:` (histórica de Yandex): Bing Webmaster **robots.txt Tester** la marcaba como error y Google/Bing no la necesitan; el dominio canónico se define con redirecciones y URLs absolutas.
 - Mientras `baseUrl` siga con el valor por defecto, usa `https://example.com` como placeholder, pero:
     - Una vez se actualice `siteConfig.baseUrl`, el `robots.txt` reflejará automáticamente el dominio correcto.
 

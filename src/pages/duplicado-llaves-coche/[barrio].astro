@@ -21,7 +21,8 @@ type Props = {
 const { entry } = Astro.props as Props;
 const data = entry.data;
 const basePath = '/duplicado-llaves-coche';
-const title = `Duplicado de llaves de coche en ${data.nombre} | Llaves y mandos · ${siteConfig.telefono}`;
+/** <70 caracteres (Bing Site Scan); el teléfono va en description y en página. */
+const title = `Duplicado llaves coche ${data.nombre} | Madrid`;
 const description = `Copia de llaves de coche y mandos en ${data.nombre} y alrededores. Llaves de reserva y sustitución. Presupuesto sin compromiso. ${siteConfig.telefono}`;
 const breadcrumb = [
   { name: 'Inicio', path: '/' },

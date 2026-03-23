@@ -28,7 +28,8 @@ const latestPosts = allBlogPosts
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 
-const title = `Cerrajeros ${data.nombre} 24 horas | Apertura de puertas · ${siteConfig.telefono}`;
+/** <70 caracteres (Bing); teléfono en description y cuerpo. */
+const title = `Cerrajero 24h ${data.nombre} | Urgencias Madrid`;
 const description = `Cerrajeros ${data.nombre} 24 horas. Apertura de puertas sin daños, cambio de bombín. Llama al ${siteConfig.telefono}.`;
 const basePath = '/cerrajero-urgente-24h';
 const breadcrumb = [

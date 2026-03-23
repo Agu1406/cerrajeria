@@ -20,8 +20,13 @@ type Props = {
 };
 
 const { servicio } = Astro.props as Props;
-const title = `${servicio.nombre} en Madrid | ${siteConfig.nombreComercial}`;
-const description = `${servicio.nombre} en la Comunidad de Madrid. ${servicio.descripcionCorta} Llama al ${siteConfig.telefono}.`;
+const isCambioCerradura = servicio.slug === 'cambio-cerradura';
+const title = isCambioCerradura
+  ? `Cambio de cerradura en Madrid | Bombín y cilindro | ${siteConfig.nombreComercial}`
+  : `${servicio.nombre} en Madrid | ${siteConfig.nombreComercial}`;
+const description = isCambioCerradura
+  ? `Cambio de cerradura, bombín o cilindro en Madrid y Comunidad. Cerradura rota o llaves perdidas. ${servicio.descripcionCorta} Tel. ${siteConfig.telefono}.`
+  : `${servicio.nombre} en la Comunidad de Madrid. ${servicio.descripcionCorta} Llama al ${siteConfig.telefono}.`;
 const basePath = '/servicios';
 const breadcrumb = [
   { name: 'Inicio', path: '/' },
@@ -51,6 +56,24 @@ const otrosServicios = servicios
         </p>
       </div>
     </header>
+
+    {isCambioCerradura && (
+      <section class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 sm:p-6 space-y-3 text-sm text-slate-300">
+        <h2 class="text-lg font-semibold tracking-tight text-slate-50">
+          Cambio de bombín, cilindro o cerradura completa
+        </h2>
+        <p>
+          Mucha gente busca <strong class="text-slate-200">cambio de cerradura</strong> cuando en realidad basta con sustituir el{' '}
+          <strong class="text-slate-200">bombín</strong> (también llamado <strong class="text-slate-200">cilindro</strong>). Otras
+          veces la <strong class="text-slate-200">cerradura está rota</strong> o conviene cambiar el juego completo. En la visita
+          valoramos la puerta y te proponemos la opción más adecuada y económica, con precio acordado antes de montar nada.
+        </p>
+        <p class="text-slate-400 text-xs">
+          Si solo necesitas <a href={`${basePath}/bombines-seguridad`} class="text-emerald-400 hover:underline">bombines de alta seguridad</a>
+          {' '}o <a href={`${basePath}/apertura-puertas`} class="text-emerald-400 hover:underline">apertura de puertas</a>, también lo cubrimos.
+        </p>
+      </section>
+    )}
 
     <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 space-y-3">
       <h2 class="text-lg font-semibold tracking-tight">

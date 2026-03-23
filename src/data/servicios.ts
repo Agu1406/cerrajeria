@@ -23,7 +23,8 @@ export const servicios: Servicio[] = [
     slug: 'cambio-cerradura',
     nombre: 'Cambio de cerradura',
     categoria: 'cerraduras',
-    descripcionCorta: 'Sustitución de cerraduras y bombines antiguos por modelos más seguros.',
+    descripcionCorta:
+      'Sustitución de cerradura completa o solo del bombín/cilindro: cerradura rota, llaves perdidas o upgrade de seguridad. Presupuesto claro en el lugar.',
   },
   {
     slug: 'instalacion-cerradura',

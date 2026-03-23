@@ -43,6 +43,14 @@ const faqSchema = {
         text: 'Sí, ofrecemos servicio 24/7 todos los días del año.',
       },
     },
+    {
+      '@type': 'Question',
+      name: '¿Hacéis cambio de cerradura y cambio de bombín o cilindro?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí. Montamos cerradura entera o solo sustituimos el bombín (cilindro) según lo que necesites. Te damos precio cerrado antes de empezar cuando veamos la puerta.',
+      },
+    },
   ],
 };
 ---
@@ -59,10 +67,12 @@ const faqSchema = {
         Servicio 24 horas · Urgencias
       </div>
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-        Cerrajero 24 horas en {siteConfig.ciudadPrincipal}
+        Cerrajeros en {siteConfig.ciudadPrincipal} · Servicio 24 h y urgencias
       </h1>
       <p class="text-sm text-slate-300 sm:text-base">
-        Cerrajeros urgentes 24 horas: apertura de puertas sin daños, cambios de bombín y asistencia inmediata en toda la Comunidad de Madrid. Llama ahora y un cerrajero certificado se desplaza a tu ubicación en minutos.
+        Somos <strong class="text-slate-100 font-semibold">cerrajeros en Madrid</strong> con atención urgente las 24 horas:{' '}
+        <strong class="text-slate-100 font-semibold">apertura de puertas</strong> sin daños cuando es posible,{' '}
+        <strong class="text-slate-100 font-semibold">cambio de cerradura</strong>, bombín o cilindro, y asistencia inmediata en toda la Comunidad de Madrid. Llama y un cerrajero certificado se desplaza en minutos.
       </p>
       <div class="flex flex-wrap items-center gap-3">
         <a
@@ -77,7 +87,7 @@ const faqSchema = {
       </div>
       <ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
         <li>✔ Apertura de puertas blindadas y acorazadas</li>
-        <li>✔ Cambio de cerraduras y bombines de seguridad</li>
+        <li>✔ Cambio de cerradura, bombín o cilindro (cerradura rota o llaves perdidas)</li>
         <li>✔ Apertura de vehículos sin daños</li>
         <li>✔ Arreglo de ventanas oscilobatientes y osciloparalelas</li>
       </ul>

@@ -18,10 +18,10 @@ export const siteConfig = {
   get isProductionSeo(): boolean {
     return this.baseUrl !== BASE_URL_PLACEHOLDER;
   },
-  /** Título de la portada (ideal 50–60 caracteres para SEO). */
-  titleHome: 'Cerrajero urgente Madrid 24h | Apertura puertas, cerrajeros',
+  /** Título de la portada (ideal 50–60 caracteres para SEO). Trends: fuerte “cerrajero Madrid” + servicios clave. */
+  titleHome: 'Cerrajero Madrid 24h | Urgente, apertura puertas y cerraduras',
   descriptionHome:
-    'Cerrajero 24 horas y cerrajeros urgentes en Madrid. Apertura de puertas sin daños, cambio de bombín. Toda la Comunidad. Llama ahora.',
+    'Cerrajeros en Madrid 24 horas: urgencias, apertura de puertas y cambio de cerradura (bombín o cilindro). Cerradura rota o llave perdida. Toda la Comunidad de Madrid. Llama ahora.',
   /**
    * Dirección para mostrar en contacto y en "Cómo llegar".
    * Si no pones nada, no se muestra el bloque de ubicación.

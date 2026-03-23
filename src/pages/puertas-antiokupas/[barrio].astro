@@ -21,7 +21,8 @@ type Props = {
 const { entry } = Astro.props as Props;
 const data = entry.data;
 const basePath = '/puertas-antiokupas';
-const title = `Puertas antiokupas en ${data.nombre} | Refuerzo e instalación · ${siteConfig.telefono}`;
+/** <70 caracteres (Bing); teléfono en description y cuerpo. */
+const title = `Puertas antiokupas ${data.nombre} | Madrid`;
 const description = `Instalación y refuerzo de puertas antiokupas en ${data.nombre} y alrededores. Viviendas y locales vacíos. Presupuesto sin compromiso. ${siteConfig.telefono}`;
 const breadcrumb = [
   { name: 'Inicio', path: '/' },

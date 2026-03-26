@@ -48,6 +48,12 @@ export const siteConfig = {
     /** Reseñas que quieras mostrar (cópialas de tu perfil de Google). Fecha en formato YYYY-MM-DD. */
     reseñas: [
       {
+        autor: 'Toño',
+        texto: 'Reseña de 5 estrellas en Google.',
+        fecha: '2026-03-24',
+        valoracion: 5,
+      },
+      {
         autor: 'Patricia Turcios Lovos',
         texto:
           'Atención excelente, servicio de calidad y precios muy razonables. Solucionaron mi problema en un pispas.',
@@ -63,26 +69,19 @@ export const siteConfig = {
       {
         autor: 'Adribf35',
         texto: 'Reseña de 5 estrellas en Google.',
-        fecha: '2026-03-16',
-        valoracion: 5,
-      },
-      {
-        autor: 'Agustín Antonio Márquez Piña',
-        texto:
-          'Excelente servicio, me han reparado la persiana de la habitación por nada, un menú del día, increíble, no doy crédito, cuando otros abusadores querían quitarme hasta 80€ porque "hacía falta una pieza nueva", muchas gracias al cerrajero Erickson.',
-        fecha: '2026-03-16',
+        fecha: '2026-03-19',
         valoracion: 5,
       },
       {
         autor: 'Bárbara F',
         texto: 'Excelente atención y servicio.. recomendados',
-        fecha: '2026-03-09',
+        fecha: '2026-03-12',
         valoracion: 5,
       },
       {
         autor: 'ronny bernal',
         texto: 'Excelente atención, muy rápidos y atentos!',
-        fecha: '2026-03-09',
+        fecha: '2026-03-12',
         valoracion: 5,
       },
     ],

@@ -81,7 +81,13 @@ if (reseñas && reseñas.totalResenas > 0) {
   }
 }
 
-const pageUrl = `${siteConfig.baseUrl.replace(/\/$/, '')}${Astro.url.pathname}`;
+const normalizePathname = (pathname: string) => {
+  if (pathname === '/') return '/';
+  return pathname.replace(/\/+$/, '');
+};
+
+const canonicalPathname = normalizePathname(Astro.url.pathname);
+const pageUrl = `${siteConfig.baseUrl.replace(/\/$/, '')}${canonicalPathname}`;
 const whatsappHref = siteConfig.whatsappMessage
   ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(
       siteConfig.whatsappMessage + ' Escribo desde: ' + pageUrl
@@ -111,10 +117,10 @@ const whatsappHref = siteConfig.whatsappMessage
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {siteConfig.isProductionSeo && (
       <>
-        <link rel="canonical" href={`${siteConfig.baseUrl}${Astro.url.pathname}`} />
+        <link rel="canonical" href={`${siteConfig.baseUrl}${canonicalPathname}`} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:url" content={`${siteConfig.baseUrl}${Astro.url.pathname}`} />
+        <meta property="og:url" content={`${siteConfig.baseUrl}${canonicalPathname}`} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={imageForSocial} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -151,7 +157,7 @@ const whatsappHref = siteConfig.whatsappMessage
       <script type="application/ld+json" set:html={JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebPage',
-        url: `${siteConfig.baseUrl.replace(/\/$/, '')}${Astro.url.pathname}`,
+        url: `${siteConfig.baseUrl.replace(/\/$/, '')}${canonicalPathname}`,
         dateModified,
       })} />
     )}

@@ -73,6 +73,12 @@ export const siteConfig = {
         valoracion: 5,
       },
       {
+        autor: 'Agustín Antonio Márquez Piña',
+        texto: 'Reseña de 5 estrellas en Google.',
+        fecha: '2026-03-16',
+        valoracion: 5,
+      },
+      {
         autor: 'Bárbara F',
         texto: 'Excelente atención y servicio.. recomendados',
         fecha: '2026-03-12',

@@ -5,6 +5,10 @@ import Footer from './Footer.astro';
 import CallButton from './CallButton.astro';
 import Analytics from '@vercel/analytics/astro';
 import { siteConfig } from '../config/site';
+import type { Locale } from '../i18n/config';
+import { DEFAULT_LOCALE } from '../i18n/config';
+import { getLayoutChrome } from '../i18n/ui';
+import { WHATSAPP_PREFILL, whatsappPageUrlSuffix } from '../i18n/ui';
 
 type Props = {
   title?: string;
@@ -16,6 +20,10 @@ type Props = {
   breadcrumb?: Array<{ name: string; path: string }>;
   /** Fecha ISO de última actualización del contenido (SEO frescura). Opcional. */
   dateModified?: string;
+  /** Idioma de la página (UI, html lang, WhatsApp prefijado). */
+  locale?: Locale;
+  /** Etiquetas hreflang (URLs absolutas con dominio). Misma lista en todas las versiones enlazadas. */
+  hreflangAlternates?: Array<{ hreflang: string; href: string }>;
 };
 
 const {
@@ -25,7 +33,11 @@ const {
   ogImage,
   breadcrumb,
   dateModified,
+  locale = DEFAULT_LOCALE,
+  hreflangAlternates,
 } = Astro.props as Props;
+
+const chrome = getLayoutChrome(locale);
 
 const defaultOgImage = `${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.webp`;
 const imageForSocial = ogImage ?? defaultOgImage;
@@ -88,14 +100,15 @@ const normalizePathname = (pathname: string) => {
 
 const canonicalPathname = normalizePathname(Astro.url.pathname);
 const pageUrl = `${siteConfig.baseUrl.replace(/\/$/, '')}${canonicalPathname}`;
-const whatsappHref = siteConfig.whatsappMessage
-  ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(
-      siteConfig.whatsappMessage + ' Escribo desde: ' + pageUrl
-    )}`
+const whatsappPrefix = WHATSAPP_PREFILL[locale];
+const whatsappHref = whatsappPrefix
+  ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(whatsappPrefix + whatsappPageUrlSuffix(locale, pageUrl))}`
   : siteConfig.whatsappUrl;
+
+const cookiePolicyPath = '/politica-cookies';
 ---
 
-<html lang="es" data-theme="dark">
+<html lang={chrome.htmlLang} data-theme="dark">
   <head>
     <!-- Google Tag Manager -->
     {siteConfig.googleTagManagerId && (
@@ -118,11 +131,16 @@ const whatsappHref = siteConfig.whatsappMessage
     {siteConfig.isProductionSeo && (
       <>
         <link rel="canonical" href={`${siteConfig.baseUrl}${canonicalPathname}`} />
+        {hreflangAlternates?.map((alt) => (
+          <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+        ))}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={`${siteConfig.baseUrl}${canonicalPathname}`} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={imageForSocial} />
+        <meta property="og:locale" content={chrome.ogLocale} />
+        <meta property="og:locale:alternate" content={chrome.ogLocaleAlternate} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
@@ -185,20 +203,20 @@ const whatsappHref = siteConfig.whatsappMessage
       </noscript>
     )}
     <!-- End Google Tag Manager (noscript) -->
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-    <Header whatsappHref={whatsappHref} />
+    <a href="#main-content" class="skip-link">{chrome.skipLink}</a>
+    <Header whatsappHref={whatsappHref} locale={locale} />
     <main id="main-content" class="mx-auto max-w-5xl px-4 py-10 sm:py-14" tabindex="-1">
       <slot />
     </main>
-    <Footer />
-    <CallButton whatsappHref={whatsappHref} />
-    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+    <Footer locale={locale} />
+    <CallButton whatsappHref={whatsappHref} locale={locale} />
+    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label={chrome.cookieAria} aria-live="polite">
       <p class="cookie-banner-text">
-        Usamos cookies técnicas necesarias para el funcionamiento de la web. Si continúas navegando, aceptas su uso.
-        <a href="/politica-cookies" class="underline hover:no-underline">más información sobre cookies</a>.
+        {chrome.cookieText}{' '}
+        <a href={cookiePolicyPath} class="underline hover:no-underline">{chrome.cookieMore}</a>.
       </p>
       <button type="button" id="cookie-banner-accept" class="cookie-banner-btn">
-        Aceptar
+        {chrome.cookieAccept}
       </button>
     </div>
     <script is:inline>

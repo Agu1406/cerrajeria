@@ -1,5 +1,15 @@
 ---
 import { siteConfig } from '../config/site';
+import type { Locale } from '../i18n/config';
+import { DEFAULT_LOCALE } from '../i18n/config';
+import { getFooterStrings } from '../i18n/ui';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const f = getFooterStrings(locale);
 
 const showDesarrollador = siteConfig.desarrollador?.nombre;
 const direccion = siteConfig.direccion;
@@ -13,43 +23,53 @@ const mapsHref = siteConfig.googleMapsUrl
 <footer class="border-t border-slate-800 bg-slate-950/90">
   <div class="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
     <p>
-      © {new Date().getFullYear()} {siteConfig.nombreComercial}. Cerrajería 24h en {siteConfig.ciudadPrincipal}.
+      © {new Date().getFullYear()} {siteConfig.nombreComercial}.{' '}
+      {f.tagline} {siteConfig.ciudadPrincipal}.
     </p>
     <div class="flex flex-col gap-1 text-xs text-slate-400 sm:items-end sm:text-right">
       <p>
-        Teléfono urgente:
-        <a href={siteConfig.telefonoHref} class="inline-block min-h-[44px] min-w-[44px] py-2 font-semibold text-emerald-400 underline decoration-emerald-400/50 hover:decoration-emerald-400" aria-label={`Llamar al ${siteConfig.telefono}`}>
+        {f.emergencyLine}{' '}
+        <a
+          href={siteConfig.telefonoHref}
+          class="inline-block min-h-[44px] min-w-[44px] py-2 font-semibold text-emerald-400 underline decoration-emerald-400/50 hover:decoration-emerald-400"
+          aria-label={`${f.callAria} ${siteConfig.telefono}`}
+        >
           {siteConfig.telefono}
         </a>
       </p>
-      <nav class="flex flex-wrap gap-1 text-[11px]" aria-label="Enlaces legales y de interés">
+      <nav class="flex flex-wrap gap-1 text-[11px]" aria-label={f.legalNavAria}>
         {mapsHref && (
-          <a href={mapsHref} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" aria-label="Cómo llegar (abre en nueva ventana)">
-            Cómo llegar
+          <a
+            href={mapsHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300"
+            aria-label={f.directions}
+          >
+            {f.directions}
           </a>
         )}
         <a href="/blog" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300">
           Blog
         </a>
         <a href="/sitemap.xml" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300">
-          Mapa del sitio
+          {f.sitemap}
         </a>
-        <a href="/aviso-legal" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300">
-          Aviso legal
+        <a href="/aviso-legal" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+          {f.legal}
         </a>
-        <a href="/politica-privacidad" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300">
-          Privacidad
+        <a href="/politica-privacidad" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+          {f.privacy}
         </a>
-        <a href="/politica-cookies" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300">
-          Cookies
+        <a href="/politica-cookies" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+          {f.cookies}
         </a>
         {showDesarrollador && (
-          <a href="/diseno-web" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300">
-            Diseño web
+          <a href="/diseno-web" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+            {f.webDesign}
           </a>
         )}
       </nav>
     </div>
   </div>
 </footer>
-

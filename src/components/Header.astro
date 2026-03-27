@@ -1,36 +1,55 @@
 ---
 import { siteConfig } from '../config/site';
+import type { Locale } from '../i18n/config';
+import { DEFAULT_LOCALE } from '../i18n/config';
+import { getLanguageSwitchTargets, getNavStrings } from '../i18n/ui';
+import { pathForRoute } from '../i18n/routes';
+import { WHATSAPP_PREFILL } from '../i18n/ui';
 
 interface Props {
-  /** Si Layout lo pasa, incluye ya "Escribo desde: [url]". */
   whatsappHref?: string;
+  locale?: Locale;
 }
 
-const { whatsappHref: whatsappHrefProp } = Astro.props;
+const { whatsappHref: whatsappHrefProp, locale = DEFAULT_LOCALE } = Astro.props;
+const nav = getNavStrings(locale);
+const homePath = pathForRoute('home', locale);
+const langLinks = getLanguageSwitchTargets(locale, 'home');
+
 const whatsappHref =
   whatsappHrefProp ??
-  (siteConfig.whatsappMessage
-    ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(siteConfig.whatsappMessage)}`
+  (WHATSAPP_PREFILL[locale]
+    ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(WHATSAPP_PREFILL[locale])}`
     : siteConfig.whatsappUrl);
 ---
 
 <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur">
   <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4">
-    <a href="/" class="text-lg font-semibold tracking-tight">
+    <a href={homePath} class="text-lg font-semibold tracking-tight">
       {siteConfig.nombreComercial}
     </a>
-    <nav class="hidden items-center gap-4 text-xs font-medium text-slate-300 sm:flex" aria-label="Principal">
-      <a href="/" class="transition hover:text-emerald-300">Inicio</a>
-      <a href="/servicios" class="transition hover:text-emerald-300">Servicios</a>
-      <a href="/cerrajero-urgente-24h" class="transition hover:text-emerald-300">Barrios</a>
+    <nav class="hidden items-center gap-4 text-xs font-medium text-slate-300 sm:flex" aria-label={nav.ariaNav}>
+      <a href={homePath} class="transition hover:text-emerald-300">{nav.home}</a>
+      <a href="/servicios" class="transition hover:text-emerald-300">{nav.services}</a>
+      <a href="/cerrajero-urgente-24h" class="transition hover:text-emerald-300">{nav.areas}</a>
       <a href="/blog" class="transition hover:text-emerald-300">Blog</a>
-      <a href="/contacto" class="transition hover:text-emerald-300">Contacto</a>
+      <a href="/contacto" class="transition hover:text-emerald-300">{nav.contact}</a>
+      {langLinks.map((link) => (
+        <a
+          href={link.href}
+          class="transition hover:text-emerald-300"
+          hreflang={link.hreflang}
+          lang={link.hreflang}
+        >
+          {link.label}
+        </a>
+      ))}
       <a
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-emerald-500 px-3 py-2 text-[11px] font-medium text-slate-950 shadow-sm transition hover:bg-emerald-400"
-        aria-label="Escribir por WhatsApp"
+        aria-label={nav.whatsappAria}
       >
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -40,16 +59,16 @@ const whatsappHref =
       <a
         href={siteConfig.telefonoHref}
         class="rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
-        aria-label={`Llamar ahora al ${siteConfig.telefono}`}
+        aria-label={`${nav.callNow} ${siteConfig.telefono}`}
       >
-        Llamar ahora · {siteConfig.telefono}
+        {nav.callNow} · {siteConfig.telefono}
       </a>
     </nav>
     <button
       type="button"
       id="menu-toggle"
       class="rounded-lg p-2 text-slate-300 hover:bg-slate-800 hover:text-white sm:hidden"
-      aria-label="Abrir menú"
+      aria-label={nav.openMenu}
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
@@ -59,20 +78,30 @@ const whatsappHref =
   <div
     id="mobile-menu"
     class="hidden flex-col gap-1 border-t border-slate-800 bg-slate-950/95 px-4 py-3 sm:hidden"
-    aria-label="Menú móvil"
+    aria-label={nav.mobileMenuAria}
   >
-    <a href="/" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Inicio</a>
-    <a href="/servicios" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Servicios</a>
-    <a href="/cerrajero-urgente-24h" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Barrios</a>
+    <a href={homePath} class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">{nav.home}</a>
+    <a href="/servicios" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">{nav.services}</a>
+    <a href="/cerrajero-urgente-24h" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">{nav.areas}</a>
     <a href="/blog" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Blog</a>
-    <a href="/contacto" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">Contacto</a>
+    <a href="/contacto" class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white">{nav.contact}</a>
+    {langLinks.map((link) => (
+      <a
+        href={link.href}
+        class="block rounded-lg px-3 py-2 text-slate-300 hover:bg-slate-800 hover:text-white"
+        hreflang={link.hreflang}
+        lang={link.hreflang}
+      >
+        {link.label}
+      </a>
+    ))}
     <div class="mt-2 flex flex-wrap gap-2">
       <a
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
-        aria-label="Escribir por WhatsApp"
+        aria-label={nav.whatsappAria}
       >
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -82,12 +111,12 @@ const whatsappHref =
       <a
         href={siteConfig.telefonoHref}
         class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
-        aria-label={`Llamar ahora al ${siteConfig.telefono}`}
+        aria-label={`${nav.callNow} ${siteConfig.telefono}`}
       >
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
-        Llamar · {siteConfig.telefono}
+        {nav.callMobile} · {siteConfig.telefono}
       </a>
     </div>
   </div>
@@ -103,11 +132,11 @@ const whatsappHref =
         var open = menu!.classList.toggle('hidden');
         menu!.classList.toggle('flex', !open);
         menuBtn!.setAttribute('aria-expanded', String(!open));
-        menuBtn!.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
+        var openLabel = document.documentElement.lang === 'en' ? 'Open menu' : 'Abrir menú';
+        var closeLabel = document.documentElement.lang === 'en' ? 'Close menu' : 'Cerrar menú';
+        menuBtn!.setAttribute('aria-label', open ? openLabel : closeLabel);
         if (icon) icon.textContent = open ? '☰' : '✕';
       });
     }
   });
 </script>
-
-

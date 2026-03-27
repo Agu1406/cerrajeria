@@ -6,8 +6,6 @@ export const siteConfig = {
   telefono: '659 81 05 70',
   telefonoHref: 'tel:+34659810570',
   whatsappUrl: 'https://wa.me/34659810570',
-  /** Mensaje que se abre al pulsar WhatsApp. Vacío = sin mensaje prefijado. Se añade automáticamente "Escribo desde: [url de la página]". */
-  whatsappMessage: 'Hola, os escribo desde la web. Necesito un cerrajero urgente.',
   /** Correo de contacto (formulario, aviso legal, privacidad). */
   email: 'contacto@loscerrajerosmadrid.es',
   /** NIF/CIF para aviso legal y privacidad. */
@@ -115,4 +113,3 @@ export const siteConfig = {
     email: 'agustin6041@outlook.com',
   } as { nombre: string; url?: string; texto?: string; telefono?: string; email?: string } | null,
 };
-

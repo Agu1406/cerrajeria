@@ -1,11 +1,61 @@
 ---
+import type { Locale } from '../i18n/config';
+import { DEFAULT_LOCALE } from '../i18n/config';
+
 interface Props {
   barrio?: string;
   title?: string;
   subtitle?: string;
+  locale?: Locale;
 }
 
-const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no urgentes, presupuestos o dudas.' } = Astro.props;
+const { barrio, locale = DEFAULT_LOCALE } = Astro.props;
+/** Inglés tiene formulario propio; otros idiomas usan español hasta tener traducción. */
+const useEnglishForm = locale === 'en';
+const title = Astro.props.title ?? (useEnglishForm ? 'Contact form' : 'Formulario de contacto');
+const subtitle =
+  Astro.props.subtitle ??
+  (useEnglishForm ? 'For non-urgent enquiries, quotes or questions.' : 'Para consultas no urgentes, presupuestos o dudas.');
+
+const labels = useEnglishForm
+  ? {
+      name: 'Name',
+      nameOpt: '(optional)',
+      namePh: 'Your name',
+      mobile: 'Mobile',
+      mobilePh: 'Phone number (optional)',
+      email: 'Email',
+      emailPh: 'you@example.com',
+      message: 'Message',
+      messagePh: barrio
+        ? `Enquiry about locksmith service in ${barrio}…`
+        : 'Tell us what you need (not an emergency)…',
+      privacy: 'privacy policy',
+      privacyLead: 'By submitting you accept our',
+      submit: 'Send message',
+      sending: 'Sending…',
+      success: "Message sent. We'll reply as soon as we can.",
+      error: 'Could not send. Please try calling us.',
+      network: 'Connection error. For emergencies, please call.',
+    }
+  : {
+      name: 'Nombre',
+      nameOpt: '(opcional)',
+      namePh: 'Tu nombre',
+      mobile: 'Móvil',
+      mobilePh: 'Otro número o móvil',
+      email: 'Correo',
+      emailPh: 'tu@correo.com',
+      message: 'Mensaje',
+      messagePh: barrio ? `Consulta sobre cerrajería en ${barrio}...` : 'Cuéntanos qué necesitas (no urgente)...',
+      privacy: 'política de privacidad',
+      privacyLead: 'Al enviar aceptas nuestra',
+      submit: 'Enviar consulta',
+      sending: 'Enviando...',
+      success: 'Mensaje enviado. Te responderemos lo antes posible.',
+      error: 'No se pudo enviar. Prueba a llamarnos por teléfono.',
+      network: 'Error de conexión. Llámanos por teléfono para urgencias.',
+    };
 ---
 
 <section class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-sm">
@@ -23,6 +73,11 @@ const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no 
     action="/api/contact"
     method="post"
     data-barrio={barrio}
+    data-msg-sending={labels.sending}
+    data-msg-success={labels.success}
+    data-msg-error={labels.error}
+    data-msg-network={labels.network}
+    data-label-submit={labels.submit}
   >
     <input type="hidden" name="formTitle" value={title} />
     {barrio && (
@@ -30,31 +85,31 @@ const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no 
     )}
     <div class="space-y-1">
       <label for="contact-nombre" class="text-xs font-medium text-slate-300">
-        Nombre <span class="text-slate-400">(opcional)</span>
+        {labels.name} <span class="text-slate-400">{labels.nameOpt}</span>
       </label>
       <input
         id="contact-nombre"
         name="nombre"
         type="text"
         class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
-        placeholder="Tu nombre"
+        placeholder={labels.namePh}
       />
     </div>
     <div class="space-y-1">
       <label for="contact-movil" class="text-xs font-medium text-slate-300">
-        Móvil <span class="text-slate-400">(opcional)</span>
+        {labels.mobile} <span class="text-slate-400">{labels.nameOpt}</span>
       </label>
       <input
         id="contact-movil"
         name="movil"
         type="tel"
         class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
-        placeholder="Otro número o móvil"
+        placeholder={labels.mobilePh}
       />
     </div>
     <div class="space-y-1">
       <label for="contact-email" class="text-xs font-medium text-slate-300">
-        Correo
+        {labels.email}
       </label>
       <input
         id="contact-email"
@@ -62,12 +117,12 @@ const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no 
         type="email"
         required
         class="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
-        placeholder="tu@correo.com"
+        placeholder={labels.emailPh}
       />
     </div>
     <div class="space-y-1">
       <label for="contact-mensaje" class="text-xs font-medium text-slate-300">
-        Mensaje
+        {labels.message}
       </label>
       <textarea
         id="contact-mensaje"
@@ -75,18 +130,19 @@ const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no 
         rows="4"
         required
         class="w-full resize-none rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
-        placeholder={barrio ? `Consulta sobre cerrajería en ${barrio}...` : 'Cuéntanos qué necesitas (no urgente)...'}
+        placeholder={labels.messagePh}
       />
     </div>
     <div class="contact-form-feedback hidden" aria-live="polite"></div>
     <p class="text-[11px] text-slate-400">
-      Al enviar aceptas nuestra <a href="/politica-privacidad" class="text-emerald-400 underline decoration-emerald-400/70 hover:decoration-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">política de privacidad</a>.
+      {labels.privacyLead}{' '}
+      <a href="/politica-privacidad" hreflang="es" class="text-emerald-400 underline decoration-emerald-400/70 hover:decoration-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">{labels.privacy}</a>.
     </p>
     <button
       type="submit"
       class="contact-form-submit w-full rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400 disabled:opacity-50"
     >
-      Enviar consulta
+      {labels.submit}
     </button>
   </form>
 </section>
@@ -103,7 +159,7 @@ const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no 
       feedback.classList.add('hidden');
       feedback.classList.remove('text-red-400', 'text-emerald-400');
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
+      submitBtn.textContent = form.dataset.msgSending || 'Enviando...';
 
       const body = new FormData(form);
       const data = Object.fromEntries(body.entries()) as Record<string, string>;
@@ -117,23 +173,25 @@ const { barrio, title = 'Formulario de contacto', subtitle = 'Para consultas no 
         const json = await res.json().catch(() => ({}));
 
         if (res.ok && !json.error) {
-          feedback.textContent = 'Mensaje enviado. Te responderemos lo antes posible.';
+          feedback.textContent = form.dataset.msgSuccess || 'Mensaje enviado. Te responderemos lo antes posible.';
           feedback.classList.add('text-emerald-400');
           feedback.classList.remove('hidden');
           form.reset();
         } else {
-          feedback.textContent = json.message || 'No se pudo enviar. Prueba a llamarnos por teléfono.';
+          feedback.textContent =
+            json.message || form.dataset.msgError || 'No se pudo enviar. Prueba a llamarnos por teléfono.';
           feedback.classList.add('text-red-400');
           feedback.classList.remove('hidden');
         }
       } catch {
-        feedback.textContent = 'Error de conexión. Llámanos por teléfono para urgencias.';
+        feedback.textContent =
+          form.dataset.msgNetwork || 'Error de conexión. Llámanos por teléfono para urgencias.';
         feedback.classList.add('text-red-400');
         feedback.classList.remove('hidden');
       }
 
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Enviar consulta';
+      submitBtn.textContent = form.dataset.labelSubmit || 'Enviar consulta';
     });
   });
 </script>

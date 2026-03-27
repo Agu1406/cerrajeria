@@ -1,0 +1,294 @@
+---
+import Layout from '../Layout.astro';
+import ContactForm from '../ContactForm.astro';
+import { siteConfig } from '../../config/site';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import type { Locale } from '../../i18n/config';
+import { getHreflangAlternatesForRoute, pathForRoute } from '../../i18n/routes';
+import { HOME_FEATURED_BARRIO_SLUGS } from '../../i18n/home/constants';
+import { buildHomeFaqSchema } from '../../i18n/home/schema';
+import { getHomeCopy, getHomeFeaturedServicios } from '../../i18n/home/index';
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const copy = getHomeCopy(locale);
+const brand = siteConfig.nombreComercial;
+const whyTitle = copy.why.title.replace(/\{brand\}/g, brand);
+const servicesTitle = copy.servicesSection.title.replace(/\{brand\}/g, brand);
+
+const allBarrios = await getCollection('barrios');
+const barriosDestacados: CollectionEntry<'barrios'>[] = HOME_FEATURED_BARRIO_SLUGS.map((slug) =>
+  allBarrios.find((b) => b.slug === slug)
+).filter((e): e is CollectionEntry<'barrios'> => Boolean(e));
+
+const reseñas = siteConfig.reseñas;
+const showReseñas = reseñas && reseñas.totalResenas > 0;
+
+const faqSchema = buildHomeFaqSchema(copy.faqItems);
+const featuredServicios = getHomeFeaturedServicios(copy);
+
+const homePath = pathForRoute('home', locale);
+const hreflangAlternates = getHreflangAlternatesForRoute(siteConfig.baseUrl, 'home');
+
+const ratingSummary =
+  showReseñas && reseñas
+    ? copy.reviews.summaryGoogleTemplate
+        .replace('{rating}', String(reseñas.valoracionMedia))
+        .replace('{count}', String(reseñas.totalResenas))
+    : '';
+const ratingAria =
+  showReseñas && reseñas
+    ? copy.reviews.ratingAriaTemplate.replace('{rating}', String(reseñas.valoracionMedia))
+    : '';
+const ratingSub =
+  showReseñas && reseñas && reseñas.totalResenas
+    ? copy.stats.ratingSubCount.replace('{count}', String(reseñas.totalResenas))
+    : copy.stats.ratingSubFallback;
+---
+
+<Layout
+  locale={locale}
+  title={copy.seo.title}
+  description={copy.seo.description}
+  hreflangAlternates={hreflangAlternates}
+  breadcrumb={[{ name: copy.breadcrumbHome, path: homePath }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <section class="grid gap-10 lg:grid-cols-[1.3fr_minmax(0,1fr)] lg:items-start">
+    <div class="space-y-6">
+      <div class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-emerald-400">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+        </span>
+        {copy.badgeLine}
+      </div>
+      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+        {copy.heroTitle}
+      </h1>
+      <p class="text-sm text-slate-300 sm:text-base" set:html={copy.heroIntroHtml} />
+      <div class="flex flex-wrap items-center gap-3">
+        <a
+          href={siteConfig.telefonoHref}
+          class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-7 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400 active:scale-95"
+        >
+          📞 {copy.ctaCall} · {siteConfig.telefono}
+        </a>
+        <p class="text-xs text-slate-400">
+          {copy.ctaSub}
+        </p>
+      </div>
+      <ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+        {copy.bullets.map((line) => (
+          <li>{line}</li>
+        ))}
+      </ul>
+    </div>
+    <aside class="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+      <h2 class="text-base font-semibold tracking-tight">
+        {copy.areasTitle}
+      </h2>
+      <p class="text-xs text-slate-400" set:html={copy.areasIntroHtml} />
+      <ul class="grid gap-2 text-sm">
+        {barriosDestacados.map((entry) => (
+          <li>
+            <a
+              href={`/cerrajero-urgente-24h/${entry.slug}`}
+              {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
+              class="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2 text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
+            >
+              <span>{entry.data.nombre}</span>
+              <span class="text-xs text-slate-400">{copy.barrioLinkSuffix}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a
+        href="/cerrajero-urgente-24h"
+        {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
+        class="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-emerald-500/50 bg-emerald-500/10 py-2.5 text-sm font-medium text-emerald-400 transition hover:bg-emerald-500/20 hover:text-emerald-300"
+      >
+        {copy.areasSeeAll}
+      </a>
+    </aside>
+  </section>
+
+  <section class="mt-6 grid gap-3 sm:grid-cols-3">
+    <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
+      <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">
+        {copy.stats.arrivalLabel}
+      </p>
+      <p class="text-lg font-bold text-slate-50">20–30 min</p>
+      <p class="text-[11px] text-slate-400">{copy.stats.arrivalSub}</p>
+    </div>
+    <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
+      <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">
+        {copy.stats.availLabel}
+      </p>
+      <p class="text-lg font-bold text-slate-50">24/7</p>
+      <p class="text-[11px] text-slate-400">{copy.stats.availSub}</p>
+    </div>
+    <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
+      <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">
+        {copy.stats.ratingLabel}
+      </p>
+      <p class="text-lg font-bold text-slate-50">
+        {showReseñas && reseñas ? `${reseñas.valoracionMedia}/5` : '4.9/5'}
+      </p>
+      <p class="text-[11px] text-slate-400">{ratingSub}</p>
+    </div>
+  </section>
+
+  {showReseñas && reseñas && (
+    <section class="mt-10 space-y-4">
+      <h2 class="text-lg font-semibold tracking-tight">
+        {copy.reviews.title}
+      </h2>
+      {copy.reviews.noteHtml ? (
+        <p class="text-xs text-slate-400">{copy.reviews.noteHtml}</p>
+      ) : null}
+      <div class="flex flex-wrap items-center gap-3 text-sm">
+        <span class="flex items-center gap-1 text-slate-200" aria-label={ratingAria}>
+          {[1, 2, 3, 4, 5].map((i) => (
+            <span class={i <= Math.round(reseñas.valoracionMedia) ? 'text-amber-400' : 'text-slate-600'}>★</span>
+          ))}
+        </span>
+        <span class="text-slate-400">{ratingSummary}</span>
+        {siteConfig.googleMapsUrl && (
+          <a
+            href={siteConfig.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-emerald-400 hover:underline"
+          >
+            {copy.reviews.seeAllGoogle}
+          </a>
+        )}
+      </div>
+      {reseñas.reseñas?.length > 0 && (
+        <ul class="grid gap-4 sm:grid-cols-2">
+          {reseñas.reseñas.slice(0, 4).map((r) => (
+            <li
+              class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-sm"
+              {...(copy.locale === 'en' ? { lang: 'es' } : {})}
+            >
+              <div class="mb-2 flex items-center justify-between">
+                <span class="font-medium text-slate-200">{r.autor}</span>
+                <span class="flex text-amber-400" aria-hidden="true">
+                  {'★'.repeat(r.valoracion)}{'☆'.repeat(5 - r.valoracion)}
+                </span>
+              </div>
+              <p class="text-slate-400 leading-relaxed">"{r.texto}"</p>
+              <time datetime={r.fecha} class="mt-2 block text-xs text-slate-400">
+                {new Date(r.fecha).toLocaleDateString(copy.dateLocale, {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                })}
+              </time>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )}
+
+  <section class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
+    <div class="space-y-3 text-sm text-slate-300">
+      <h2 class="text-lg font-semibold tracking-tight">
+        {copy.block24h.title}
+      </h2>
+      <p set:html={copy.block24h.bodyHtml} />
+    </div>
+    <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
+      <picture>
+        <source media="(max-width: 768px)" srcset="/images/cerrajero-24h-madrid-hero-662w.webp" type="image/webp" />
+        <source
+          srcset="/images/cerrajero-24h-madrid-hero.webp 1536w"
+          type="image/webp"
+          sizes="(max-width: 768px) 100vw, min(662px, 90vw)"
+        />
+        <img
+          src="/images/cerrajero-24h-madrid-hero.webp"
+          alt={copy.heroImageAlt}
+          class="h-full w-full object-cover"
+          width="1200"
+          height="800"
+          fetchpriority="high"
+          sizes="(max-width: 768px) 100vw, min(662px, 90vw)"
+        />
+      </picture>
+    </div>
+  </section>
+
+  <section class="mt-12 space-y-4 text-sm text-slate-300">
+    <h2 class="text-lg font-semibold tracking-tight">
+      {whyTitle}
+    </h2>
+    <p set:html={copy.why.leadHtml} />
+    <div class="grid gap-4 sm:grid-cols-3">
+      {copy.why.cards.map((card) => (
+        <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
+          <h3 class="text-sm font-semibold">{card.title}</h3>
+          <p class="mt-1 text-xs text-slate-400">{card.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <section class="mt-6 space-y-3">
+      <h2 class="text-lg font-semibold tracking-tight">
+        {copy.faqSectionTitle}
+      </h2>
+      <div class="space-y-2 text-xs text-slate-300 sm:text-sm">
+        {copy.faqInline.map((item) => (
+          <p>
+            <strong>{item.q}</strong> <span set:html={item.aHtml} />
+          </p>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-8 space-y-3">
+      <h2 class="text-lg font-semibold tracking-tight">
+        {servicesTitle}
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm" set:html={copy.servicesSection.introHtml} />
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {featuredServicios.map((servicio) => (
+          <li class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
+            <h3 class="font-semibold">{servicio.nombre}</h3>
+            <p class="mt-1 text-xs text-slate-400">{servicio.descripcionCorta}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="text-xs text-slate-400" set:html={copy.servicesSection.footerHtml} />
+    </section>
+
+    <section class="mt-8 space-y-3">
+      <h2 class="text-lg font-semibold tracking-tight">
+        {copy.zonesSection.title}
+      </h2>
+      <p class="text-xs text-slate-400 sm:text-sm" set:html={copy.zonesSection.bodyHtml} />
+      <p class="text-xs text-slate-400">
+        <a
+          href={copy.zonesSection.linkHref}
+          {...(copy.locale === 'en' ? { hreflang: 'es' } : {})}
+          class="font-medium text-emerald-400 hover:underline"
+        >
+          {copy.zonesSection.linkText}
+        </a>
+      </p>
+    </section>
+
+    <section class="mt-10 max-w-xl">
+      <ContactForm
+        locale={copy.locale}
+        title={copy.contactForm.title}
+        subtitle={copy.contactForm.subtitle}
+      />
+    </section>
+  </section>
+</Layout>

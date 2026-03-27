@@ -15,6 +15,7 @@ export const GET: APIRoute = async () => {
 
   const urls = [
     '/',
+    '/en',
     '/servicios',
     ...servicios
       .filter((s) => s.slug !== 'duplicado-llaves-coche' && s.slug !== 'puertas-antiokupas')
@@ -43,7 +44,7 @@ ${urls
     <loc>${baseUrl}${path}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>daily</changefreq>
-    <priority>${path === '/' ? '1.0' : /^\/(aviso-legal|politica-privacidad|politica-cookies|diseno-web)$/.test(path) ? '0.3' : path.startsWith('/blog/') ? '0.7' : '0.8'}</priority>
+    <priority>${path === '/' ? '1.0' : path === '/en' ? '0.9' : /^\/(aviso-legal|politica-privacidad|politica-cookies|diseno-web)$/.test(path) ? '0.3' : path.startsWith('/blog/') ? '0.7' : '0.8'}</priority>
   </url>`
   )
   .join('\n')}

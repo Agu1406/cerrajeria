@@ -1,11 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/:path*/",
-      "destination": "/:path*",
-      "permanent": true
-    },
-    {
       "source": "/barrios",
       "destination": "/cerrajero-urgente-24h",
       "permanent": true

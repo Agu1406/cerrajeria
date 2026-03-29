@@ -2,7 +2,15 @@
 const BASE_URL_PLACEHOLDER = 'https://TU-DOMINIO-AQUI';
 
 export const siteConfig = {
-  nombreComercial: 'cerrajerosmadrid',
+  /** Nombre como en Google Business Profile y documentos (schema.org, cabecera, pie). */
+  nombreComercial: 'Los Cerrajeros Madrid',
+  /** Logotipo bajo /public; URL absoluta en JSON-LD (logo + image del negocio). */
+  logoPath: '/images/logotipo-oscuro.png',
+  /**
+   * Perfiles oficiales del mismo negocio (schema.org sameAs). Ej.: ficha Google Maps/Business.
+   * Añade aquí Instagram, Facebook, etc. si existen.
+   */
+  sameAs: ['https://share.google/kmn3PFdaazgVkGVQ8'] as string[],
   telefono: '659 81 05 70',
   telefonoHref: 'tel:+34659810570',
   whatsappUrl: 'https://wa.me/34659810570',
@@ -33,7 +41,7 @@ export const siteConfig = {
    * Enlace a tu ficha de Google Maps o Google Business.
    * Si lo dejas vacío, se usará un enlace de búsqueda con la dirección (si tienes direccion).
    */
-  googleMapsUrl: 'https://share.google/5mLzrpAUUKo3yviLh',
+  googleMapsUrl: 'https://share.google/kmn3PFdaazgVkGVQ8',
   /**
    * Reseñas de Google para mostrar en la web y en el schema (SEO).
    * Copia valoración y número de reseñas de tu perfil de Google. Opcionalmente añade 2–5 reseñas (texto, autor, fecha).

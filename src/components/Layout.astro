@@ -39,18 +39,24 @@ const {
 
 const chrome = getLayoutChrome(locale);
 
-const defaultOgImage = `${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.webp`;
+const baseUrlTrim = siteConfig.baseUrl.replace(/\/$/, '');
+const defaultOgImage = `${baseUrlTrim}/images/cerrajero-24h-madrid-hero.webp`;
 const imageForSocial = ogImage ?? defaultOgImage;
+
+const businessLogoUrl = `${baseUrlTrim}${siteConfig.logoPath}`;
 
 const reseñas = siteConfig.reseñas;
 const direccion = siteConfig.direccion;
 const schemaLocalBusiness: Record<string, unknown> = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': ['Locksmith', 'LocalBusiness'],
   name: siteConfig.nombreComercial,
-  url: siteConfig.baseUrl,
+  image: [businessLogoUrl],
+  logo: businessLogoUrl,
+  url: baseUrlTrim,
   telephone: siteConfig.telefono,
   ...(siteConfig.email && { email: siteConfig.email }),
+  ...(siteConfig.sameAs?.length && { sameAs: siteConfig.sameAs }),
   areaServed: { '@type': 'AdministrativeArea', name: 'Comunidad de Madrid' },
   ...(direccion && {
     address: {

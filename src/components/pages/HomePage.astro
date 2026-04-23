@@ -116,7 +116,7 @@ const ratingSub =
     </aside>
   </section>
 
-  <section class="mt-6 grid gap-3 sm:grid-cols-3">
+  <section class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
     <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
       <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">
         {copy.stats.arrivalLabel}
@@ -130,6 +130,13 @@ const ratingSub =
       </p>
       <p class="text-lg font-bold text-slate-50">24/7</p>
       <p class="text-[11px] text-slate-400">{copy.stats.availSub}</p>
+    </div>
+    <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
+      <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">
+        {copy.stats.priceLabel}
+      </p>
+      <p class="text-lg font-bold text-slate-50">{copy.stats.priceValue}</p>
+      <p class="text-[11px] text-slate-400">{copy.stats.priceSub}</p>
     </div>
     <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
       <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">

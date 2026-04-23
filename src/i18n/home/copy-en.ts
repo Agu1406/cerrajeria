@@ -1,11 +1,12 @@
 import type { HomeCopy } from './types';
+import { siteConfig } from '../../config/site';
 
 export const homeCopyEn: HomeCopy = {
   locale: 'en',
   seo: {
     title: 'Emergency locksmith Madrid 24h | Lockouts, doors & locks',
     description:
-      'English-speaking emergency locksmiths in Madrid 24/7: lockouts, door opening, lock and cylinder replacement. All of the Community of Madrid. Call now.',
+      'Emergency locksmiths Madrid 24/7: non-destructive entry from €120 VAT incl. (any time, anywhere in the region). If forcing is needed, price agreed first; many jobs up to ~€200 VAT incl.',
   },
   breadcrumbHome: 'Home',
   dateLocale: 'en-GB',
@@ -33,6 +34,10 @@ export const homeCopyEn: HomeCopy = {
       answer:
         'Yes. We can fit a full lock or replace only the cylinder. We give a clear price before starting once we see the door.',
     },
+    {
+      question: 'How much does an emergency door opening cost?',
+      answer: siteConfig.urgenciaPreciosFaqEn,
+    },
   ],
   badgeLine: '24-hour service · Emergencies',
   heroTitle: 'Locksmiths in Madrid · 24h emergency service',
@@ -41,6 +46,7 @@ export const homeCopyEn: HomeCopy = {
   ctaCall: 'Call now',
   ctaSub: 'Immediate response · 24 hours · Every day of the year',
   bullets: [
+    '✔ Non-destructive entry from €120 VAT incl. (forcing only if needed; many jobs up to ~€200 VAT incl.)',
     '✔ Armoured and security door opening',
     '✔ Lock, cylinder or barrel change (broken lock or lost keys)',
     '✔ Vehicle opening without unnecessary damage',
@@ -57,6 +63,9 @@ export const homeCopyEn: HomeCopy = {
     arrivalSub: 'Within the Community of Madrid, depending on traffic and distance.',
     availLabel: 'Availability',
     availSub: 'Nights, weekends and public holidays, all year.',
+    priceLabel: 'Non-destructive entry',
+    priceValue: 'From €120',
+    priceSub: 'VAT incl. · Any time & zone · usual materials included',
     ratingLabel: 'Customer rating',
     ratingSubFallback: 'Based on real customer feedback.',
     ratingSubCount: '{count} Google reviews',
@@ -82,7 +91,7 @@ export const homeCopyEn: HomeCopy = {
     cards: [
       {
         title: 'Clear pricing',
-        body: 'We give an estimate on the phone and confirm the final price on site before working on the door.',
+        body: 'Non-destructive entry from €120 VAT incl.; if forcing is needed, we agree the price first (many jobs up to around €200 VAT incl.).',
       },
       {
         title: 'Training and tools',
@@ -109,6 +118,10 @@ export const homeCopyEn: HomeCopy = {
     {
       q: 'Nights and bank holidays?',
       aHtml: 'Yes — 24/7, every day of the year.',
+    },
+    {
+      q: 'How much does an emergency opening cost?',
+      aHtml: siteConfig.urgenciaPreciosFaqEn,
     },
   ],
   servicesSection: {

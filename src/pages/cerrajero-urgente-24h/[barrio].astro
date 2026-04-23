@@ -43,17 +43,20 @@ const showReseñas = reseñas && reseñas.totalResenas > 0;
 const allBarrios = await getCollection('barrios');
 const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
 
+/** Precios orientativos centralizados en site.ts (coherente con la home). */
+const faqPrecioUrgencia = siteConfig.urgenciaPreciosFaqEs;
+
 const faqSchemaBarrio = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
     { '@type': 'Question', name: `¿Cuánto tardáis en llegar a ${data.nombre}?`, acceptedAnswer: { '@type': 'Answer', text: data.faqLlegada } },
-    { '@type': 'Question', name: '¿El precio está cerrado antes de empezar?', acceptedAnswer: { '@type': 'Answer', text: data.faqPrecio } },
+    { '@type': 'Question', name: '¿El precio está cerrado antes de empezar?', acceptedAnswer: { '@type': 'Answer', text: faqPrecioUrgencia } },
     { '@type': 'Question', name: `¿Trabajáis también de noche y en festivos en ${data.nombre}?`, acceptedAnswer: { '@type': 'Answer', text: data.faqFestivos } },
   ],
-  ...(entry.data.actualizado && { dateModified: entry.data.actualizado.toISOString().slice(0, 10) }),
+  ...(entry.data.actualizado && { dateModified: entry.data.actualizado.toISOString() }),
 };
-const dateModified = entry.data.actualizado?.toISOString().slice(0, 10);
+const dateModified = entry.data.actualizado?.toISOString();
 ---
 
 <Layout {title} {description} breadcrumb={breadcrumb} dateModified={dateModified}>
@@ -165,7 +168,7 @@ const dateModified = entry.data.actualizado?.toISOString().slice(0, 10);
           <strong>¿Cuánto tardáis en llegar a {data.nombre}?</strong> {data.faqLlegada}
         </p>
         <p>
-          <strong>¿El precio está cerrado antes de empezar?</strong> {data.faqPrecio}
+          <strong>¿El precio está cerrado antes de empezar?</strong> {faqPrecioUrgencia}
         </p>
         <p>
           <strong>¿Trabajáis también de noche y en festivos en {data.nombre}?</strong> {data.faqFestivos}

@@ -34,6 +34,9 @@ export type HomeCopy = {
     arrivalSub: string;
     availLabel: string;
     availSub: string;
+    priceLabel: string;
+    priceValue: string;
+    priceSub: string;
     ratingLabel: string;
     ratingSubFallback: string;
     ratingSubCount: string;
@@ -57,7 +60,7 @@ export type HomeCopy = {
   };
 
   faqSectionTitle: string;
-  faqInline: [{ q: string; aHtml: string }, { q: string; aHtml: string }, { q: string; aHtml: string }];
+  faqInline: { q: string; aHtml: string }[];
 
   servicesSection: {
     title: string;

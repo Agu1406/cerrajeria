@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content';
 
 const title = `Cerrajero 24h por barrios en Madrid | ${siteConfig.nombreComercial}`;
 const description =
-  'Cerrajero urgente 24 horas en los 21 distritos de Madrid capital (Centro, Salamanca, Chamberí, Vallecas, etc.) y en municipios: Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas, Pinto. Llama al instante.';
+  'Cerrajero urgente 24h: apertura sin romper desde 120 € IVA incl. en Madrid capital (21 distritos) y municipios (Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá, Las Rozas, Pinto…). Llama al instante.';
 
 const barrios = (await getCollection('barrios')).sort((a, b) =>
   a.data.nombre.localeCompare(b.data.nombre, 'es')

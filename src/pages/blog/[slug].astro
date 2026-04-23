@@ -14,6 +14,8 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 const data = entry.data;
+const hasUpdatedDate =
+  data.actualizado ? data.actualizado.getTime() !== data.pubDate.getTime() : false;
 
 const title = `${data.title} | ${siteConfig.nombreComercial}`;
 const description = data.description;
@@ -36,13 +38,30 @@ const articleSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <article class="mx-auto max-w-3xl">
     <header class="mb-10 space-y-4">
-      <time datetime={data.pubDate.toISOString()} class="block text-xs font-medium uppercase tracking-wider text-slate-500">
-        {data.pubDate.toLocaleDateString('es-ES', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
-        })}
-      </time>
+      <div class="text-xs font-medium uppercase tracking-wider text-slate-500">
+        <p>
+          Publicado:{' '}
+          <time datetime={data.pubDate.toISOString()}>
+            {data.pubDate.toLocaleDateString('es-ES', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric',
+            })}
+          </time>
+        </p>
+        {hasUpdatedDate && data.actualizado && (
+          <p class="mt-1">
+            Última actualización:{' '}
+            <time datetime={data.actualizado.toISOString()}>
+              {data.actualizado.toLocaleDateString('es-ES', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+              })}
+            </time>
+          </p>
+        )}
+      </div>
       <h1 class="text-3xl font-extrabold tracking-tight leading-tight sm:text-4xl">
         {data.title}
       </h1>

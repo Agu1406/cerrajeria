@@ -1,11 +1,12 @@
 import type { HomeCopy } from './types';
+import { siteConfig } from '../../config/site';
 
 export const homeCopyEs: HomeCopy = {
   locale: 'es',
   seo: {
     title: 'Cerrajero Madrid 24h | Urgente, apertura puertas y cerraduras',
     description:
-      'Cerrajeros en Madrid 24 horas: urgencias, apertura de puertas y cambio de cerradura (bombín o cilindro). Cerradura rota o llave perdida. Toda la Comunidad de Madrid. Llama ahora.',
+      'Cerrajeros Madrid 24h: apertura sin romper desde 120 € IVA incl. (cualquier hora y zona). Si hay que forzar, presupuesto acordado antes; muchos casos hasta ~200 € IVA incl. Comunidad de Madrid.',
   },
   breadcrumbHome: 'Inicio',
   dateLocale: 'es-ES',
@@ -33,6 +34,10 @@ export const homeCopyEs: HomeCopy = {
       answer:
         'Sí. Montamos cerradura entera o solo sustituimos el bombín (cilindro) según lo que necesites. Te damos precio cerrado antes de empezar cuando veamos la puerta.',
     },
+    {
+      question: '¿Cuánto cuesta abrir una puerta con urgencia?',
+      answer: siteConfig.urgenciaPreciosFaqEs,
+    },
   ],
   badgeLine: 'Servicio 24 horas · Urgencias',
   heroTitle: 'Cerrajeros en Madrid · Servicio 24 h y urgencias',
@@ -41,6 +46,7 @@ export const homeCopyEs: HomeCopy = {
   ctaCall: 'Llamar ahora',
   ctaSub: 'Atención inmediata · 24 horas · Todos los días del año',
   bullets: [
+    '✔ Apertura sin romper desde 120 € IVA incl. (forzar solo si hace falta; muchos casos hasta ~200 € IVA incl.)',
     '✔ Apertura de puertas blindadas y acorazadas',
     '✔ Cambio de cerradura, bombín o cilindro (cerradura rota o llaves perdidas)',
     '✔ Apertura de vehículos sin daños',
@@ -57,6 +63,9 @@ export const homeCopyEs: HomeCopy = {
     arrivalSub: 'Dentro de la Comunidad de Madrid, según el tráfico y la zona.',
     availLabel: 'Disponibilidad',
     availSub: 'Trabajamos noches, fines de semana y festivos todo el año.',
+    priceLabel: 'Apertura sin romper',
+    priceValue: 'Desde 120 €',
+    priceSub: 'IVA incl. · Cualquier hora y zona · Material del servicio incluido',
     ratingLabel: 'Clientes satisfechos',
     ratingSubFallback: 'Valoración media basada en reseñas reales de clientes.',
     ratingSubCount: '{count} reseñas en Google',
@@ -80,7 +89,7 @@ export const homeCopyEs: HomeCopy = {
     cards: [
       {
         title: 'Transparencia en los precios',
-        body: 'Te indicamos el coste estimado por teléfono y confirmamos el precio definitivo antes de tocar la puerta.',
+        body: 'Apertura sin romper desde 120 € IVA incl.; si hay que forzar, te lo decimos antes y acordamos precio (muchas intervenciones hasta unos 200 € IVA incl.).',
       },
       {
         title: 'Formación y herramientas',
@@ -107,6 +116,10 @@ export const homeCopyEs: HomeCopy = {
     {
       q: '¿Trabajáis noches y festivos?',
       aHtml: 'Sí, ofrecemos servicio 24/7 todos los días del año.',
+    },
+    {
+      q: '¿Cuánto cuesta una apertura urgente?',
+      aHtml: siteConfig.urgenciaPreciosFaqEs,
     },
   ],
   servicesSection: {

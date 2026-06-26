@@ -16,7 +16,7 @@ export type PriorityBarrioSlug = (typeof PRIORITY_BARRIO_SLUGS)[number];
 
 const surBarrioSlugs = new Set<string>(PRIORITY_BARRIO_SLUGS);
 
-/** Verticales secundarias: solo indexamos landings de barrio en el sur de Madrid. */
+/** Landings de barrio indexables en SEO: sur de Madrid (cerrajero 24h, duplicado coche, antiokupas). */
 export function isSurBarrioIndexable(slug: string): boolean {
   return surBarrioSlugs.has(slug);
 }

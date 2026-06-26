@@ -8,7 +8,7 @@ import { siteConfig } from '../../config/site';
 import { servicios } from '../../data/servicios';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { buildBarrioUrgenteDescription, buildBarrioUrgenteTitle } from '../../seo/snippets';
-import { sortBarriosByPriority } from '../../seo/priority-barrios';
+import { sortBarriosByPriority, isSurBarrioIndexable } from '../../seo/priority-barrios';
 import GetafeLandingExtras from '../../components/GetafeLandingExtras.astro';
 import SurBarrioExtras from '../../components/SurBarrioExtras.astro';
 import { getafeFaqsExtra } from '../../data/getafe-local';
@@ -81,10 +81,11 @@ const faqSchemaBarrio = {
   ...(entry.data.actualizado && { dateModified: entry.data.actualizado.toISOString() }),
 };
 const dateModified = entry.data.actualizado?.toISOString();
+const noindex = !isSurBarrioIndexable(entry.slug);
 ---
 
-<Layout {title} {description} breadcrumb={breadcrumb} dateModified={dateModified}>
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchemaBarrio)} />
+<Layout {title} {description} breadcrumb={breadcrumb} dateModified={dateModified} {noindex}>
+  {!noindex && <script type="application/ld+json" set:html={JSON.stringify(faqSchemaBarrio)} />}
   <section class="space-y-6">
     <Breadcrumb items={breadcrumb} />
     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">

@@ -30,7 +30,9 @@ export const GET: APIRoute = async () => {
     '/politica-privacidad',
     '/politica-cookies',
     '/diseno-web',
-    ...barrios.map((entry) => `/cerrajero-urgente-24h/${entry.slug}`),
+    ...barrios
+      .filter((entry) => isSurBarrioIndexable(entry.slug))
+      .map((entry) => `/cerrajero-urgente-24h/${entry.slug}`),
     ...duplicadoBarrios
       .filter((entry) => isSurBarrioIndexable(entry.slug))
       .map((entry) => `/duplicado-llaves-coche/${entry.slug}`),

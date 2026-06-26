@@ -37,6 +37,11 @@
       "source": "/cerrajero-getafe",
       "destination": "/cerrajero-urgente-24h/getafe",
       "permanent": true
+    },
+    {
+      "source": "/getafe",
+      "destination": "/cerrajero-urgente-24h/getafe",
+      "permanent": true
     }
   ]
 }

@@ -1,21 +1,40 @@
 ---
 import Layout from '../components/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { siteConfig } from '../config/site';
+import { WHATSAPP_PREFILL } from '../i18n/ui';
 
 const title = `Página no encontrada | ${siteConfig.nombreComercial}`;
 const description =
-  'La página que buscas no existe. Llama ahora a nuestro servicio de cerrajería 24 horas en Madrid para resolver cualquier urgencia.';
+  'La página que buscas no existe. Llámanos o escríbenos sin compromiso: cerrajería 24 horas en Madrid y sur.';
+const whatsappText = WHATSAPP_PREFILL.es
+  ? `${WHATSAPP_PREFILL.es}He llegado a una página que no existe en la web. `
+  : 'Hola, he llegado a una página que no existe en la web. ';
+const whatsappHref = `${siteConfig.whatsappUrl}?text=${encodeURIComponent(whatsappText)}`;
 ---
 
 <Layout {title} {description} noindex={true}>
-  <section class="space-y-6 text-sm text-slate-300">
-    <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
-      Página no encontrada
-    </h1>
-    <p>
-      Es posible que la dirección que has escrito no exista o que el enlace esté desactualizado. Si necesitas ayuda con
-      una urgencia de cerrajería en Madrid, puedes llamarnos ahora mismo.
-    </p>
+  <section class="space-y-8 text-sm text-slate-300">
+    <div class="space-y-4">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">Error 404</p>
+      <h1 class="text-2xl font-extrabold tracking-tight text-slate-100 sm:text-3xl">
+        La página que deseas ver no existe
+      </h1>
+      <p class="text-sm text-slate-300 sm:text-base">
+        Pero no te preocupes: <strong class="text-slate-100">llámanos o escríbenos sin compromiso</strong> y dinos
+        en qué podemos ayudarte. Urgencias de cerrajería 24 horas en Madrid y sur — te atiende{' '}
+        {siteConfig.profesional?.nombre ?? 'el cerrajero'} directamente.
+      </p>
+      <p class="text-xs text-slate-500">
+        Si buscabas Getafe:{' '}
+        <a href="/cerrajero-urgente-24h/getafe" class="text-emerald-400 hover:underline">
+          cerrajero urgente en Getafe
+        </a>
+        . También puedes{' '}
+        <a href="/" class="text-emerald-400 hover:underline">volver al inicio</a>.
+      </p>
+    </div>
+
     <div class="flex flex-wrap items-center gap-3">
       <a
         href={siteConfig.telefonoHref}
@@ -24,12 +43,18 @@ const description =
         📞 Llamar ahora · {siteConfig.telefono}
       </a>
       <a
-        href="/"
-        class="text-xs font-semibold text-emerald-400 underline-offset-4 hover:underline"
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-full border border-slate-600 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
       >
-        Volver al inicio
+        WhatsApp
       </a>
     </div>
+
+    <ContactForm
+      title="Escríbenos sin compromiso"
+      subtitle="Cuéntanos qué necesitas (apertura, cambio de cerradura, presupuesto…). No es para urgencias inmediatas: para eso, llama o usa WhatsApp."
+    />
   </section>
 </Layout>
-

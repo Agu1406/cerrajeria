@@ -36,8 +36,36 @@ export type CasoReal = {
   precio?: string;
 };
 
-/** Añade casos reales cuando Erickson los facilite (ver ejemplos en la documentación del proyecto). */
-export const getafeCasosReales: CasoReal[] = [];
+/** Casos reales atendidos en Getafe. */
+export const getafeCasosReales: CasoReal[] = [
+  {
+    etiqueta: 'Apertura urgente',
+    titulo: 'Llave dentro de comercio en Las Margaritas',
+    resumen:
+      'Llamada a las 9 AM: el local necesitaba abrirse para ventas y atender clientes, y el personal no tenía acceso.',
+    detalle:
+      'Apertura sin romper en unos 25 min. El cliente entró sin cambiar cerradura; se reconfiguró la cerradura para un juego de llaves nuevo y se entregaron 3 duplicados más el juego original en el momento.',
+    precio: '90 € IVA incl.',
+  },
+  {
+    etiqueta: 'Cambio bombín',
+    titulo: 'Cilindro reventado tras intento de robo en Sector III',
+    resumen:
+      'Bombín dañado, no giraba la llave; había sustancias en el cilindro y restos del intento de apertura.',
+    detalle:
+      'Sustitución por cilindro antibumping el mismo día. Factura y garantía por escrito. El propietario estaba de vacaciones y una alarma le advirtió del intento de acceso a su vivienda.',
+    precio: '120 € IVA incl. (bombín + mano de obra)',
+  },
+  {
+    etiqueta: 'Comunidad',
+    titulo: 'Portal con cerradura atascada en Juan de la Cierva',
+    resumen:
+      'Vecinos no podían entrar al edificio un domingo; tenían que dejar la puerta abierta, exponiendo la comunidad al acceso de no propietarios.',
+    detalle:
+      'El bombín estaba en buen estado, pero hacía falta mantenimiento: ajuste del marco de la puerta y lubricación. Trabajo resuelto el mismo día.',
+    precio: '65 € IVA incl.',
+  },
+];
 
 export const getafePrecioTiers = [
   {

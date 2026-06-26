@@ -36,7 +36,22 @@ export const siteConfig = {
     titulo: 'Tu cerrajero de confianza en Getafe y el sur de Madrid',
     bio: 'Cerrajero con base en Getafe. Cuando llamas, te atiendo yo: sin centralitas ni intermediarios. Te explico el precio antes de empezar y solo actúo si estás de acuerdo.',
     bioCorta: 'Cuando llamas, te atiende Erickson.',
+    /**
+     * Foto tipo carnet / retrato frontal. Guardar en public/images/erickson-getafe.webp
+     * (800×800 px, WebP, rostro centrado). null = placeholder hasta subir la imagen.
+     */
+    fotoPath: null as string | null,
   },
+  /** Pills de confianza (home, Getafe, sur Madrid). */
+  confianzaPills: [
+    'Precio cerrado antes de actuar',
+    'Apertura sin romper',
+    'Base en Getafe',
+    'Factura con IVA',
+    'Bizum y tarjeta',
+    'Garantía por escrito',
+    'Trato directo con Erickson',
+  ] as const,
   /** Título de la portada (ideal 50–60 caracteres para SEO). */
   titleHome: 'Cerrajero Madrid 24h · desde 90€ | Llama ya',
   descriptionHome:

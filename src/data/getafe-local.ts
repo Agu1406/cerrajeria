@@ -26,12 +26,38 @@ export const getafeCodigosPostales = [
   '28909',
 ] as const;
 
-export const getafeTrustPills = [
-  'Precio cerrado antes de actuar',
-  'Apertura sin romper',
-  'Base en Getafe',
-  'Factura con IVA',
-  'Trato directo con Erickson',
+export const getafeTrustPills = siteConfig.confianzaPills;
+
+export type CasoReal = {
+  etiqueta: string;
+  titulo: string;
+  resumen: string;
+  detalle: string;
+  precio?: string;
+};
+
+/** Añade casos reales cuando Erickson los facilite (ver ejemplos en la documentación del proyecto). */
+export const getafeCasosReales: CasoReal[] = [];
+
+export const getafePrecioTiers = [
+  {
+    nombre: 'Urgencia apertura',
+    precio: `desde ${precio}`,
+    destacado: true,
+    bullets: ['IVA incluido', 'Material del servicio incluido', 'Precio cerrado antes de actuar'],
+  },
+  {
+    nombre: 'Apertura + bombín',
+    precio: 'presupuesto en sitio',
+    destacado: false,
+    bullets: ['Cerradura o cilindro nuevo', 'Garantía por escrito', 'Factura con IVA'],
+  },
+  {
+    nombre: 'Comunidades',
+    precio: 'a medida',
+    destacado: false,
+    bullets: ['Portales y zonas comunes', 'Bizum, tarjeta o efectivo', 'Presupuesto sin compromiso'],
+  },
 ] as const;
 
 export const getafeServiciosDestacados = [
@@ -67,6 +93,8 @@ export const getafeComparativa = [
   { label: 'Precio orientativo por teléfono', nosotros: 'Sí, antes de salir', otros: 'A veces solo al llegar' },
   { label: 'Base en Getafe', nosotros: 'Sí (Calle Progreso 2)', otros: 'Suelen venir de Madrid' },
   { label: 'Factura con IVA', nosotros: 'Sí', otros: 'No siempre' },
+  { label: 'Bizum y tarjeta', nosotros: 'Sí', otros: 'Solo efectivo a veces' },
+  { label: 'Garantía por escrito', nosotros: 'Sí', otros: 'No siempre' },
   { label: 'Apertura sin romper', nosotros: 'Prioridad siempre', otros: 'Variable' },
 ] as const;
 
@@ -86,5 +114,9 @@ export const getafeFaqsExtra = [
   {
     q: '¿Verificáis que soy el titular antes de abrir?',
     a: 'Sí. Por seguridad confirmamos que quien solicita el servicio puede acceder al inmueble. Es protocolo estándar en cerrajería de urgencia.',
+  },
+  {
+    q: '¿Qué formas de pago aceptáis?',
+    a: 'Efectivo, tarjeta y Bizum. Emitimos factura con IVA en todos los trabajos y entregamos garantía por escrito.',
   },
 ] as const;

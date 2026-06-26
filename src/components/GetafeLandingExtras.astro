@@ -2,22 +2,24 @@
 import { siteConfig } from '../config/site';
 import {
   getafeBarrios,
+  getafeCasosReales,
   getafeCodigosPostales,
   getafeComparativa,
   getafeFaqsExtra,
+  getafePrecioTiers,
   getafeServiciosDestacados,
   getafeTrustPills,
 } from '../data/getafe-local';
+import ReviewsGrid from './ReviewsGrid.astro';
 
 interface Props {
   whatsappHref: string;
 }
 
 const { whatsappHref } = Astro.props;
-const reseñas = siteConfig.reseñas;
 const direccion = siteConfig.direccion;
-const reviewsConTexto =
-  reseñas?.reseñas?.filter((r) => r.texto && !r.texto.includes('Reseña de 5 estrellas')) ?? [];
+const profesional = siteConfig.profesional;
+const fotoPath = profesional?.fotoPath;
 ---
 
 <div class="space-y-10">
@@ -44,35 +46,91 @@ const reviewsConTexto =
     >
       WhatsApp
     </a>
-    <p class="text-xs text-slate-400">En Getafe · Responde {siteConfig.profesional.nombre} · 24h</p>
+    <p class="text-xs text-slate-400">En Getafe · Responde {profesional?.nombre} · 24h</p>
   </div>
 
-  {siteConfig.profesional && (
-    <section class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-        Cerrajero verificado · Getafe
-      </p>
-      <h2 class="mt-2 text-xl font-bold tracking-tight text-slate-100 sm:text-2xl">
-        Hola, soy {siteConfig.profesional.nombre}
-      </h2>
-      <p class="mt-1 text-sm font-medium text-slate-300">{siteConfig.profesional.titulo}</p>
-      <p class="mt-3 text-sm text-slate-400">{siteConfig.profesional.bio}</p>
-      <ul class="mt-4 flex flex-wrap gap-2 text-xs text-slate-400">
-        <li class="rounded-full border border-slate-700 px-3 py-1">🪪 Autónomo registrado</li>
-        <li class="rounded-full border border-slate-700 px-3 py-1">🧾 Factura con IVA</li>
-        <li class="rounded-full border border-slate-700 px-3 py-1">📍 Base en Getafe</li>
-        <li class="rounded-full border border-slate-700 px-3 py-1">📞 Trato directo, sin call center</li>
-      </ul>
+  {profesional && (
+    <section class="grid gap-6 rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:grid-cols-[minmax(0,11rem)_1fr] sm:p-6">
+      <div class="mx-auto w-full max-w-[11rem] sm:mx-0">
+        {fotoPath ? (
+          <img
+            src={fotoPath}
+            alt={`${profesional.nombre}, cerrajero urgente en Getafe`}
+            class="aspect-square w-full rounded-2xl border border-slate-700 object-cover object-top"
+            width="800"
+            height="800"
+            loading="lazy"
+          />
+        ) : (
+          <div
+            class="flex aspect-square w-full flex-col items-center justify-center rounded-2xl border border-dashed border-slate-600 bg-slate-900/80 px-3 text-center text-xs text-slate-500"
+            aria-hidden="true"
+          >
+            <span class="text-4xl">👤</span>
+            <span class="mt-2">{profesional.nombre}</span>
+          </div>
+        )}
+      </div>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+          Cerrajero verificado · Getafe
+        </p>
+        <h2 class="mt-2 text-xl font-bold tracking-tight text-slate-100 sm:text-2xl">
+          Hola, soy {profesional.nombre}
+        </h2>
+        <p class="mt-1 text-sm font-medium text-slate-300">{profesional.titulo}</p>
+        <p class="mt-3 text-sm text-slate-400">{profesional.bio}</p>
+        <ul class="mt-4 flex flex-wrap gap-2 text-xs text-slate-400">
+          <li class="rounded-full border border-slate-700 px-3 py-1">🪪 Autónomo registrado</li>
+          <li class="rounded-full border border-slate-700 px-3 py-1">🧾 Factura con IVA</li>
+          <li class="rounded-full border border-slate-700 px-3 py-1">💳 Bizum y tarjeta</li>
+          <li class="rounded-full border border-slate-700 px-3 py-1">📋 Garantía por escrito</li>
+          <li class="rounded-full border border-slate-700 px-3 py-1">📍 Base en Getafe</li>
+        </ul>
+      </div>
     </section>
   )}
+
+  <section class="space-y-4">
+    <h2 class="text-xl font-bold tracking-tight sm:text-2xl">¿Cuánto va a costar?</h2>
+    <p class="text-sm text-slate-400">Precio orientativo confirmado por teléfono antes de salir.</p>
+    <div class="grid gap-4 sm:grid-cols-3">
+      {getafePrecioTiers.map((tier) => (
+        <article
+          class:list={[
+            'flex flex-col rounded-xl border p-5 text-sm',
+            tier.destacado
+              ? 'border-emerald-500/40 bg-emerald-500/5 ring-1 ring-emerald-500/20'
+              : 'border-slate-800 bg-slate-900/70',
+          ]}
+        >
+          {tier.destacado && (
+            <span class="mb-2 text-[10px] font-semibold uppercase tracking-wider text-emerald-400">
+              Más solicitado
+            </span>
+          )}
+          <h3 class="font-semibold text-slate-100">{tier.nombre}</h3>
+          <p class="mt-1 text-xl font-bold text-emerald-400">{tier.precio}</p>
+          <ul class="mt-3 flex-1 space-y-1 text-xs text-slate-400">
+            {tier.bullets.map((b) => (
+              <li>✓ {b}</li>
+            ))}
+          </ul>
+          <a
+            href={siteConfig.telefonoHref}
+            class="mt-4 inline-flex justify-center rounded-full bg-emerald-500/90 px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-emerald-400"
+          >
+            Llamar · {siteConfig.telefono}
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
 
   <section class="space-y-4">
     <h2 class="text-xl font-bold tracking-tight sm:text-2xl">
       Servicios de cerrajería urgente en Getafe
     </h2>
-    <p class="text-sm text-slate-400">
-      Precio orientativo confirmado por teléfono antes de desplazarnos.
-    </p>
     <div class="grid gap-4 sm:grid-cols-2">
       {getafeServiciosDestacados.map((servicio) => (
         <article class="flex flex-col rounded-xl border border-slate-800 bg-slate-900/70 p-4">
@@ -92,6 +150,23 @@ const reviewsConTexto =
       ))}
     </div>
   </section>
+
+  {getafeCasosReales.length > 0 && (
+    <section class="space-y-4">
+      <h2 class="text-xl font-bold tracking-tight sm:text-2xl">Situaciones que hemos resuelto en Getafe</h2>
+      <ul class="grid gap-4 sm:grid-cols-2">
+        {getafeCasosReales.map((caso) => (
+          <li class="rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm">
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-400">{caso.etiqueta}</p>
+            <h3 class="mt-1 font-semibold text-slate-100">{caso.titulo}</h3>
+            <p class="mt-2 text-slate-400">{caso.resumen}</p>
+            <p class="mt-2 text-xs text-slate-500">{caso.detalle}</p>
+            {caso.precio && <p class="mt-2 text-xs font-medium text-emerald-400">{caso.precio}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   <section class="space-y-4">
     <h2 class="text-xl font-bold tracking-tight sm:text-2xl">
@@ -116,9 +191,6 @@ const reviewsConTexto =
     <h2 class="text-xl font-bold tracking-tight sm:text-2xl">
       Por qué llamarnos si estás en Getafe
     </h2>
-    <p class="text-sm text-slate-400">
-      Comparativa orientativa frente a cerrajeros que se desplazan desde Madrid capital.
-    </p>
     <div class="overflow-x-auto rounded-xl border border-slate-800">
       <table class="w-full min-w-[320px] text-left text-sm">
         <thead class="border-b border-slate-800 bg-slate-900/80 text-xs uppercase tracking-wider text-slate-400">
@@ -141,39 +213,7 @@ const reviewsConTexto =
     </div>
   </section>
 
-  {reseñas && reseñas.totalResenas > 0 && (
-    <section class="space-y-4">
-      <h2 class="text-xl font-bold tracking-tight sm:text-2xl">
-        Opiniones de clientes en Google
-      </h2>
-      <p class="text-sm text-slate-300">
-        <span class="text-amber-400">★★★★★</span>{' '}
-        <strong>{reseñas.valoracionMedia}</strong> · {reseñas.totalResenas} reseñas en Google
-      </p>
-      {reviewsConTexto.length > 0 ? (
-        <ul class="grid gap-3 sm:grid-cols-2">
-          {reviewsConTexto.slice(0, 4).map((r) => (
-            <li class="rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm">
-              <p class="text-slate-300">"{r.texto}"</p>
-              <p class="mt-2 text-xs text-slate-500">
-                — {r.autor} · {'★'.repeat(r.valoracion)}
-              </p>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-      {siteConfig.googleMapsUrl && (
-        <a
-          href={siteConfig.googleMapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block text-sm font-medium text-emerald-400 hover:underline"
-        >
-          Ver reseñas en Google Maps →
-        </a>
-      )}
-    </section>
-  )}
+  <ReviewsGrid />
 
   <section class="space-y-4 text-sm text-slate-300">
     <h2 class="text-xl font-bold tracking-tight text-slate-100 sm:text-2xl">
@@ -197,7 +237,7 @@ const reviewsConTexto =
   </section>
 
   <div class="flex flex-wrap items-center gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
-    <p class="text-sm text-slate-200">¿Urgencia en Getafe? Te atendemos ahora.</p>
+    <p class="text-sm text-slate-200">¿Urgencia en Getafe? Te atiende {profesional?.nombre}.</p>
     <a
       href={siteConfig.telefonoHref}
       class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"

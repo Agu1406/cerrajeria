@@ -28,6 +28,9 @@ pnpm-debug.log*
 # exportaciones de Google Search Console (datos de rendimiento/cobertura)
 gsc/
 
+# exportaciones de sitios web competidores en markdown
+wtm/
+
 # no versionar PNG de public/images (solo usamos .webp)
 public/images/*.png
 public/images/*.jpg

@@ -122,6 +122,7 @@ const dateModified = entry.data.actualizado?.toISOString();
       </a>
       <p class="text-xs text-slate-400">
         {data.llegadaTexto}
+        {esBaseOperativa && siteConfig.profesional ? ` · Responde ${siteConfig.profesional.nombre}` : ''}
       </p>
     </div>
 

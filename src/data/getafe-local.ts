@@ -31,6 +31,7 @@ export const getafeTrustPills = [
   'Apertura sin romper',
   'Base en Getafe',
   'Factura con IVA',
+  'Trato directo con Erickson',
 ] as const;
 
 export const getafeServiciosDestacados = [

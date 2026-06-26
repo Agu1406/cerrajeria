@@ -44,8 +44,27 @@ const reviewsConTexto =
     >
       WhatsApp
     </a>
-    <p class="text-xs text-slate-400">En Getafe · Respuesta inmediata · 24h</p>
+    <p class="text-xs text-slate-400">En Getafe · Responde {siteConfig.profesional.nombre} · 24h</p>
   </div>
+
+  {siteConfig.profesional && (
+    <section class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+        Cerrajero verificado · Getafe
+      </p>
+      <h2 class="mt-2 text-xl font-bold tracking-tight text-slate-100 sm:text-2xl">
+        Hola, soy {siteConfig.profesional.nombre}
+      </h2>
+      <p class="mt-1 text-sm font-medium text-slate-300">{siteConfig.profesional.titulo}</p>
+      <p class="mt-3 text-sm text-slate-400">{siteConfig.profesional.bio}</p>
+      <ul class="mt-4 flex flex-wrap gap-2 text-xs text-slate-400">
+        <li class="rounded-full border border-slate-700 px-3 py-1">🪪 Autónomo registrado</li>
+        <li class="rounded-full border border-slate-700 px-3 py-1">🧾 Factura con IVA</li>
+        <li class="rounded-full border border-slate-700 px-3 py-1">📍 Base en Getafe</li>
+        <li class="rounded-full border border-slate-700 px-3 py-1">📞 Trato directo, sin call center</li>
+      </ul>
+    </section>
+  )}
 
   <section class="space-y-4">
     <h2 class="text-xl font-bold tracking-tight sm:text-2xl">

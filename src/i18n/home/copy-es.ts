@@ -41,7 +41,7 @@ export const homeCopyEs: HomeCopy = {
   badgeLine: 'Servicio 24 horas · Urgencias',
   heroTitle: 'Cerrajero urgente 24h · Madrid y sur (Getafe, Villaverde…)',
   heroIntroHtml:
-    'Somos <strong class="text-slate-100 font-semibold">cerrajeros en Madrid</strong> con base en Getafe y atención urgente las 24 horas: <strong class="text-slate-100 font-semibold">apertura de puertas</strong> sin daños desde 90 € IVA incl., <strong class="text-slate-100 font-semibold">cambio de cerradura</strong> y asistencia en Villaverde, Valdemoro, Fuenlabrada, Parla y toda la Comunidad. Llama y te atendemos en minutos.',
+    'Somos <strong class="text-slate-100 font-semibold">cerrajeros en Madrid</strong> con base en Getafe. <strong class="text-slate-100 font-semibold">Erickson</strong> te atiende las 24 horas: <strong class="text-slate-100 font-semibold">apertura de puertas</strong> sin daños desde 90 € IVA incl., <strong class="text-slate-100 font-semibold">cambio de cerradura</strong> y asistencia en Villaverde, Valdemoro, Fuenlabrada, Parla y toda la Comunidad. Sin centralitas: llamas y hablas con el cerrajero.',
   ctaCall: 'Llamar ahora',
   ctaSub: 'Atención inmediata · 24 horas · Todos los días del año',
   bullets: [
@@ -87,16 +87,16 @@ export const homeCopyEs: HomeCopy = {
       'Sabemos que cuando buscas un cerrajero no tienes tiempo que perder. Nuestro objetivo es claro: llegar rápido, abrir tu puerta sin daños siempre que sea posible y explicarte el precio antes de empezar el trabajo.',
     cards: [
       {
+        title: 'Trato directo con Erickson',
+        body: 'Sin call centers: cuando llamas hablas con el cerrajero. Precio orientativo por teléfono y confirmación en persona antes de actuar.',
+      },
+      {
         title: 'Transparencia en los precios',
         body: 'Apertura sin romper desde 90 € IVA incl.; si hay que forzar, te lo decimos antes y acordamos precio (muchas intervenciones hasta unos 200 € IVA incl.).',
       },
       {
-        title: 'Formación y herramientas',
-        body: 'Trabajamos con técnicas actualizadas y herramientas específicas para minimizar daños y tiempos de espera.',
-      },
-      {
         title: 'Cobertura real en Madrid',
-        body: 'Nos movemos por toda la Comunidad de Madrid, empezando por barrios como Getafe, Las Rozas, Pinto y Leganés.',
+        body: 'Nos movemos por toda la Comunidad de Madrid, con base en Getafe y prioridad en Villaverde, Valdemoro, Fuenlabrada y Parla.',
       },
     ],
   },

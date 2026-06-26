@@ -5,6 +5,7 @@ import CtaLlamar from '../../components/CtaLlamar.astro';
 import ContactForm from '../../components/ContactForm.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { isSurBarrioIndexable } from '../../seo/priority-barrios';
 
 export async function getStaticPaths() {
   const entries = await getCollection('duplicado-llaves-coche-barrios');
@@ -45,10 +46,11 @@ const faqSchemaDuplicadoBarrio = {
   ...(entry.data.actualizado && { dateModified: entry.data.actualizado.toISOString().slice(0, 10) }),
 };
 const dateModified = entry.data.actualizado?.toISOString().slice(0, 10);
+const noindex = !isSurBarrioIndexable(entry.slug);
 ---
 
-<Layout {title} {description} breadcrumb={breadcrumb} dateModified={dateModified}>
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchemaDuplicadoBarrio)} />
+<Layout {title} {description} breadcrumb={breadcrumb} dateModified={dateModified} {noindex}>
+  {!noindex && <script type="application/ld+json" set:html={JSON.stringify(faqSchemaDuplicadoBarrio)} />}
   <article class="space-y-8">
     <header class="space-y-4">
       <Breadcrumb items={breadcrumb} />

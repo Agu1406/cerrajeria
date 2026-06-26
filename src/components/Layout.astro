@@ -57,7 +57,13 @@ const schemaLocalBusiness: Record<string, unknown> = {
   telephone: siteConfig.telefono,
   ...(siteConfig.email && { email: siteConfig.email }),
   ...(siteConfig.sameAs?.length && { sameAs: siteConfig.sameAs }),
-  areaServed: { '@type': 'AdministrativeArea', name: 'Comunidad de Madrid' },
+  ...(siteConfig.profesional && {
+    founder: {
+      '@type': 'Person',
+      name: siteConfig.profesional.nombre,
+      jobTitle: 'Cerrajero',
+    },
+  }),
   ...(direccion && {
     address: {
       '@type': 'PostalAddress',

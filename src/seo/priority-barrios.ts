@@ -14,6 +14,13 @@ export const PRIORITY_BARRIO_SLUGS = [
 
 export type PriorityBarrioSlug = (typeof PRIORITY_BARRIO_SLUGS)[number];
 
+const surBarrioSlugs = new Set<string>(PRIORITY_BARRIO_SLUGS);
+
+/** Verticales secundarias: solo indexamos landings de barrio en el sur de Madrid. */
+export function isSurBarrioIndexable(slug: string): boolean {
+  return surBarrioSlugs.has(slug);
+}
+
 type BarrioEntry = { slug: string };
 
 const priorityIndex = new Map(PRIORITY_BARRIO_SLUGS.map((slug, i) => [slug, i]));

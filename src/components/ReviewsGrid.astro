@@ -1,0 +1,65 @@
+---
+import { siteConfig } from '../config/site';
+
+interface Props {
+  /** Máximo de tarjetas visibles (0 = todas). */
+  limit?: number;
+  title?: string;
+}
+
+const { limit = 0, title = 'Opiniones de clientes en Google' } = Astro.props;
+const reseñas = siteConfig.reseñas;
+
+const esTextoGenerico = (texto: string) =>
+  /reseña de \d estrellas/i.test(texto) || texto.trim().length < 12;
+
+const lista =
+  reseñas?.reseñas?.slice(0, limit > 0 ? limit : undefined) ?? [];
+---
+
+{reseñas && reseñas.totalResenas > 0 && (
+  <section class="space-y-4">
+    <h2 class="text-xl font-bold tracking-tight sm:text-2xl">{title}</h2>
+    <p class="text-sm text-slate-300">
+      <span class="text-amber-400" aria-hidden="true">
+        {'★'.repeat(Math.round(reseñas.valoracionMedia))}
+        <span class="text-slate-600">{'★'.repeat(5 - Math.round(reseñas.valoracionMedia))}</span>
+      </span>{' '}
+      <strong>{reseñas.valoracionMedia}</strong> · {reseñas.totalResenas} reseñas verificadas en Google
+    </p>
+    {lista.length > 0 && (
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {lista.map((r) => (
+          <li class="flex flex-col rounded-xl border border-slate-800 bg-slate-900/50 p-4 text-sm">
+            {esTextoGenerico(r.texto) ? (
+              <p class="text-slate-400 italic">
+                Valoración de {r.valoracion} estrellas en Google
+                {r.autor ? ` · ${r.autor}` : ''}
+              </p>
+            ) : (
+              <p class="text-slate-300">"{r.texto}"</p>
+            )}
+            <p class="mt-auto pt-3 text-xs text-slate-500">
+              — {r.autor} · {'★'.repeat(r.valoracion)}
+              <time datetime={r.fecha} class="ml-1">
+                {new Date(r.fecha).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })}
+              </time>
+            </p>
+          </li>
+        ))}
+      </ul>
+    )}
+    <div class="flex flex-wrap gap-4 text-sm">
+      {siteConfig.googleMapsUrl && (
+        <a
+          href={siteConfig.googleMapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-emerald-400 hover:underline"
+        >
+          Ver todas en Google Maps →
+        </a>
+      )}
+    </div>
+  </section>
+)}

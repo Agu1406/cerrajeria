@@ -10,7 +10,9 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import { buildBarrioUrgenteDescription, buildBarrioUrgenteTitle } from '../../seo/snippets';
 import { sortBarriosByPriority } from '../../seo/priority-barrios';
 import GetafeLandingExtras from '../../components/GetafeLandingExtras.astro';
+import SurBarrioExtras from '../../components/SurBarrioExtras.astro';
 import { getafeFaqsExtra } from '../../data/getafe-local';
+import { getSurBarrioZona } from '../../data/sur-barrio-zonas';
 import { WHATSAPP_PREFILL, whatsappPageUrlSuffix } from '../../i18n/ui';
 
 export async function getStaticPaths() {
@@ -36,6 +38,7 @@ const latestPosts = allBlogPosts
 const title = data.seoTitle ?? buildBarrioUrgenteTitle(data.nombre, entry.slug);
 const description = data.seoDescription ?? buildBarrioUrgenteDescription(data.nombre, entry.slug);
 const esBaseOperativa = data.esBaseOperativa === true;
+const surBarrioZona = !esBaseOperativa ? getSurBarrioZona(entry.slug) : undefined;
 const h1 = esBaseOperativa
   ? `Cerrajero urgente Getafe · 24 horas`
   : `Cerrajero urgente en ${data.nombre} · 24 horas`;
@@ -134,7 +137,7 @@ const dateModified = entry.data.actualizado?.toISOString();
       </a>
     </div>
 
-    {showReseñas && !esBaseOperativa && (
+    {showReseñas && !esBaseOperativa && !surBarrioZona && (
       <div class="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm">
         <span class="flex items-center gap-1 text-slate-200" aria-label={`Valoración: ${reseñas.valoracionMedia} de 5`}>
           {[1, 2, 3, 4, 5].map((i) => (
@@ -154,7 +157,9 @@ const dateModified = entry.data.actualizado?.toISOString();
       </div>
     )}
 
-    {!esBaseOperativa && (
+    {surBarrioZona && <SurBarrioExtras zona={surBarrioZona} />}
+
+    {!esBaseOperativa && !surBarrioZona && (
     <section class="mt-8 space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
         Cerrajeros en {data.nombre}: urgente y a domicilio
@@ -165,7 +170,7 @@ const dateModified = entry.data.actualizado?.toISOString();
     </section>
     )}
 
-    {!esBaseOperativa && (
+    {!esBaseOperativa && !surBarrioZona && (
     <section class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
         <h2 class="mb-2 text-sm font-semibold">Urgencias sin daños</h2>
@@ -191,7 +196,7 @@ const dateModified = entry.data.actualizado?.toISOString();
     </section>
     )}
 
-    {!esBaseOperativa && (
+    {!esBaseOperativa && !surBarrioZona && (
     <section class="mt-8 space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
         Servicios habituales de cerrajería en {data.nombre}
@@ -221,7 +226,7 @@ const dateModified = entry.data.actualizado?.toISOString();
       </p>
     </section>
 
-    {!esBaseOperativa && (
+    {!esBaseOperativa && !surBarrioZona && (
     <section class="mt-8 space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
         Preguntas frecuentes sobre cerrajería urgente en {data.nombre}

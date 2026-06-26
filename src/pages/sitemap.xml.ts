@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { siteConfig } from '../config/site';
 import { servicios } from '../data/servicios';
 import { getCollection } from 'astro:content';
+import { isSurBarrioIndexable } from '../seo/priority-barrios';
 
 export const GET: APIRoute = async () => {
   const baseUrl = siteConfig.isProductionSeo
@@ -30,8 +31,12 @@ export const GET: APIRoute = async () => {
     '/politica-cookies',
     '/diseno-web',
     ...barrios.map((entry) => `/cerrajero-urgente-24h/${entry.slug}`),
-    ...duplicadoBarrios.map((entry) => `/duplicado-llaves-coche/${entry.slug}`),
-    ...antiokupasBarrios.map((entry) => `/puertas-antiokupas/${entry.slug}`),
+    ...duplicadoBarrios
+      .filter((entry) => isSurBarrioIndexable(entry.slug))
+      .map((entry) => `/duplicado-llaves-coche/${entry.slug}`),
+    ...antiokupasBarrios
+      .filter((entry) => isSurBarrioIndexable(entry.slug))
+      .map((entry) => `/puertas-antiokupas/${entry.slug}`),
     ...blogPosts.map((entry) => `/blog/${entry.slug}`),
   ];
 

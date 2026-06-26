@@ -30,6 +30,13 @@ export const siteConfig = {
   geoMidpoint: { latitude: 40.3057, longitude: -3.7327 },
   /** Slug de la landing de la base operativa (cerrajero-urgente-24h/getafe). */
   baseBarrioSlug: 'getafe',
+  /** Cerrajero titular: nombre real para confianza y trato directo (home, Getafe, schema). */
+  profesional: {
+    nombre: 'Erickson',
+    titulo: 'Tu cerrajero de confianza en Getafe y el sur de Madrid',
+    bio: 'Cerrajero con base en Getafe. Cuando llamas, te atiendo yo: sin centralitas ni intermediarios. Te explico el precio antes de empezar y solo actúo si estás de acuerdo.',
+    bioCorta: 'Cuando llamas, te atiende Erickson.',
+  },
   /** Título de la portada (ideal 50–60 caracteres para SEO). */
   titleHome: 'Cerrajero Madrid 24h · desde 90€ | Llama ya',
   descriptionHome:

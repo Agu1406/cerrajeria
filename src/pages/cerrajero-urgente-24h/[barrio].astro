@@ -7,6 +7,11 @@ import BarrioLink from '../../components/BarrioLink.astro';
 import { siteConfig } from '../../config/site';
 import { servicios } from '../../data/servicios';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { buildBarrioUrgenteDescription, buildBarrioUrgenteTitle } from '../../seo/snippets';
+import { sortBarriosByPriority } from '../../seo/priority-barrios';
+import GetafeLandingExtras from '../../components/GetafeLandingExtras.astro';
+import { getafeFaqsExtra } from '../../data/getafe-local';
+import { WHATSAPP_PREFILL, whatsappPageUrlSuffix } from '../../i18n/ui';
 
 export async function getStaticPaths() {
   const entries = await getCollection('barrios');
@@ -28,9 +33,12 @@ const latestPosts = allBlogPosts
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 
-/** <70 caracteres (Bing); teléfono en description y cuerpo. */
-const title = `Cerrajero 24h ${data.nombre} | Urgencias Madrid`;
-const description = `Cerrajeros ${data.nombre} 24 horas. Apertura de puertas sin daños, cambio de bombín. Llama al ${siteConfig.telefono}.`;
+const title = data.seoTitle ?? buildBarrioUrgenteTitle(data.nombre, entry.slug);
+const description = data.seoDescription ?? buildBarrioUrgenteDescription(data.nombre, entry.slug);
+const esBaseOperativa = data.esBaseOperativa === true;
+const h1 = esBaseOperativa
+  ? `Cerrajero urgente Getafe · 24 horas`
+  : `Cerrajero urgente en ${data.nombre} · 24 horas`;
 const basePath = '/cerrajero-urgente-24h';
 const breadcrumb = [
   { name: 'Inicio', path: '/' },
@@ -41,19 +49,32 @@ const reseñas = siteConfig.reseñas;
 const showReseñas = reseñas && reseñas.totalResenas > 0;
 
 const allBarrios = await getCollection('barrios');
-const otrasZonas = allBarrios.filter((b) => b.slug !== entry.slug).slice(0, 6);
+const otrasZonas = sortBarriosByPriority(allBarrios.filter((b) => b.slug !== entry.slug)).slice(0, 6);
 
 /** Precios orientativos centralizados en site.ts (coherente con la home). */
 const faqPrecioUrgencia = siteConfig.urgenciaPreciosFaqEs;
 
+const faqItems = [
+  { q: `¿Cuánto tardáis en llegar a ${data.nombre}?`, a: data.faqLlegada },
+  { q: '¿El precio está cerrado antes de empezar?', a: faqPrecioUrgencia },
+  { q: `¿Trabajáis también de noche y en festivos en ${data.nombre}?`, a: data.faqFestivos },
+  ...(esBaseOperativa ? getafeFaqsExtra.map((f) => ({ q: f.q, a: f.a })) : []),
+];
+
+const pageUrl = `${siteConfig.baseUrl.replace(/\/$/, '')}/cerrajero-urgente-24h/${entry.slug}`;
+const whatsappPrefix = WHATSAPP_PREFILL.es;
+const whatsappHref = whatsappPrefix
+  ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(whatsappPrefix + whatsappPageUrlSuffix('es', pageUrl))}`
+  : siteConfig.whatsappUrl;
+
 const faqSchemaBarrio = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: `¿Cuánto tardáis en llegar a ${data.nombre}?`, acceptedAnswer: { '@type': 'Answer', text: data.faqLlegada } },
-    { '@type': 'Question', name: '¿El precio está cerrado antes de empezar?', acceptedAnswer: { '@type': 'Answer', text: faqPrecioUrgencia } },
-    { '@type': 'Question', name: `¿Trabajáis también de noche y en festivos en ${data.nombre}?`, acceptedAnswer: { '@type': 'Answer', text: data.faqFestivos } },
-  ],
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
   ...(entry.data.actualizado && { dateModified: entry.data.actualizado.toISOString() }),
 };
 const dateModified = entry.data.actualizado?.toISOString();
@@ -64,27 +85,55 @@ const dateModified = entry.data.actualizado?.toISOString();
   <section class="space-y-6">
     <Breadcrumb items={breadcrumb} />
     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-      Urgencias 24h · {data.nombre}
+      {esBaseOperativa ? 'Base en Getafe · Urgencias 24h' : `Urgencias 24h · ${data.nombre}`}
     </p>
     <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
-      Cerrajeros en {data.nombre} · 24 horas
+      {h1}
     </h1>
     <p class="text-sm text-slate-300 sm:text-base">
-      Servicio de cerrajería urgente en {data.nombre} y alrededores. Apertura de puertas sin daños, cambio de
-      cerraduras y refuerzo de seguridad en viviendas, locales y comunidades de vecinos.
+      {esBaseOperativa ? (
+        <>
+          <strong class="text-slate-100">Cerrajero urgente en Getafe</strong> con base en Calle Progreso 2.
+          Apertura de puertas sin daños desde{' '}
+          <strong class="text-slate-100">{siteConfig.precioAperturaDesde} IVA incl.</strong>, cambio de
+          cerraduras y asistencia en todo el municipio.
+        </>
+      ) : (
+        <>
+          Servicio de cerrajería urgente en {data.nombre} y alrededores. Apertura de puertas sin daños desde{' '}
+          <strong class="text-slate-100">{siteConfig.precioAperturaDesde} IVA incl.</strong>, cambio de
+          cerraduras y refuerzo de seguridad en viviendas, locales y comunidades de vecinos.
+        </>
+      )}
     </p>
     <p class="text-sm text-slate-300 sm:text-base">
       {data.introExtra}
     </p>
 
     <div class="flex flex-wrap items-center gap-3">
-      <CtaLlamar label="Llamar ahora" />
+      <CtaLlamar label="Llamar ahora" showPhone={false} />
+      <a
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center rounded-full border border-slate-600 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
+      >
+        WhatsApp
+      </a>
       <p class="text-xs text-slate-400">
         {data.llegadaTexto}
       </p>
     </div>
 
-    {showReseñas && (
+    <div class="mt-2 flex flex-wrap items-center gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/5 px-4 py-3 text-sm">
+      <span class="font-semibold text-emerald-300">Apertura sin romper desde {siteConfig.precioAperturaDesde} IVA incl.</span>
+      <span class="text-slate-400">·</span>
+      <a href={siteConfig.telefonoHref} class="font-semibold text-slate-100 hover:text-emerald-300">
+        📞 {siteConfig.telefono}
+      </a>
+    </div>
+
+    {showReseñas && !esBaseOperativa && (
       <div class="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm">
         <span class="flex items-center gap-1 text-slate-200" aria-label={`Valoración: ${reseñas.valoracionMedia} de 5`}>
           {[1, 2, 3, 4, 5].map((i) => (
@@ -98,6 +147,13 @@ const dateModified = entry.data.actualizado?.toISOString();
       </div>
     )}
 
+    {esBaseOperativa && (
+      <div class="mt-8">
+        <GetafeLandingExtras whatsappHref={whatsappHref} />
+      </div>
+    )}
+
+    {!esBaseOperativa && (
     <section class="mt-8 space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
         Cerrajeros en {data.nombre}: urgente y a domicilio
@@ -106,7 +162,9 @@ const dateModified = entry.data.actualizado?.toISOString();
         Servicio de <strong>cerrajero urgente 24 horas</strong> en {data.nombre} y alrededores: apertura de puertas sin daños, cambio de cerraduras y bombines, y arreglo de ventanas. Atendemos a domicilio las 24 horas todos los días del año.
       </p>
     </section>
+    )}
 
+    {!esBaseOperativa && (
     <section class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
         <h2 class="mb-2 text-sm font-semibold">Urgencias sin daños</h2>
@@ -130,7 +188,9 @@ const dateModified = entry.data.actualizado?.toISOString();
         </p>
       </div>
     </section>
+    )}
 
+    {!esBaseOperativa && (
     <section class="mt-8 space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
         Servicios habituales de cerrajería en {data.nombre}
@@ -149,6 +209,7 @@ const dateModified = entry.data.actualizado?.toISOString();
         podemos ayudarte.
       </p>
     </section>
+    )}
 
     <section class="mt-8 space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
@@ -159,20 +220,17 @@ const dateModified = entry.data.actualizado?.toISOString();
       </p>
     </section>
 
+    {!esBaseOperativa && (
     <section class="mt-8 space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
         Preguntas frecuentes sobre cerrajería urgente en {data.nombre}
       </h2>
-      <div class="space-y-2 text-xs text-slate-300 sm:text-sm">
-        <p>
-          <strong>¿Cuánto tardáis en llegar a {data.nombre}?</strong> {data.faqLlegada}
-        </p>
-        <p>
-          <strong>¿El precio está cerrado antes de empezar?</strong> {faqPrecioUrgencia}
-        </p>
-        <p>
-          <strong>¿Trabajáis también de noche y en festivos en {data.nombre}?</strong> {data.faqFestivos}
-        </p>
+      <div class="space-y-3 text-xs text-slate-300 sm:text-sm">
+        {faqItems.map((item) => (
+          <p>
+            <strong>{item.q}</strong> {item.a}
+          </p>
+        ))}
       </div>
       {entry.data.actualizado && (
         <p class="mt-3 text-[11px] text-slate-500">
@@ -180,6 +238,13 @@ const dateModified = entry.data.actualizado?.toISOString();
         </p>
       )}
     </section>
+    )}
+
+    {esBaseOperativa && entry.data.actualizado && (
+      <p class="mt-3 text-[11px] text-slate-500">
+        Contenido revisado: <time datetime={entry.data.actualizado.toISOString()}>{entry.data.actualizado.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
+      </p>
+    )}
 
     <section class="mt-8 text-xs text-slate-400 sm:text-sm">
       <p>

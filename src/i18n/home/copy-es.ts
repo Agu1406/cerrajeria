@@ -4,9 +4,8 @@ import { siteConfig } from '../../config/site';
 export const homeCopyEs: HomeCopy = {
   locale: 'es',
   seo: {
-    title: 'Cerrajero Madrid 24h | Urgente, apertura puertas y cerraduras',
-    description:
-      'Cerrajeros Madrid 24h: apertura sin romper desde 120 € IVA incl. (cualquier hora y zona). Si hay que forzar, presupuesto acordado antes; muchos casos hasta ~200 € IVA incl. Comunidad de Madrid.',
+    title: siteConfig.titleHome,
+    description: siteConfig.descriptionHome,
   },
   breadcrumbHome: 'Inicio',
   dateLocale: 'es-ES',
@@ -40,13 +39,13 @@ export const homeCopyEs: HomeCopy = {
     },
   ],
   badgeLine: 'Servicio 24 horas · Urgencias',
-  heroTitle: 'Cerrajeros en Madrid · Servicio 24 h y urgencias',
+  heroTitle: 'Cerrajero urgente 24h · Madrid y sur (Getafe, Villaverde…)',
   heroIntroHtml:
-    'Somos <strong class="text-slate-100 font-semibold">cerrajeros en Madrid</strong> con atención urgente las 24 horas: <strong class="text-slate-100 font-semibold">apertura de puertas</strong> sin daños cuando es posible, <strong class="text-slate-100 font-semibold">cambio de cerradura</strong>, bombín o cilindro, y asistencia inmediata en toda la Comunidad de Madrid. Llama y un cerrajero certificado se desplaza en minutos.',
+    'Somos <strong class="text-slate-100 font-semibold">cerrajeros en Madrid</strong> con base en Getafe y atención urgente las 24 horas: <strong class="text-slate-100 font-semibold">apertura de puertas</strong> sin daños desde 90 € IVA incl., <strong class="text-slate-100 font-semibold">cambio de cerradura</strong> y asistencia en Villaverde, Valdemoro, Fuenlabrada, Parla y toda la Comunidad. Llama y te atendemos en minutos.',
   ctaCall: 'Llamar ahora',
   ctaSub: 'Atención inmediata · 24 horas · Todos los días del año',
   bullets: [
-    '✔ Apertura sin romper desde 120 € IVA incl. (forzar solo si hace falta; muchos casos hasta ~200 € IVA incl.)',
+    '✔ Apertura sin romper desde 90 € IVA incl. (forzar solo si hace falta; muchos casos hasta ~200 € IVA incl.)',
     '✔ Apertura de puertas blindadas y acorazadas',
     '✔ Cambio de cerradura, bombín o cilindro (cerradura rota o llaves perdidas)',
     '✔ Apertura de vehículos sin daños',
@@ -54,7 +53,7 @@ export const homeCopyEs: HomeCopy = {
   ],
   areasTitle: 'Barrios y zonas de cobertura',
   areasIntroHtml:
-    'Servicio en los 21 distritos de Madrid capital y en municipios de la Comunidad. Aquí, algunas de las zonas donde atendemos con más frecuencia.',
+    'Base operativa en <a href="/cerrajero-urgente-24h/getafe" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">Getafe</a>. También sur de Madrid y 21 distritos de la capital.',
   barrioLinkSuffix: 'Ver cerrajero 24h',
   areasSeeAll: 'Ver más zonas',
   areaLinksHreflang: null,
@@ -64,7 +63,7 @@ export const homeCopyEs: HomeCopy = {
     availLabel: 'Disponibilidad',
     availSub: 'Trabajamos noches, fines de semana y festivos todo el año.',
     priceLabel: 'Apertura sin romper',
-    priceValue: 'Desde 120 €',
+    priceValue: 'Desde 90 €',
     priceSub: 'IVA incl. · Cualquier hora y zona · Material del servicio incluido',
     ratingLabel: 'Clientes satisfechos',
     ratingSubFallback: 'Valoración media basada en reseñas reales de clientes.',
@@ -89,7 +88,7 @@ export const homeCopyEs: HomeCopy = {
     cards: [
       {
         title: 'Transparencia en los precios',
-        body: 'Apertura sin romper desde 120 € IVA incl.; si hay que forzar, te lo decimos antes y acordamos precio (muchas intervenciones hasta unos 200 € IVA incl.).',
+        body: 'Apertura sin romper desde 90 € IVA incl.; si hay que forzar, te lo decimos antes y acordamos precio (muchas intervenciones hasta unos 200 € IVA incl.).',
       },
       {
         title: 'Formación y herramientas',
@@ -132,7 +131,7 @@ export const homeCopyEs: HomeCopy = {
   zonesSection: {
     title: 'Zonas de Madrid donde trabajamos',
     bodyHtml:
-      'Atendemos en los <strong>21 distritos de Madrid capital</strong> (Centro, Salamanca, Chamberí, Retiro, Chamartín, Tetuán, Latina, Carabanchel, Usera, Vallecas, Moratalaz, Ciudad Lineal, Hortaleza, Villaverde, Vicálvaro, San Blas-Canillejas, Barajas, etc.) y en <strong>municipios</strong> como Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas y Pinto. Cada zona tiene su página con información y teléfono de urgencias.',
+      'Nuestra base está en <strong>Getafe</strong> (<a href="/cerrajero-urgente-24h/getafe" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">cerrajero urgente Getafe 24h</a>). También atendemos Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés y los <strong>21 distritos de Madrid capital</strong>. Cada zona tiene su página con precio orientativo y teléfono de urgencias.',
     linkText: 'Ver listado completo de barrios y distritos →',
     linkHref: '/cerrajero-urgente-24h',
   },

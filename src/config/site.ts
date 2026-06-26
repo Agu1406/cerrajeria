@@ -24,10 +24,16 @@ export const siteConfig = {
   get isProductionSeo(): boolean {
     return this.baseUrl !== BASE_URL_PLACEHOLDER;
   },
-  /** Título de la portada (ideal 50–60 caracteres para SEO). Trends: fuerte “cerrajero Madrid” + servicios clave. */
-  titleHome: 'Cerrajero Madrid 24h | Urgente, apertura puertas y cerraduras',
+  /** Precio mínimo orientativo para snippets SEO (coherente con urgenciaPreciosFaqEs). */
+  precioAperturaDesde: '90 €',
+  /** Coordenadas de la base operativa (Getafe) para schema.org. */
+  geoMidpoint: { latitude: 40.3057, longitude: -3.7327 },
+  /** Slug de la landing de la base operativa (cerrajero-urgente-24h/getafe). */
+  baseBarrioSlug: 'getafe',
+  /** Título de la portada (ideal 50–60 caracteres para SEO). */
+  titleHome: 'Cerrajero Madrid 24h · desde 90€ | Llama ya',
   descriptionHome:
-    'Cerrajeros Madrid 24h: apertura sin romper desde 120 € IVA incl., cualquier hora y zona. Cambio de cerradura y urgencias en toda la Comunidad. Llama ahora.',
+    'Cerrajero urgente en Madrid y sur (Getafe, Villaverde, Valdemoro…). Apertura sin romper desde 90 € IVA incl. 24h. ☎ 659 81 05 70.',
   /**
    * Dirección para mostrar en contacto y en "Cómo llegar".
    * Si no pones nada, no se muestra el bloque de ubicación.
@@ -117,9 +123,9 @@ export const siteConfig = {
    * Actualizar si cambian las tarifas.
    */
   urgenciaPreciosFaqEs:
-    'La apertura sin romper —con llave dentro o fuera, según el caso— va desde 120 € con IVA incluido: cualquier hora y cualquier zona de la Comunidad de Madrid, con el material habitual de ese servicio incluido. Si para abrir hay que forzar o el trabajo no encaja en una apertura estándar, te lo decimos antes de actuar y el presupuesto puede subir; en muchos de esos casos se sitúa hasta unos 200 € con IVA.',
+    'La apertura sin romper —con llave dentro o fuera, según el caso— va desde 90 € con IVA incluido: cualquier hora y cualquier zona de la Comunidad de Madrid, con el material habitual de ese servicio incluido. Si para abrir hay que forzar o el trabajo no encaja en una apertura estándar, te lo decimos antes de actuar y el presupuesto puede subir; en muchos de esos casos se sitúa hasta unos 200 € con IVA.',
   urgenciaPreciosFaqEn:
-    'Non-destructive entry —key inside or outside, depending on the case— starts from €120 including VAT: any time of day, anywhere in the Community of Madrid, with the usual materials for that job included. If we must force entry or the job goes beyond a standard opening, we agree the price before we start; in many of those situations it is often up to around €200 including VAT.',
+    'Non-destructive entry —key inside or outside, depending on the case— starts from €90 including VAT: any time of day, anywhere in the Community of Madrid, with the usual materials for that job included. If we must force entry or the job goes beyond a standard opening, we agree the price before we start; in many of those situations it is often up to around €200 including VAT.',
   /** Opcional: crédito al diseñador/desarrollador en el footer y en /diseno-web. Pon null para ocultar el enlace "Diseño web". */
   desarrollador: {
     nombre: 'Agustín',

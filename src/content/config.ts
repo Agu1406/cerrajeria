@@ -10,6 +10,12 @@ const barrios = defineCollection({
     faqLlegada: z.string(),
     faqPrecio: z.string(),
     faqFestivos: z.string(),
+    /** Base operativa del negocio (p. ej. Getafe): badge y mensajes de llegada rápida. */
+    esBaseOperativa: z.boolean().optional(),
+    /** Override de <title> para consultas locales concretas. Opcional. */
+    seoTitle: z.string().optional(),
+    /** Override de meta description. Opcional. */
+    seoDescription: z.string().optional(),
     /** Fecha de última revisión del contenido (SEO frescura). Opcional. */
     actualizado: z.coerce.date().optional(),
   }),

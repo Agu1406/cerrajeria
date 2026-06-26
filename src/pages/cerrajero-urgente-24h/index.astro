@@ -3,14 +3,12 @@ import Layout from '../../components/Layout.astro';
 import BarrioLink from '../../components/BarrioLink.astro';
 import { siteConfig } from '../../config/site';
 import { getCollection } from 'astro:content';
+import { sortBarriosByPriority } from '../../seo/priority-barrios';
 
-const title = `Cerrajero 24h por barrios en Madrid | ${siteConfig.nombreComercial}`;
-const description =
-  'Cerrajero urgente 24h: apertura sin romper desde 120 € IVA incl. en Madrid capital (21 distritos) y municipios (Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá, Las Rozas, Pinto…). Llama al instante.';
+const title = `Cerrajero 24h sur Madrid · desde ${siteConfig.precioAperturaDesde} | ${siteConfig.nombreComercial}`;
+const description = `Cerrajero urgente 24h en Getafe, Villaverde, Valdemoro, Fuenlabrada, Parla y Madrid capital. Apertura desde ${siteConfig.precioAperturaDesde} IVA incl. Llama: ${siteConfig.telefono}.`;
 
-const barrios = (await getCollection('barrios')).sort((a, b) =>
-  a.data.nombre.localeCompare(b.data.nombre, 'es')
-);
+const barrios = sortBarriosByPriority(await getCollection('barrios'));
 ---
 
 <Layout {title} {description}>
@@ -19,10 +17,9 @@ const barrios = (await getCollection('barrios')).sort((a, b) =>
       Cerrajero urgente 24h por barrios y zonas en {siteConfig.ciudadPrincipal}
     </h1>
     <p class="text-sm text-slate-300 sm:text-base">
-      Servicio de cerrajería urgente en los <strong>21 distritos de Madrid capital</strong> (Centro, Salamanca,
-      Chamberí, Retiro, Chamartín, Tetuán, Latina, Carabanchel, Vallecas, Vicálvaro, etc.) y en <strong>municipios
-      del área metropolitana</strong> (Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas, Pinto).
-      Cada zona tiene su propia página con información y teléfono de urgencias.
+      Servicio de cerrajería urgente con base en <strong>Getafe</strong>: priorizamos el sur de Madrid
+      (Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés…) y atendemos también los <strong>21 distritos de Madrid capital</strong>.
+      Cada zona tiene su página con precio orientativo y teléfono de urgencias: <a href={siteConfig.telefonoHref} class="text-emerald-400 hover:underline">{siteConfig.telefono}</a>.
     </p>
 
     <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

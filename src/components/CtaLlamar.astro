@@ -1,12 +1,12 @@
 ---
 import { siteConfig } from '../config/site';
-/** Texto del botón (ej. "Llamar ahora", "Llamar"). Por defecto "Llamar". */
-const { label = 'Llamar' } = Astro.props;
+/** Texto del botón. Si showPhone es true, añade el teléfono al final. */
+const { label = 'Llamar', showPhone = true } = Astro.props;
 ---
 
 <a
   href={siteConfig.telefonoHref}
   class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400"
 >
-  📞 {label} · {siteConfig.telefono}
+  📞 {label}{showPhone ? ` · ${siteConfig.telefono}` : ''}
 </a>

@@ -1,24 +1,27 @@
 ---
 nombre: "Getafe"
+esBaseOperativa: true
+seoTitle: "Cerrajero urgente Getafe 24h | Desde 90€"
+seoDescription: "Cerrajero urgente en Getafe 24h. Base en Getafe, llegamos en 10-20 min. Desde 90€ IVA incl. Precio cerrado antes de actuar. ☎ 659 81 05 70."
 introExtra: >
-  En Getafe atendemos portales de edificios residenciales, comunidades de vecinos y viviendas unifamiliares
-  en todo el municipio. Es habitual encontrar cerraduras antiguas, bombines desgastados y puertas con muchos
-  años de uso; conocemos las tipologías del casco, Getafe Norte y las zonas de expansión.
+  Somos cerrajeros con base operativa en Getafe (Calle Progreso 2). Conocemos el casco, Getafe Norte,
+  Las Margaritas, El Bercial y las zonas de expansión: portales residenciales, comunidades de vecinos y
+  viviendas unifamiliares. En Getafe somos de la zona: no somos un intermediario que deriva el aviso.
 llegadaTexto: >
-  A Getafe llegamos normalmente en 25–35 minutos desde que confirmamos el aviso. La A-42 y el acceso
-  desde Madrid pueden variar con el tráfico; en horario nocturno el tiempo suele reducirse.
+  En Getafe llegamos en 10–20 minutos desde que confirmamos el aviso: es nuestra base. En hora punta
+  puede alargarse ligeramente; de madrugada suele ser aún más rápido.
 comoTrabajamos: >
   Cuando recibimos una llamada desde Getafe hacemos una valoración previa por teléfono: soluciones
   posibles y rango de precio aproximado. Al llegar revisamos puerta y cerradura, confirmamos el presupuesto
-  y solo empezamos cuando tú lo aceptas.
+  y solo empezamos cuando tú lo aceptas. Precio cerrado antes de actuar.
 faqLlegada: >
-  En condiciones normales llegamos a cualquier zona de Getafe en unos 25–35 minutos desde que se confirma
-  el aviso. En hora punta o días de lluvia puede alargarse; te avisamos por teléfono.
+  En Getafe atendemos la mayoría de avisos en 10–20 minutos (somos de la zona, base en Calle Progreso).
+  Si el tráfico puede retrasarnos, te avisamos por teléfono antes de salir.
 faqPrecio: >
-  Antes de desplazarnos te explicamos el precio orientativo. Al ver la puerta en persona confirmamos el
-  importe final y solo actuamos si estás de acuerdo, sin sorpresas al terminar.
+  Apertura sin romper desde 90 € IVA incl. Te damos precio orientativo por teléfono y lo confirmamos
+  en persona antes de empezar. Sin sorpresas al terminar.
 faqFestivos: >
-  Sí: prestamos servicio de cerrajería urgente en Getafe las 24 horas todos los días del año, incluidos
-  fines de semana, festivos y noches.
-actualizado: 2026-03-03
+  Sí: cerrajero urgente en Getafe las 24 horas todos los días del año, incluidos fines de semana,
+  festivos y noches.
+actualizado: 2026-06-26
 ---

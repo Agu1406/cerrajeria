@@ -22,6 +22,21 @@
       "source": "/barrios/:path*/",
       "destination": "/cerrajero-urgente-24h/:path*",
       "permanent": true
+    },
+    {
+      "source": "/cerrajeros-getafe",
+      "destination": "/cerrajero-urgente-24h/getafe",
+      "permanent": true
+    },
+    {
+      "source": "/cerrajero-urgente-getafe",
+      "destination": "/cerrajero-urgente-24h/getafe",
+      "permanent": true
+    },
+    {
+      "source": "/cerrajero-getafe",
+      "destination": "/cerrajero-urgente-24h/getafe",
+      "permanent": true
     }
   ]
 }

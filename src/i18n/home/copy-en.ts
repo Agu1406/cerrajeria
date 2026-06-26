@@ -6,7 +6,7 @@ export const homeCopyEn: HomeCopy = {
   seo: {
     title: 'Emergency locksmith Madrid 24h | Lockouts, doors & locks',
     description:
-      'Emergency locksmiths Madrid 24/7: non-destructive entry from €120 VAT incl. (any time, anywhere in the region). If forcing is needed, price agreed first; many jobs up to ~€200 VAT incl.',
+      'Emergency locksmiths Madrid 24/7: non-destructive entry from €90 VAT incl. (any time, anywhere in the region). If forcing is needed, price agreed first; many jobs up to ~€200 VAT incl.',
   },
   breadcrumbHome: 'Home',
   dateLocale: 'en-GB',
@@ -46,7 +46,7 @@ export const homeCopyEn: HomeCopy = {
   ctaCall: 'Call now',
   ctaSub: 'Immediate response · 24 hours · Every day of the year',
   bullets: [
-    '✔ Non-destructive entry from €120 VAT incl. (forcing only if needed; many jobs up to ~€200 VAT incl.)',
+    '✔ Non-destructive entry from €90 VAT incl. (forcing only if needed; many jobs up to ~€200 VAT incl.)',
     '✔ Armoured and security door opening',
     '✔ Lock, cylinder or barrel change (broken lock or lost keys)',
     '✔ Vehicle opening without unnecessary damage',
@@ -64,7 +64,7 @@ export const homeCopyEn: HomeCopy = {
     availLabel: 'Availability',
     availSub: 'Nights, weekends and public holidays, all year.',
     priceLabel: 'Non-destructive entry',
-    priceValue: 'From €120',
+    priceValue: 'From €90',
     priceSub: 'VAT incl. · Any time & zone · usual materials included',
     ratingLabel: 'Customer rating',
     ratingSubFallback: 'Based on real customer feedback.',
@@ -91,7 +91,7 @@ export const homeCopyEn: HomeCopy = {
     cards: [
       {
         title: 'Clear pricing',
-        body: 'Non-destructive entry from €120 VAT incl.; if forcing is needed, we agree the price first (many jobs up to around €200 VAT incl.).',
+        body: 'Non-destructive entry from €90 VAT incl.; if forcing is needed, we agree the price first (many jobs up to around €200 VAT incl.).',
       },
       {
         title: 'Training and tools',

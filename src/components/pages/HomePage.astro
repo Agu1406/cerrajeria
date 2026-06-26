@@ -93,18 +93,21 @@ const ratingSub =
       </h2>
       <p class="text-xs text-slate-400" set:html={copy.areasIntroHtml} />
       <ul class="grid gap-2 text-sm">
-        {barriosDestacados.map((entry) => (
+        {barriosDestacados.map((entry) => {
+          const esBase = entry.slug === siteConfig.baseBarrioSlug;
+          return (
           <li>
             <a
               href={`/cerrajero-urgente-24h/${entry.slug}`}
               {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
               class="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2 text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
             >
-              <span>{entry.data.nombre}</span>
-              <span class="text-xs text-slate-400">{copy.barrioLinkSuffix}</span>
+              <span>{esBase ? 'Cerrajero urgente Getafe' : entry.data.nombre}</span>
+              <span class="text-xs text-slate-400">{esBase ? 'Base · 10-20 min' : copy.barrioLinkSuffix}</span>
             </a>
           </li>
-        ))}
+          );
+        })}
       </ul>
       <a
         href="/cerrajero-urgente-24h"

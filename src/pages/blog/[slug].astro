@@ -20,6 +20,7 @@ const hasUpdatedDate =
 const title = `${data.title} | ${siteConfig.nombreComercial}`;
 const description = data.description;
 const ogImage = data.image ? `${siteConfig.baseUrl}${data.image}` : `${siteConfig.baseUrl}/images/cerrajero-24h-madrid-hero.webp`;
+const noindex = entry.slug === 'medir-visitas-web-google-tag-manager-ga4';
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -34,8 +35,8 @@ const articleSchema = {
 };
 ---
 
-<Layout {title} {description} ogImage={ogImage}>
-  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+<Layout {title} {description} ogImage={ogImage} {noindex}>
+  {!noindex && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
   <article class="mx-auto max-w-3xl">
     <header class="mb-10 space-y-4">
       <div class="text-xs font-medium uppercase tracking-wider text-slate-500">

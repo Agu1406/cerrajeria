@@ -35,10 +35,14 @@ const latestPosts = allBlogPosts
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 
-const title = data.seoTitle ?? buildBarrioUrgenteTitle(data.nombre, entry.slug);
-const description = data.seoDescription ?? buildBarrioUrgenteDescription(data.nombre, entry.slug);
 const esBaseOperativa = data.esBaseOperativa === true;
 const surBarrioZona = !esBaseOperativa ? getSurBarrioZona(entry.slug) : undefined;
+const title = data.seoTitle ?? buildBarrioUrgenteTitle(data.nombre, entry.slug);
+const llegadaCorta = surBarrioZona
+  ? surBarrioZona.llegada.replace(/\s*desde\s+Getafe\s*/i, '').trim()
+  : undefined;
+const description =
+  data.seoDescription ?? buildBarrioUrgenteDescription(data.nombre, entry.slug, llegadaCorta);
 const h1 = esBaseOperativa
   ? `Cerrajero urgente Getafe · 24 horas`
   : `Cerrajero urgente en ${data.nombre} · 24 horas`;
@@ -227,7 +231,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </p>
     </section>
 
-    {!esBaseOperativa && !surBarrioZona && (
+    {!esBaseOperativa && (
     <section class="mt-8 space-y-3 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
         Preguntas frecuentes sobre cerrajería urgente en {data.nombre}

@@ -24,6 +24,6 @@ Aunque nuestra central de operaciones está en Getafe, nuestros cerrajeros se re
 
 ## Sobre los sistemas antiokupas
 
-En cerrajerosmadrid recomendamos cerraduras y bombines de seguridad, también antiokupas cuando conviene. "Más caro" no siempre significa "mejor": hay modelos más económicos que cumplen bien su función. La clave suele ser **combinar una buena cerradura con un servicio de alarma**: el sistema antiokupa hace que el tiempo para forzar la entrada sea, como mínimo, el doble, lo que da margen a que lleguen las autoridades antes de una intrusión.
+En Los Cerrajeros Madrid recomendamos cerraduras y bombines de seguridad, también antiokupas cuando conviene. "Más caro" no siempre significa "mejor": hay modelos más económicos que cumplen bien su función. La clave suele ser **combinar una buena cerradura con un servicio de alarma**: el sistema antiokupa hace que el tiempo para forzar la entrada sea, como mínimo, el doble, lo que da margen a que lleguen las autoridades antes de una intrusión.
 
 Si necesitas cerrajero urgente en Carabanchel, [llámanos](/contacto) o consulta [cerrajero 24 h en Carabanchel](/cerrajero-urgente-24h/carabanchel) para más información y teléfono.

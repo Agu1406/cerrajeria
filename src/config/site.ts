@@ -5,7 +5,7 @@ export const siteConfig = {
   /** Nombre como en Google Business Profile y documentos (schema.org, cabecera, pie). */
   nombreComercial: 'Los Cerrajeros Madrid',
   /** Logotipo bajo /public; URL absoluta en JSON-LD (logo + image del negocio). */
-  logoPath: '/images/logotipo-oscuro.png',
+  logoPath: '/images/logotipo-oscuro.webp',
   /**
    * Perfiles oficiales del mismo negocio (schema.org sameAs). Ej.: ficha Google Maps/Business.
    * Añade aquí Instagram, Facebook, etc. si existen.

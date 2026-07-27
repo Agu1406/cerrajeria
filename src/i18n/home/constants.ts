@@ -8,4 +8,6 @@ export const HOME_FEATURED_BARRIO_SLUGS = [
   'leganes',
   'pinto',
   'mostoles',
+  'carabanchel',
+  'puente-de-vallecas',
 ] as const;

@@ -21,12 +21,26 @@ type Props = {
 
 const { servicio } = Astro.props as Props;
 const isCambioCerradura = servicio.slug === 'cambio-cerradura';
+const isAperturaPuertas = servicio.slug === 'apertura-puertas';
+const isBombines = servicio.slug === 'bombines-seguridad';
+const precio = siteConfig.precioAperturaDesde;
+
 const title = isCambioCerradura
   ? `Cambio de cerradura en Madrid | Bombín y cilindro | ${siteConfig.nombreComercial}`
-  : `${servicio.nombre} en Madrid | ${siteConfig.nombreComercial}`;
+  : isAperturaPuertas
+    ? `Apertura de puertas Madrid 24h | Desde ${precio} | ${siteConfig.nombreComercial}`
+    : isBombines
+      ? `Bombines de seguridad Madrid | Antibumping | ${siteConfig.nombreComercial}`
+      : `${servicio.nombre} en Madrid | ${siteConfig.nombreComercial}`;
+
 const description = isCambioCerradura
   ? `Cambio de cerradura, bombín o cilindro en Madrid y Comunidad. Cerradura rota o llaves perdidas. ${servicio.descripcionCorta} Tel. ${siteConfig.telefono}.`
-  : `${servicio.nombre} en la Comunidad de Madrid. ${servicio.descripcionCorta} Llama al ${siteConfig.telefono}.`;
+  : isAperturaPuertas
+    ? `Apertura de puertas sin romper desde ${precio} IVA incl. Blindadas y acorazadas. Urgencias 24h en Madrid y sur (Getafe). ☎ ${siteConfig.telefono}.`
+    : isBombines
+      ? `Bombines antibumping, antiganzúa y antitaladro en Madrid. Instalación a domicilio, factura con IVA y garantía por escrito. ☎ ${siteConfig.telefono}.`
+      : `${servicio.nombre} en la Comunidad de Madrid. ${servicio.descripcionCorta} Llama al ${siteConfig.telefono}.`;
+
 const basePath = '/servicios';
 const breadcrumb = [
   { name: 'Inicio', path: '/' },
@@ -75,12 +89,63 @@ const otrosServicios = servicios
       </section>
     )}
 
+    {isAperturaPuertas && (
+      <section class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 sm:p-6 space-y-3 text-sm text-slate-300">
+        <h2 class="text-lg font-semibold tracking-tight text-slate-50">
+          Apertura sin romper · desde {precio} IVA incl.
+        </h2>
+        <p>
+          Abrimos puertas de vivienda, locales y portales priorizando técnicas <strong class="text-slate-200">no destructivas</strong>:
+          llave dentro, llave perdida, bombín atascado o puerta blindada/acorazada. Te damos precio orientativo por teléfono
+          y lo confirmamos en el sitio antes de empezar.
+        </p>
+        <ul class="list-disc space-y-1 pl-5 text-slate-400 text-xs sm:text-sm">
+          <li>Urgencias 24 horas en Madrid y sur (base en Getafe)</li>
+          <li>Precio cerrado antes de actuar · factura con IVA</li>
+          <li>Bizum, tarjeta o efectivo · garantía por escrito</li>
+        </ul>
+        <p class="text-slate-400 text-xs">
+          Si tras abrir conviene reforzar, también hacemos{' '}
+          <a href={`${basePath}/cambio-cerradura`} class="text-emerald-400 hover:underline">cambio de cerradura</a>
+          {' '}y{' '}
+          <a href={`${basePath}/bombines-seguridad`} class="text-emerald-400 hover:underline">bombines de seguridad</a>.
+        </p>
+      </section>
+    )}
+
+    {isBombines && (
+      <section class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 sm:p-6 space-y-3 text-sm text-slate-300">
+        <h2 class="text-lg font-semibold tracking-tight text-slate-50">
+          Bombín antibumping, antiganzúa y antitaladro
+        </h2>
+        <p>
+          Un <strong class="text-slate-200">bombín de alta seguridad</strong> (cilindro) es la pieza que más protege tu puerta
+          frente a bumping, ganzúa o taladro. Te asesoramos según el tipo de puerta y el nivel de riesgo; instalamos el mismo
+          día si hay stock, con presupuesto acordado antes de montar.
+        </p>
+        <ul class="list-disc space-y-1 pl-5 text-slate-400 text-xs sm:text-sm">
+          <li>Sustitución tras robo, llaves perdidas o upgrade de seguridad</li>
+          <li>Factura con IVA · garantía por escrito · Bizum y tarjeta</li>
+          <li>Compatible con la mayoría de cerraduras de vivienda y portal</li>
+        </ul>
+        <p class="text-slate-400 text-xs">
+          Si la puerta no abre, primero{' '}
+          <a href={`${basePath}/apertura-puertas`} class="text-emerald-400 hover:underline">apertura de puertas</a>
+          {' '}y luego el cambio. También{' '}
+          <a href={`${basePath}/cambio-cerradura`} class="text-emerald-400 hover:underline">cambio de cerradura completa</a>
+          {' '}cuando hace falta.
+        </p>
+      </section>
+    )}
+
     <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 space-y-3">
       <h2 class="text-lg font-semibold tracking-tight">
         Atendemos en toda la Comunidad de Madrid
       </h2>
       <p class="text-sm text-slate-300">
-        Este servicio está disponible en los mismos barrios y zonas donde prestamos cerrajería urgente: Madrid capital (21 distritos), Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas, Pinto y resto de municipios. Puedes consultar zonas, tiempos de llegada y teléfono de urgencias en la página de barrios.
+        Este servicio está disponible en los mismos barrios y zonas donde prestamos cerrajería urgente: priorizamos Getafe,
+        Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés y el sur de Madrid; también el resto de la Comunidad. Puedes consultar
+        zonas, tiempos de llegada y teléfono de urgencias en la página de barrios.
       </p>
       <p>
         <a href="/cerrajero-urgente-24h" class="font-semibold text-emerald-400 hover:underline">

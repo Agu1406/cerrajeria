@@ -99,13 +99,18 @@ if (reseñas && reseñas.totalResenas > 0) {
     reviewCount: reseñas.totalResenas,
   };
   if (reseñas.reseñas?.length) {
-    schemaLocalBusiness.review = reseñas.reseñas.slice(0, 5).map((r) => ({
-      '@type': 'Review',
-      author: { '@type': 'Person', name: r.autor },
-      reviewRating: { '@type': 'Rating', ratingValue: r.valoracion, bestRating: 5 },
-      reviewBody: r.texto,
-      datePublished: r.fecha,
-    }));
+    const esTextoGenerico = (texto: string) =>
+      /reseña de \d estrellas/i.test(texto) || texto.trim().length < 12;
+    const reseñasConTexto = reseñas.reseñas.filter((r) => !esTextoGenerico(r.texto)).slice(0, 5);
+    if (reseñasConTexto.length > 0) {
+      schemaLocalBusiness.review = reseñasConTexto.map((r) => ({
+        '@type': 'Review',
+        author: { '@type': 'Person', name: r.autor },
+        reviewRating: { '@type': 'Rating', ratingValue: r.valoracion, bestRating: 5 },
+        reviewBody: r.texto,
+        datePublished: r.fecha,
+      }));
+    }
   }
 }
 
@@ -140,7 +145,7 @@ const cookiePolicyPath = '/politica-cookies';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
     <meta name="description" content={description} />
     <meta name="google-site-verification" content="AKnVTlD2lp-EazjmFzbUqWu6RMPwILePS_sjqNB-dTY" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}

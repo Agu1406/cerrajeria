@@ -1,0 +1,45 @@
+---
+import Layout from '../components/Layout.astro';
+import RightsForm from '../components/RightsForm.astro';
+import { siteConfig } from '../config/site';
+import { flujoSupresion, legalRoutes, retention } from '../data/legal';
+
+const title = `Ejercer tus derechos | ${siteConfig.nombreComercial}`;
+const description = `Solicitud de acceso, rectificación, supresión y demás derechos sobre datos personales de ${siteConfig.nombreComercial}.`;
+---
+
+<Layout {title} {description}>
+  <section class="space-y-6">
+    <header class="space-y-2">
+      <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
+        Acceso y supresión de datos
+      </h1>
+      <p class="text-sm text-slate-300">
+        Puedes pedir acceso, rectificación, supresión, oposición, limitación o portabilidad. No hay cuentas de
+        usuario en esta web: la solicitud llega por correo a {siteConfig.email} y la atiende una persona.
+      </p>
+      <p class="text-sm text-slate-300">
+        El detalle del tratamiento está en la{' '}
+        <a href={legalRoutes.privacidad} class="text-emerald-400 hover:underline">política de privacidad</a>.
+        También puedes escribir a {siteConfig.email} con el asunto «Ejercicio de derechos RGPD».
+      </p>
+    </header>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">Qué hacemos con una supresión</h2>
+      <ol class="ml-4 list-decimal space-y-1">
+        {flujoSupresion.map((paso) => (
+          <li>{paso}</li>
+        ))}
+      </ol>
+      <ul class="ml-4 list-disc space-y-1">
+        <li>Consultas y contacto: {retention.contacto}</li>
+        <li>Facturas: {retention.facturas}</li>
+        <li>Documentación mercantil: {retention.mercantil}</li>
+        <li>Registros técnicos: {retention.logs}</li>
+      </ul>
+    </section>
+
+    <RightsForm />
+  </section>
+</Layout>

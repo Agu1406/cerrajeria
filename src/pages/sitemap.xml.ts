@@ -47,6 +47,9 @@ export const GET: APIRoute = async () => {
     { path: '/aviso-legal', lastmod: today, priority: '0.3', changefreq: 'yearly' },
     { path: '/politica-privacidad', lastmod: today, priority: '0.3', changefreq: 'yearly' },
     { path: '/politica-cookies', lastmod: today, priority: '0.3', changefreq: 'yearly' },
+    { path: '/terminos', lastmod: today, priority: '0.3', changefreq: 'yearly' },
+    { path: '/politica-reembolsos', lastmod: today, priority: '0.3', changefreq: 'yearly' },
+    { path: '/derechos', lastmod: today, priority: '0.3', changefreq: 'yearly' },
   ];
 
   const barrioPaths: SitemapEntry[] = barrios

@@ -27,7 +27,8 @@ const mapsHref = siteConfig.googleMapsUrl
         © {new Date().getFullYear()} {siteConfig.nombreComercial}.{' '}
         {f.tagline} {siteConfig.ciudadPrincipal}.
       </p>
-      {siteConfig.nif && <p>NIF/CIF: {siteConfig.nif}</p>}
+      {siteConfig.titular && <p>{siteConfig.titular}</p>}
+      {siteConfig.nif && <p>NIF: {siteConfig.nif}</p>}
       {direccion && (
         <p>
           {direccion.calle}, {direccion.codigoPostal} {direccion.localidad}
@@ -52,7 +53,7 @@ const mapsHref = siteConfig.googleMapsUrl
           {siteConfig.telefono}
         </a>
       </p>
-      <nav class="flex flex-wrap gap-1 text-[11px]" aria-label={f.legalNavAria}>
+      <nav class="flex flex-wrap gap-1 text-sm" aria-label={f.legalNavAria}>
         {mapsHref && (
           <a
             href={mapsHref}
@@ -78,6 +79,15 @@ const mapsHref = siteConfig.googleMapsUrl
         </a>
         <a href="/politica-cookies" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
           {f.cookies}
+        </a>
+        <a href="/terminos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+          {f.terms}
+        </a>
+        <a href="/politica-reembolsos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+          {f.refunds}
+        </a>
+        <a href="/derechos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+          {f.rights}
         </a>
         {showDesarrollador && (
           <a href="/diseno-web" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">

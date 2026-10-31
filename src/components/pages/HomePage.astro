@@ -59,17 +59,15 @@ const ratingSub =
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="grid gap-10 lg:grid-cols-[1.3fr_minmax(0,1fr)] lg:items-start">
     <div class="space-y-6">
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-        {copy.badgeLine}
-      </p>
       <h1 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
         {copy.heroTitle}
       </h1>
+      <span class="hero-rule" data-hero-rule aria-hidden="true"></span>
       <p class="text-sm text-slate-300 sm:text-base" set:html={copy.heroIntroHtml} />
       <div class="flex flex-wrap items-center gap-3">
         <a
           href={siteConfig.telefonoHref}
-          class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-7 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400 active:scale-95"
+          class="btn-call"
         >
           {copy.ctaCall} · {siteConfig.telefono}
         </a>
@@ -83,7 +81,7 @@ const ratingSub =
         ))}
       </ul>
     </div>
-    <aside class="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+    <aside class="space-y-4">
       <h2 class="text-base font-semibold tracking-tight">
         {copy.areasTitle}
       </h2>
@@ -96,7 +94,7 @@ const ratingSub =
             <a
               href={`/cerrajero-urgente-24h/${entry.slug}`}
               {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
-              class="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-2 text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
+              class="flex min-h-11 items-center justify-between py-2 text-slate-100 hover:underline"
             >
               <span>{esBase ? 'Cerrajero urgente Getafe' : entry.data.nombre}</span>
               <span class="text-xs text-slate-400">{esBase ? 'Base · 10-20 min' : copy.barrioLinkSuffix}</span>
@@ -108,45 +106,33 @@ const ratingSub =
       <a
         href="/cerrajero-urgente-24h"
         {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
-        class="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-emerald-500/50 bg-emerald-500/10 py-2.5 text-sm font-medium text-emerald-400 transition hover:bg-emerald-500/20 hover:text-emerald-300"
+        class="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-emerald-400 hover:underline"
       >
         {copy.areasSeeAll}
       </a>
     </aside>
   </section>
 
-  <section class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-    <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
-      <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">
-        {copy.stats.arrivalLabel}
-      </p>
-      <p class="text-lg font-bold text-slate-50">20–30 min</p>
-      <p class="text-[11px] text-slate-400">{copy.stats.arrivalSub}</p>
+  <dl class="mt-8 grid gap-6 text-sm sm:grid-cols-2">
+    <div>
+      <dt class="font-semibold text-slate-100">{copy.stats.arrivalLabel}</dt>
+      <dd class="mt-1 text-slate-300">20–30 min. {copy.stats.arrivalSub}</dd>
     </div>
-    <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
-      <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">
-        {copy.stats.availLabel}
-      </p>
-      <p class="text-lg font-bold text-slate-50">24/7</p>
-      <p class="text-[11px] text-slate-400">{copy.stats.availSub}</p>
+    <div>
+      <dt class="font-semibold text-slate-100">{copy.stats.availLabel}</dt>
+      <dd class="mt-1 text-slate-300">24/7. {copy.stats.availSub}</dd>
     </div>
-    <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
-      <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">
-        {copy.stats.priceLabel}
-      </p>
-      <p class="text-lg font-bold text-slate-50">{copy.stats.priceValue}</p>
-      <p class="text-[11px] text-slate-400">{copy.stats.priceSub}</p>
+    <div>
+      <dt class="font-semibold text-slate-100">{copy.stats.priceLabel}</dt>
+      <dd class="mt-1 text-slate-300">{copy.stats.priceValue}. {copy.stats.priceSub}</dd>
     </div>
-    <div class="flex flex-col gap-1 rounded-xl border border-slate-800 bg-slate-900/80 p-4 text-xs">
-      <p class="text-emerald-400 text-[11px] font-semibold uppercase tracking-[0.25em]">
-        {copy.stats.ratingLabel}
-      </p>
-      <p class="text-lg font-bold text-slate-50">
-        {showReseñas && reseñas ? `${reseñas.valoracionMedia}/5` : '4.9/5'}
-      </p>
-      <p class="text-[11px] text-slate-400">{ratingSub}</p>
-    </div>
-  </section>
+    {showReseñas && reseñas ? (
+      <div>
+        <dt class="font-semibold text-slate-100">{copy.stats.ratingLabel}</dt>
+        <dd class="mt-1 text-slate-300">{reseñas.valoracionMedia} de 5. {ratingSub}</dd>
+      </div>
+    ) : null}
+  </dl>
 
   {showReseñas && reseñas && (
     <section class="mt-10 space-y-4">
@@ -157,12 +143,8 @@ const ratingSub =
         <p class="text-xs text-slate-400">{copy.reviews.noteHtml}</p>
       ) : null}
       <div class="flex flex-wrap items-center gap-3 text-sm">
-        <span class="flex items-center gap-1 text-slate-200" aria-label={ratingAria}>
-          {[1, 2, 3, 4, 5].map((i) => (
-            <span class={i <= Math.round(reseñas.valoracionMedia) ? 'text-amber-400' : 'text-slate-600'}>★</span>
-          ))}
-        </span>
-        <span class="text-slate-400">{ratingSummary}</span>
+        <span class="text-slate-200" aria-label={ratingAria}>{reseñas.valoracionMedia} de 5</span>
+        <span class="text-slate-300">{ratingSummary}</span>
         {siteConfig.googleMapsUrl && (
           <a
             href={siteConfig.googleMapsUrl}
@@ -178,16 +160,14 @@ const ratingSub =
         <ul class="grid gap-4 sm:grid-cols-2">
           {reseñas.reseñas.slice(0, 4).map((r) => (
             <li
-              class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-sm"
+              class="text-sm"
               {...(copy.locale === 'en' ? { lang: 'es' } : {})}
             >
-              <div class="mb-2 flex items-center justify-between">
+              <div class="mb-2 flex items-center justify-between gap-3">
                 <span class="font-medium text-slate-200">{r.autor}</span>
-                <span class="flex text-amber-400" aria-hidden="true">
-                  {'★'.repeat(r.valoracion)}{'☆'.repeat(5 - r.valoracion)}
-                </span>
+                <span class="text-slate-300">{r.valoracion} de 5</span>
               </div>
-              <p class="text-slate-400 leading-relaxed">"{r.texto}"</p>
+              <p class="text-slate-300 leading-relaxed">"{r.texto}"</p>
               <time datetime={r.fecha} class="mt-2 block text-xs text-slate-400">
                 {new Date(r.fecha).toLocaleDateString(copy.dateLocale, {
                   day: 'numeric',
@@ -209,7 +189,7 @@ const ratingSub =
       </h2>
       <p set:html={copy.block24h.bodyHtml} />
     </div>
-    <div class="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
+    <figure>
       <picture>
         <source media="(max-width: 768px)" srcset="/images/cerrajero-24h-madrid-hero-662w.webp" type="image/webp" />
         <source
@@ -227,7 +207,7 @@ const ratingSub =
           sizes="(max-width: 768px) 100vw, min(662px, 90vw)"
         />
       </picture>
-    </div>
+    </figure>
   </section>
 
   <section class="mt-12 space-y-4 text-sm text-slate-300">
@@ -235,14 +215,14 @@ const ratingSub =
       {whyTitle}
     </h2>
     <p set:html={copy.why.leadHtml} />
-    <div class="grid gap-4 sm:grid-cols-3">
+    <ul class="space-y-4">
       {copy.why.cards.map((card) => (
-        <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4">
-          <h3 class="text-sm font-semibold">{card.title}</h3>
-          <p class="mt-1 text-xs text-slate-400">{card.body}</p>
-        </div>
+        <li>
+          <h3 class="text-base font-semibold text-slate-100">{card.title}</h3>
+          <p class="mt-1 text-sm text-slate-300">{card.body}</p>
+        </li>
       ))}
-    </div>
+    </ul>
 
     <section class="mt-6 space-y-3">
       <h2 class="text-lg font-semibold tracking-tight">
@@ -262,11 +242,11 @@ const ratingSub =
         {servicesTitle}
       </h2>
       <p class="text-xs text-slate-400 sm:text-sm" set:html={copy.servicesSection.introHtml} />
-      <ul class="grid gap-3 sm:grid-cols-2">
+      <ul class="space-y-4">
         {featuredServicios.map((servicio) => (
-          <li class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
-            <h3 class="font-semibold">{servicio.nombre}</h3>
-            <p class="mt-1 text-xs text-slate-400">{servicio.descripcionCorta}</p>
+          <li class="text-sm">
+            <h3 class="font-semibold text-slate-100">{servicio.nombre}</h3>
+            <p class="mt-1 text-slate-300">{servicio.descripcionCorta}</p>
           </li>
         ))}
       </ul>

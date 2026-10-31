@@ -1,0 +1,75 @@
+---
+import Layout from '../components/Layout.astro';
+import { siteConfig } from '../config/site';
+import { legalRoutes } from '../data/legal';
+
+const title = `Política de reembolsos | ${siteConfig.nombreComercial}`;
+const description = `Cuándo no se cobra, cuándo cabe desistir y cómo se devuelve un trabajo de cerrajería de ${siteConfig.nombreComercial}.`;
+---
+
+<Layout {title} {description}>
+  <section class="space-y-6">
+    <header class="space-y-2">
+      <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
+        Política de reembolsos
+      </h1>
+      <p class="text-sm text-slate-300">
+        Aquí se explica qué se cobra y qué se devuelve en los servicios de {siteConfig.nombreComercial}. Las
+        condiciones generales están en los{' '}
+        <a href={legalRoutes.terminos} class="text-emerald-400 hover:underline">términos del servicio</a>.
+      </p>
+    </header>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">1. Precio antes de actuar</h2>
+      <p>
+        Te decimos el precio antes de empezar. Los importes publicados (apertura desde {siteConfig.precioAperturaDesde}{' '}
+        IVA incluido) son orientativos. Si el trabajo exige forzar o un material extra, te lo decimos antes y no
+        seguimos sin tu acuerdo.
+      </p>
+      <p>
+        No hay una tarifa de desplazamiento oculta. Si rechazas el presupuesto antes de que empecemos, no cobramos
+        esa visita de valoración habitual del servicio de urgencia.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">2. Cancelar antes de empezar</h2>
+      <p>
+        Puedes anular un aviso pendiente, antes de que el trabajo haya empezado, llamando al {siteConfig.telefono} o
+        escribiendo a {siteConfig.email}. Esa cancelación no tiene coste.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">3. Desistimiento</h2>
+      <p>
+        La reparación urgente que pides y que ya se ha ejecutado con tu acuerdo previo no entra en el derecho de
+        desistimiento de 14 días (artículo 103 del texto refundido de la Ley General para la Defensa de los
+        Consumidores y Usuarios). Si el servicio no ha empezado, puedes cancelarlo como indica el apartado anterior.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">4. Trabajo cobrado y no hecho, o defectuoso</h2>
+      <p>
+        Si se cobra un trabajo que no llega a realizarse, se devuelve ese importe. Si el trabajo se hace y resulta
+        defectuoso por nuestra intervención, lo repetimos o devolvemos la parte que corresponda a ese defecto, según
+        la garantía escrita de la factura.
+      </p>
+      <p>
+        Para pedirlo, llama al {siteConfig.telefono} o escribe a {siteConfig.email} e indica el trabajo, la fecha y
+        qué ha fallado. Respondemos con la solución (repetir o devolver) y el plazo.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">5. Reclamación</h2>
+      <p>
+        Si no estás de acuerdo, puedes pedir la hoja de reclamaciones o acudir a consumo de la Comunidad de Madrid.
+        Los datos del prestador están en el{' '}
+        <a href={legalRoutes.aviso} class="text-emerald-400 hover:underline">aviso legal</a>.
+      </p>
+    </section>
+  </section>
+</Layout>

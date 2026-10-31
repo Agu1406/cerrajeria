@@ -1,0 +1,96 @@
+---
+import { legalRoutes } from '../data/legal';
+import { derechosOpciones } from '../data/legal';
+---
+
+<section class="space-y-3 text-sm">
+  <h2 class="text-base font-semibold tracking-tight">Formulario</h2>
+  <p class="text-sm text-slate-300">
+    Indica el derecho y qué dato te afecta. No subas el documento de identidad: si hace falta comprobar quién eres,
+    te lo pediremos por correo.
+  </p>
+  <form
+    class="ajax-form mt-4 space-y-4"
+    action="/api/derechos"
+    method="post"
+    data-msg-sending="Enviando..."
+    data-msg-success="Solicitud enviada. Te responderemos al correo indicado."
+    data-msg-error="No se pudo enviar. Escríbenos por correo o llama."
+    data-msg-network="Error de conexión. Llama por teléfono."
+    data-msg-privacy="Debes aceptar la política de privacidad y declarar que tienes 14 años o más."
+    data-label-submit="Enviar solicitud"
+  >
+    <div class="space-y-1">
+      <label for="derechos-email" class="text-sm font-medium text-slate-300">Correo</label>
+      <input
+        id="derechos-email"
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+        class="w-full rounded-sm border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+      />
+    </div>
+    <div class="space-y-1">
+      <label for="derechos-nombre" class="text-sm font-medium text-slate-300">
+        Nombre <span class="text-slate-300">(opcional)</span>
+      </label>
+      <input
+        id="derechos-nombre"
+        name="nombre"
+        type="text"
+        autocomplete="name"
+        class="w-full rounded-sm border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+      />
+    </div>
+    <div class="space-y-1">
+      <label for="derechos-tipo" class="text-sm font-medium text-slate-300">Derecho</label>
+      <select
+        id="derechos-tipo"
+        name="derecho"
+        required
+        class="w-full rounded-sm border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+      >
+        {derechosOpciones.map((opcion) => (
+          <option value={opcion.value}>{opcion.label}</option>
+        ))}
+      </select>
+    </div>
+    <div class="space-y-1">
+      <label for="derechos-mensaje" class="text-sm font-medium text-slate-300">Qué solicitas</label>
+      <textarea
+        id="derechos-mensaje"
+        name="mensaje"
+        rows="4"
+        required
+        class="w-full resize-none rounded-sm border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+      />
+    </div>
+    <div class="contact-form-feedback hidden" aria-live="polite"></div>
+    <label class="flex items-start gap-2 text-sm text-slate-300">
+      <input
+        name="privacyConsent"
+        type="checkbox"
+        required
+        value="1"
+        class="mt-1 h-4 w-4 shrink-0 rounded-sm border-slate-600 bg-slate-950 text-emerald-500"
+      />
+      <span>
+        He leído y acepto la{' '}
+        <a href={legalRoutes.privacidad} class="text-emerald-400 underline">política de privacidad</a>{' '}
+        y declaro que tengo 14 años o más.
+      </span>
+    </label>
+    <button type="submit" class="ajax-form-submit btn-call w-full">
+      Enviar solicitud
+    </button>
+  </form>
+</section>
+
+<script>
+  import { bindAjaxForm } from '../scripts/ajax-form';
+
+  document.querySelectorAll('.ajax-form').forEach((form) => {
+    bindAjaxForm(form as HTMLFormElement);
+  });
+</script>

@@ -113,6 +113,9 @@ type FooterStrings = {
   legal: string;
   privacy: string;
   cookies: string;
+  terms: string;
+  refunds: string;
+  rights: string;
   webDesign: string;
 };
 
@@ -127,6 +130,9 @@ const FOOTER: Record<Locale, FooterStrings> = {
     legal: 'Aviso legal',
     privacy: 'Privacidad',
     cookies: 'Cookies',
+    terms: 'Términos',
+    refunds: 'Reembolsos',
+    rights: 'Tus datos',
     webDesign: 'Diseño web',
   },
   en: {
@@ -139,6 +145,9 @@ const FOOTER: Record<Locale, FooterStrings> = {
     legal: 'Legal notice',
     privacy: 'Privacy',
     cookies: 'Cookies',
+    terms: 'Terms',
+    refunds: 'Refunds',
+    rights: 'Your data',
     webDesign: 'Web design',
   },
 };

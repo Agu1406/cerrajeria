@@ -12,13 +12,11 @@ const basePath = '/cerrajero-urgente-24h';
 ---
 
 <div class="mt-8 space-y-10">
-  <div class="flex flex-wrap gap-2 text-xs">
+  <ul class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-300">
     {siteConfig.confianzaPills.map((pill) => (
-      <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 font-medium text-emerald-300">
-        ✓ {pill}
-      </span>
+      <li>{pill}</li>
     ))}
-  </div>
+  </ul>
 
   <section class="space-y-4">
     <h2 class="text-xl font-bold tracking-tight sm:text-2xl">
@@ -26,45 +24,26 @@ const basePath = '/cerrajero-urgente-24h';
     </h2>
     <p class="text-sm text-slate-300">
       Base en Getafe (Calle Progreso 2). Llegada habitual en <strong>{zona.llegada}</strong>.
-      Atiende {siteConfig.profesional?.nombre ?? 'el cerrajero'} — sin centralitas.
+      Atiende {siteConfig.profesional?.nombre ?? 'el cerrajero'}, sin centralitas.
     </p>
-    <ul class="grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-300">
       {zona.barrios.map((b) => (
-        <li class="rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-2 text-slate-300">{b}</li>
+        <li>{b}</li>
       ))}
     </ul>
   </section>
 
   <section class="space-y-4">
     <h2 class="text-lg font-semibold tracking-tight">Precios orientativos</h2>
-    <div class="grid gap-4 sm:grid-cols-3">
+    <dl class="space-y-4 text-sm">
       {surPrecioTiers.map((tier) => (
-        <article
-          class:list={[
-            'flex flex-col rounded-xl border p-4 text-sm',
-            tier.destacado
-              ? 'border-emerald-500/40 bg-emerald-500/5'
-              : 'border-slate-800 bg-slate-900/70',
-          ]}
-        >
-          {tier.destacado && (
-            <span class="mb-2 text-[10px] font-semibold uppercase tracking-wider text-emerald-400">
-              Más solicitado
-            </span>
-          )}
-          <h3 class="font-semibold text-slate-100">{tier.nombre}</h3>
-          <p class="mt-1 text-lg font-bold text-emerald-400">{tier.precio}</p>
-          <ul class="mt-3 flex-1 space-y-1 text-xs text-slate-400">
-            {tier.bullets.map((b) => (
-              <li>✓ {b}</li>
-            ))}
-          </ul>
-          <a href={siteConfig.telefonoHref} class="mt-4 text-xs font-medium text-emerald-400 hover:underline">
-            Llamar · {siteConfig.telefono}
-          </a>
-        </article>
+        <div>
+          <dt class="font-semibold text-slate-100">{tier.nombre}: {tier.precio}</dt>
+          <dd class="mt-1 text-slate-300">{tier.bullets.join('. ')}.</dd>
+        </div>
       ))}
-    </div>
+    </dl>
+    <a href={siteConfig.telefonoHref} class="btn-call">Llamar: {siteConfig.telefono}</a>
   </section>
 
   <section class="space-y-3">
@@ -75,7 +54,7 @@ const basePath = '/cerrajero-urgente-24h';
         <li>
           <a
             href={`${basePath}/${link.slug}`}
-            class="rounded-full border border-slate-700 px-3 py-1 text-slate-300 hover:border-emerald-400 hover:text-emerald-300"
+            class="text-slate-300 hover:underline"
           >
             Cerrajero {link.label}
           </a>

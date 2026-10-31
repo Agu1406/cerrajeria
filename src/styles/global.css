@@ -67,7 +67,6 @@ body {
 
 /* Botones flotantes (móvil): por encima del aviso de cookies cuando está visible */
 .floating-btn {
-  transition: bottom 0.25s ease;
 }
 html[data-cookie-consent="pending"] .floating-btn {
   bottom: 7.5rem !important; /* por encima del banner con dos botones */
@@ -90,14 +89,13 @@ html[data-cookie-consent="pending"] .floating-btn {
   background-color: #0f172a;
   border-top: 1px solid #334155;
   color: #e2e8f0;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.4;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.25s ease;
 }
 .cookie-banner--hidden {
   transform: translateY(100%);
   pointer-events: none;
+  visibility: hidden;
 }
 .cookie-banner-text {
   margin: 0;
@@ -115,28 +113,101 @@ html[data-cookie-consent="pending"] .floating-btn {
 }
 .cookie-banner-btn {
   flex-shrink: 0;
+  min-height: 44px;
+  min-width: 7.5rem;
   padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  /* emerald-700 para contraste ≥4.5:1 con blanco (WCAG AA) */
+  border-radius: 2px;
   background-color: #047857;
   color: #ffffff;
   font-weight: 600;
   font-size: 0.875rem;
-  border: none;
+  border: 2px solid #047857;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 .cookie-banner-btn:hover {
   background-color: #059669;
+  border-color: #059669;
 }
 .cookie-banner-btn--secondary {
-  background-color: transparent;
-  color: #e2e8f0;
-  border: 1px solid #475569;
+  background-color: #1e293b;
+  color: #f8fafc;
+  border: 2px solid #e2e8f0;
 }
 .cookie-banner-btn--secondary:hover {
-  background-color: #1e293b;
-  border-color: #64748b;
+  background-color: #334155;
+  border-color: #f8fafc;
+}
+
+.btn-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.625rem 1rem;
+  border: 0;
+  border-radius: 2px;
+  background-color: #059669;
+  color: #020617;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-call:hover {
+  background-color: #10b981;
+}
+.btn-call:disabled {
+  opacity: 0.5;
+}
+.btn-quiet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.625rem 1rem;
+  border-radius: 2px;
+  border: 1px solid #e2e8f0;
+  background: transparent;
+  color: #f8fafc;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.btn-quiet:hover {
+  border-color: #059669;
+  color: #d1fae5;
+}
+.fab-call {
+  border-radius: 2px;
+  background-color: #059669;
+  color: #020617;
+}
+.fab-call:hover {
+  background-color: #10b981;
+}
+.hero-rule {
+  display: block;
+  width: 4.5rem;
+  height: 2px;
+  margin-top: 0.75rem;
+  background-color: #059669;
+  transform-origin: left center;
+}
+html[data-motion='on'] .hero-rule {
+  transform: scaleX(0);
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+:root[data-theme='dark'] .text-slate-400,
+:root[data-theme='dark'] .text-slate-500 {
+  color: #cbd5e1;
 }
 @media (min-width: 640px) {
   html[data-cookie-consent="pending"] .floating-btn {

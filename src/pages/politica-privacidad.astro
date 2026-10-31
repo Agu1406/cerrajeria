@@ -1,12 +1,11 @@
 ---
 import Layout from '../components/Layout.astro';
 import { siteConfig } from '../config/site';
+import { domicilioLegal, flujoSupresion, legalRoutes, retention } from '../data/legal';
 
 const title = `Política de privacidad | ${siteConfig.nombreComercial}`;
 const description = `Política de privacidad y protección de datos personales de ${siteConfig.nombreComercial}.`;
-const domicilio = siteConfig.direccion
-  ? `${siteConfig.direccion.calle}, ${siteConfig.direccion.codigoPostal} ${siteConfig.direccion.localidad} (${siteConfig.ciudadPrincipal})`
-  : '—';
+const domicilio = domicilioLegal() || 'Domicilio no indicado';
 ---
 
 <Layout {title} {description}>
@@ -31,7 +30,7 @@ const domicilio = siteConfig.direccion
         1. Responsable del tratamiento
       </h2>
       <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
-        <li><span class="font-semibold">Responsable:</span> {siteConfig.nombreComercial}</li>
+        <li><span class="font-semibold">Responsable:</span> {siteConfig.titular} (nombre comercial: {siteConfig.nombreComercial})</li>
         <li><span class="font-semibold">Teléfono:</span> {siteConfig.telefono}</li>
         <li><span class="font-semibold">Correo electrónico:</span> {siteConfig.email}</li>
         <li><span class="font-semibold">Domicilio:</span> {domicilio}</li>
@@ -67,9 +66,10 @@ const domicilio = siteConfig.direccion
         </li>
       </ul>
       <p class="text-sm text-slate-300">
-        No elaboramos perfiles comerciales ni tomamos decisiones automatizadas con efectos jurídicos. No enviamos
-        newsletters ni marketing automatizado; los correos que enviamos son respuestas a tus consultas o comunicaciones
-        relacionadas con un servicio solicitado.
+        No elaboramos perfiles comerciales ni tomamos decisiones automatizadas con efectos jurídicos. No hay lista
+        de correo ni newsletter. Los mensajes que salen de aquí son la respuesta a una consulta o lo relativo a un
+        servicio pedido. Si no quieres que te volvamos a escribir, usa la oposición en{' '}
+        <a href={legalRoutes.derechos} class="text-emerald-400 hover:underline">acceso y supresión de datos</a>.
       </p>
     </section>
 
@@ -92,12 +92,21 @@ const domicilio = siteConfig.direccion
       <h2 class="text-base font-semibold tracking-tight">
         4. Plazos de conservación
       </h2>
+      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
+        <li>Consultas, citas y contacto: {retention.contacto}</li>
+        <li>Facturas y obligaciones tributarias: {retention.facturas}</li>
+        <li>Documentación mercantil: {retention.mercantil}</li>
+        <li>Registros técnicos del servidor: {retention.logs}</li>
+      </ul>
       <p class="text-sm text-slate-300">
-        Conservaremos tus datos durante el tiempo estrictamente necesario para atender tu solicitud o prestar el
-        servicio, y posteriormente durante los plazos legalmente establecidos (por ejemplo, en materia fiscal y
-        contable). Los datos de analítica se conservan según la configuración de cada proveedor. Transcurridos dichos
-        plazos, los datos se bloquearán o suprimirán de forma segura.
+        Los datos de analítica se conservan según la configuración de cada proveedor y solo si aceptaste esas cookies.
       </p>
+      <p class="text-sm text-slate-300">Si pides la supresión:</p>
+      <ol class="ml-4 list-decimal space-y-1 text-sm text-slate-300">
+        {flujoSupresion.map((paso) => (
+          <li>{paso}</li>
+        ))}
+      </ol>
     </section>
 
     <section class="space-y-2 text-sm text-slate-300">
@@ -129,13 +138,14 @@ const domicilio = siteConfig.direccion
         tratamiento automatizado.
       </p>
       <p class="text-sm text-slate-300">
-        Para ejercerlos, escribe a{' '}
+        Puedes usar el{' '}
+        <a href={legalRoutes.derechos} class="font-semibold text-emerald-400 hover:underline">formulario de acceso y supresión</a>{' '}
+        o escribir a{' '}
         <a href={`mailto:${siteConfig.email}?subject=${encodeURIComponent('Ejercicio de derechos RGPD')}`} class="font-semibold text-emerald-400 hover:underline">
           {siteConfig.email}
         </a>{' '}
-        con el asunto sugerido <strong class="text-slate-100">«Ejercicio de derechos RGPD»</strong> e indica qué derecho
-        solicitas (por ejemplo, acceso o borrado), adjuntando una copia de tu documento de identidad si es necesario
-        para verificar tu identidad.
+        con el asunto <strong class="text-slate-100">«Ejercicio de derechos RGPD»</strong>. No hace falta adjuntar el
+        documento de identidad en la web; si hay que comprobar la identidad, lo pediremos por correo.
       </p>
       <p class="text-sm text-slate-300">
         También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos

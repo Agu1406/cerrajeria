@@ -18,6 +18,13 @@ export const siteConfig = {
   email: 'contacto@loscerrajerosmadrid.es',
   /** NIF/CIF para aviso legal y privacidad. */
   nif: 'Y7574386V',
+  /**
+   * Nombre y apellidos o razón social (artículo 10 de la LSSI-CE).
+   * No basta el nombre comercial ni un solo nombre. Si queda vacío, es un
+   * marcador o no tiene al menos dos palabras, el build se detiene.
+   * También se acepta la variable de entorno SITE_TITULAR, sin subirla a git.
+   */
+  titular: '' as string,
   ciudadPrincipal: 'Madrid',
   baseUrl: 'https://www.loscerrajerosmadrid.es',
   /** true cuando baseUrl es tu dominio real; false si sigue el placeholder (no se emiten canonical, og, schema). */
@@ -121,9 +128,9 @@ export const siteConfig = {
    * Actualizar si cambian las tarifas.
    */
   urgenciaPreciosFaqEs:
-    'La apertura sin romper —con llave dentro o fuera, según el caso— va desde 90 € con IVA incluido: cualquier hora y cualquier zona de la Comunidad de Madrid, con el material habitual de ese servicio incluido. Si para abrir hay que forzar o el trabajo no encaja en una apertura estándar, te lo decimos antes de actuar y el presupuesto puede subir; en muchos de esos casos se sitúa hasta unos 200 € con IVA.',
+    'La apertura sin romper (con llave dentro o fuera, según el caso) va desde 90 € con IVA incluido: cualquier hora y cualquier zona de la Comunidad de Madrid, con el material habitual de ese servicio incluido. Si para abrir hay que forzar o el trabajo no encaja en una apertura estándar, te lo decimos antes de actuar y el presupuesto puede subir; en muchos de esos casos se sitúa hasta unos 200 € con IVA.',
   urgenciaPreciosFaqEn:
-    'Non-destructive entry —key inside or outside, depending on the case— starts from €90 including VAT: any time of day, anywhere in the Community of Madrid, with the usual materials for that job included. If we must force entry or the job goes beyond a standard opening, we agree the price before we start; in many of those situations it is often up to around €200 including VAT.',
+    'Non-destructive entry (key inside or outside, depending on the case) starts from €90 including VAT: any time of day, anywhere in the Community of Madrid, with the usual materials for that job included. If we must force entry or the job goes beyond a standard opening, we agree the price before we start; in many of those situations it is often up to around €200 including VAT.',
   /** Opcional: crédito al diseñador/desarrollador en el footer y en /diseno-web. Pon null para ocultar el enlace "Diseño web". */
   desarrollador: {
     nombre: 'Agustín',
@@ -133,3 +140,45 @@ export const siteConfig = {
     email: 'agustin6041@outlook.com',
   } as { nombre: string; url?: string; texto?: string; telefono?: string; email?: string } | null,
 };
+
+const TITULAR_NO_VALIDO =
+  /pendiente|tu[-\s]?nombre|rellenar|nombre\s+apellidos|xxx+|^\s*todo\s*$/i;
+
+function titularDesdeEntorno(): string {
+  const meta = (import.meta.env as Record<string, string | undefined>).SITE_TITULAR;
+  if (typeof meta === 'string' && meta.trim()) return meta.trim();
+  if (typeof process !== 'undefined' && typeof process.env?.SITE_TITULAR === 'string') {
+    return process.env.SITE_TITULAR.trim();
+  }
+  return '';
+}
+
+if (!siteConfig.titular.trim()) {
+  siteConfig.titular = titularDesdeEntorno();
+}
+
+function assertSiteLegal() {
+  const titular = siteConfig.titular.trim();
+  const fallos: string[] = [];
+  if (
+    !titular ||
+    TITULAR_NO_VALIDO.test(titular) ||
+    titular === siteConfig.nombreComercial ||
+    !/\s/.test(titular)
+  ) {
+    fallos.push(
+      'titular (nombre y apellidos o razón social en src/config/site.ts, o variable SITE_TITULAR)'
+    );
+  }
+  if (!siteConfig.nif.trim()) fallos.push('nif');
+  if (!siteConfig.email.trim()) fallos.push('email');
+  if (!siteConfig.telefono.trim()) fallos.push('telefono');
+  if (!siteConfig.direccion?.calle) fallos.push('direccion');
+  if (fallos.length > 0) {
+    throw new Error(
+      `Dato legal vacío o no válido: ${fallos.join(', ')}. La web no se publica sin esos datos.`
+    );
+  }
+}
+
+assertSiteLegal();

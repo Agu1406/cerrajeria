@@ -124,7 +124,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center rounded-full border border-slate-600 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-emerald-400 hover:text-emerald-300"
+        class="btn-quiet"
       >
         WhatsApp
       </a>
@@ -134,26 +134,21 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </p>
     </div>
 
-    <div class="mt-2 flex flex-wrap items-center gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/5 px-4 py-3 text-sm">
-      <span class="font-semibold text-emerald-300">Apertura sin romper desde {siteConfig.precioAperturaDesde} IVA incl.</span>
-      <span class="text-slate-400">·</span>
-      <a href={siteConfig.telefonoHref} class="font-semibold text-slate-100 hover:text-emerald-300">
+    <p class="mt-2 text-sm text-slate-100">
+      Apertura sin romper desde {siteConfig.precioAperturaDesde} IVA incl.{' '}
+      <a href={siteConfig.telefonoHref} class="font-semibold text-emerald-400 hover:underline">
         {siteConfig.telefono}
       </a>
-    </div>
+    </p>
 
     {showReseñas && !esBaseOperativa && !surBarrioZona && (
-      <div class="mt-4 flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 px-4 py-3 text-sm">
-        <span class="flex items-center gap-1 text-slate-200" aria-label={`Valoración: ${reseñas.valoracionMedia} de 5`}>
-          {[1, 2, 3, 4, 5].map((i) => (
-            <span class={i <= Math.round(reseñas.valoracionMedia) ? 'text-amber-400' : 'text-slate-600'}>★</span>
-          ))}
-        </span>
-        <span class="text-slate-400">{reseñas.valoracionMedia} · {reseñas.totalResenas} reseñas en Google</span>
+      <p class="mt-4 text-sm text-slate-300">
+        <span aria-label={`Valoración: ${reseñas.valoracionMedia} de 5`}>{reseñas.valoracionMedia} de 5</span>
+        {' '}· {reseñas.totalResenas} reseñas en Google
         {siteConfig.googleMapsUrl && (
-          <a href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">Ver reseñas →</a>
+          <a href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">Ver reseñas</a>
         )}
-      </div>
+      </p>
     )}
 
     {esBaseOperativa && (
@@ -323,7 +318,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </p>
       <a
         href={siteConfig.telefonoHref}
-        class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
+        class="btn-call"
       >
         {siteConfig.telefono}
       </a>

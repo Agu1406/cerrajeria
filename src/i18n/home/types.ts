@@ -16,7 +16,6 @@ export type HomeCopy = {
   contactForm: { title: string; subtitle: string };
   faqItems: HomeFaqItem[];
 
-  badgeLine: string;
   heroTitle: string;
   heroIntroHtml: string;
   ctaCall: string;

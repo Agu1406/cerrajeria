@@ -1,0 +1,31 @@
+---
+/** Scroll suave y una línea bajo el titular. No oculta el texto ni la llamada. */
+---
+
+<script>
+  function start() {
+    if (document.documentElement.dataset.motion !== 'on') return;
+
+    const rule = document.querySelector('[data-hero-rule]');
+    if (rule) {
+      import('gsap')
+        .then(({ default: gsap }) => {
+          gsap.to(rule, { scaleX: 1, duration: 0.6, ease: 'power2.out' });
+        })
+        .catch(() => {
+          (rule as HTMLElement).style.transform = 'scaleX(1)';
+        });
+    }
+
+    import('lenis')
+      .then(({ default: Lenis }) => {
+        new Lenis({ autoRaf: true });
+      })
+      .catch(() => {
+        /* sin la librería, el scroll nativo sigue valiendo */
+      });
+  }
+
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, { once: true });
+</script>

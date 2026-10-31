@@ -72,7 +72,7 @@ const otrosServicios = servicios
     </header>
 
     {isCambioCerradura && (
-      <section class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 sm:p-6 space-y-3 text-sm text-slate-300">
+      <section class="space-y-3 text-sm text-slate-300">
         <h2 class="text-lg font-semibold tracking-tight text-slate-50">
           Cambio de bombín, cilindro o cerradura completa
         </h2>
@@ -90,7 +90,7 @@ const otrosServicios = servicios
     )}
 
     {isAperturaPuertas && (
-      <section class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 sm:p-6 space-y-3 text-sm text-slate-300">
+      <section class="space-y-3 text-sm text-slate-300">
         <h2 class="text-lg font-semibold tracking-tight text-slate-50">
           Apertura sin romper · desde {precio} IVA incl.
         </h2>
@@ -114,7 +114,7 @@ const otrosServicios = servicios
     )}
 
     {isBombines && (
-      <section class="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-5 sm:p-6 space-y-3 text-sm text-slate-300">
+      <section class="space-y-3 text-sm text-slate-300">
         <h2 class="text-lg font-semibold tracking-tight text-slate-50">
           Bombín antibumping, antiganzúa y antitaladro
         </h2>
@@ -182,7 +182,7 @@ const otrosServicios = servicios
       </p>
       <a
         href={siteConfig.telefonoHref}
-        class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
+        class="btn-call"
       >
         {siteConfig.telefono}
       </a>

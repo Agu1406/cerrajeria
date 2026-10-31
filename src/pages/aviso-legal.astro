@@ -1,6 +1,7 @@
 ---
 import Layout from '../components/Layout.astro';
 import { siteConfig } from '../config/site';
+import { assetLicenses, domicilioLegal, legalRoutes } from '../data/legal';
 
 const title = `Aviso legal | ${siteConfig.nombreComercial}`;
 const description = `Aviso legal e información del prestador de servicios de ${siteConfig.nombreComercial}.`;
@@ -27,11 +28,12 @@ const description = `Aviso legal e información del prestador de servicios de ${
         A efectos de lo dispuesto en la LSSI-CE, se informa de que el titular de este sitio web es:
       </p>
       <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
+        <li><span class="font-semibold">Titular:</span> {siteConfig.titular}</li>
         <li><span class="font-semibold">Nombre comercial:</span> {siteConfig.nombreComercial}</li>
         <li><span class="font-semibold">Actividad:</span> servicios de cerrajería 24 horas en {siteConfig.ciudadPrincipal} y alrededores.</li>
         <li><span class="font-semibold">Teléfono de contacto:</span> {siteConfig.telefono}</li>
         <li><span class="font-semibold">Correo electrónico:</span> {siteConfig.email}</li>
-        <li><span class="font-semibold">Domicilio:</span> {siteConfig.direccion ? `${siteConfig.direccion.calle}, ${siteConfig.direccion.codigoPostal} ${siteConfig.direccion.localidad} (${siteConfig.ciudadPrincipal})` : '—'}</li>
+        <li><span class="font-semibold">Domicilio:</span> {domicilioLegal()}</li>
         <li><span class="font-semibold">NIF/CIF:</span> {siteConfig.nif}</li>
       </ul>
       <p class="text-sm text-slate-300">
@@ -64,6 +66,9 @@ const description = `Aviso legal e información del prestador de servicios de ${
         Para cancelar un aviso pendiente, reclamar o ejercer derechos relacionados con un servicio, contacta en
         el menor plazo posible al teléfono {siteConfig.telefono} o por correo a{' '}
         <a href={`mailto:${siteConfig.email}`} class="text-emerald-400 hover:underline">{siteConfig.email}</a>.
+        Las condiciones del servicio están en los{' '}
+        <a href={legalRoutes.terminos} class="text-emerald-400 hover:underline">términos</a> y las devoluciones en la{' '}
+        <a href={legalRoutes.reembolsos} class="text-emerald-400 hover:underline">política de reembolsos</a>.
       </p>
     </section>
 
@@ -102,6 +107,13 @@ const description = `Aviso legal e información del prestador de servicios de ${
         disposición, y la transformación de dichos contenidos sin la autorización previa y expresa de su legítimo
         titular, salvo en los casos legalmente permitidos.
       </p>
+      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
+        {assetLicenses.map((item) => (
+          <li>
+            <span class="font-semibold">{item.nombre}:</span> {item.licencia}. {item.uso}
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section class="space-y-2 text-sm text-slate-300">

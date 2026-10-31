@@ -38,18 +38,17 @@ export const homeCopyEs: HomeCopy = {
       answer: siteConfig.urgenciaPreciosFaqEs,
     },
   ],
-  badgeLine: 'Servicio 24 horas · Urgencias',
   heroTitle: 'Cerrajero urgente 24h · Madrid y sur (Getafe, Villaverde…)',
   heroIntroHtml:
     'Somos <strong class="text-slate-100 font-semibold">cerrajeros en Madrid</strong> con base en Getafe. <strong class="text-slate-100 font-semibold">Erickson</strong> te atiende las 24 horas: <strong class="text-slate-100 font-semibold">apertura de puertas</strong> sin daños desde 90 € IVA incl., <strong class="text-slate-100 font-semibold">cambio de cerradura</strong> y asistencia en Villaverde, Valdemoro, Fuenlabrada, Parla y toda la Comunidad. Sin centralitas: llamas y hablas con el cerrajero.',
   ctaCall: 'Llamar ahora',
   ctaSub: 'Atención inmediata · 24 horas · Todos los días del año',
   bullets: [
-    '✔ Apertura sin romper desde 90 € IVA incl. (forzar solo si hace falta; muchos casos hasta ~200 € IVA incl.)',
-    '✔ Apertura de puertas blindadas y acorazadas',
-    '✔ Cambio de cerradura, bombín o cilindro (cerradura rota o llaves perdidas)',
-    '✔ Apertura de vehículos sin daños',
-    '✔ Arreglo de ventanas oscilobatientes y osciloparalelas',
+    'Apertura sin romper desde 90 € IVA incl. (forzar solo si hace falta; muchos casos hasta ~200 € IVA incl.)',
+    'Apertura de puertas blindadas y acorazadas',
+    'Cambio de cerradura, bombín o cilindro (cerradura rota o llaves perdidas)',
+    'Apertura de vehículos sin daños',
+    'Arreglo de ventanas oscilobatientes y osciloparalelas',
   ],
   areasTitle: 'Barrios y zonas de cobertura',
   areasIntroHtml:
@@ -72,7 +71,7 @@ export const homeCopyEs: HomeCopy = {
   reviews: {
     title: 'Lo que dicen nuestros clientes',
     summaryGoogleTemplate: '{rating} · {count} reseñas en Google',
-    seeAllGoogle: 'Ver todas en Google →',
+    seeAllGoogle: 'Ver todas en Google',
     ratingAriaTemplate: 'Valoración: {rating} de 5',
   },
   block24h: {

@@ -39,18 +39,17 @@ export const homeCopyEn: HomeCopy = {
       answer: siteConfig.urgenciaPreciosFaqEn,
     },
   ],
-  badgeLine: '24-hour service · Emergencies',
   heroTitle: 'Locksmiths in Madrid · 24h emergency service',
   heroIntroHtml:
     'We are <strong class="text-slate-100 font-semibold">emergency locksmiths in Madrid</strong> available around the clock: <strong class="text-slate-100 font-semibold">non-destructive door opening</strong> whenever possible, <strong class="text-slate-100 font-semibold">lock and cylinder replacement</strong>, and fast help across the <strong class="text-slate-100 font-semibold">Community of Madrid</strong>. Call us and a qualified locksmith will be on the way.',
   ctaCall: 'Call now',
   ctaSub: 'Immediate response · 24 hours · Every day of the year',
   bullets: [
-    '✔ Non-destructive entry from €90 VAT incl. (forcing only if needed; many jobs up to ~€200 VAT incl.)',
-    '✔ Armoured and security door opening',
-    '✔ Lock, cylinder or barrel change (broken lock or lost keys)',
-    '✔ Vehicle opening without unnecessary damage',
-    '✔ Tilt-and-turn and parallel-tilt window repairs',
+    'Non-destructive entry from €90 VAT incl. (forcing only if needed; many jobs up to ~€200 VAT incl.)',
+    'Armoured and security door opening',
+    'Lock, cylinder or barrel change (broken lock or lost keys)',
+    'Vehicle opening without unnecessary damage',
+    'Tilt-and-turn and parallel-tilt window repairs',
   ],
   areasTitle: 'Areas we cover',
   areasIntroHtml:
@@ -75,7 +74,7 @@ export const homeCopyEn: HomeCopy = {
     noteHtml:
       'Reviews below are shown in their original language (Spanish) from Google.',
     summaryGoogleTemplate: '{rating} · {count} Google reviews',
-    seeAllGoogle: 'See all on Google →',
+    seeAllGoogle: 'See all on Google',
     ratingAriaTemplate: 'Rating: {rating} out of 5',
   },
   block24h: {
@@ -117,7 +116,7 @@ export const homeCopyEn: HomeCopy = {
     },
     {
       q: 'Nights and bank holidays?',
-      aHtml: 'Yes — 24/7, every day of the year.',
+      aHtml: 'Yes, 24/7, every day of the year.',
     },
     {
       q: 'How much does an emergency opening cost?',

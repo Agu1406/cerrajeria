@@ -32,7 +32,8 @@ const labels = useEnglishForm
         : 'Tell us what you need (not an emergency)…',
       privacy: 'privacy policy',
       privacyCheck: 'I have read and accept the',
-      privacyRequired: 'You must accept the privacy policy to send the form.',
+      privacyAfter: 'and I confirm that I am 14 or older.',
+      privacyRequired: 'You must accept the privacy policy and confirm that you are 14 or older.',
       submit: 'Send message',
       sending: 'Sending…',
       success: "Message sent. We'll reply as soon as we can.",
@@ -51,7 +52,8 @@ const labels = useEnglishForm
       messagePh: barrio ? `Consulta sobre cerrajería en ${barrio}...` : 'Cuéntanos qué necesitas (no urgente)...',
       privacy: 'política de privacidad',
       privacyCheck: 'He leído y acepto la',
-      privacyRequired: 'Debes aceptar la política de privacidad para enviar el formulario.',
+      privacyAfter: 'y declaro que tengo 14 años o más.',
+      privacyRequired: 'Debes aceptar la política de privacidad y declarar que tienes 14 años o más.',
       submit: 'Enviar consulta',
       sending: 'Enviando...',
       success: 'Mensaje enviado. Te responderemos lo antes posible.',
@@ -60,7 +62,7 @@ const labels = useEnglishForm
     };
 ---
 
-<section class="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 text-sm">
+<section class="text-sm">
   <h2 class="text-base font-semibold tracking-tight">
     {title}
   </h2>
@@ -71,7 +73,7 @@ const labels = useEnglishForm
   )}
 
   <form
-    class="contact-form mt-4 space-y-4"
+    class="ajax-form contact-form mt-4 space-y-4"
     action="/api/contact"
     method="post"
     data-barrio={barrio}
@@ -137,7 +139,7 @@ const labels = useEnglishForm
       />
     </div>
     <div class="contact-form-feedback hidden" aria-live="polite"></div>
-    <label class="flex items-start gap-2 text-[11px] text-slate-300">
+    <label class="flex items-start gap-2 text-sm text-slate-300">
       <input
         id="contact-privacy"
         name="privacyConsent"
@@ -148,12 +150,13 @@ const labels = useEnglishForm
       />
       <span>
         {labels.privacyCheck}{' '}
-        <a href="/politica-privacidad" hreflang="es" class="text-emerald-400 underline decoration-emerald-400/70 hover:decoration-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">{labels.privacy}</a>.
+        <a href="/politica-privacidad" hreflang="es" class="text-emerald-400 underline">{labels.privacy}</a>{' '}
+        {labels.privacyAfter}
       </span>
     </label>
     <button
       type="submit"
-      class="contact-form-submit w-full rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400 disabled:opacity-50"
+      class="ajax-form-submit contact-form-submit btn-call w-full"
     >
       {labels.submit}
     </button>
@@ -161,60 +164,9 @@ const labels = useEnglishForm
 </section>
 
 <script>
-  document.querySelectorAll('.contact-form').forEach((form) => {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const form = e.target as HTMLFormElement;
-      const feedback = form.querySelector('.contact-form-feedback') as HTMLDivElement;
-      const submitBtn = form.querySelector('.contact-form-submit') as HTMLButtonElement;
-      if (!feedback || !submitBtn) return;
+  import { bindAjaxForm } from '../scripts/ajax-form';
 
-      feedback.classList.add('hidden');
-      feedback.classList.remove('text-red-400', 'text-emerald-400');
-
-      const privacy = form.querySelector('[name="privacyConsent"]') as HTMLInputElement | null;
-      if (privacy && !privacy.checked) {
-        feedback.textContent = form.dataset.msgPrivacy || 'Debes aceptar la política de privacidad.';
-        feedback.classList.add('text-red-400');
-        feedback.classList.remove('hidden');
-        privacy.focus();
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = form.dataset.msgSending || 'Enviando...';
-
-      const body = new FormData(form);
-      const data = Object.fromEntries(body.entries()) as Record<string, string>;
-
-      try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-        const json = await res.json().catch(() => ({}));
-
-        if (res.ok && !json.error) {
-          feedback.textContent = form.dataset.msgSuccess || 'Mensaje enviado. Te responderemos lo antes posible.';
-          feedback.classList.add('text-emerald-400');
-          feedback.classList.remove('hidden');
-          form.reset();
-        } else {
-          feedback.textContent =
-            json.message || form.dataset.msgError || 'No se pudo enviar. Prueba a llamarnos por teléfono.';
-          feedback.classList.add('text-red-400');
-          feedback.classList.remove('hidden');
-        }
-      } catch {
-        feedback.textContent =
-          form.dataset.msgNetwork || 'Error de conexión. Llámanos por teléfono para urgencias.';
-        feedback.classList.add('text-red-400');
-        feedback.classList.remove('hidden');
-      }
-
-      submitBtn.disabled = false;
-      submitBtn.textContent = form.dataset.labelSubmit || 'Enviar consulta';
-    });
+  document.querySelectorAll('.ajax-form').forEach((node) => {
+    bindAjaxForm(node as HTMLFormElement);
   });
 </script>

@@ -27,10 +27,10 @@ const showMapBlock = direccion || siteConfig.googleMapsUrl;
         también puedes usar el formulario y te responderemos lo antes posible.
       </p>
 
-      <div class="space-y-2 rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+      <div class="space-y-2 text-sm">
+        <h2 class="text-base font-semibold text-slate-100">
           Urgencias 24 horas
-        </p>
+        </h2>
         <p>
           Teléfono directo:{' '}
           <a href={siteConfig.telefonoHref} class="font-semibold text-emerald-400 hover:underline">
@@ -43,10 +43,10 @@ const showMapBlock = direccion || siteConfig.googleMapsUrl;
       </div>
 
       {showMapBlock && (
-        <div class="space-y-2 rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+        <div class="space-y-2 text-sm">
+          <h2 class="text-base font-semibold text-slate-100">
             Dónde estamos
-          </p>
+          </h2>
           {direccion && (
             <p class="text-slate-300">
               {direccion.calle}<br />
@@ -61,7 +61,6 @@ const showMapBlock = direccion || siteConfig.googleMapsUrl;
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-1.5 font-semibold text-emerald-400 hover:underline"
               >
-                <span aria-hidden="true">📍</span>
                 {siteConfig.googleMapsUrl ? 'Ver en Google Maps' : 'Cómo llegar (Google Maps)'}
               </a>
             </p>

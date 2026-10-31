@@ -23,21 +23,21 @@ const whatsappHref =
     : siteConfig.whatsappUrl);
 ---
 
-<header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+<header class="border-b border-slate-800 bg-slate-950">
   <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4">
     <a href={homePath} class="text-lg font-semibold tracking-tight">
       {siteConfig.nombreComercial}
     </a>
     <nav class="hidden items-center gap-4 text-xs font-medium text-slate-300 sm:flex" aria-label={nav.ariaNav}>
-      <a href={homePath} class="transition hover:text-emerald-300">{nav.home}</a>
-      <a href="/servicios" class="transition hover:text-emerald-300">{nav.services}</a>
-      <a href="/cerrajero-urgente-24h" class="transition hover:text-emerald-300">{nav.areas}</a>
-      <a href="/blog" class="transition hover:text-emerald-300">Blog</a>
-      <a href="/contacto" class="transition hover:text-emerald-300">{nav.contact}</a>
+      <a href={homePath} class="hover:underline">{nav.home}</a>
+      <a href="/servicios" class="hover:underline">{nav.services}</a>
+      <a href="/cerrajero-urgente-24h" class="hover:underline">{nav.areas}</a>
+      <a href="/blog" class="hover:underline">Blog</a>
+      <a href="/contacto" class="hover:underline">{nav.contact}</a>
       {langLinks.map((link) => (
         <a
           href={link.href}
-          class="transition hover:text-emerald-300"
+          class="hover:underline"
           hreflang={link.hreflang}
           lang={link.hreflang}
         >
@@ -48,7 +48,7 @@ const whatsappHref =
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-emerald-500 px-3 py-2 text-[11px] font-medium text-slate-950 shadow-sm transition hover:bg-emerald-400"
+        class="btn-call"
         aria-label={nav.whatsappAria}
       >
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -58,7 +58,7 @@ const whatsappHref =
       </a>
       <a
         href={siteConfig.telefonoHref}
-        class="rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
+        class="btn-call"
         aria-label={`${nav.callNow} ${siteConfig.telefono}`}
       >
         {nav.callNow} · {siteConfig.telefono}
@@ -100,7 +100,7 @@ const whatsappHref =
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
+        class="btn-call"
         aria-label={nav.whatsappAria}
       >
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -110,7 +110,7 @@ const whatsappHref =
       </a>
       <a
         href={siteConfig.telefonoHref}
-        class="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-emerald-400"
+        class="btn-call"
         aria-label={`${nav.callNow} ${siteConfig.telefono}`}
       >
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

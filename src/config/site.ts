@@ -24,7 +24,7 @@ export const siteConfig = {
    * marcador o no tiene al menos dos palabras, el build se detiene.
    * También se acepta la variable de entorno SITE_TITULAR, sin subirla a git.
    */
-  titular: '' as string,
+  titular: 'Erickson Auntseume',
   ciudadPrincipal: 'Madrid',
   baseUrl: 'https://www.loscerrajerosmadrid.es',
   /** true cuando baseUrl es tu dominio real; false si sigue el placeholder (no se emiten canonical, og, schema). */

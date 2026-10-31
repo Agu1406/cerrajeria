@@ -1,4 +1,25 @@
 @import "tailwindcss";
+@import "@fontsource-variable/source-sans-3";
+@import "@fontsource-variable/source-serif-4";
+
+@theme {
+  --font-sans: 'Source Sans 3 Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Source Serif 4 Variable', ui-serif, Georgia, serif;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
 
 /* Enlace "Saltar al contenido": visible solo al recibir foco (teclado/lector de pantalla) */
 .skip-link {
@@ -49,10 +70,10 @@ body {
   transition: bottom 0.25s ease;
 }
 html[data-cookie-consent="pending"] .floating-btn {
-  bottom: 5.5rem !important; /* por encima del banner (~72px) */
+  bottom: 7.5rem !important; /* por encima del banner con dos botones */
 }
 
-/* Aviso de cookies: fijo abajo, solo en móvil para no tapar botones de escritorio */
+/* Aviso de cookies: fijo abajo en todos los viewports (consentimiento previo) */
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -80,11 +101,17 @@ html[data-cookie-consent="pending"] .floating-btn {
 }
 .cookie-banner-text {
   margin: 0;
-  flex: 1;
+  flex: 1 1 16rem;
   min-width: 0;
 }
 .cookie-banner-text a {
   color: #34d399;
+}
+.cookie-banner-actions {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 .cookie-banner-btn {
   flex-shrink: 0;
@@ -102,10 +129,16 @@ html[data-cookie-consent="pending"] .floating-btn {
 .cookie-banner-btn:hover {
   background-color: #059669;
 }
+.cookie-banner-btn--secondary {
+  background-color: transparent;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+}
+.cookie-banner-btn--secondary:hover {
+  background-color: #1e293b;
+  border-color: #64748b;
+}
 @media (min-width: 640px) {
-  .cookie-banner {
-    display: none;
-  }
   html[data-cookie-consent="pending"] .floating-btn {
     bottom: 1.25rem !important;
   }

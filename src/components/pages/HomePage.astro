@@ -59,14 +59,10 @@ const ratingSub =
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="grid gap-10 lg:grid-cols-[1.3fr_minmax(0,1fr)] lg:items-start">
     <div class="space-y-6">
-      <div class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-emerald-400">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
-        </span>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
         {copy.badgeLine}
-      </div>
-      <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+      </p>
+      <h1 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
         {copy.heroTitle}
       </h1>
       <p class="text-sm text-slate-300 sm:text-base" set:html={copy.heroIntroHtml} />
@@ -75,9 +71,9 @@ const ratingSub =
           href={siteConfig.telefonoHref}
           class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-7 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400 active:scale-95"
         >
-          📞 {copy.ctaCall} · {siteConfig.telefono}
+          {copy.ctaCall} · {siteConfig.telefono}
         </a>
-        <p class="text-xs text-slate-400">
+        <p class="text-xs text-slate-300">
           {copy.ctaSub}
         </p>
       </div>

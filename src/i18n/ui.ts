@@ -71,6 +71,7 @@ type LayoutChrome = {
   cookieText: string;
   cookieMore: string;
   cookieAccept: string;
+  cookieReject: string;
   ogLocale: string;
   ogLocaleAlternate: string;
 };
@@ -81,9 +82,10 @@ const LAYOUT: Record<Locale, LayoutChrome> = {
     skipLink: 'Saltar al contenido principal',
     cookieAria: 'Aviso de cookies',
     cookieText:
-      'Usamos cookies técnicas necesarias para el funcionamiento de la web. Si continúas navegando, aceptas su uso.',
+      'Usamos cookies técnicas necesarias y, solo si aceptas, cookies de análisis (Google Tag Manager y Vercel Analytics) para mejorar la web.',
     cookieMore: 'más información sobre cookies',
     cookieAccept: 'Aceptar',
+    cookieReject: 'Rechazar',
     ogLocale: 'es_ES',
     ogLocaleAlternate: 'en_US',
   },
@@ -92,9 +94,10 @@ const LAYOUT: Record<Locale, LayoutChrome> = {
     skipLink: 'Skip to main content',
     cookieAria: 'Cookie notice',
     cookieText:
-      'We use essential cookies for the site to work. By continuing, you accept their use.',
+      'We use essential cookies and, only if you accept, analytics cookies (Google Tag Manager and Vercel Analytics) to improve the site.',
     cookieMore: 'More about cookies',
     cookieAccept: 'Accept',
+    cookieReject: 'Reject',
     ogLocale: 'en_US',
     ogLocaleAlternate: 'es_ES',
   },

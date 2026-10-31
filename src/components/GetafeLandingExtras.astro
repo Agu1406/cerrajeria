@@ -66,7 +66,7 @@ const fotoPath = profesional?.fotoPath;
             class="flex aspect-square w-full flex-col items-center justify-center rounded-2xl border border-dashed border-slate-600 bg-slate-900/80 px-3 text-center text-xs text-slate-500"
             aria-hidden="true"
           >
-            <span class="text-4xl">👤</span>
+            <span class="font-display text-3xl font-semibold text-slate-500">{profesional.nombre.charAt(0)}</span>
             <span class="mt-2">{profesional.nombre}</span>
           </div>
         )}
@@ -79,13 +79,13 @@ const fotoPath = profesional?.fotoPath;
           Hola, soy {profesional.nombre}
         </h2>
         <p class="mt-1 text-sm font-medium text-slate-300">{profesional.titulo}</p>
-        <p class="mt-3 text-sm text-slate-400">{profesional.bio}</p>
-        <ul class="mt-4 flex flex-wrap gap-2 text-xs text-slate-400">
-          <li class="rounded-full border border-slate-700 px-3 py-1">🪪 Autónomo registrado</li>
-          <li class="rounded-full border border-slate-700 px-3 py-1">🧾 Factura con IVA</li>
-          <li class="rounded-full border border-slate-700 px-3 py-1">💳 Bizum y tarjeta</li>
-          <li class="rounded-full border border-slate-700 px-3 py-1">📋 Garantía por escrito</li>
-          <li class="rounded-full border border-slate-700 px-3 py-1">📍 Base en Getafe</li>
+        <p class="mt-3 text-sm text-slate-300">{profesional.bio}</p>
+        <ul class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
+          <li class="rounded-full border border-slate-700 px-3 py-1">Autónomo registrado</li>
+          <li class="rounded-full border border-slate-700 px-3 py-1">Factura con IVA</li>
+          <li class="rounded-full border border-slate-700 px-3 py-1">Bizum y tarjeta</li>
+          <li class="rounded-full border border-slate-700 px-3 py-1">Garantía por escrito</li>
+          <li class="rounded-full border border-slate-700 px-3 py-1">Base en Getafe</li>
         </ul>
       </div>
     </section>
@@ -242,7 +242,7 @@ const fotoPath = profesional?.fotoPath;
       href={siteConfig.telefonoHref}
       class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
     >
-      📞 {siteConfig.telefono}
+      {siteConfig.telefono}
     </a>
     <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="text-sm text-emerald-400 hover:underline">
       WhatsApp

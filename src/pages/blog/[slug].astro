@@ -39,7 +39,7 @@ const articleSchema = {
   {!noindex && <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />}
   <article class="mx-auto max-w-3xl">
     <header class="mb-10 space-y-4">
-      <div class="text-xs font-medium uppercase tracking-wider text-slate-500">
+      <div class="text-sm text-slate-500">
         <p>
           Publicado:{' '}
           <time datetime={data.pubDate.toISOString()}>
@@ -70,7 +70,7 @@ const articleSchema = {
         {data.description}
       </p>
       {data.image && (
-        <figure class="mt-6 overflow-hidden rounded-2xl border border-slate-800">
+        <figure class="mt-6">
           <img
             src={data.image}
             alt={`Imagen destacada del artículo: ${data.title}`}

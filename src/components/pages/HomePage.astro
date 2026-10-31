@@ -71,7 +71,7 @@ const ratingSub =
         >
           {copy.ctaCall} · {siteConfig.telefono}
         </a>
-        <p class="text-xs text-slate-300">
+        <p class="text-sm text-slate-300">
           {copy.ctaSub}
         </p>
       </div>
@@ -85,7 +85,7 @@ const ratingSub =
       <h2 class="text-base font-semibold tracking-tight">
         {copy.areasTitle}
       </h2>
-      <p class="text-xs text-slate-400" set:html={copy.areasIntroHtml} />
+      <p class="text-sm text-slate-400" set:html={copy.areasIntroHtml} />
       <ul class="grid gap-2 text-sm">
         {barriosDestacados.map((entry) => {
           const esBase = entry.slug === siteConfig.baseBarrioSlug;
@@ -97,7 +97,7 @@ const ratingSub =
               class="flex min-h-11 items-center justify-between py-2 text-slate-100 hover:underline"
             >
               <span>{esBase ? 'Cerrajero urgente Getafe' : entry.data.nombre}</span>
-              <span class="text-xs text-slate-400">{esBase ? 'Base · 10-20 min' : copy.barrioLinkSuffix}</span>
+              <span class="text-sm text-slate-400">{esBase ? 'Base · 10-20 min' : copy.barrioLinkSuffix}</span>
             </a>
           </li>
           );
@@ -140,7 +140,7 @@ const ratingSub =
         {copy.reviews.title}
       </h2>
       {copy.reviews.noteHtml ? (
-        <p class="text-xs text-slate-400">{copy.reviews.noteHtml}</p>
+        <p class="text-sm text-slate-400">{copy.reviews.noteHtml}</p>
       ) : null}
       <div class="flex flex-wrap items-center gap-3 text-sm">
         <span class="text-slate-200" aria-label={ratingAria}>{reseñas.valoracionMedia} de 5</span>
@@ -168,7 +168,7 @@ const ratingSub =
                 <span class="text-slate-300">{r.valoracion} de 5</span>
               </div>
               <p class="text-slate-300 leading-relaxed">"{r.texto}"</p>
-              <time datetime={r.fecha} class="mt-2 block text-xs text-slate-400">
+              <time datetime={r.fecha} class="mt-2 block text-sm text-slate-400">
                 {new Date(r.fecha).toLocaleDateString(copy.dateLocale, {
                   day: 'numeric',
                   month: 'long',
@@ -228,7 +228,7 @@ const ratingSub =
       <h2 class="text-lg font-semibold tracking-tight">
         {copy.faqSectionTitle}
       </h2>
-      <div class="space-y-2 text-xs text-slate-300 sm:text-sm">
+      <div class="space-y-2 text-sm text-slate-300">
         {copy.faqInline.map((item) => (
           <p>
             <strong>{item.q}</strong> <span set:html={item.aHtml} />
@@ -241,7 +241,7 @@ const ratingSub =
       <h2 class="text-lg font-semibold tracking-tight">
         {servicesTitle}
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm" set:html={copy.servicesSection.introHtml} />
+      <p class="text-sm text-slate-400" set:html={copy.servicesSection.introHtml} />
       <ul class="space-y-4">
         {featuredServicios.map((servicio) => (
           <li class="text-sm">
@@ -250,15 +250,15 @@ const ratingSub =
           </li>
         ))}
       </ul>
-      <p class="text-xs text-slate-400" set:html={copy.servicesSection.footerHtml} />
+      <p class="text-sm text-slate-400" set:html={copy.servicesSection.footerHtml} />
     </section>
 
     <section class="mt-8 space-y-3">
       <h2 class="text-lg font-semibold tracking-tight">
         {copy.zonesSection.title}
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm" set:html={copy.zonesSection.bodyHtml} />
-      <p class="text-xs text-slate-400">
+      <p class="text-sm text-slate-400" set:html={copy.zonesSection.bodyHtml} />
+      <p class="text-sm text-slate-400">
         <a
           href={copy.zonesSection.linkHref}
           {...(copy.locale === 'en' ? { hreflang: 'es' } : {})}

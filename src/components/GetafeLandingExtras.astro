@@ -44,7 +44,7 @@ const fotoPath = profesional?.fotoPath;
     >
       WhatsApp
     </a>
-    <p class="text-xs text-slate-400">En Getafe · Responde {profesional?.nombre} · 24h</p>
+    <p class="text-sm text-slate-400">En Getafe · Responde {profesional?.nombre} · 24h</p>
   </div>
 
   {profesional && (
@@ -54,14 +54,14 @@ const fotoPath = profesional?.fotoPath;
           <img
             src={fotoPath}
             alt={`${profesional.nombre}, cerrajero urgente en Getafe`}
-            class="aspect-square w-full rounded-2xl border border-slate-700 object-cover object-top"
+            class="aspect-square w-full object-cover object-top"
             width="800"
             height="800"
             loading="lazy"
           />
         ) : (
           <div
-            class="flex aspect-square w-full flex-col items-center justify-center rounded-2xl border border-dashed border-slate-600 bg-slate-900/80 px-3 text-center text-xs text-slate-500"
+            class="flex aspect-square w-full flex-col items-center justify-center px-3 text-center text-sm text-slate-500"
             aria-hidden="true"
           >
             <span class="font-display text-3xl font-semibold text-slate-500">{profesional.nombre.charAt(0)}</span>
@@ -145,7 +145,7 @@ const fotoPath = profesional?.fotoPath;
         <li>{barrio}</li>
       ))}
     </ul>
-    <p class="text-xs text-slate-500">
+    <p class="text-sm text-slate-500">
       Códigos postales: {getafeCodigosPostales.join(', ')}.
     </p>
   </section>
@@ -154,9 +154,9 @@ const fotoPath = profesional?.fotoPath;
     <h2 class="text-xl font-bold tracking-tight sm:text-2xl">
       Por qué llamarnos si estás en Getafe
     </h2>
-    <div class="overflow-x-auto rounded-xl border border-slate-800">
+    <div class="overflow-x-auto">
       <table class="w-full min-w-[320px] text-left text-sm">
-        <thead class="border-b border-slate-800 bg-slate-900/80 text-xs uppercase tracking-wider text-slate-400">
+        <thead class="border-b border-slate-800 text-sm text-slate-400">
           <tr>
             <th class="px-4 py-3 font-semibold">Criterio</th>
             <th class="px-4 py-3 font-semibold text-emerald-400">{siteConfig.nombreComercial}</th>

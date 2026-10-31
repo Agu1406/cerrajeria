@@ -128,13 +128,13 @@ export const homeCopyEn: HomeCopy = {
     introHtml:
       'These are some of the jobs we carry out most often. Full service descriptions are on our Spanish site; we provide the same work for English-speaking customers.',
     footerHtml:
-      '<a href="/servicios" hreflang="es" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">Full list of locksmith services (Spanish) →</a>',
+      '<a href="/servicios" hreflang="es" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">Full list of locksmith services (Spanish)</a>',
   },
   zonesSection: {
     title: 'Areas in Madrid where we work',
     bodyHtml:
       'We cover the <strong>21 districts of Madrid</strong> (Centro, Salamanca, Chamberí, Retiro, Chamartín, Tetuán, Latina, Carabanchel, Usera, Vallecas, Moratalaz, Ciudad Lineal, Hortaleza, Villaverde, Vicálvaro, San Blas-Canillejas, Barajas, and more) and <strong>municipalities</strong> such as Getafe, Leganés, Móstoles, Fuenlabrada, Alcalá de Henares, Las Rozas and Pinto. Each area has a dedicated page with local information.',
-    linkText: 'Browse all areas (Spanish) →',
+    linkText: 'Browse all areas (Spanish)',
     linkHref: '/cerrajero-urgente-24h',
   },
   serviceHighlightOverrides: {

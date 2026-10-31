@@ -54,9 +54,6 @@ const noindex = !isSurBarrioIndexable(entry.slug);
   <article class="space-y-8">
     <header class="space-y-4">
       <Breadcrumb items={breadcrumb} />
-      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-        Servicio a domicilio · {data.nombre}
-      </p>
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
         Duplicado de llaves de coche en {data.nombre}
       </h1>
@@ -68,13 +65,13 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </p>
       <div class="flex flex-wrap items-center gap-3 pt-2">
         <CtaLlamar />
-        <p class="text-xs text-slate-400">
+        <p class="text-sm text-slate-400">
           Presupuesto sin compromiso en {data.nombre}.
         </p>
       </div>
     </header>
 
-    <section class="rounded-2xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6 space-y-4">
+    <section class="space-y-4">
       <h2 class="text-lg font-semibold tracking-tight">
         ¿Cuándo necesitas una copia de llave de coche en {data.nombre}?
       </h2>
@@ -123,31 +120,31 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       <dl class="space-y-3 text-slate-300">
         <div>
           <dt class="font-semibold text-slate-200">¿Hacéis llaves de coche con chip?</dt>
-          <dd class="mt-1 text-xs sm:text-sm text-slate-400">
+          <dd class="mt-1 text-sm text-slate-400">
             Sí, para la mayoría de marcas y modelos. En la llamada te indicamos si podemos atender tu vehículo o si conviene acudir a un servicio oficial.
           </dd>
         </div>
         <div>
           <dt class="font-semibold text-slate-200">¿Atienden en {data.nombre}?</dt>
-          <dd class="mt-1 text-xs sm:text-sm text-slate-400">
+          <dd class="mt-1 text-sm text-slate-400">
             Sí, atendemos en {data.nombre} y alrededores. Nos desplazamos a domicilio con el equipo; si tienes dudas sobre disponibilidad, llámanos y te lo confirmamos.
           </dd>
         </div>
         <div>
           <dt class="font-semibold text-slate-200">¿Cuánto tarda el trabajo?</dt>
-          <dd class="mt-1 text-xs sm:text-sm text-slate-400">
+          <dd class="mt-1 text-sm text-slate-400">
             Depende del tipo de llave. Una copia mecánica puede hacerse en el acto; las llaves con chip o mandos a distancia pueden requerir más tiempo. Te lo concretamos al dar el presupuesto.
           </dd>
         </div>
       </dl>
       {entry.data.actualizado && (
-        <p class="mt-3 text-[11px] text-slate-500">
+        <p class="mt-3 text-sm text-slate-500">
           Contenido revisado: <time datetime={entry.data.actualizado.toISOString()}>{entry.data.actualizado.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
         </p>
       )}
     </section>
 
-    <section class="rounded-xl border border-slate-800 bg-slate-900/40 p-4 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight mb-2">
         Otros servicios de cerrajería
       </h2>
@@ -175,13 +172,13 @@ const noindex = !isSurBarrioIndexable(entry.slug);
             </li>
           ))}
         </ul>
-        <p class="text-xs text-slate-400">
-          <a href={basePath} class="text-emerald-400 hover:underline">Ver duplicado de llaves de coche en Madrid →</a>
+        <p class="text-sm text-slate-400">
+          <a href={basePath} class="text-emerald-400 hover:underline">Ver duplicado de llaves de coche en Madrid</a>
         </p>
       </section>
     )}
 
-    <div class="flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-4">
+    <div class="flex flex-wrap items-center gap-3">
       <p class="text-sm text-slate-300">
         ¿Necesitas presupuesto en {data.nombre}? Llámanos.
       </p>

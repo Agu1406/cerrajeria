@@ -28,7 +28,7 @@ import { derechosOpciones } from '../data/legal';
         type="email"
         required
         autocomplete="email"
-        class="w-full rounded-sm border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
       />
     </div>
     <div class="space-y-1">
@@ -40,7 +40,7 @@ import { derechosOpciones } from '../data/legal';
         name="nombre"
         type="text"
         autocomplete="name"
-        class="w-full rounded-sm border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
       />
     </div>
     <div class="space-y-1">
@@ -49,7 +49,7 @@ import { derechosOpciones } from '../data/legal';
         id="derechos-tipo"
         name="derecho"
         required
-        class="w-full rounded-sm border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
       >
         {derechosOpciones.map((opcion) => (
           <option value={opcion.value}>{opcion.label}</option>
@@ -63,7 +63,7 @@ import { derechosOpciones } from '../data/legal';
         name="mensaje"
         rows="4"
         required
-        class="w-full resize-none rounded-sm border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full resize-none rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
       />
     </div>
     <div class="contact-form-feedback hidden" aria-live="polite"></div>
@@ -73,7 +73,7 @@ import { derechosOpciones } from '../data/legal';
         type="checkbox"
         required
         value="1"
-        class="mt-1 h-4 w-4 shrink-0 rounded-sm border-slate-600 bg-slate-950 text-emerald-500"
+        class="mt-1 h-4 w-4 shrink-0 rounded-[2px] border-slate-600 bg-slate-950 text-emerald-500"
       />
       <span>
         He leído y acepto la{' '}

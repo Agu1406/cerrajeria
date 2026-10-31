@@ -26,30 +26,30 @@ const description = `Consejos de cerrajería, seguridad y mantenimiento de cerra
         <li>
           <a
             href={`/blog/${post.slug}`}
-            class="group block rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-slate-700 hover:bg-slate-900/60 sm:p-8"
+            class="block"
           >
             <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6">
               {post.data.image ? (
                 <img
                   src={post.data.image}
                   alt={`Imagen destacada: ${post.data.title}`}
-                  class="h-44 w-full shrink-0 rounded-xl object-cover sm:h-36 sm:w-56"
+                  class="h-44 w-full shrink-0 object-cover sm:h-36 sm:w-56"
                   width="224"
                   height="144"
                   loading="lazy"
                 />
               ) : (
-                <div class="h-44 w-full shrink-0 rounded-xl bg-slate-800/80 sm:h-36 sm:w-56" aria-hidden="true" />
+                <div class="h-44 w-full shrink-0 bg-slate-800/80 sm:h-36 sm:w-56" aria-hidden="true" />
               )}
               <div class="min-w-0 flex-1 space-y-2">
-                <time datetime={post.data.pubDate.toISOString()} class="block text-xs font-medium uppercase tracking-wider text-slate-500">
+                <time datetime={post.data.pubDate.toISOString()} class="block text-sm text-slate-500">
                   {post.data.pubDate.toLocaleDateString('es-ES', {
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric',
                   })}
                 </time>
-                <h2 class="text-xl font-semibold text-slate-100 leading-snug group-hover:text-emerald-300 sm:text-[1.25rem]">
+                <h2 class="text-xl font-semibold text-slate-100 leading-snug sm:text-[1.25rem]">
                   {post.data.title}
                 </h2>
                 <p class="text-sm text-slate-400 leading-relaxed line-clamp-3">

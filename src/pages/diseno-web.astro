@@ -17,7 +17,7 @@ const dev = siteConfig.desarrollador;
       mejorar tu página web, puedes contactar al responsable del diseño y desarrollo.
     </p>
     {dev?.nombre ? (
-      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-5 space-y-3">
+      <div class="space-y-3">
         <p class="font-semibold text-slate-200">
           {dev.url ? (
             <a href={dev.url} class="text-emerald-400 hover:underline" target="_blank" rel="noopener noreferrer">
@@ -27,7 +27,7 @@ const dev = siteConfig.desarrollador;
             dev.nombre
           )}
         </p>
-        {dev.texto && <p class="text-xs text-slate-400">{dev.texto}</p>}
+        {dev.texto && <p class="text-sm text-slate-400">{dev.texto}</p>}
         <ul class="space-y-1.5 text-sm text-slate-300">
           {dev.url && (
             <li>
@@ -51,7 +51,7 @@ const dev = siteConfig.desarrollador;
             </li>
           )}
         </ul>
-        <p class="pt-1 text-xs text-slate-500">
+        <p class="pt-1 text-sm text-slate-500">
           Si quieres una web como esta o necesitas diseño o desarrollo a medida, contacta sin compromiso.
         </p>
       </div>

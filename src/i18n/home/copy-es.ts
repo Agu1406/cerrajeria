@@ -131,7 +131,7 @@ export const homeCopyEs: HomeCopy = {
     title: 'Zonas de Madrid donde trabajamos',
     bodyHtml:
       'Nuestra base está en <strong>Getafe</strong> (<a href="/cerrajero-urgente-24h/getafe" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">cerrajero urgente Getafe 24h</a>). También atendemos Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés y los <strong>21 distritos de Madrid capital</strong>. Cada zona tiene su página con precio orientativo y teléfono de urgencias.',
-    linkText: 'Ver listado completo de barrios y distritos →',
+    linkText: 'Ver listado completo de barrios y distritos',
     linkHref: '/cerrajero-urgente-24h',
   },
 };

@@ -26,7 +26,7 @@ const categorias = [
       Estos son algunos de los servicios que ofrecemos a diario. Si tu problema no aparece en la lista, lo más
       probable es que también podamos ayudarte: llámanos y cuéntanos qué ha pasado.
     </p>
-    <p class="text-xs text-slate-400 sm:text-sm">
+    <p class="text-sm text-slate-400">
       Trabajamos en toda la Comunidad de Madrid y podemos desplazarnos rápidamente a barrios como Getafe, Las Rozas,
       Pinto o Leganés. También atendemos otros distritos de Madrid ciudad; puedes consultar las zonas actuales en la
       página de{' '}
@@ -53,23 +53,23 @@ const categorias = [
                     : `/servicios/${servicio.slug}`;
               const textoEnlace =
                 servicio.slug === 'duplicado-llaves-coche' || servicio.slug === 'puertas-antiokupas'
-                  ? 'Ver zonas donde está disponible →'
-                  : 'Más información →';
+                  ? 'Ver zonas donde está disponible'
+                  : 'Más información';
               return (
-                <li class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-sm">
-                  <a href={href} class="block hover:border-slate-700">
+                <li class="text-sm">
+                  <a href={href} class="block">
                     <h3 class="font-semibold text-emerald-400 hover:underline">{servicio.nombre}</h3>
-                    <p class="mt-1 text-xs text-slate-400">
+                    <p class="mt-1 text-sm text-slate-400">
                       {servicio.descripcionCorta}
                     </p>
-                    <p class="mt-2 text-xs text-emerald-400/80">{textoEnlace}</p>
+                    <p class="mt-2 text-sm text-emerald-400">{textoEnlace}</p>
                   </a>
                 </li>
               );
             })}
         </ul>
         {categoria.id === 'aperturas' && (
-          <div class="mt-2 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
+          <div class="mt-2">
             <picture>
               <source srcset="/images/apertura-puerta-blindada.webp" type="image/webp" />
               <img
@@ -82,7 +82,7 @@ const categorias = [
           </div>
         )}
         {categoria.id === 'ventanas' && (
-          <div class="mt-2 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
+          <div class="mt-2">
             <picture>
               <source srcset="/images/arreglo-ventana-oscilobatiente.webp" type="image/webp" />
               <img

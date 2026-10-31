@@ -3,7 +3,7 @@ import Layout from '../components/Layout.astro';
 import { siteConfig } from '../config/site';
 
 const title = `Política de cookies | ${siteConfig.nombreComercial}`;
-const description = `Información sobre el uso de cookies en la web de ${siteConfig.nombreComercial}.`;
+const description = `Información sobre el uso de cookies técnicas y de análisis en la web de ${siteConfig.nombreComercial}.`;
 ---
 
 <Layout {title} {description}>
@@ -12,9 +12,9 @@ const description = `Información sobre el uso de cookies en la web de ${siteCon
       <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
         Política de cookies
       </h1>
-      <p class="text-xs text-slate-400 sm:text-sm">
-        En esta página te explicamos qué son las cookies, qué tipos existen y cómo las utilizamos (o no) en este sitio
-        web, de acuerdo con la normativa aplicable.
+      <p class="text-sm text-slate-300">
+        En esta página te explicamos qué cookies usamos, para qué y cómo puedes aceptarlas o rechazarlas,
+        de acuerdo con la normativa aplicable.
       </p>
     </header>
 
@@ -22,7 +22,7 @@ const description = `Información sobre el uso de cookies en la web de ${siteCon
       <h2 class="text-base font-semibold tracking-tight">
         1. ¿Qué son las cookies?
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
         Las cookies son pequeños archivos de texto que se descargan en tu dispositivo (ordenador, teléfono móvil,
         tablet, etc.) cuando accedes a determinadas páginas web. Permiten, entre otras cosas, almacenar y recuperar
         información sobre los hábitos de navegación de un usuario o de su equipo.
@@ -31,30 +31,50 @@ const description = `Información sobre el uso de cookies en la web de ${siteCon
 
     <section class="space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        2. ¿Qué tipos de cookies existen?
+        2. Cookies que utiliza esta web
       </h2>
-      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
-        <li><span class="font-semibold">Según la entidad que las gestione</span>: propias (del editor) o de terceros.</li>
-        <li><span class="font-semibold">Según su finalidad</span>: técnicas, de personalización, de análisis, publicitarias,
-          de publicidad comportamental, etc.</li>
-        <li><span class="font-semibold">Según el plazo de tiempo que permanecen activadas</span>: de sesión (desaparecen al
-          cerrar el navegador) o persistentes.</li>
+      <p class="text-sm text-slate-300">
+        Distinguimos entre cookies técnicas (siempre activas, necesarias para el funcionamiento) y cookies de
+        análisis (solo si das tu consentimiento en el banner).
+      </p>
+      <ul class="ml-4 list-disc space-y-2 text-sm text-slate-300">
+        <li>
+          <span class="font-semibold">Cookies técnicas</span>: necesarias para la navegación, seguridad y recordar
+          tu elección de consentimiento (almacenada en <code class="text-slate-200">localStorage</code> como
+          <code class="text-slate-200">cookie-consent</code>).
+        </li>
+        <li>
+          <span class="font-semibold">Cookies / tecnologías de análisis</span> (solo con aceptación):
+          <ul class="ml-4 mt-1 list-disc space-y-1">
+            <li>
+              <span class="font-semibold">Google Tag Manager</span> (Google Ireland / Google LLC): permite gestionar
+              etiquetas de medición. Puede cargar Google Analytics u otras etiquetas que configures en el contenedor.
+            </li>
+            <li>
+              <span class="font-semibold">Vercel Web Analytics</span> (Vercel Inc.): estadísticas agregadas de visitas
+              (páginas vistas, dispositivo, origen) en el hosting de la web.
+            </li>
+          </ul>
+        </li>
       </ul>
+      <p class="text-sm text-slate-300">
+        No utilizamos cookies publicitarias ni de publicidad comportamental. Si en el futuro se incorporan, se
+        actualizará esta política y el banner de consentimiento.
+      </p>
     </section>
 
     <section class="space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        3. Cookies que utiliza esta web
+        3. Consentimiento
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
-        En el momento actual, este sitio web solo utiliza <span class="font-semibold">cookies técnicas</span>
-        estrictamente necesarias para permitir la navegación, el funcionamiento básico del sitio y la seguridad
-        (por ejemplo, las propias de la plataforma de alojamiento o del framework utilizado).
+      <p class="text-sm text-slate-300">
+        Al entrar en la web te mostramos un aviso con las opciones <strong class="text-slate-100">Aceptar</strong> y
+        <strong class="text-slate-100">Rechazar</strong>. Las herramientas de análisis solo se cargan si eliges
+        Aceptar. Si rechazas, la web sigue funcionando con las cookies técnicas.
       </p>
-      <p class="text-xs text-slate-400 sm:text-sm">
-        No utilizamos cookies de análisis (estadísticas), publicitarias ni de seguimiento de usuarios con fines de
-        marketing. En caso de que en el futuro se incorporen este tipo de cookies, se actualizará la presente política
-        y, cuando sea necesario, se mostrará un banner de consentimiento previo.
+      <p class="text-sm text-slate-300">
+        Para cambiar tu elección, borra el almacenamiento local del sitio en tu navegador o limpia los datos de
+        {siteConfig.baseUrl.replace(/^https?:\/\//, '')}; al volver a entrar se mostrará de nuevo el aviso.
       </p>
     </section>
 
@@ -62,12 +82,10 @@ const description = `Información sobre el uso de cookies en la web de ${siteCon
       <h2 class="text-base font-semibold tracking-tight">
         4. ¿Cómo modificar la configuración de cookies?
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
-        Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo mediante la configuración de las
-        opciones de tu navegador. Los pasos pueden variar según el navegador que utilices; a continuación enlaces
-        a la ayuda oficial de los más utilizados:
+      <p class="text-sm text-slate-300">
+        También puedes permitir, bloquear o eliminar cookies mediante la configuración de tu navegador:
       </p>
-      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
+      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
         <li>
           <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">
             Chrome
@@ -89,22 +107,17 @@ const description = `Información sobre el uso de cookies en la web de ${siteCon
           </a>
         </li>
       </ul>
-      <p class="text-xs text-slate-400 sm:text-sm">
-        Ten en cuenta que, si bloqueas o borras las cookies técnicas, es posible que algunas funciones del sitio web no
-        estén disponibles o no funcionen correctamente.
-      </p>
     </section>
 
     <section class="space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        5. Actualizaciones de la política de cookies
+        5. Actualizaciones
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
-        Esta política de cookies puede modificarse en función de nuevas exigencias legislativas o con la finalidad de
-        adaptar dicha política a las instrucciones dictadas por las autoridades de control en materia de protección de
-        datos. Te recomendamos revisar esta política periódicamente.
+      <p class="text-sm text-slate-300">
+        Esta política puede modificarse por cambios legales o técnicos. Te recomendamos revisarla periódicamente.
+        Más detalle sobre el tratamiento de datos personales en la{' '}
+        <a href="/politica-privacidad" class="text-emerald-400 hover:underline">política de privacidad</a>.
       </p>
     </section>
   </section>
 </Layout>
-

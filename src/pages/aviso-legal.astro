@@ -12,7 +12,7 @@ const description = `Aviso legal e información del prestador de servicios de ${
       <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
         Aviso legal
       </h1>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
         Esta página contiene la información general que el artículo 10 de la Ley 34/2002, de 11 de julio, de
         Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE) exige al prestador de
         servicios de la sociedad de la información.
@@ -23,10 +23,10 @@ const description = `Aviso legal e información del prestador de servicios de ${
       <h2 class="text-base font-semibold tracking-tight">
         1. Datos identificativos
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
         A efectos de lo dispuesto en la LSSI-CE, se informa de que el titular de este sitio web es:
       </p>
-      <ul class="ml-4 list-disc space-y-1 text-xs sm:text-sm">
+      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
         <li><span class="font-semibold">Nombre comercial:</span> {siteConfig.nombreComercial}</li>
         <li><span class="font-semibold">Actividad:</span> servicios de cerrajería 24 horas en {siteConfig.ciudadPrincipal} y alrededores.</li>
         <li><span class="font-semibold">Teléfono de contacto:</span> {siteConfig.telefono}</li>
@@ -34,20 +34,44 @@ const description = `Aviso legal e información del prestador de servicios de ${
         <li><span class="font-semibold">Domicilio:</span> {siteConfig.direccion ? `${siteConfig.direccion.calle}, ${siteConfig.direccion.codigoPostal} ${siteConfig.direccion.localidad} (${siteConfig.ciudadPrincipal})` : '—'}</li>
         <li><span class="font-semibold">NIF/CIF:</span> {siteConfig.nif}</li>
       </ul>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
         A disposición del consumidor existe hoja de reclamaciones. Puedes solicitarla por correo electrónico a
         {siteConfig.email} o por escrito a la dirección indicada.
-      </p>
-      <p class="text-[11px] text-slate-500">
-        Sustituye los campos entre corchetes por tus datos fiscales reales antes de poner esta página en producción.
       </p>
     </section>
 
     <section class="space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        2. Condiciones de uso
+        2. Precio, garantía y reclamaciones
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
+        Antes de iniciar un trabajo te explicamos el precio orientativo (por teléfono o en el lugar) y solo actuamos
+        si estás de acuerdo. Si no aceptas el presupuesto, <strong class="text-slate-100">no cobramos</strong> por
+        esa visita de valoración habitual del servicio de urgencia descrito.
+      </p>
+      <p class="text-sm text-slate-300">
+        Los importes orientativos publicados en la web (por ejemplo, apertura desde {siteConfig.precioAperturaDesde}{' '}
+        IVA incluido) son informativos; el precio definitivo se confirma antes de empezar. Si el trabajo requiere
+        forzar o materiales adicionales, te lo comunicamos previamente.
+      </p>
+      <p class="text-sm text-slate-300">
+        En los trabajos realizados entregamos <strong class="text-slate-100">factura con IVA</strong> y{' '}
+        <strong class="text-slate-100">garantía por escrito</strong> sobre la mano de obra y el material instalado
+        por nosotros, en los términos que consten en el documento entregado al cliente. La garantía no cubre
+        daños posteriores ajenos a nuestra intervención (uso indebido, intentos de forzamiento por terceros, etc.).
+      </p>
+      <p class="text-sm text-slate-300">
+        Para cancelar un aviso pendiente, reclamar o ejercer derechos relacionados con un servicio, contacta en
+        el menor plazo posible al teléfono {siteConfig.telefono} o por correo a{' '}
+        <a href={`mailto:${siteConfig.email}`} class="text-emerald-400 hover:underline">{siteConfig.email}</a>.
+      </p>
+    </section>
+
+    <section class="space-y-2 text-sm text-slate-300">
+      <h2 class="text-base font-semibold tracking-tight">
+        3. Condiciones de uso
+      </h2>
+      <p class="text-sm text-slate-300">
         El acceso y/o uso de este sitio web atribuye la condición de usuario, que acepta, desde dicho acceso y/o uso,
         las presentes condiciones de uso. El usuario se compromete a hacer un uso adecuado de los contenidos y
         servicios que {siteConfig.nombreComercial} ofrece a través de la web y a no emplearlos para:
@@ -65,15 +89,15 @@ const description = `Aviso legal e información del prestador de servicios de ${
 
     <section class="space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        3. Propiedad intelectual e industrial
+        4. Propiedad intelectual e industrial
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
         Todos los contenidos del sitio web, entendiendo por estos a título meramente enunciativo los textos, imágenes,
-        fotografías, logotipos, iconos, combinaciones de colores, estructura, diseño, código fuente, así como el
+        fotografías, logotipos, iconos, combinaciones de colores, tipografías, estructura, diseño, código fuente, así como el
         software, y demás contenidos audiovisuales o sonoros, son propiedad de {siteConfig.nombreComercial} o de
-        terceros que han autorizado su uso.
+        terceros que han autorizado su uso (incluidas tipografías con licencia de uso web).
       </p>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
         Queda prohibida la reproducción, distribución, comunicación pública, incluida su modalidad de puesta a
         disposición, y la transformación de dichos contenidos sin la autorización previa y expresa de su legítimo
         titular, salvo en los casos legalmente permitidos.
@@ -82,9 +106,9 @@ const description = `Aviso legal e información del prestador de servicios de ${
 
     <section class="space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        4. Enlaces
+        5. Enlaces
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
         En el caso de que en el sitio web se dispusiesen enlaces o hipervínculos hacia otros sitios de Internet,
         {siteConfig.nombreComercial} no ejercerá ningún tipo de control sobre dichos sitios y contenidos. En ningún
         caso {siteConfig.nombreComercial} asumirá responsabilidad alguna por los contenidos de algún enlace
@@ -96,9 +120,9 @@ const description = `Aviso legal e información del prestador de servicios de ${
 
     <section class="space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        5. Limitación de responsabilidad
+        6. Limitación de responsabilidad
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
         {siteConfig.nombreComercial} no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier
         naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de
         disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar
@@ -108,9 +132,9 @@ const description = `Aviso legal e información del prestador de servicios de ${
 
     <section class="space-y-2 text-sm text-slate-300">
       <h2 class="text-base font-semibold tracking-tight">
-        6. Ley aplicable y jurisdicción
+        7. Ley aplicable y jurisdicción
       </h2>
-      <p class="text-xs text-slate-400 sm:text-sm">
+      <p class="text-sm text-slate-300">
         Con carácter general, las relaciones entre {siteConfig.nombreComercial} y los usuarios de los servicios
         telemáticos presentes en este sitio web están sometidas a la legislación y jurisdicción españolas.
       </p>

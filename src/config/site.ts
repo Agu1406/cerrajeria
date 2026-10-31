@@ -82,35 +82,11 @@ export const siteConfig = {
     /** Reseñas que quieras mostrar (cópialas de tu perfil de Google). Fecha en formato YYYY-MM-DD. */
     reseñas: [
       {
-        autor: 'Toño',
-        texto: 'Reseña de 5 estrellas en Google.',
-        fecha: '2026-03-24',
-        valoracion: 5,
-      },
-      {
         autor: 'Patricia Turcios Lovos',
         texto:
           'Atención excelente, servicio de calidad y precios muy razonables. Solucionaron mi problema en un pispas.',
         fecha: '2026-03-23',
         valoracion: 4,
-      },
-      {
-        autor: 'Carlos Alonso',
-        texto: 'Reseña de 5 estrellas en Google.',
-        fecha: '2026-03-19',
-        valoracion: 5,
-      },
-      {
-        autor: 'Adribf35',
-        texto: 'Reseña de 5 estrellas en Google.',
-        fecha: '2026-03-19',
-        valoracion: 5,
-      },
-      {
-        autor: 'Agustín Antonio Márquez Piña',
-        texto: 'Reseña de 5 estrellas en Google.',
-        fecha: '2026-03-16',
-        valoracion: 5,
       },
       {
         autor: 'Bárbara F',

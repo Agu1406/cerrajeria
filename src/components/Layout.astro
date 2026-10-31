@@ -3,7 +3,6 @@ import '../styles/global.css';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import CallButton from './CallButton.astro';
-import Analytics from '@vercel/analytics/astro';
 import { siteConfig } from '../config/site';
 import type { Locale } from '../i18n/config';
 import { DEFAULT_LOCALE } from '../i18n/config';
@@ -127,21 +126,12 @@ const whatsappHref = whatsappPrefix
   : siteConfig.whatsappUrl;
 
 const cookiePolicyPath = '/politica-cookies';
+const gtmId = siteConfig.googleTagManagerId || '';
+const gaId = !siteConfig.googleTagManagerId ? siteConfig.googleAnalyticsId || '' : '';
 ---
 
 <html lang={chrome.htmlLang} data-theme="dark">
   <head>
-    <!-- Google Tag Manager -->
-    {siteConfig.googleTagManagerId && (
-      <script is:inline define:vars={{ gtmId: siteConfig.googleTagManagerId }}>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer',gtmId);
-      </script>
-    )}
-    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -169,14 +159,6 @@ const cookiePolicyPath = '/politica-cookies';
       </>
     )}
     <title>{title}</title>
-    {!siteConfig.googleTagManagerId && siteConfig.googleAnalyticsId && (
-      <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAnalyticsId}`} />
-        <script is:inline define:vars={{ gaId: siteConfig.googleAnalyticsId }}>
-          window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config',gaId,{anonymize_ip:true});
-        </script>
-      </>
-    )}
     {siteConfig.isProductionSeo && (
       <script type="application/ld+json" set:html={JSON.stringify(schemaLocalBusiness)} />
     )}
@@ -203,27 +185,18 @@ const cookiePolicyPath = '/politica-cookies';
     <script is:inline>
       (function() {
         try {
-          document.documentElement.dataset.cookieConsent = localStorage.getItem('cookie-consent') ? 'given' : 'pending';
+          var c = localStorage.getItem('cookie-consent');
+          document.documentElement.dataset.cookieConsent =
+            c === 'accepted' || c === 'rejected' ? 'given' : 'pending';
+          document.documentElement.dataset.cookieChoice = c || '';
         } catch (e) {
           document.documentElement.dataset.cookieConsent = 'pending';
+          document.documentElement.dataset.cookieChoice = '';
         }
       })();
     </script>
   </head>
   <body class="min-h-screen">
-    <!-- Google Tag Manager (noscript) -->
-    {siteConfig.googleTagManagerId && (
-      <noscript>
-        <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${siteConfig.googleTagManagerId}`}
-          height="0"
-          width="0"
-          style="display:none;visibility:hidden"
-          title="Google Tag Manager"
-        />
-      </noscript>
-    )}
-    <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link">{chrome.skipLink}</a>
     <Header whatsappHref={whatsappHref} locale={locale} />
     <main id="main-content" class="mx-auto max-w-5xl px-4 py-10 sm:py-14" tabindex="-1">
@@ -236,25 +209,103 @@ const cookiePolicyPath = '/politica-cookies';
         {chrome.cookieText}{' '}
         <a href={cookiePolicyPath} class="underline hover:no-underline">{chrome.cookieMore}</a>.
       </p>
-      <button type="button" id="cookie-banner-accept" class="cookie-banner-btn">
-        {chrome.cookieAccept}
-      </button>
+      <div class="cookie-banner-actions">
+        <button type="button" id="cookie-banner-reject" class="cookie-banner-btn cookie-banner-btn--secondary">
+          {chrome.cookieReject}
+        </button>
+        <button type="button" id="cookie-banner-accept" class="cookie-banner-btn">
+          {chrome.cookieAccept}
+        </button>
+      </div>
     </div>
-    <script is:inline>
+    <script is:inline define:vars={{ gtmId, gaId }}>
       (function() {
+        var KEY = 'cookie-consent';
         var banner = document.getElementById('cookie-banner');
-        var btn = document.getElementById('cookie-banner-accept');
+        var acceptBtn = document.getElementById('cookie-banner-accept');
+        var rejectBtn = document.getElementById('cookie-banner-reject');
         var root = document.documentElement;
+
+        function getConsent() {
+          try { return localStorage.getItem(KEY); } catch (e) { return null; }
+        }
+
         function hideBanner() {
-          try { localStorage.setItem('cookie-consent', 'accepted'); } catch (e) {}
-          root.dataset.cookieConsent = 'given';
           if (banner) banner.classList.add('cookie-banner--hidden');
         }
-        if (btn) btn.addEventListener('click', hideBanner);
-        if (root.dataset.cookieConsent === 'given' && banner) banner.classList.add('cookie-banner--hidden');
+
+        function setConsent(value) {
+          try { localStorage.setItem(KEY, value); } catch (e) {}
+          root.dataset.cookieConsent = 'given';
+          root.dataset.cookieChoice = value;
+          hideBanner();
+          try {
+            window.dispatchEvent(new CustomEvent('cookie-consent-change', { detail: value }));
+          } catch (e) {}
+          if (value === 'accepted') loadAnalytics();
+        }
+
+        function loadGtm() {
+          if (!gtmId || window.__gtmLoaded) return;
+          window.__gtmLoaded = true;
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer',gtmId);
+        }
+
+        function loadGa() {
+          if (!gaId || window.__gaLoaded) return;
+          window.__gaLoaded = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', gaId, { anonymize_ip: true });
+        }
+
+        function loadAnalytics() {
+          loadGtm();
+          loadGa();
+          try {
+            window.dispatchEvent(new CustomEvent('cookie-consent-accepted'));
+          } catch (e) {}
+        }
+
+        if (acceptBtn) acceptBtn.addEventListener('click', function() { setConsent('accepted'); });
+        if (rejectBtn) rejectBtn.addEventListener('click', function() { setConsent('rejected'); });
+
+        var current = getConsent();
+        if (current === 'accepted' || current === 'rejected') {
+          hideBanner();
+          if (current === 'accepted') loadAnalytics();
+        }
       })();
     </script>
-    <Analytics />
+    <script>
+      import { inject } from '@vercel/analytics';
+
+      function injectIfAccepted() {
+        try {
+          if (localStorage.getItem('cookie-consent') === 'accepted') {
+            inject();
+          }
+        } catch {
+          /* ignore */
+        }
+      }
+
+      injectIfAccepted();
+      window.addEventListener('cookie-consent-accepted', () => inject());
+      window.addEventListener('cookie-consent-change', ((e: Event) => {
+        const detail = (e as CustomEvent<string>).detail;
+        if (detail === 'accepted') inject();
+      }) as EventListener);
+    </script>
   </body>
 </html>
-

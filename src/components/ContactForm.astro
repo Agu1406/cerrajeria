@@ -31,7 +31,8 @@ const labels = useEnglishForm
         ? `Enquiry about locksmith service in ${barrio}…`
         : 'Tell us what you need (not an emergency)…',
       privacy: 'privacy policy',
-      privacyLead: 'By submitting you accept our',
+      privacyCheck: 'I have read and accept the',
+      privacyRequired: 'You must accept the privacy policy to send the form.',
       submit: 'Send message',
       sending: 'Sending…',
       success: "Message sent. We'll reply as soon as we can.",
@@ -49,7 +50,8 @@ const labels = useEnglishForm
       message: 'Mensaje',
       messagePh: barrio ? `Consulta sobre cerrajería en ${barrio}...` : 'Cuéntanos qué necesitas (no urgente)...',
       privacy: 'política de privacidad',
-      privacyLead: 'Al enviar aceptas nuestra',
+      privacyCheck: 'He leído y acepto la',
+      privacyRequired: 'Debes aceptar la política de privacidad para enviar el formulario.',
       submit: 'Enviar consulta',
       sending: 'Enviando...',
       success: 'Mensaje enviado. Te responderemos lo antes posible.',
@@ -77,6 +79,7 @@ const labels = useEnglishForm
     data-msg-success={labels.success}
     data-msg-error={labels.error}
     data-msg-network={labels.network}
+    data-msg-privacy={labels.privacyRequired}
     data-label-submit={labels.submit}
   >
     <input type="hidden" name="formTitle" value={title} />
@@ -134,10 +137,20 @@ const labels = useEnglishForm
       />
     </div>
     <div class="contact-form-feedback hidden" aria-live="polite"></div>
-    <p class="text-[11px] text-slate-400">
-      {labels.privacyLead}{' '}
-      <a href="/politica-privacidad" hreflang="es" class="text-emerald-400 underline decoration-emerald-400/70 hover:decoration-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">{labels.privacy}</a>.
-    </p>
+    <label class="flex items-start gap-2 text-[11px] text-slate-300">
+      <input
+        id="contact-privacy"
+        name="privacyConsent"
+        type="checkbox"
+        required
+        value="1"
+        class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-600 bg-slate-950 text-emerald-500 focus:ring-emerald-400"
+      />
+      <span>
+        {labels.privacyCheck}{' '}
+        <a href="/politica-privacidad" hreflang="es" class="text-emerald-400 underline decoration-emerald-400/70 hover:decoration-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">{labels.privacy}</a>.
+      </span>
+    </label>
     <button
       type="submit"
       class="contact-form-submit w-full rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400 disabled:opacity-50"
@@ -158,6 +171,16 @@ const labels = useEnglishForm
 
       feedback.classList.add('hidden');
       feedback.classList.remove('text-red-400', 'text-emerald-400');
+
+      const privacy = form.querySelector('[name="privacyConsent"]') as HTMLInputElement | null;
+      if (privacy && !privacy.checked) {
+        feedback.textContent = form.dataset.msgPrivacy || 'Debes aceptar la política de privacidad.';
+        feedback.classList.add('text-red-400');
+        feedback.classList.remove('hidden');
+        privacy.focus();
+        return;
+      }
+
       submitBtn.disabled = true;
       submitBtn.textContent = form.dataset.msgSending || 'Enviando...';
 

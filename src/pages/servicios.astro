@@ -22,15 +22,15 @@ const categorias = [
     <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
       Servicios de cerrajería en {siteConfig.ciudadPrincipal}
     </h1>
-    <p class="text-sm text-slate-300 sm:text-base">
+    <p class="text-sm text-cream sm:text-base">
       Estos son algunos de los servicios que ofrecemos a diario. Si tu problema no aparece en la lista, lo más
       probable es que también podamos ayudarte: llámanos y cuéntanos qué ha pasado.
     </p>
-    <p class="text-sm text-slate-400">
+    <p class="text-sm text-cream-muted">
       Trabajamos en toda la Comunidad de Madrid y podemos desplazarnos rápidamente a barrios como Getafe, Las Rozas,
       Pinto o Leganés. También atendemos otros distritos de Madrid ciudad; puedes consultar las zonas actuales en la
       página de{' '}
-      <a href="/cerrajero-urgente-24h" class="text-emerald-400 hover:underline">
+      <a href="/cerrajero-urgente-24h" class="text-brass hover:underline">
         barrios
       </a>
       .
@@ -58,11 +58,11 @@ const categorias = [
               return (
                 <li class="text-sm">
                   <a href={href} class="block">
-                    <h3 class="font-semibold text-emerald-400 hover:underline">{servicio.nombre}</h3>
-                    <p class="mt-1 text-sm text-slate-400">
+                    <h3 class="font-semibold text-brass hover:underline">{servicio.nombre}</h3>
+                    <p class="mt-1 text-sm text-cream-muted">
                       {servicio.descripcionCorta}
                     </p>
-                    <p class="mt-2 text-sm text-emerald-400">{textoEnlace}</p>
+                    <p class="mt-2 text-sm text-brass">{textoEnlace}</p>
                   </a>
                 </li>
               );

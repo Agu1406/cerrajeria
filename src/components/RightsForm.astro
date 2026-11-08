@@ -5,7 +5,7 @@ import { derechosOpciones } from '../data/legal';
 
 <section class="space-y-3 text-sm">
   <h2 class="text-base font-semibold tracking-tight">Formulario</h2>
-  <p class="text-sm text-slate-300">
+  <p class="text-sm text-cream">
     Indica el derecho y qué dato te afecta. No subas el documento de identidad: si hace falta comprobar quién eres,
     te lo pediremos por correo.
   </p>
@@ -21,35 +21,35 @@ import { derechosOpciones } from '../data/legal';
     data-label-submit="Enviar solicitud"
   >
     <div class="space-y-1">
-      <label for="derechos-email" class="text-sm font-medium text-slate-300">Correo</label>
+      <label for="derechos-email" class="text-sm font-medium text-cream">Correo</label>
       <input
         id="derechos-email"
         name="email"
         type="email"
         required
         autocomplete="email"
-        class="w-full rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
       />
     </div>
     <div class="space-y-1">
-      <label for="derechos-nombre" class="text-sm font-medium text-slate-300">
-        Nombre <span class="text-slate-300">(opcional)</span>
+      <label for="derechos-nombre" class="text-sm font-medium text-cream">
+        Nombre <span class="text-cream">(opcional)</span>
       </label>
       <input
         id="derechos-nombre"
         name="nombre"
         type="text"
         autocomplete="name"
-        class="w-full rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
       />
     </div>
     <div class="space-y-1">
-      <label for="derechos-tipo" class="text-sm font-medium text-slate-300">Derecho</label>
+      <label for="derechos-tipo" class="text-sm font-medium text-cream">Derecho</label>
       <select
         id="derechos-tipo"
         name="derecho"
         required
-        class="w-full rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
       >
         {derechosOpciones.map((opcion) => (
           <option value={opcion.value}>{opcion.label}</option>
@@ -57,27 +57,27 @@ import { derechosOpciones } from '../data/legal';
       </select>
     </div>
     <div class="space-y-1">
-      <label for="derechos-mensaje" class="text-sm font-medium text-slate-300">Qué solicitas</label>
+      <label for="derechos-mensaje" class="text-sm font-medium text-cream">Qué solicitas</label>
       <textarea
         id="derechos-mensaje"
         name="mensaje"
         rows="4"
         required
-        class="w-full resize-none rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full resize-none rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
       />
     </div>
     <div class="contact-form-feedback hidden" aria-live="polite"></div>
-    <label class="flex items-start gap-2 text-sm text-slate-300">
+    <label class="flex items-start gap-2 text-sm text-cream">
       <input
         name="privacyConsent"
         type="checkbox"
         required
         value="1"
-        class="mt-1 h-4 w-4 shrink-0 rounded-[2px] border-slate-600 bg-slate-950 text-emerald-500"
+        class="mt-1 h-4 w-4 shrink-0 rounded-[2px] border-[var(--line)] bg-ink text-brass"
       />
       <span>
         He leído y acepto la{' '}
-        <a href={legalRoutes.privacidad} class="text-emerald-400 underline">política de privacidad</a>{' '}
+        <a href={legalRoutes.privacidad} class="text-brass underline">política de privacidad</a>{' '}
         y declaro que tengo 14 años o más.
       </span>
     </label>

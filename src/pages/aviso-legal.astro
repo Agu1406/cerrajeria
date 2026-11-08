@@ -13,21 +13,21 @@ const description = `Aviso legal e información del prestador de servicios de ${
       <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
         Aviso legal
       </h1>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Esta página contiene la información general que el artículo 10 de la Ley 34/2002, de 11 de julio, de
         Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE) exige al prestador de
         servicios de la sociedad de la información.
       </p>
     </header>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         1. Datos identificativos
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         A efectos de lo dispuesto en la LSSI-CE, se informa de que el titular de este sitio web es:
       </p>
-      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
+      <ul class="ml-4 list-disc space-y-1 text-sm text-cream">
         <li><span class="font-semibold">Titular:</span> {siteConfig.titular}</li>
         <li><span class="font-semibold">Nombre comercial:</span> {siteConfig.nombreComercial}</li>
         <li><span class="font-semibold">Actividad:</span> servicios de cerrajería 24 horas en {siteConfig.ciudadPrincipal} y alrededores.</li>
@@ -36,47 +36,47 @@ const description = `Aviso legal e información del prestador de servicios de ${
         <li><span class="font-semibold">Domicilio:</span> {domicilioLegal()}</li>
         <li><span class="font-semibold">NIF/CIF:</span> {siteConfig.nif}</li>
       </ul>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         A disposición del consumidor existe hoja de reclamaciones. Puedes solicitarla por correo electrónico a
         {siteConfig.email} o por escrito a la dirección indicada.
       </p>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         2. Precio, garantía y reclamaciones
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Antes de iniciar un trabajo te explicamos el precio orientativo (por teléfono o en el lugar) y solo actuamos
-        si estás de acuerdo. Si no aceptas el presupuesto, <strong class="text-slate-100">no cobramos</strong> por
+        si estás de acuerdo. Si no aceptas el presupuesto, <strong class="text-cream">no cobramos</strong> por
         esa visita de valoración habitual del servicio de urgencia descrito.
       </p>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Los importes orientativos publicados en la web (por ejemplo, apertura desde {siteConfig.precioAperturaDesde}{' '}
         IVA incluido) son informativos; el precio definitivo se confirma antes de empezar. Si el trabajo requiere
         forzar o materiales adicionales, te lo comunicamos previamente.
       </p>
-      <p class="text-sm text-slate-300">
-        En los trabajos realizados entregamos <strong class="text-slate-100">factura con IVA</strong> y{' '}
-        <strong class="text-slate-100">garantía por escrito</strong> sobre la mano de obra y el material instalado
+      <p class="text-sm text-cream">
+        En los trabajos realizados entregamos <strong class="text-cream">factura con IVA</strong> y{' '}
+        <strong class="text-cream">garantía por escrito</strong> sobre la mano de obra y el material instalado
         por nosotros, en los términos que consten en el documento entregado al cliente. La garantía no cubre
         daños posteriores ajenos a nuestra intervención (uso indebido, intentos de forzamiento por terceros, etc.).
       </p>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Para cancelar un aviso pendiente, reclamar o ejercer derechos relacionados con un servicio, contacta en
         el menor plazo posible al teléfono {siteConfig.telefono} o por correo a{' '}
-        <a href={`mailto:${siteConfig.email}`} class="text-emerald-400 hover:underline">{siteConfig.email}</a>.
+        <a href={`mailto:${siteConfig.email}`} class="text-brass hover:underline">{siteConfig.email}</a>.
         Las condiciones del servicio están en los{' '}
-        <a href={legalRoutes.terminos} class="text-emerald-400 hover:underline">términos</a> y las devoluciones en la{' '}
-        <a href={legalRoutes.reembolsos} class="text-emerald-400 hover:underline">política de reembolsos</a>.
+        <a href={legalRoutes.terminos} class="text-brass hover:underline">términos</a> y las devoluciones en la{' '}
+        <a href={legalRoutes.reembolsos} class="text-brass hover:underline">política de reembolsos</a>.
       </p>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         3. Condiciones de uso
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         El acceso y/o uso de este sitio web atribuye la condición de usuario, que acepta, desde dicho acceso y/o uso,
         las presentes condiciones de uso. El usuario se compromete a hacer un uso adecuado de los contenidos y
         servicios que {siteConfig.nombreComercial} ofrece a través de la web y a no emplearlos para:
@@ -92,22 +92,22 @@ const description = `Aviso legal e información del prestador de servicios de ${
       </ul>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         4. Propiedad intelectual e industrial
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Todos los contenidos del sitio web, entendiendo por estos a título meramente enunciativo los textos, imágenes,
         fotografías, logotipos, iconos, combinaciones de colores, tipografías, estructura, diseño, código fuente, así como el
         software, y demás contenidos audiovisuales o sonoros, son propiedad de {siteConfig.nombreComercial} o de
         terceros que han autorizado su uso (incluidas tipografías con licencia de uso web).
       </p>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Queda prohibida la reproducción, distribución, comunicación pública, incluida su modalidad de puesta a
         disposición, y la transformación de dichos contenidos sin la autorización previa y expresa de su legítimo
         titular, salvo en los casos legalmente permitidos.
       </p>
-      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
+      <ul class="ml-4 list-disc space-y-1 text-sm text-cream">
         {assetLicenses.map((item) => (
           <li>
             <span class="font-semibold">{item.nombre}:</span> {item.licencia}. {item.uso}
@@ -116,11 +116,11 @@ const description = `Aviso legal e información del prestador de servicios de ${
       </ul>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         5. Enlaces
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         En el caso de que en el sitio web se dispusiesen enlaces o hipervínculos hacia otros sitios de Internet,
         {siteConfig.nombreComercial} no ejercerá ningún tipo de control sobre dichos sitios y contenidos. En ningún
         caso {siteConfig.nombreComercial} asumirá responsabilidad alguna por los contenidos de algún enlace
@@ -130,11 +130,11 @@ const description = `Aviso legal e información del prestador de servicios de ${
       </p>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         6. Limitación de responsabilidad
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         {siteConfig.nombreComercial} no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier
         naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de
         disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar
@@ -142,11 +142,11 @@ const description = `Aviso legal e información del prestador de servicios de ${
       </p>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         7. Ley aplicable y jurisdicción
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Con carácter general, las relaciones entre {siteConfig.nombreComercial} y los usuarios de los servicios
         telemáticos presentes en este sitio web están sometidas a la legislación y jurisdicción españolas.
       </p>

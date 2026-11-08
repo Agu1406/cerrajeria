@@ -14,22 +14,22 @@ const domicilio = domicilioLegal() || 'Domicilio no indicado';
       <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
         Política de privacidad
       </h1>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         En esta política se explica cómo tratamos los datos personales que nos facilitas a través de este sitio web,
         de acuerdo con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).
       </p>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         El servicio de cerrajería y este sitio web están dirigidos a adultos. No recopilamos datos de menores de forma
         deliberada. Si un menor de 14 años nos facilitara datos, podremos solicitar el consentimiento de padres o
         tutores y, en su caso, proceder a la supresión de la información.
       </p>
     </header>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         1. Responsable del tratamiento
       </h2>
-      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
+      <ul class="ml-4 list-disc space-y-1 text-sm text-cream">
         <li><span class="font-semibold">Responsable:</span> {siteConfig.titular} (nombre comercial: {siteConfig.nombreComercial})</li>
         <li><span class="font-semibold">Teléfono:</span> {siteConfig.telefono}</li>
         <li><span class="font-semibold">Correo electrónico:</span> {siteConfig.email}</li>
@@ -38,14 +38,14 @@ const domicilio = domicilioLegal() || 'Domicilio no indicado';
       </ul>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         2. Datos que recogemos y finalidades
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Tratamos los datos que nos proporcionas a través de la web con las siguientes finalidades:
       </p>
-      <ul class="ml-4 list-disc space-y-2 text-sm text-slate-300">
+      <ul class="ml-4 list-disc space-y-2 text-sm text-cream">
         <li>
           <span class="font-semibold">Formulario de contacto</span>: correo electrónico y mensaje (obligatorios);
           nombre y teléfono móvil (opcionales); zona o barrio y título del formulario (si aplica). Finalidad: atender
@@ -65,19 +65,19 @@ const domicilio = domicilioLegal() || 'Domicilio no indicado';
           Analytics, para medir visitas y mejorar el sitio. No se usan para publicidad comportamental.
         </li>
       </ul>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         No elaboramos perfiles comerciales ni tomamos decisiones automatizadas con efectos jurídicos. No hay lista
         de correo ni newsletter. Los mensajes que salen de aquí son la respuesta a una consulta o lo relativo a un
         servicio pedido. Si no quieres que te volvamos a escribir, usa la oposición en{' '}
-        <a href={legalRoutes.derechos} class="text-emerald-400 hover:underline">acceso y supresión de datos</a>.
+        <a href={legalRoutes.derechos} class="text-brass hover:underline">acceso y supresión de datos</a>.
       </p>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         3. Bases jurídicas del tratamiento
       </h2>
-      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
+      <ul class="ml-4 list-disc space-y-1 text-sm text-cream">
         <li><span class="font-semibold">Consentimiento</span>: formulario de contacto, checkbox de privacidad y,
           en su caso, cookies de análisis.</li>
         <li><span class="font-semibold">Ejecución de un contrato o medidas precontractuales</span>: cuando solicitas
@@ -88,91 +88,91 @@ const domicilio = domicilioLegal() || 'Domicilio no indicado';
       </ul>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         4. Plazos de conservación
       </h2>
-      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
+      <ul class="ml-4 list-disc space-y-1 text-sm text-cream">
         <li>Consultas, citas y contacto: {retention.contacto}</li>
         <li>Facturas y obligaciones tributarias: {retention.facturas}</li>
         <li>Documentación mercantil: {retention.mercantil}</li>
         <li>Registros técnicos del servidor: {retention.logs}</li>
       </ul>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Los datos de analítica se conservan según la configuración de cada proveedor y solo si aceptaste esas cookies.
       </p>
-      <p class="text-sm text-slate-300">Si pides la supresión:</p>
-      <ol class="ml-4 list-decimal space-y-1 text-sm text-slate-300">
+      <p class="text-sm text-cream">Si pides la supresión:</p>
+      <ol class="ml-4 list-decimal space-y-1 text-sm text-cream">
         {flujoSupresion.map((paso) => (
           <li>{paso}</li>
         ))}
       </ol>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         5. Destinatarios y encargados de tratamiento
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         No cedemos tus datos a terceros salvo obligación legal. Para prestar el servicio utilizamos proveedores que
         pueden tratar datos en nuestro nombre:
       </p>
-      <ul class="ml-4 list-disc space-y-1 text-sm text-slate-300">
+      <ul class="ml-4 list-disc space-y-1 text-sm text-cream">
         <li><span class="font-semibold">Vercel</span>: alojamiento web y, si aceptas cookies de análisis, Vercel Web Analytics.</li>
         <li><span class="font-semibold">Google</span> (Google Tag Manager / Analytics, si aceptas): medición de uso del sitio.</li>
         <li><span class="font-semibold">Proveedor de correo</span> (envio de mensajes del formulario, p. ej. Resend o SMTP): entrega del mensaje a {siteConfig.email}.</li>
       </ul>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Algunos proveedores pueden estar fuera del EEE; en ese caso se aplican las garantías previstas por el RGPD
         (cláusulas tipo, etc.) según ofrezca cada proveedor.
       </p>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         6. Derechos de las personas usuarias
       </h2>
-      <p class="text-sm text-slate-300">
-        Puedes ejercitar en cualquier momento tus derechos de acceso, rectificación, <strong class="text-slate-100">supresión</strong>,
+      <p class="text-sm text-cream">
+        Puedes ejercitar en cualquier momento tus derechos de acceso, rectificación, <strong class="text-cream">supresión</strong>,
         oposición, limitación del tratamiento, portabilidad y a no ser objeto de decisiones basadas únicamente en
         tratamiento automatizado.
       </p>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Puedes usar el{' '}
-        <a href={legalRoutes.derechos} class="font-semibold text-emerald-400 hover:underline">formulario de acceso y supresión</a>{' '}
+        <a href={legalRoutes.derechos} class="font-semibold text-brass hover:underline">formulario de acceso y supresión</a>{' '}
         o escribir a{' '}
-        <a href={`mailto:${siteConfig.email}?subject=${encodeURIComponent('Ejercicio de derechos RGPD')}`} class="font-semibold text-emerald-400 hover:underline">
+        <a href={`mailto:${siteConfig.email}?subject=${encodeURIComponent('Ejercicio de derechos RGPD')}`} class="font-semibold text-brass hover:underline">
           {siteConfig.email}
         </a>{' '}
-        con el asunto <strong class="text-slate-100">«Ejercicio de derechos RGPD»</strong>. No hace falta adjuntar el
+        con el asunto <strong class="text-cream">«Ejercicio de derechos RGPD»</strong>. No hace falta adjuntar el
         documento de identidad en la web; si hay que comprobar la identidad, lo pediremos por correo.
       </p>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos
-        (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">www.aepd.es</a>).
+        (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" class="text-brass hover:underline">www.aepd.es</a>).
       </p>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         7. Seguridad de los datos
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         {siteConfig.nombreComercial} aplica las medidas técnicas y organizativas necesarias para garantizar un nivel de
         seguridad adecuado al riesgo, teniendo en cuenta el estado de la técnica, los costes de aplicación y la
         naturaleza, el alcance, el contexto y los fines del tratamiento.
       </p>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         8. Actualización de la política de privacidad
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Nos reservamos el derecho a modificar la presente política de privacidad para adaptarla a novedades
         legislativas o jurisprudenciales, así como a prácticas del sector. Te recomendamos revisarla periódicamente.
         Información sobre cookies en la{' '}
-        <a href="/politica-cookies" class="text-emerald-400 hover:underline">política de cookies</a>.
+        <a href="/politica-cookies" class="text-brass hover:underline">política de cookies</a>.
       </p>
     </section>
   </section>

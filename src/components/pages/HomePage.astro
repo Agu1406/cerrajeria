@@ -8,6 +8,7 @@ import { getHreflangAlternatesForRoute, pathForRoute } from '../../i18n/routes';
 import { HOME_FEATURED_BARRIO_SLUGS } from '../../i18n/home/constants';
 import { buildHomeFaqSchema } from '../../i18n/home/schema';
 import { getHomeCopy, getHomeFeaturedServicios } from '../../i18n/home/index';
+import { WHATSAPP_PREFILL } from '../../i18n/ui';
 interface Props {
   locale: Locale;
 }
@@ -16,6 +17,9 @@ const { locale } = Astro.props;
 
 const copy = getHomeCopy(locale);
 const brand = siteConfig.nombreComercial;
+const whatsappHref = WHATSAPP_PREFILL[locale]
+  ? `${siteConfig.whatsappUrl}?text=${encodeURIComponent(WHATSAPP_PREFILL[locale])}`
+  : siteConfig.whatsappUrl;
 const whyTitle = copy.why.title.replace(/\{brand\}/g, brand);
 const servicesTitle = copy.servicesSection.title.replace(/\{brand\}/g, brand);
 
@@ -59,11 +63,14 @@ const ratingSub =
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="grid gap-10 lg:grid-cols-[1.3fr_minmax(0,1fr)] lg:items-start">
     <div class="space-y-6">
-      <h1 class="font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+      <p class="font-display text-4xl font-bold tracking-tight text-cream sm:text-5xl lg:text-6xl">
+        {brand}
+      </p>
+      <h1 class="font-display text-2xl font-bold tracking-tight text-cream sm:text-3xl lg:text-4xl">
         {copy.heroTitle}
       </h1>
       <span class="hero-rule" data-hero-rule aria-hidden="true"></span>
-      <p class="text-sm text-slate-300 sm:text-base" set:html={copy.heroIntroHtml} />
+      <p class="text-sm text-cream sm:text-base" set:html={copy.heroIntroHtml} />
       <div class="flex flex-wrap items-center gap-3">
         <a
           href={siteConfig.telefonoHref}
@@ -71,11 +78,19 @@ const ratingSub =
         >
           {copy.ctaCall} · {siteConfig.telefono}
         </a>
-        <p class="text-sm text-slate-300">
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-quiet"
+        >
+          {copy.ctaWhatsApp}
+        </a>
+        <p class="w-full text-sm text-cream sm:w-auto">
           {copy.ctaSub}
         </p>
       </div>
-      <ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+      <ul class="mt-4 grid gap-2 text-sm text-cream sm:grid-cols-2">
         {copy.bullets.map((line) => (
           <li>{line}</li>
         ))}
@@ -85,7 +100,7 @@ const ratingSub =
       <h2 class="text-base font-semibold tracking-tight">
         {copy.areasTitle}
       </h2>
-      <p class="text-sm text-slate-400" set:html={copy.areasIntroHtml} />
+      <p class="text-sm text-cream-muted" set:html={copy.areasIntroHtml} />
       <ul class="grid gap-2 text-sm">
         {barriosDestacados.map((entry) => {
           const esBase = entry.slug === siteConfig.baseBarrioSlug;
@@ -94,10 +109,10 @@ const ratingSub =
             <a
               href={`/cerrajero-urgente-24h/${entry.slug}`}
               {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
-              class="flex min-h-11 items-center justify-between py-2 text-slate-100 hover:underline"
+              class="flex min-h-11 items-center justify-between py-2 text-cream hover:underline"
             >
               <span>{esBase ? 'Cerrajero urgente Getafe' : entry.data.nombre}</span>
-              <span class="text-sm text-slate-400">{esBase ? 'Base · 10-20 min' : copy.barrioLinkSuffix}</span>
+              <span class="text-sm text-cream-muted">{esBase ? 'Base · 10-20 min' : copy.barrioLinkSuffix}</span>
             </a>
           </li>
           );
@@ -106,7 +121,7 @@ const ratingSub =
       <a
         href="/cerrajero-urgente-24h"
         {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
-        class="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-emerald-400 hover:underline"
+        class="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-brass hover:underline"
       >
         {copy.areasSeeAll}
       </a>
@@ -115,42 +130,42 @@ const ratingSub =
 
   <dl class="mt-8 grid gap-6 text-sm sm:grid-cols-2">
     <div>
-      <dt class="font-semibold text-slate-100">{copy.stats.arrivalLabel}</dt>
-      <dd class="mt-1 text-slate-300">20–30 min. {copy.stats.arrivalSub}</dd>
+      <dt class="font-semibold text-cream">{copy.stats.arrivalLabel}</dt>
+      <dd class="mt-1 text-cream">20–30 min. {copy.stats.arrivalSub}</dd>
     </div>
     <div>
-      <dt class="font-semibold text-slate-100">{copy.stats.availLabel}</dt>
-      <dd class="mt-1 text-slate-300">24/7. {copy.stats.availSub}</dd>
+      <dt class="font-semibold text-cream">{copy.stats.availLabel}</dt>
+      <dd class="mt-1 text-cream">24/7. {copy.stats.availSub}</dd>
     </div>
     <div>
-      <dt class="font-semibold text-slate-100">{copy.stats.priceLabel}</dt>
-      <dd class="mt-1 text-slate-300">{copy.stats.priceValue}. {copy.stats.priceSub}</dd>
+      <dt class="font-semibold text-cream">{copy.stats.priceLabel}</dt>
+      <dd class="mt-1 text-cream">{copy.stats.priceValue}. {copy.stats.priceSub}</dd>
     </div>
     {showReseñas && reseñas ? (
       <div>
-        <dt class="font-semibold text-slate-100">{copy.stats.ratingLabel}</dt>
-        <dd class="mt-1 text-slate-300">{reseñas.valoracionMedia} de 5. {ratingSub}</dd>
+        <dt class="font-semibold text-cream">{copy.stats.ratingLabel}</dt>
+        <dd class="mt-1 text-cream">{reseñas.valoracionMedia} de 5. {ratingSub}</dd>
       </div>
     ) : null}
   </dl>
 
   {showReseñas && reseñas && (
-    <section class="mt-10 space-y-4">
+    <section class="reveal mt-10 space-y-4">
       <h2 class="text-lg font-semibold tracking-tight">
         {copy.reviews.title}
       </h2>
       {copy.reviews.noteHtml ? (
-        <p class="text-sm text-slate-400">{copy.reviews.noteHtml}</p>
+        <p class="text-sm text-cream-muted">{copy.reviews.noteHtml}</p>
       ) : null}
       <div class="flex flex-wrap items-center gap-3 text-sm">
-        <span class="text-slate-200" aria-label={ratingAria}>{reseñas.valoracionMedia} de 5</span>
-        <span class="text-slate-300">{ratingSummary}</span>
+        <span class="text-cream" aria-label={ratingAria}>{reseñas.valoracionMedia} de 5</span>
+        <span class="text-cream">{ratingSummary}</span>
         {siteConfig.googleMapsUrl && (
           <a
             href={siteConfig.googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-emerald-400 hover:underline"
+            class="text-brass hover:underline"
           >
             {copy.reviews.seeAllGoogle}
           </a>
@@ -160,15 +175,15 @@ const ratingSub =
         <ul class="grid gap-4 sm:grid-cols-2">
           {reseñas.reseñas.slice(0, 4).map((r) => (
             <li
-              class="text-sm"
+              class="quote-rule text-sm"
               {...(copy.locale === 'en' ? { lang: 'es' } : {})}
             >
               <div class="mb-2 flex items-center justify-between gap-3">
-                <span class="font-medium text-slate-200">{r.autor}</span>
-                <span class="text-slate-300">{r.valoracion} de 5</span>
+                <span class="font-medium text-cream">{r.autor}</span>
+                <span class="text-cream">{r.valoracion} de 5</span>
               </div>
-              <p class="text-slate-300 leading-relaxed">"{r.texto}"</p>
-              <time datetime={r.fecha} class="mt-2 block text-sm text-slate-400">
+              <p class="text-cream leading-relaxed">"{r.texto}"</p>
+              <time datetime={r.fecha} class="mt-2 block text-sm text-cream-muted">
                 {new Date(r.fecha).toLocaleDateString(copy.dateLocale, {
                   day: 'numeric',
                   month: 'long',
@@ -183,7 +198,7 @@ const ratingSub =
   )}
 
   <section class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
-    <div class="space-y-3 text-sm text-slate-300">
+    <div class="space-y-3 text-sm text-cream">
       <h2 class="text-lg font-semibold tracking-tight">
         {copy.block24h.title}
       </h2>
@@ -210,7 +225,7 @@ const ratingSub =
     </figure>
   </section>
 
-  <section class="mt-12 space-y-4 text-sm text-slate-300">
+  <section class="reveal mt-12 space-y-4 text-sm text-cream">
     <h2 class="text-lg font-semibold tracking-tight">
       {whyTitle}
     </h2>
@@ -218,8 +233,8 @@ const ratingSub =
     <ul class="space-y-4">
       {copy.why.cards.map((card) => (
         <li>
-          <h3 class="text-base font-semibold text-slate-100">{card.title}</h3>
-          <p class="mt-1 text-sm text-slate-300">{card.body}</p>
+          <h3 class="text-base font-semibold text-cream">{card.title}</h3>
+          <p class="mt-1 text-sm text-cream">{card.body}</p>
         </li>
       ))}
     </ul>
@@ -228,7 +243,7 @@ const ratingSub =
       <h2 class="text-lg font-semibold tracking-tight">
         {copy.faqSectionTitle}
       </h2>
-      <div class="space-y-2 text-sm text-slate-300">
+      <div class="space-y-2 text-sm text-cream">
         {copy.faqInline.map((item) => (
           <p>
             <strong>{item.q}</strong> <span set:html={item.aHtml} />
@@ -241,28 +256,28 @@ const ratingSub =
       <h2 class="text-lg font-semibold tracking-tight">
         {servicesTitle}
       </h2>
-      <p class="text-sm text-slate-400" set:html={copy.servicesSection.introHtml} />
+      <p class="text-sm text-cream-muted" set:html={copy.servicesSection.introHtml} />
       <ul class="space-y-4">
         {featuredServicios.map((servicio) => (
           <li class="text-sm">
-            <h3 class="font-semibold text-slate-100">{servicio.nombre}</h3>
-            <p class="mt-1 text-slate-300">{servicio.descripcionCorta}</p>
+            <h3 class="font-semibold text-cream">{servicio.nombre}</h3>
+            <p class="mt-1 text-cream">{servicio.descripcionCorta}</p>
           </li>
         ))}
       </ul>
-      <p class="text-sm text-slate-400" set:html={copy.servicesSection.footerHtml} />
+      <p class="text-sm text-cream-muted" set:html={copy.servicesSection.footerHtml} />
     </section>
 
     <section class="mt-8 space-y-3">
       <h2 class="text-lg font-semibold tracking-tight">
         {copy.zonesSection.title}
       </h2>
-      <p class="text-sm text-slate-400" set:html={copy.zonesSection.bodyHtml} />
-      <p class="text-sm text-slate-400">
+      <p class="text-sm text-cream-muted" set:html={copy.zonesSection.bodyHtml} />
+      <p class="text-sm text-cream-muted">
         <a
           href={copy.zonesSection.linkHref}
           {...(copy.locale === 'en' ? { hreflang: 'es' } : {})}
-          class="font-medium text-emerald-400 hover:underline"
+          class="font-medium text-brass hover:underline"
         >
           {copy.zonesSection.linkText}
         </a>

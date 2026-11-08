@@ -39,12 +39,12 @@ export const homeCopyEs: HomeCopy = {
     },
   ],
   heroTitle: 'Cerrajero urgente 24h · Madrid y sur (Getafe, Villaverde…)',
-  heroIntroHtml:
-    'Somos <strong class="text-slate-100 font-semibold">cerrajeros en Madrid</strong> con base en Getafe. <strong class="text-slate-100 font-semibold">Erickson</strong> te atiende las 24 horas: <strong class="text-slate-100 font-semibold">apertura de puertas</strong> sin daños desde 90 € IVA incl., <strong class="text-slate-100 font-semibold">cambio de cerradura</strong> y asistencia en Villaverde, Valdemoro, Fuenlabrada, Parla y toda la Comunidad. Sin centralitas: llamas y hablas con el cerrajero.',
+  heroIntroHtml: `Somos <strong class="text-cream font-semibold">cerrajeros en Madrid</strong> con base en Getafe. <strong class="text-cream font-semibold">Erickson</strong> te atiende las 24 horas: <strong class="text-cream font-semibold">apertura de puertas</strong> sin daños desde ${siteConfig.precioAperturaDesde} IVA incl., <strong class="text-cream font-semibold">cambio de cerradura</strong> y asistencia en Villaverde, Valdemoro, Fuenlabrada, Parla y toda la Comunidad. Sin centralitas: llamas y hablas con el cerrajero.`,
   ctaCall: 'Llamar ahora',
+  ctaWhatsApp: 'WhatsApp',
   ctaSub: 'Atención inmediata · 24 horas · Todos los días del año',
   bullets: [
-    'Apertura sin romper desde 90 € IVA incl. (forzar solo si hace falta; muchos casos hasta ~200 € IVA incl.)',
+    `Apertura sin romper desde ${siteConfig.precioAperturaDesde} IVA incl. (forzar solo si hace falta; muchos casos hasta ~200 € IVA incl.)`,
     'Apertura de puertas blindadas y acorazadas',
     'Cambio de cerradura, bombín o cilindro (cerradura rota o llaves perdidas)',
     'Apertura de vehículos sin daños',
@@ -52,7 +52,7 @@ export const homeCopyEs: HomeCopy = {
   ],
   areasTitle: 'Barrios y zonas de cobertura',
   areasIntroHtml:
-    'Base operativa en <a href="/cerrajero-urgente-24h/getafe" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">Getafe</a>. También sur de Madrid y 21 distritos de la capital.',
+    'Base operativa en <a href="/cerrajero-urgente-24h/getafe" class="text-brass underline decoration-brass/60 hover:decoration-brass">Getafe</a>. También sur de Madrid y 21 distritos de la capital.',
   barrioLinkSuffix: 'Ver cerrajero 24h',
   areasSeeAll: 'Ver más zonas',
   areaLinksHreflang: null,
@@ -62,7 +62,7 @@ export const homeCopyEs: HomeCopy = {
     availLabel: 'Disponibilidad',
     availSub: 'Trabajamos noches, fines de semana y festivos todo el año.',
     priceLabel: 'Apertura sin romper',
-    priceValue: 'Desde 90 €',
+    priceValue: `Desde ${siteConfig.precioAperturaDesde}`,
     priceSub: 'IVA incl. · Cualquier hora y zona · Material del servicio incluido',
     ratingLabel: 'Clientes satisfechos',
     ratingSubFallback: 'Valoración media basada en reseñas reales de clientes.',
@@ -91,7 +91,7 @@ export const homeCopyEs: HomeCopy = {
       },
       {
         title: 'Transparencia en los precios',
-        body: 'Apertura sin romper desde 90 € IVA incl.; si hay que forzar, te lo decimos antes y acordamos precio (muchas intervenciones hasta unos 200 € IVA incl.).',
+        body: `Apertura sin romper desde ${siteConfig.precioAperturaDesde} IVA incl.; si hay que forzar, te lo decimos antes y acordamos precio (muchas intervenciones hasta unos 200 € IVA incl.).`,
       },
       {
         title: 'Cobertura real en Madrid',
@@ -125,12 +125,12 @@ export const homeCopyEs: HomeCopy = {
     introHtml:
       'Estos son algunos de los trabajos que realizamos con más frecuencia. Todos los servicios están disponibles en la mayoría de barrios de la Comunidad de Madrid.',
     footerHtml:
-      'Puedes ver el listado completo en la página de <a href="/servicios" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">servicios de cerrajería</a>.',
+      'Puedes ver el listado completo en la página de <a href="/servicios" class="text-brass underline decoration-brass/60 hover:decoration-brass">servicios de cerrajería</a>.',
   },
   zonesSection: {
     title: 'Zonas de Madrid donde trabajamos',
     bodyHtml:
-      'Nuestra base está en <strong>Getafe</strong> (<a href="/cerrajero-urgente-24h/getafe" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">cerrajero urgente Getafe 24h</a>). También atendemos Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés y los <strong>21 distritos de Madrid capital</strong>. Cada zona tiene su página con precio orientativo y teléfono de urgencias.',
+      'Nuestra base está en <strong>Getafe</strong> (<a href="/cerrajero-urgente-24h/getafe" class="text-brass underline decoration-brass/60 hover:decoration-brass">cerrajero urgente Getafe 24h</a>). También atendemos Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés y los <strong>21 distritos de Madrid capital</strong>. Cada zona tiene su página con precio orientativo y teléfono de urgencias.',
     linkText: 'Ver listado completo de barrios y distritos',
     linkHref: '/cerrajero-urgente-24h',
   },

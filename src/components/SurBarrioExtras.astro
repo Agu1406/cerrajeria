@@ -12,7 +12,7 @@ const basePath = '/cerrajero-urgente-24h';
 ---
 
 <div class="mt-8 space-y-10">
-  <ul class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-300">
+  <ul class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-cream">
     {siteConfig.confianzaPills.map((pill) => (
       <li>{pill}</li>
     ))}
@@ -22,11 +22,11 @@ const basePath = '/cerrajero-urgente-24h';
     <h2 class="text-xl font-bold tracking-tight sm:text-2xl">
       Cerrajero urgente en {zona.nombre}
     </h2>
-    <p class="text-sm text-slate-300">
+    <p class="text-sm text-cream">
       Base en Getafe (Calle Progreso 2). Llegada habitual en <strong>{zona.llegada}</strong>.
       Atiende {siteConfig.profesional?.nombre ?? 'el cerrajero'}, sin centralitas.
     </p>
-    <ul class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-300">
+    <ul class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-cream">
       {zona.barrios.map((b) => (
         <li>{b}</li>
       ))}
@@ -38,8 +38,8 @@ const basePath = '/cerrajero-urgente-24h';
     <dl class="space-y-4 text-sm">
       {surPrecioTiers.map((tier) => (
         <div>
-          <dt class="font-semibold text-slate-100">{tier.nombre}: {tier.precio}</dt>
-          <dd class="mt-1 text-slate-300">{tier.bullets.join('. ')}.</dd>
+          <dt class="font-semibold text-cream">{tier.nombre}: {tier.precio}</dt>
+          <dd class="mt-1 text-cream">{tier.bullets.join('. ')}.</dd>
         </div>
       ))}
     </dl>
@@ -48,13 +48,13 @@ const basePath = '/cerrajero-urgente-24h';
 
   <section class="space-y-3">
     <h2 class="text-lg font-semibold tracking-tight">Zonas cercanas</h2>
-    <p class="text-sm text-slate-400">También urgencias 24h en municipios y distritos del sur de Madrid:</p>
+    <p class="text-sm text-cream-muted">También urgencias 24h en municipios y distritos del sur de Madrid:</p>
     <ul class="flex flex-wrap gap-2 text-sm">
       {zona.enlacesCercanos.map((link) => (
         <li>
           <a
             href={`${basePath}/${link.slug}`}
-            class="text-slate-300 hover:underline"
+            class="text-cream hover:underline"
           >
             Cerrajero {link.label}
           </a>

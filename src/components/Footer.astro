@@ -20,8 +20,8 @@ const mapsHref = siteConfig.googleMapsUrl
     : '';
 ---
 
-<footer class="border-t border-slate-800 bg-slate-950/90">
-  <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-6 text-sm text-slate-300 sm:flex-row sm:items-start sm:justify-between">
+<footer class="border-t border-[var(--line)] bg-ink">
+  <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-6 text-sm text-cream-muted sm:flex-row sm:items-start sm:justify-between">
     <div class="space-y-1">
       <p>
         © {new Date().getFullYear()} {siteConfig.nombreComercial}.{' '}
@@ -36,18 +36,18 @@ const mapsHref = siteConfig.googleMapsUrl
       )}
       {siteConfig.email && (
         <p>
-          <a href={`mailto:${siteConfig.email}`} class="text-emerald-400 hover:underline">
+          <a href={`mailto:${siteConfig.email}`} class="text-brass hover:underline">
             {siteConfig.email}
           </a>
         </p>
       )}
     </div>
-    <div class="flex flex-col gap-1 text-sm text-slate-300 sm:items-end sm:text-right">
+    <div class="flex flex-col gap-1 text-sm text-cream-muted sm:items-end sm:text-right">
       <p>
         {f.emergencyLine}{' '}
         <a
           href={siteConfig.telefonoHref}
-          class="inline-block min-h-[44px] min-w-[44px] py-2 font-semibold text-emerald-400 underline decoration-emerald-400/50 hover:decoration-emerald-400"
+          class="inline-block min-h-[44px] min-w-[44px] py-2 font-semibold text-brass underline decoration-brass/50 hover:decoration-brass"
           aria-label={`${f.callAria} ${siteConfig.telefono}`}
         >
           {siteConfig.telefono}
@@ -59,38 +59,38 @@ const mapsHref = siteConfig.googleMapsUrl
             href={mapsHref}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300"
+            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright"
             aria-label={f.directions}
           >
             {f.directions}
           </a>
         )}
-        <a href="/blog" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300">
+        <a href="/blog" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright">
           Blog
         </a>
-        <a href="/sitemap.xml" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300">
+        <a href="/sitemap.xml" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright">
           {f.sitemap}
         </a>
-        <a href="/aviso-legal" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+        <a href="/aviso-legal" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
           {f.legal}
         </a>
-        <a href="/politica-privacidad" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+        <a href="/politica-privacidad" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
           {f.privacy}
         </a>
-        <a href="/politica-cookies" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+        <a href="/politica-cookies" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
           {f.cookies}
         </a>
-        <a href="/terminos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+        <a href="/terminos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
           {f.terms}
         </a>
-        <a href="/politica-reembolsos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+        <a href="/politica-reembolsos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
           {f.refunds}
         </a>
-        <a href="/derechos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+        <a href="/derechos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
           {f.rights}
         </a>
         {showDesarrollador && (
-          <a href="/diseno-web" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-emerald-300" hreflang="es">
+          <a href="/diseno-web" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
             {f.webDesign}
           </a>
         )}

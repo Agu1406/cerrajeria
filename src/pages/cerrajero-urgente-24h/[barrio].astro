@@ -95,23 +95,23 @@ const noindex = !isSurBarrioIndexable(entry.slug);
     <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
       {h1}
     </h1>
-    <p class="text-sm text-slate-300 sm:text-base">
+    <p class="text-sm text-cream sm:text-base">
       {esBaseOperativa ? (
         <>
-          <strong class="text-slate-100">Cerrajero urgente en Getafe</strong> con base en Calle Progreso 2.
+          <strong class="text-cream">Cerrajero urgente en Getafe</strong> con base en Calle Progreso 2.
           Apertura de puertas sin daños desde{' '}
-          <strong class="text-slate-100">{siteConfig.precioAperturaDesde} IVA incl.</strong>, cambio de
+          <strong class="text-cream">{siteConfig.precioAperturaDesde} IVA incl.</strong>, cambio de
           cerraduras y asistencia en todo el municipio.
         </>
       ) : (
         <>
           Servicio de cerrajería urgente en {data.nombre} y alrededores. Apertura de puertas sin daños desde{' '}
-          <strong class="text-slate-100">{siteConfig.precioAperturaDesde} IVA incl.</strong>, cambio de
+          <strong class="text-cream">{siteConfig.precioAperturaDesde} IVA incl.</strong>, cambio de
           cerraduras y refuerzo de seguridad en viviendas, locales y comunidades de vecinos.
         </>
       )}
     </p>
-    <p class="text-sm text-slate-300 sm:text-base">
+    <p class="text-sm text-cream sm:text-base">
       {data.introExtra}
     </p>
 
@@ -125,25 +125,25 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       >
         WhatsApp
       </a>
-      <p class="text-sm text-slate-400">
+      <p class="text-sm text-cream-muted">
         {data.llegadaTexto}
         {esBaseOperativa && siteConfig.profesional ? ` · Responde ${siteConfig.profesional.nombre}` : ''}
       </p>
     </div>
 
-    <p class="mt-2 text-sm text-slate-100">
+    <p class="mt-2 text-sm text-cream">
       Apertura sin romper desde {siteConfig.precioAperturaDesde} IVA incl.{' '}
-      <a href={siteConfig.telefonoHref} class="font-semibold text-emerald-400 hover:underline">
+      <a href={siteConfig.telefonoHref} class="font-semibold text-brass hover:underline">
         {siteConfig.telefono}
       </a>
     </p>
 
     {showReseñas && !esBaseOperativa && !surBarrioZona && (
-      <p class="mt-4 text-sm text-slate-300">
+      <p class="mt-4 text-sm text-cream">
         <span aria-label={`Valoración: ${reseñas.valoracionMedia} de 5`}>{reseñas.valoracionMedia} de 5</span>
         {' '}· {reseñas.totalResenas} reseñas en Google
         {siteConfig.googleMapsUrl && (
-          <a href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">Ver reseñas</a>
+          <a href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-brass hover:underline">Ver reseñas</a>
         )}
       </p>
     )}
@@ -157,7 +157,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
     {surBarrioZona && <SurBarrioExtras zona={surBarrioZona} />}
 
     {!esBaseOperativa && !surBarrioZona && (
-    <section class="mt-8 space-y-2 text-sm text-slate-300">
+    <section class="mt-8 space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         Cerrajeros en {data.nombre}: urgente y a domicilio
       </h2>
@@ -171,21 +171,21 @@ const noindex = !isSurBarrioIndexable(entry.slug);
     <ul class="mt-6 space-y-4 text-sm">
       <li>
         <h2 class="mb-2 text-sm font-semibold">Urgencias sin daños</h2>
-        <p class="text-slate-300">
+        <p class="text-cream">
           Apertura de puertas blindadas y acorazadas sin romper la cerradura siempre que sea posible. Explicamos
           el trabajo antes de empezar.
         </p>
       </li>
       <li>
         <h2 class="mb-2 text-sm font-semibold">Cambio e instalación de cerraduras</h2>
-        <p class="text-slate-300">
+        <p class="text-cream">
           Cambiamos e instalamos cerraduras y bombines de alta seguridad, con opciones antibumping y antitaladro
           para viviendas y locales en {data.nombre}.
         </p>
       </li>
       <li>
         <h2 class="mb-2 text-sm font-semibold">Ventanas y herrajes</h2>
-        <p class="text-slate-300">
+        <p class="text-cream">
           Arreglo de ventanas oscilobatientes y osciloparalelas, así como ajuste de herrajes y cierres que no
           encajan bien.
         </p>
@@ -194,11 +194,11 @@ const noindex = !isSurBarrioIndexable(entry.slug);
     )}
 
     {!esBaseOperativa && !surBarrioZona && (
-    <section class="mt-8 space-y-3 text-sm text-slate-300">
+    <section class="mt-8 space-y-3 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         Servicios habituales de cerrajería en {data.nombre}
       </h2>
-      <p class="text-sm text-slate-400">
+      <p class="text-sm text-cream-muted">
         Trabajamos a diario con aperturas urgentes, cambios de cerradura y arreglos de ventanas. Estos son algunos
         de los servicios más demandados:
       </p>
@@ -207,28 +207,28 @@ const noindex = !isSurBarrioIndexable(entry.slug);
           <li>• {servicio.nombre}</li>
         ))}
       </ul>
-      <p class="text-sm text-slate-400">
+      <p class="text-sm text-cream-muted">
         Si necesitas un trabajo de cerrajería diferente en {data.nombre}, llámanos y te diremos al momento si
         podemos ayudarte.
       </p>
     </section>
     )}
 
-    <section class="mt-8 space-y-3 text-sm text-slate-300">
+    <section class="mt-8 space-y-3 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         Cómo trabajamos en {data.nombre}
       </h2>
-      <p class="text-sm text-slate-400">
+      <p class="text-sm text-cream-muted">
         {data.comoTrabajamos}
       </p>
     </section>
 
     {!esBaseOperativa && (
-    <section class="mt-8 space-y-3 text-sm text-slate-300">
+    <section class="mt-8 space-y-3 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         Preguntas frecuentes sobre cerrajería urgente en {data.nombre}
       </h2>
-      <div class="space-y-3 text-sm text-slate-300">
+      <div class="space-y-3 text-sm text-cream">
         {faqItems.map((item) => (
           <p>
             <strong>{item.q}</strong> {item.a}
@@ -236,7 +236,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
         ))}
       </div>
       {entry.data.actualizado && (
-        <p class="mt-3 text-sm text-slate-500">
+        <p class="mt-3 text-sm text-cream0">
           Contenido revisado: <time datetime={entry.data.actualizado.toISOString()}>{entry.data.actualizado.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
         </p>
       )}
@@ -244,16 +244,16 @@ const noindex = !isSurBarrioIndexable(entry.slug);
     )}
 
     {esBaseOperativa && entry.data.actualizado && (
-      <p class="mt-3 text-sm text-slate-500">
+      <p class="mt-3 text-sm text-cream0">
         Contenido revisado: <time datetime={entry.data.actualizado.toISOString()}>{entry.data.actualizado.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
       </p>
     )}
 
-    <section class="mt-8 text-sm text-slate-400">
+    <section class="mt-8 text-sm text-cream-muted">
       <p>
         Si quieres ver el detalle de todos los trabajos que realizamos como aperturas, cambios de cerradura o arreglos
         de ventanas, puedes visitar la página de{' '}
-        <a href="/servicios" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">
+        <a href="/servicios" class="text-brass underline decoration-brass/60 hover:decoration-brass">
           servicios de cerrajería
         </a>
         .
@@ -270,15 +270,15 @@ const noindex = !isSurBarrioIndexable(entry.slug);
             <li>
               <a
                 href={`${basePath}/${other.slug}`}
-                class="text-slate-300 hover:text-emerald-400 hover:underline"
+                class="text-cream hover:text-brass hover:underline"
               >
                 Cerrajero 24h en {other.data.nombre}
               </a>
             </li>
           ))}
         </ul>
-        <p class="text-sm text-slate-400">
-          <a href={basePath} class="text-emerald-400 hover:underline">Ver todas las zonas</a>
+        <p class="text-sm text-cream-muted">
+          <a href={basePath} class="text-brass hover:underline">Ver todas las zonas</a>
         </p>
       </section>
     )}
@@ -293,24 +293,24 @@ const noindex = !isSurBarrioIndexable(entry.slug);
             <li>
               <a
                 href={`/blog/${post.slug}`}
-                class="text-slate-300 hover:text-emerald-400 hover:underline"
+                class="text-cream hover:text-brass hover:underline"
               >
                 {post.data.title}
               </a>
-              <time datetime={post.data.pubDate.toISOString()} class="ml-2 text-sm text-slate-400">
+              <time datetime={post.data.pubDate.toISOString()} class="ml-2 text-sm text-cream-muted">
                 {post.data.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
               </time>
             </li>
           ))}
         </ul>
-        <p class="mt-3 text-sm text-slate-400">
-          <a href="/blog" class="text-emerald-400 hover:underline">Ver todo el blog</a>
+        <p class="mt-3 text-sm text-cream-muted">
+          <a href="/blog" class="text-brass hover:underline">Ver todo el blog</a>
         </p>
       </section>
     )}
 
     <div class="mt-10 flex flex-wrap items-center gap-3">
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         ¿Urgencia ahora? Llámanos y te atendemos en minutos.
       </p>
       <a
@@ -325,7 +325,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       <h2 class="mb-3 text-lg font-semibold tracking-tight">
         Consulta para cerrajería en {data.nombre}
       </h2>
-      <p class="mb-4 text-sm text-slate-400">
+      <p class="mb-4 text-sm text-cream-muted">
         Si no es urgente, puedes enviarnos tu consulta y te respondemos lo antes posible.
       </p>
       <ContactForm

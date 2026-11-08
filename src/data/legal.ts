@@ -15,14 +15,14 @@ export const legalRoutes = {
 /** Tipografías autoalojadas y fotos del negocio. No hay CDN de fuentes. */
 export const assetLicenses = [
   {
-    nombre: 'Source Sans 3',
+    nombre: 'Cormorant Garamond',
     licencia: 'SIL Open Font License 1.1',
-    uso: 'Texto de interfaz, autoalojada con @fontsource-variable.',
+    uso: 'Titulares (display), autoalojada con @fontsource.',
   },
   {
-    nombre: 'Source Serif 4',
+    nombre: 'Manrope',
     licencia: 'SIL Open Font License 1.1',
-    uso: 'Titulares, autoalojada con @fontsource-variable.',
+    uso: 'Texto de interfaz, autoalojada con @fontsource.',
   },
   {
     nombre: 'Fotografías',

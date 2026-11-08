@@ -67,7 +67,7 @@ const labels = useEnglishForm
     {title}
   </h2>
   {subtitle && (
-    <p class="mt-1 text-sm text-slate-400">
+    <p class="mt-1 text-sm text-cream-muted">
       {subtitle}
     </p>
   )}
@@ -89,31 +89,31 @@ const labels = useEnglishForm
       <input type="hidden" name="barrio" value={barrio} />
     )}
     <div class="space-y-1">
-      <label for="contact-nombre" class="text-sm font-medium text-slate-300">
-        {labels.name} <span class="text-slate-400">{labels.nameOpt}</span>
+      <label for="contact-nombre" class="text-sm font-medium text-cream">
+        {labels.name} <span class="text-cream-muted">{labels.nameOpt}</span>
       </label>
       <input
         id="contact-nombre"
         name="nombre"
         type="text"
-        class="w-full rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
         placeholder={labels.namePh}
       />
     </div>
     <div class="space-y-1">
-      <label for="contact-movil" class="text-sm font-medium text-slate-300">
-        {labels.mobile} <span class="text-slate-400">{labels.nameOpt}</span>
+      <label for="contact-movil" class="text-sm font-medium text-cream">
+        {labels.mobile} <span class="text-cream-muted">{labels.nameOpt}</span>
       </label>
       <input
         id="contact-movil"
         name="movil"
         type="tel"
-        class="w-full rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
         placeholder={labels.mobilePh}
       />
     </div>
     <div class="space-y-1">
-      <label for="contact-email" class="text-sm font-medium text-slate-300">
+      <label for="contact-email" class="text-sm font-medium text-cream">
         {labels.email}
       </label>
       <input
@@ -121,12 +121,12 @@ const labels = useEnglishForm
         name="email"
         type="email"
         required
-        class="w-full rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
         placeholder={labels.emailPh}
       />
     </div>
     <div class="space-y-1">
-      <label for="contact-mensaje" class="text-sm font-medium text-slate-300">
+      <label for="contact-mensaje" class="text-sm font-medium text-cream">
         {labels.message}
       </label>
       <textarea
@@ -134,23 +134,23 @@ const labels = useEnglishForm
         name="mensaje"
         rows="4"
         required
-        class="w-full resize-none rounded-[2px] border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none focus:border-emerald-400"
+        class="w-full resize-none rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
         placeholder={labels.messagePh}
       />
     </div>
     <div class="contact-form-feedback hidden" aria-live="polite"></div>
-    <label class="flex items-start gap-2 text-sm text-slate-300">
+    <label class="flex items-start gap-2 text-sm text-cream">
       <input
         id="contact-privacy"
         name="privacyConsent"
         type="checkbox"
         required
         value="1"
-        class="mt-0.5 h-4 w-4 shrink-0 rounded-[2px] border-slate-600 bg-slate-950 text-emerald-500 focus:ring-emerald-400"
+        class="mt-0.5 h-4 w-4 shrink-0 rounded-[2px] border-[var(--line)] bg-ink text-brass focus:ring-brass"
       />
       <span>
         {labels.privacyCheck}{' '}
-        <a href="/politica-privacidad" hreflang="es" class="text-emerald-400 underline">{labels.privacy}</a>{' '}
+        <a href="/politica-privacidad" hreflang="es" class="text-brass underline">{labels.privacy}</a>{' '}
         {labels.privacyAfter}
       </span>
     </label>

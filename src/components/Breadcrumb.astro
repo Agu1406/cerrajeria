@@ -10,7 +10,7 @@ interface Props {
 const { items } = Astro.props as Props;
 ---
 
-<nav class="text-sm text-slate-400" aria-label="Miga de pan">
+<nav class="text-sm text-cream-muted" aria-label="Miga de pan">
   {items.map((item, i) => {
     const isLast = i === items.length - 1;
     const showLink = !isLast && item.path;
@@ -18,9 +18,9 @@ const { items } = Astro.props as Props;
       <>
         {i > 0 ? <span class="mx-1">/</span> : null}
         {showLink ? (
-          <a href={item.path!} class="hover:text-emerald-400">{item.name}</a>
+          <a href={item.path!} class="hover:text-brass">{item.name}</a>
         ) : (
-          <span class="text-slate-400">{item.name}</span>
+          <span class="text-cream-muted">{item.name}</span>
         )}
       </>
     );

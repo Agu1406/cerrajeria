@@ -19,6 +19,7 @@ export type HomeCopy = {
   heroTitle: string;
   heroIntroHtml: string;
   ctaCall: string;
+  ctaWhatsApp: string;
   ctaSub: string;
   bullets: string[];
 

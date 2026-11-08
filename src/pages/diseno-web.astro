@@ -8,60 +8,60 @@ const dev = siteConfig.desarrollador;
 ---
 
 <Layout {title} {description}>
-  <section class="mx-auto max-w-xl space-y-6 text-sm text-slate-300">
+  <section class="mx-auto max-w-xl space-y-6 text-sm text-cream">
     <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
       Diseño y desarrollo web
     </h1>
-    <p class="text-slate-400">
+    <p class="text-cream-muted">
       Esta web ha sido diseñada y desarrollada para {siteConfig.nombreComercial}. Si buscas a alguien para crear o
       mejorar tu página web, puedes contactar al responsable del diseño y desarrollo.
     </p>
     {dev?.nombre ? (
       <div class="space-y-3">
-        <p class="font-semibold text-slate-200">
+        <p class="font-semibold text-cream">
           {dev.url ? (
-            <a href={dev.url} class="text-emerald-400 hover:underline" target="_blank" rel="noopener noreferrer">
+            <a href={dev.url} class="text-brass hover:underline" target="_blank" rel="noopener noreferrer">
               {dev.nombre}
             </a>
           ) : (
             dev.nombre
           )}
         </p>
-        {dev.texto && <p class="text-sm text-slate-400">{dev.texto}</p>}
-        <ul class="space-y-1.5 text-sm text-slate-300">
+        {dev.texto && <p class="text-sm text-cream-muted">{dev.texto}</p>}
+        <ul class="space-y-1.5 text-sm text-cream">
           {dev.url && (
             <li>
-              <a href={dev.url} class="text-emerald-400 hover:underline" target="_blank" rel="noopener noreferrer">
+              <a href={dev.url} class="text-brass hover:underline" target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
             </li>
           )}
           {dev.telefono && (
             <li>
-              <a href={`tel:+34${dev.telefono.replace(/\s/g, '')}`} class="text-emerald-400 hover:underline">
+              <a href={`tel:+34${dev.telefono.replace(/\s/g, '')}`} class="text-brass hover:underline">
                 {dev.telefono}
               </a>
             </li>
           )}
           {dev.email && (
             <li>
-              <a href={`mailto:${dev.email}`} class="text-emerald-400 hover:underline break-all">
+              <a href={`mailto:${dev.email}`} class="text-brass hover:underline break-all">
                 {dev.email}
               </a>
             </li>
           )}
         </ul>
-        <p class="pt-1 text-sm text-slate-500">
+        <p class="pt-1 text-sm text-cream0">
           Si quieres una web como esta o necesitas diseño o desarrollo a medida, contacta sin compromiso.
         </p>
       </div>
     ) : (
-      <p class="text-slate-500">
+      <p class="text-cream0">
         Los datos de contacto del diseñador o desarrollador no están configurados en este momento.
       </p>
     )}
     <p>
-      <a href="/" class="text-emerald-400 hover:underline">Volver al inicio</a>
+      <a href="/" class="text-brass hover:underline">Volver al inicio</a>
     </p>
   </section>
 </Layout>

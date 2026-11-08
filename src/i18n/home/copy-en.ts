@@ -1,12 +1,14 @@
 import type { HomeCopy } from './types';
 import { siteConfig } from '../../config/site';
 
+/** Misma cifra que `precioAperturaDesde`, formato EN (€90). */
+const precioEn = `€${siteConfig.precioAperturaDesde.replace(/\s*€\s*/g, '')}`;
+
 export const homeCopyEn: HomeCopy = {
   locale: 'en',
   seo: {
     title: 'Emergency locksmith Madrid 24h | Lockouts, doors & locks',
-    description:
-      'Emergency locksmiths Madrid 24/7: non-destructive entry from €90 VAT incl. (any time, anywhere in the region). If forcing is needed, price agreed first; many jobs up to ~€200 VAT incl.',
+    description: `Emergency locksmiths Madrid 24/7: non-destructive entry from ${precioEn} VAT incl. (any time, anywhere in the region). If forcing is needed, price agreed first; many jobs up to ~€200 VAT incl.`,
   },
   breadcrumbHome: 'Home',
   dateLocale: 'en-GB',
@@ -41,11 +43,12 @@ export const homeCopyEn: HomeCopy = {
   ],
   heroTitle: 'Locksmiths in Madrid · 24h emergency service',
   heroIntroHtml:
-    'We are <strong class="text-slate-100 font-semibold">emergency locksmiths in Madrid</strong> available around the clock: <strong class="text-slate-100 font-semibold">non-destructive door opening</strong> whenever possible, <strong class="text-slate-100 font-semibold">lock and cylinder replacement</strong>, and fast help across the <strong class="text-slate-100 font-semibold">Community of Madrid</strong>. Call us and a qualified locksmith will be on the way.',
+    'We are <strong class="text-cream font-semibold">emergency locksmiths in Madrid</strong> available around the clock: <strong class="text-cream font-semibold">non-destructive door opening</strong> whenever possible, <strong class="text-cream font-semibold">lock and cylinder replacement</strong>, and fast help across the <strong class="text-cream font-semibold">Community of Madrid</strong>. Call us and a qualified locksmith will be on the way.',
   ctaCall: 'Call now',
+  ctaWhatsApp: 'WhatsApp',
   ctaSub: 'Immediate response · 24 hours · Every day of the year',
   bullets: [
-    'Non-destructive entry from €90 VAT incl. (forcing only if needed; many jobs up to ~€200 VAT incl.)',
+    `Non-destructive entry from ${precioEn} VAT incl. (forcing only if needed; many jobs up to ~€200 VAT incl.)`,
     'Armoured and security door opening',
     'Lock, cylinder or barrel change (broken lock or lost keys)',
     'Vehicle opening without unnecessary damage',
@@ -63,7 +66,7 @@ export const homeCopyEn: HomeCopy = {
     availLabel: 'Availability',
     availSub: 'Nights, weekends and public holidays, all year.',
     priceLabel: 'Non-destructive entry',
-    priceValue: 'From €90',
+    priceValue: `From ${precioEn}`,
     priceSub: 'VAT incl. · Any time & zone · usual materials included',
     ratingLabel: 'Customer rating',
     ratingSubFallback: 'Based on real customer feedback.',
@@ -90,7 +93,7 @@ export const homeCopyEn: HomeCopy = {
     cards: [
       {
         title: 'Clear pricing',
-        body: 'Non-destructive entry from €90 VAT incl.; if forcing is needed, we agree the price first (many jobs up to around €200 VAT incl.).',
+        body: `Non-destructive entry from ${precioEn} VAT incl.; if forcing is needed, we agree the price first (many jobs up to around €200 VAT incl.).`,
       },
       {
         title: 'Training and tools',
@@ -128,7 +131,7 @@ export const homeCopyEn: HomeCopy = {
     introHtml:
       'These are some of the jobs we carry out most often. Full service descriptions are on our Spanish site; we provide the same work for English-speaking customers.',
     footerHtml:
-      '<a href="/servicios" hreflang="es" class="text-emerald-400 underline decoration-emerald-400/60 hover:decoration-emerald-400">Full list of locksmith services (Spanish)</a>',
+      '<a href="/servicios" hreflang="es" class="text-brass underline decoration-brass/60 hover:decoration-brass">Full list of locksmith services (Spanish)</a>',
   },
   zonesSection: {
     title: 'Areas in Madrid where we work',

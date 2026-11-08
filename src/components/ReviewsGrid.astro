@@ -18,24 +18,24 @@ const lista =
 ---
 
 {reseñas && reseñas.totalResenas > 0 && (
-  <section class="space-y-4">
+  <section class="reveal space-y-4">
     <h2 class="text-xl font-bold tracking-tight sm:text-2xl">{title}</h2>
-    <p class="text-sm text-slate-300">
+    <p class="text-sm text-cream">
       <strong>{reseñas.valoracionMedia} de 5</strong> · {reseñas.totalResenas} reseñas en Google
     </p>
     {lista.length > 0 && (
       <ul class="grid gap-3 sm:grid-cols-2">
         {lista.map((r) => (
-          <li class="flex flex-col text-sm">
+          <li class="quote-rule flex flex-col text-sm">
             {esTextoGenerico(r.texto) ? (
-              <p class="text-slate-400 italic">
+              <p class="text-cream-muted italic">
                 Valoración de {r.valoracion} estrellas en Google
                 {r.autor ? ` · ${r.autor}` : ''}
               </p>
             ) : (
-              <p class="text-slate-300">"{r.texto}"</p>
+              <p class="text-cream">"{r.texto}"</p>
             )}
-            <p class="mt-auto pt-3 text-sm text-slate-300">
+            <p class="mt-auto pt-3 text-sm text-cream">
               {r.autor} · {r.valoracion} de 5
               <time datetime={r.fecha} class="ml-1">
                 {new Date(r.fecha).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })}
@@ -51,7 +51,7 @@ const lista =
           href={siteConfig.googleMapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="font-medium text-emerald-400 hover:underline"
+          class="font-medium text-brass hover:underline"
         >
           Ver todas en Google Maps
         </a>

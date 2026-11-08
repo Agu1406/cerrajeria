@@ -22,33 +22,33 @@ const showMapBlock = direccion || siteConfig.googleMapsUrl;
       <h1 class="text-2xl font-extrabold tracking-tight sm:text-3xl">
         Contacto cerrajeros 24h en {siteConfig.ciudadPrincipal}
       </h1>
-      <p class="text-sm text-slate-300 sm:text-base">
+      <p class="text-sm text-cream sm:text-base">
         Para emergencias, la forma más rápida de hablar con nosotros es por teléfono. Si tu consulta no es urgente,
         también puedes usar el formulario y te responderemos lo antes posible.
       </p>
 
       <div class="space-y-2 text-sm">
-        <h2 class="text-base font-semibold text-slate-100">
+        <h2 class="text-base font-semibold text-cream">
           Urgencias 24 horas
         </h2>
         <p>
           Teléfono directo:{' '}
-          <a href={siteConfig.telefonoHref} class="font-semibold text-emerald-400 hover:underline">
+          <a href={siteConfig.telefonoHref} class="font-semibold text-brass hover:underline">
             {siteConfig.telefono}
           </a>
         </p>
-        <p class="text-slate-400">
+        <p class="text-cream-muted">
           Disponible todos los días del año, incluyendo noches y festivos.
         </p>
       </div>
 
       {showMapBlock && (
         <div class="space-y-2 text-sm">
-          <h2 class="text-base font-semibold text-slate-100">
+          <h2 class="text-base font-semibold text-cream">
             Dónde estamos
           </h2>
           {direccion && (
-            <p class="text-slate-300">
+            <p class="text-cream">
               {direccion.calle}<br />
               {direccion.codigoPostal} {direccion.localidad}, {siteConfig.ciudadPrincipal}
             </p>
@@ -59,7 +59,7 @@ const showMapBlock = direccion || siteConfig.googleMapsUrl;
                 href={mapsHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 font-semibold text-emerald-400 hover:underline"
+                class="inline-flex items-center gap-1.5 font-semibold text-brass hover:underline"
               >
                 {siteConfig.googleMapsUrl ? 'Ver en Google Maps' : 'Cómo llegar (Google Maps)'}
               </a>

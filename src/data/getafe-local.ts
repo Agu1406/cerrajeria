@@ -45,7 +45,7 @@ export const getafeCasosReales: CasoReal[] = [
       'Llamada a las 9 AM: el local necesitaba abrirse para ventas y atender clientes, y el personal no tenía acceso.',
     detalle:
       'Apertura sin romper en unos 25 min. El cliente entró sin cambiar cerradura; se reconfiguró la cerradura para un juego de llaves nuevo y se entregaron 3 duplicados más el juego original en el momento.',
-    precio: '90 € IVA incl.',
+    precio: `${precio} IVA incl.`,
   },
   {
     etiqueta: 'Cambio bombín',

@@ -57,15 +57,15 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
         Puertas antiokupas en {data.nombre}
       </h1>
-      <p class="text-sm text-slate-300 sm:text-base max-w-2xl">
+      <p class="text-sm text-cream sm:text-base max-w-2xl">
         {data.intro}
       </p>
-      <p class="text-sm text-slate-400">
+      <p class="text-sm text-cream-muted">
         {data.llegadaTexto}
       </p>
       <div class="flex flex-wrap items-center gap-3 pt-2">
         <CtaLlamar />
-        <p class="text-sm text-slate-400">
+        <p class="text-sm text-cream-muted">
           Presupuesto sin compromiso en {data.nombre}.
         </p>
       </div>
@@ -75,27 +75,27 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       <h2 class="text-lg font-semibold tracking-tight">
         ¿Cuándo instalar puertas antiokupas en {data.nombre}?
       </h2>
-      <ul class="grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+      <ul class="grid gap-2 text-sm text-cream sm:grid-cols-2">
         <li class="flex gap-2">
-          <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
+          <span class="text-brass shrink-0" aria-hidden="true">•</span>
           Vivienda o local vacío que quieres proteger frente a ocupación ilegal.
         </li>
         <li class="flex gap-2">
-          <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
+          <span class="text-brass shrink-0" aria-hidden="true">•</span>
           Refuerzo de cerraduras y bombines para mayor resistencia.
         </li>
         <li class="flex gap-2">
-          <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
+          <span class="text-brass shrink-0" aria-hidden="true">•</span>
           Instalación de puertas de seguridad o blindadas en segunda vivienda.
         </li>
         <li class="flex gap-2">
-          <span class="text-emerald-400 shrink-0" aria-hidden="true">•</span>
+          <span class="text-brass shrink-0" aria-hidden="true">•</span>
           Asesoramiento para combinar cerraduras, herrajes y disuasión visual.
         </li>
       </ul>
     </section>
 
-    <section class="space-y-3 text-sm text-slate-300">
+    <section class="space-y-3 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         Refuerzo e instalación en {data.nombre}
       </h2>
@@ -104,7 +104,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </p>
     </section>
 
-    <section class="space-y-3 text-sm text-slate-300">
+    <section class="space-y-3 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         Precio y desplazamiento en {data.nombre}
       </h2>
@@ -113,45 +113,45 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </p>
     </section>
 
-    <section class="space-y-3 text-sm text-slate-300">
+    <section class="space-y-3 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight">
         Preguntas frecuentes sobre puertas antiokupas en {data.nombre}
       </h2>
-      <dl class="space-y-3 text-slate-300">
+      <dl class="space-y-3 text-cream">
         <div>
-          <dt class="font-semibold text-slate-200">¿Qué incluye una puerta antiokupa?</dt>
-          <dd class="mt-1 text-sm text-slate-400">
+          <dt class="font-semibold text-cream">¿Qué incluye una puerta antiokupa?</dt>
+          <dd class="mt-1 text-sm text-cream-muted">
             Depende del caso: refuerzo de cerraduras, bombines de alta seguridad, puertas blindadas o de seguridad que cumplen normativa. Te asesoramos según tu situación.
           </dd>
         </div>
         <div>
-          <dt class="font-semibold text-slate-200">¿Atienden en {data.nombre}?</dt>
-          <dd class="mt-1 text-sm text-slate-400">
+          <dt class="font-semibold text-cream">¿Atienden en {data.nombre}?</dt>
+          <dd class="mt-1 text-sm text-cream-muted">
             Sí, atendemos en {data.nombre} y alrededores. Si tienes dudas sobre disponibilidad, llámanos y te lo confirmamos.
           </dd>
         </div>
         <div>
-          <dt class="font-semibold text-slate-200">¿Cuánto tarda la instalación?</dt>
-          <dd class="mt-1 text-sm text-slate-400">
+          <dt class="font-semibold text-cream">¿Cuánto tarda la instalación?</dt>
+          <dd class="mt-1 text-sm text-cream-muted">
             Varía según el trabajo: un refuerzo de cerradura puede hacerse en una visita; una puerta nueva puede requerir medición y posterior instalación. Te lo concretamos al dar el presupuesto.
           </dd>
         </div>
       </dl>
       {entry.data.actualizado && (
-        <p class="mt-3 text-sm text-slate-500">
+        <p class="mt-3 text-sm text-cream0">
           Contenido revisado: <time datetime={entry.data.actualizado.toISOString()}>{entry.data.actualizado.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
         </p>
       )}
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight mb-2">
         Otros servicios de cerrajería
       </h2>
       <p>
         Además de puertas antiokupas, realizamos apertura de puertas, cambio e instalación de cerraduras y bombines, duplicado de llaves a domicilio y de coche, y arreglo de ventanas oscilobatientes. Si necesitas un cerrajero urgente 24 horas en {data.nombre}, tenemos página específica:{' '}
-        <a href={`/cerrajero-urgente-24h/${entry.slug}`} class="text-emerald-400 hover:underline">cerrajero 24h en {data.nombre}</a>. Listado completo en{' '}
-        <a href="/servicios" class="text-emerald-400 hover:underline">servicios de cerrajería</a>.
+        <a href={`/cerrajero-urgente-24h/${entry.slug}`} class="text-brass hover:underline">cerrajero 24h en {data.nombre}</a>. Listado completo en{' '}
+        <a href="/servicios" class="text-brass hover:underline">servicios de cerrajería</a>.
       </p>
     </section>
 
@@ -165,21 +165,21 @@ const noindex = !isSurBarrioIndexable(entry.slug);
             <li>
               <a
                 href={`${basePath}/${other.slug}`}
-                class="text-slate-300 hover:text-emerald-400 hover:underline"
+                class="text-cream hover:text-brass hover:underline"
               >
                 Puertas antiokupas en {other.data.nombre}
               </a>
             </li>
           ))}
         </ul>
-        <p class="text-sm text-slate-400">
-          <a href={basePath} class="text-emerald-400 hover:underline">Ver puertas antiokupas en Madrid</a>
+        <p class="text-sm text-cream-muted">
+          <a href={basePath} class="text-brass hover:underline">Ver puertas antiokupas en Madrid</a>
         </p>
       </section>
     )}
 
     <div class="flex flex-wrap items-center gap-3">
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         ¿Necesitas presupuesto en {data.nombre}? Llámanos.
       </p>
       <a

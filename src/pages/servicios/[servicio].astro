@@ -60,79 +60,79 @@ const otrosServicios = servicios
       <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
         {servicio.nombre} en Madrid
       </h1>
-      <p class="text-sm text-slate-300 sm:text-base max-w-2xl">
+      <p class="text-sm text-cream sm:text-base max-w-2xl">
         {servicio.descripcionCorta} Trabajamos en toda la Comunidad de Madrid y nos desplazamos a domicilio cuando hace falta.
       </p>
       <div class="flex flex-wrap items-center gap-3 pt-2">
         <CtaLlamar />
-        <p class="text-sm text-slate-400">
+        <p class="text-sm text-cream-muted">
           Presupuesto sin compromiso. Urgencias 24 horas.
         </p>
       </div>
     </header>
 
     {isCambioCerradura && (
-      <section class="space-y-3 text-sm text-slate-300">
-        <h2 class="text-lg font-semibold tracking-tight text-slate-50">
+      <section class="space-y-3 text-sm text-cream">
+        <h2 class="text-lg font-semibold tracking-tight text-cream">
           Cambio de bombín, cilindro o cerradura completa
         </h2>
         <p>
-          Mucha gente busca <strong class="text-slate-200">cambio de cerradura</strong> cuando en realidad basta con sustituir el{' '}
-          <strong class="text-slate-200">bombín</strong> (también llamado <strong class="text-slate-200">cilindro</strong>). Otras
-          veces la <strong class="text-slate-200">cerradura está rota</strong> o conviene cambiar el juego completo. En la visita
+          Mucha gente busca <strong class="text-cream">cambio de cerradura</strong> cuando en realidad basta con sustituir el{' '}
+          <strong class="text-cream">bombín</strong> (también llamado <strong class="text-cream">cilindro</strong>). Otras
+          veces la <strong class="text-cream">cerradura está rota</strong> o conviene cambiar el juego completo. En la visita
           valoramos la puerta y te proponemos la opción más adecuada y económica, con precio acordado antes de montar nada.
         </p>
-        <p class="text-sm text-slate-400">
-          Si solo necesitas <a href={`${basePath}/bombines-seguridad`} class="text-emerald-400 hover:underline">bombines de alta seguridad</a>
-          {' '}o <a href={`${basePath}/apertura-puertas`} class="text-emerald-400 hover:underline">apertura de puertas</a>, también lo cubrimos.
+        <p class="text-sm text-cream-muted">
+          Si solo necesitas <a href={`${basePath}/bombines-seguridad`} class="text-brass hover:underline">bombines de alta seguridad</a>
+          {' '}o <a href={`${basePath}/apertura-puertas`} class="text-brass hover:underline">apertura de puertas</a>, también lo cubrimos.
         </p>
       </section>
     )}
 
     {isAperturaPuertas && (
-      <section class="space-y-3 text-sm text-slate-300">
-        <h2 class="text-lg font-semibold tracking-tight text-slate-50">
+      <section class="space-y-3 text-sm text-cream">
+        <h2 class="text-lg font-semibold tracking-tight text-cream">
           Apertura sin romper · desde {precio} IVA incl.
         </h2>
         <p>
-          Abrimos puertas de vivienda, locales y portales priorizando técnicas <strong class="text-slate-200">no destructivas</strong>:
+          Abrimos puertas de vivienda, locales y portales priorizando técnicas <strong class="text-cream">no destructivas</strong>:
           llave dentro, llave perdida, bombín atascado o puerta blindada/acorazada. Te damos precio orientativo por teléfono
           y lo confirmamos en el sitio antes de empezar.
         </p>
-        <ul class="list-disc space-y-1 pl-5 text-sm text-slate-400">
+        <ul class="list-disc space-y-1 pl-5 text-sm text-cream-muted">
           <li>Urgencias 24 horas en Madrid y sur (base en Getafe)</li>
           <li>Precio cerrado antes de actuar · factura con IVA</li>
           <li>Bizum, tarjeta o efectivo · garantía por escrito</li>
         </ul>
-        <p class="text-sm text-slate-400">
+        <p class="text-sm text-cream-muted">
           Si tras abrir conviene reforzar, también hacemos{' '}
-          <a href={`${basePath}/cambio-cerradura`} class="text-emerald-400 hover:underline">cambio de cerradura</a>
+          <a href={`${basePath}/cambio-cerradura`} class="text-brass hover:underline">cambio de cerradura</a>
           {' '}y{' '}
-          <a href={`${basePath}/bombines-seguridad`} class="text-emerald-400 hover:underline">bombines de seguridad</a>.
+          <a href={`${basePath}/bombines-seguridad`} class="text-brass hover:underline">bombines de seguridad</a>.
         </p>
       </section>
     )}
 
     {isBombines && (
-      <section class="space-y-3 text-sm text-slate-300">
-        <h2 class="text-lg font-semibold tracking-tight text-slate-50">
+      <section class="space-y-3 text-sm text-cream">
+        <h2 class="text-lg font-semibold tracking-tight text-cream">
           Bombín antibumping, antiganzúa y antitaladro
         </h2>
         <p>
-          Un <strong class="text-slate-200">bombín de alta seguridad</strong> (cilindro) es la pieza que más protege tu puerta
+          Un <strong class="text-cream">bombín de alta seguridad</strong> (cilindro) es la pieza que más protege tu puerta
           frente a bumping, ganzúa o taladro. Te asesoramos según el tipo de puerta y el nivel de riesgo; instalamos el mismo
           día si hay stock, con presupuesto acordado antes de montar.
         </p>
-        <ul class="list-disc space-y-1 pl-5 text-sm text-slate-400">
+        <ul class="list-disc space-y-1 pl-5 text-sm text-cream-muted">
           <li>Sustitución tras robo, llaves perdidas o upgrade de seguridad</li>
           <li>Factura con IVA · garantía por escrito · Bizum y tarjeta</li>
           <li>Compatible con la mayoría de cerraduras de vivienda y portal</li>
         </ul>
-        <p class="text-sm text-slate-400">
+        <p class="text-sm text-cream-muted">
           Si la puerta no abre, primero{' '}
-          <a href={`${basePath}/apertura-puertas`} class="text-emerald-400 hover:underline">apertura de puertas</a>
+          <a href={`${basePath}/apertura-puertas`} class="text-brass hover:underline">apertura de puertas</a>
           {' '}y luego el cambio. También{' '}
-          <a href={`${basePath}/cambio-cerradura`} class="text-emerald-400 hover:underline">cambio de cerradura completa</a>
+          <a href={`${basePath}/cambio-cerradura`} class="text-brass hover:underline">cambio de cerradura completa</a>
           {' '}cuando hace falta.
         </p>
       </section>
@@ -142,19 +142,19 @@ const otrosServicios = servicios
       <h2 class="text-lg font-semibold tracking-tight">
         Atendemos en toda la Comunidad de Madrid
       </h2>
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         Este servicio está disponible en los mismos barrios y zonas donde prestamos cerrajería urgente: priorizamos Getafe,
         Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés y el sur de Madrid; también el resto de la Comunidad. Puedes consultar
         zonas, tiempos de llegada y teléfono de urgencias en la página de barrios.
       </p>
       <p>
-        <a href="/cerrajero-urgente-24h" class="font-semibold text-emerald-400 hover:underline">
+        <a href="/cerrajero-urgente-24h" class="font-semibold text-brass hover:underline">
           Ver barrios y zonas donde atendemos
         </a>
       </p>
     </section>
 
-    <section class="space-y-2 text-sm text-slate-300">
+    <section class="space-y-2 text-sm text-cream">
       <h2 class="text-base font-semibold tracking-tight mb-2">
         Otros servicios de cerrajería
       </h2>
@@ -164,20 +164,20 @@ const otrosServicios = servicios
       <ul class="flex flex-wrap gap-x-2 gap-y-1">
         {otrosServicios.map((s, i) => (
           <li class="inline">
-            <a href={`${basePath}/${s.slug}`} class="text-emerald-400 hover:underline">
+            <a href={`${basePath}/${s.slug}`} class="text-brass hover:underline">
               {s.nombre}
             </a>
-            {i < otrosServicios.length - 1 && <span class="text-slate-500"> · </span>}
+            {i < otrosServicios.length - 1 && <span class="text-cream0"> · </span>}
           </li>
         ))}
       </ul>
       <p class="mt-2">
-        <a href={basePath} class="text-emerald-400 hover:underline">Ver todos los servicios</a>
+        <a href={basePath} class="text-brass hover:underline">Ver todos los servicios</a>
       </p>
     </section>
 
     <div class="flex flex-wrap items-center gap-3">
-      <p class="text-sm text-slate-300">
+      <p class="text-sm text-cream">
         ¿Necesitas presupuesto o es una urgencia? Llámanos.
       </p>
       <a

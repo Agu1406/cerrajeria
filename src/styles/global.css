@@ -98,7 +98,6 @@ body.has-sticky {
 }
 
 .header-actions {
-  display: flex;
   align-items: center;
   gap: var(--s2);
 }

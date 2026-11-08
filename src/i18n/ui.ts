@@ -30,6 +30,7 @@ type NavStrings = {
   whatsappAria: string;
   openMenu: string;
   closeMenu: string;
+  menuLabel: string;
   mobileMenuAria: string;
 };
 
@@ -46,6 +47,7 @@ const NAV: Record<Locale, NavStrings> = {
     whatsappAria: 'Escribir por WhatsApp',
     openMenu: 'Abrir menú',
     closeMenu: 'Cerrar menú',
+    menuLabel: 'Menú',
     mobileMenuAria: 'Menú móvil',
   },
   en: {
@@ -60,6 +62,7 @@ const NAV: Record<Locale, NavStrings> = {
     whatsappAria: 'Message on WhatsApp',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
+    menuLabel: 'Menu',
     mobileMenuAria: 'Mobile menu',
   },
 };
@@ -155,16 +158,22 @@ const FOOTER: Record<Locale, FooterStrings> = {
 type CallFabStrings = {
   callSiteAria: string;
   whatsappAria: string;
+  callLabel: string;
+  whatsappLabel: string;
 };
 
 const CALL_FAB: Record<Locale, CallFabStrings> = {
   es: {
     callSiteAria: 'Llamar ahora a',
     whatsappAria: 'Escribir por WhatsApp',
+    callLabel: 'Llamar',
+    whatsappLabel: 'WhatsApp',
   },
   en: {
     callSiteAria: 'Call now',
     whatsappAria: 'Message on WhatsApp',
+    callLabel: 'Call',
+    whatsappLabel: 'WhatsApp',
   },
 };
 

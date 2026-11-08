@@ -39,6 +39,15 @@ Ritmo de fondos: página en gris frío; bandas elevadas en blanco (`.section-cre
 - Radio de borde: 2 px.
 - Excepción: el único degradado permitido es el scrim de legibilidad del hero en móvil (`.hero-scrim`), funcional y claro.
 
+## CTAs móviles (estándar)
+
+Patrón compartido entre webs (copiar-pegar esta sección). Aquí el primario es **Llamar** y el secundario **WhatsApp**.
+
+1. Cabecera móvil: CTA primario (`.btn-call`) + botón texto «Menú» (borde, 44 px; no icono ☰). El drawer solo lista enlaces; no duplica los CTAs.
+2. Barra inferior 50/50 (`.sticky-cta`): primario + secundario. Siempre visible en móvil desde el primer pintado. Oculta en escritorio.
+3. Si hay banner de cookies: ambos viven en un `.bottom-dock` en columna. La barra CTA queda **por encima del banner en el eje vertical** (no solapada por z-index). Al aceptar o rechazar cookies, el banner sale del flujo (`display: none`) y el CTA baja al borde inferior. Altura del dock → `--bottom-dock-h` para el `padding-bottom` del body.
+4. Sin FABs circulares. El `tel:` (o la reserva) funciona sin JavaScript.
+
 ## Movimiento (nivel medio)
 
 Permitido, y nada más:

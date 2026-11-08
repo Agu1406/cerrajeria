@@ -209,22 +209,47 @@ const gaId = !siteConfig.googleTagManagerId ? siteConfig.googleAnalyticsId || ''
       <slot />
     </main>
     <Footer locale={locale} />
-    <CallButton whatsappHref={whatsappHref} locale={locale} />
     <SiteMotion />
-    <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label={chrome.cookieAria} aria-live="polite">
-      <p class="cookie-banner-text">
-        {chrome.cookieText}{' '}
-        <a href={cookiePolicyPath} class="underline hover:no-underline">{chrome.cookieMore}</a>.
-      </p>
-      <div class="cookie-banner-actions">
-        <button type="button" id="cookie-banner-reject" class="cookie-banner-btn cookie-banner-btn--secondary">
-          {chrome.cookieReject}
-        </button>
-        <button type="button" id="cookie-banner-accept" class="cookie-banner-btn">
-          {chrome.cookieAccept}
-        </button>
+    <div class="bottom-dock" data-bottom-dock>
+      <CallButton whatsappHref={whatsappHref} locale={locale} />
+      <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label={chrome.cookieAria} aria-live="polite">
+        <p class="cookie-banner-text">
+          {chrome.cookieText}{' '}
+          <a href={cookiePolicyPath} class="underline hover:no-underline">{chrome.cookieMore}</a>.
+        </p>
+        <div class="cookie-banner-actions">
+          <button type="button" id="cookie-banner-reject" class="cookie-banner-btn cookie-banner-btn--secondary">
+            {chrome.cookieReject}
+          </button>
+          <button type="button" id="cookie-banner-accept" class="cookie-banner-btn">
+            {chrome.cookieAccept}
+          </button>
+        </div>
       </div>
     </div>
+    <script is:inline>
+      (function () {
+        function syncBottomDockHeight() {
+          var dock = document.querySelector('[data-bottom-dock]');
+          if (!dock) return;
+          document.documentElement.style.setProperty('--bottom-dock-h', dock.offsetHeight + 'px');
+        }
+        window.__syncBottomDockHeight = syncBottomDockHeight;
+        if (typeof ResizeObserver !== 'undefined') {
+          var dock = document.querySelector('[data-bottom-dock]');
+          if (dock) {
+            new ResizeObserver(syncBottomDockHeight).observe(dock);
+          }
+        }
+        window.addEventListener('resize', syncBottomDockHeight);
+        window.addEventListener('cookie-consent-change', syncBottomDockHeight);
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', syncBottomDockHeight);
+        } else {
+          syncBottomDockHeight();
+        }
+      })();
+    </script>
     <script is:inline define:vars={{ gtmId, gaId }}>
       (function() {
         var KEY = 'cookie-consent';
@@ -241,6 +266,9 @@ const gaId = !siteConfig.googleTagManagerId ? siteConfig.googleAnalyticsId || ''
           if (!banner) return;
           banner.classList.add('cookie-banner--hidden');
           banner.setAttribute('aria-hidden', 'true');
+          if (typeof window.__syncBottomDockHeight === 'function') {
+            window.__syncBottomDockHeight();
+          }
         }
 
         function setConsent(value) {

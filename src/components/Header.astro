@@ -23,12 +23,12 @@ const whatsappHref =
     : siteConfig.whatsappUrl);
 ---
 
-<header class="border-b border-[var(--line)] bg-ink">
-  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4">
-    <a href={homePath} class="font-display text-xl font-semibold tracking-tight text-cream sm:text-2xl">
+<header class="site-header border-b border-[var(--line)] bg-ink">
+  <div class="site-header-wrap mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:py-4">
+    <a href={homePath} class="brand font-display text-xl font-semibold tracking-tight text-cream sm:text-2xl">
       {siteConfig.nombreComercial}
     </a>
-    <nav class="hidden items-center gap-4 text-sm font-medium text-cream sm:flex" aria-label={nav.ariaNav}>
+    <nav class="nav-desktop hidden items-center gap-4 text-sm font-medium text-cream sm:flex" aria-label={nav.ariaNav}>
       <a href={homePath} class="nav-link">{nav.home}</a>
       <a href="/servicios" class="nav-link">{nav.services}</a>
       <a href="/cerrajero-urgente-24h" class="nav-link">{nav.areas}</a>
@@ -61,73 +61,106 @@ const whatsappHref =
         {nav.callNow} · {siteConfig.telefono}
       </a>
     </nav>
-    <button
-      type="button"
-      id="menu-toggle"
-      class="rounded-[2px] p-2 text-cream sm:hidden"
-      aria-label={nav.openMenu}
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-    >
-      <span id="menu-icon" aria-hidden="true">☰</span>
-    </button>
-  </div>
-  <div
-    id="mobile-menu"
-    class="hidden flex-col gap-1 border-t border-[var(--line)] bg-ink px-4 py-3 sm:hidden"
-    aria-label={nav.mobileMenuAria}
-  >
-    <a href={homePath} class="block rounded-[2px] px-3 py-2 text-cream">{nav.home}</a>
-    <a href="/servicios" class="block rounded-[2px] px-3 py-2 text-cream">{nav.services}</a>
-    <a href="/cerrajero-urgente-24h" class="block rounded-[2px] px-3 py-2 text-cream">{nav.areas}</a>
-    <a href="/blog" class="block rounded-[2px] px-3 py-2 text-cream">Blog</a>
-    <a href="/contacto" class="block rounded-[2px] px-3 py-2 text-cream">{nav.contact}</a>
-    {langLinks.map((link) => (
-      <a
-        href={link.href}
-        class="block rounded-[2px] px-3 py-2 text-cream"
-        hreflang={link.hreflang}
-        lang={link.hreflang}
-      >
-        {link.label}
-      </a>
-    ))}
-    <div class="mt-2 flex flex-wrap gap-2">
-      <a
-        href={whatsappHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-quiet"
-        aria-label={nav.whatsappAria}
-      >
-        WhatsApp
-      </a>
+    <div class="header-actions flex items-center gap-2 sm:hidden">
       <a
         href={siteConfig.telefonoHref}
-        class="btn-call"
-        aria-label={`${nav.callNow} ${siteConfig.telefono}`}
+        class="btn-call header-call"
+        aria-label={`${nav.callMobile} ${siteConfig.telefono}`}
       >
-        {nav.callMobile} · {siteConfig.telefono}
+        {nav.callMobile}
       </a>
+      <button
+        type="button"
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-label={nav.openMenu}
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
+      >
+        {nav.menuLabel}
+      </button>
     </div>
   </div>
+  <nav
+    id="mobile-menu"
+    class="nav-mobile border-t border-[var(--line)] bg-ink sm:hidden"
+    aria-label={nav.mobileMenuAria}
+    data-menu
+    hidden
+  >
+    <div class="mx-auto flex max-w-5xl flex-col px-4 py-2">
+      <a href={homePath} class="nav-mobile-link">{nav.home}</a>
+      <a href="/servicios" class="nav-mobile-link">{nav.services}</a>
+      <a href="/cerrajero-urgente-24h" class="nav-mobile-link">{nav.areas}</a>
+      <a href="/blog" class="nav-mobile-link">Blog</a>
+      <a href="/contacto" class="nav-mobile-link">{nav.contact}</a>
+      {langLinks.map((link) => (
+        <a
+          href={link.href}
+          class="nav-mobile-link"
+          hreflang={link.hreflang}
+          lang={link.hreflang}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </nav>
 </header>
 
-<script>
+<script define:vars={{ openLabel: nav.openMenu, closeLabel: nav.closeMenu }}>
   document.addEventListener('DOMContentLoaded', function () {
-    var menuBtn = document.getElementById('menu-toggle');
-    var menu = document.getElementById('mobile-menu');
-    var icon = document.getElementById('menu-icon');
-    if (menuBtn && menu) {
-      menuBtn.addEventListener('click', function () {
-        var open = menu!.classList.toggle('hidden');
-        menu!.classList.toggle('flex', !open);
-        menuBtn!.setAttribute('aria-expanded', String(!open));
-        var openLabel = document.documentElement.lang === 'en' ? 'Open menu' : 'Abrir menú';
-        var closeLabel = document.documentElement.lang === 'en' ? 'Close menu' : 'Cerrar menú';
-        menuBtn!.setAttribute('aria-label', open ? openLabel : closeLabel);
-        if (icon) icon.textContent = open ? '☰' : '✕';
-      });
+    var toggle = document.querySelector('[data-menu-toggle]');
+    var menu = document.querySelector('[data-menu]');
+    if (!toggle || !menu) return;
+
+    function isOpen() {
+      return toggle.getAttribute('aria-expanded') === 'true';
     }
+
+    function trapTargets() {
+      if (!isOpen()) return [];
+      return [toggle].concat(Array.prototype.slice.call(menu.querySelectorAll('a')));
+    }
+
+    function setOpen(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? closeLabel : openLabel);
+      menu.hidden = !open;
+      if (open) {
+        var first = menu.querySelector('a');
+        if (first) first.focus();
+      } else {
+        toggle.focus();
+      }
+    }
+
+    toggle.addEventListener('click', function () {
+      setOpen(!isOpen());
+    });
+
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen()) {
+        setOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab' || !isOpen()) return;
+      var items = trapTargets();
+      if (!items.length) return;
+      var first = items[0];
+      var last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
   });
 </script>

@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../components/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CtaLlamar from '../../components/CtaLlamar.astro';
@@ -77,19 +77,19 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </h2>
       <ul class="grid gap-2 text-sm text-cream sm:grid-cols-2">
         <li class="flex gap-2">
-          <span class="text-brass shrink-0" aria-hidden="true">•</span>
+          <span class="text-gold-ink shrink-0" aria-hidden="true">•</span>
           Llave de reserva para dejar en casa o a un familiar.
         </li>
         <li class="flex gap-2">
-          <span class="text-brass shrink-0" aria-hidden="true">•</span>
+          <span class="text-gold-ink shrink-0" aria-hidden="true">•</span>
           Has perdido la llave o el mando y necesitas un duplicado o sustitución.
         </li>
         <li class="flex gap-2">
-          <span class="text-brass shrink-0" aria-hidden="true">•</span>
+          <span class="text-gold-ink shrink-0" aria-hidden="true">•</span>
           La llave original está desgastada o el mando no responde bien.
         </li>
         <li class="flex gap-2">
-          <span class="text-brass shrink-0" aria-hidden="true">•</span>
+          <span class="text-gold-ink shrink-0" aria-hidden="true">•</span>
           Compraste el coche con una sola llave y quieres una copia de seguridad.
         </li>
       </ul>
@@ -150,8 +150,8 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </h2>
       <p>
         Además del duplicado de llaves de coche, realizamos apertura de puertas, cambio e instalación de cerraduras y bombines, duplicado de llaves a domicilio (vivienda, portal) y arreglo de ventanas oscilobatientes. Si necesitas un cerrajero urgente 24 horas en {data.nombre}, tenemos página específica:{' '}
-        <a href={`/cerrajero-urgente-24h/${entry.slug}`} class="text-brass hover:underline">cerrajero 24h en {data.nombre}</a>. Listado completo en{' '}
-        <a href="/servicios" class="text-brass hover:underline">servicios de cerrajería</a>.
+        <a href={`/cerrajero-urgente-24h/${entry.slug}`} class="text-gold-ink hover:underline">cerrajero 24h en {data.nombre}</a>. Listado completo en{' '}
+        <a href="/servicios" class="text-gold-ink hover:underline">servicios de cerrajería</a>.
       </p>
     </section>
 
@@ -165,7 +165,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
             <li>
               <a
                 href={`${basePath}/${other.slug}`}
-                class="text-cream hover:text-brass hover:underline"
+                class="text-cream hover:text-gold-ink hover:underline"
               >
                 Duplicado llaves coche en {other.data.nombre}
               </a>
@@ -173,7 +173,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
           ))}
         </ul>
         <p class="text-sm text-cream-muted">
-          <a href={basePath} class="text-brass hover:underline">Ver duplicado de llaves de coche en Madrid</a>
+          <a href={basePath} class="text-gold-ink hover:underline">Ver duplicado de llaves de coche en Madrid</a>
         </p>
       </section>
     )}

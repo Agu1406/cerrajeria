@@ -1,7 +1,8 @@
----
+﻿---
 import Layout from '../Layout.astro';
 import ContactForm from '../ContactForm.astro';
-import { siteConfig } from '../../config/site';
+import Icon from '../Icon.astro';
+import { MEDIA, siteConfig } from '../../config/site';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { Locale } from '../../i18n/config';
 import { getHreflangAlternatesForRoute, pathForRoute } from '../../i18n/routes';
@@ -51,6 +52,8 @@ const ratingSub =
   showReseñas && reseñas && reseñas.totalResenas
     ? copy.stats.ratingSubCount.replace('{count}', String(reseñas.totalResenas))
     : copy.stats.ratingSubFallback;
+
+const workPhotoAlt = MEDIA.photoAlt.apertura;
 ---
 
 <Layout
@@ -61,8 +64,9 @@ const ratingSub =
   breadcrumb={[{ name: copy.breadcrumbHome, path: homePath }]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <section class="grid gap-10 lg:grid-cols-[1.3fr_minmax(0,1fr)] lg:items-start">
-    <div class="space-y-6">
+
+  <section class="home-hero -mx-4 grid lg:mx-0 lg:min-h-[min(70vh,42rem)] lg:grid-cols-2 lg:items-stretch lg:gap-8">
+    <div class="order-2 flex flex-col justify-center gap-5 px-4 py-8 lg:order-1 lg:px-0 lg:py-6">
       <p class="font-display text-4xl font-bold tracking-tight text-cream sm:text-5xl lg:text-6xl">
         {brand}
       </p>
@@ -72,10 +76,7 @@ const ratingSub =
       <span class="hero-rule" data-hero-rule aria-hidden="true"></span>
       <p class="text-sm text-cream sm:text-base" set:html={copy.heroIntroHtml} />
       <div class="flex flex-wrap items-center gap-3">
-        <a
-          href={siteConfig.telefonoHref}
-          class="btn-call"
-        >
+        <a href={siteConfig.telefonoHref} class="btn-call">
           {copy.ctaCall} · {siteConfig.telefono}
         </a>
         <a
@@ -90,45 +91,36 @@ const ratingSub =
           {copy.ctaSub}
         </p>
       </div>
-      <ul class="mt-4 grid gap-2 text-sm text-cream sm:grid-cols-2">
-        {copy.bullets.map((line) => (
-          <li>{line}</li>
-        ))}
-      </ul>
     </div>
-    <aside class="space-y-4">
-      <h2 class="text-base font-semibold tracking-tight">
-        {copy.areasTitle}
-      </h2>
-      <p class="text-sm text-cream-muted" set:html={copy.areasIntroHtml} />
-      <ul class="grid gap-2 text-sm">
-        {barriosDestacados.map((entry) => {
-          const esBase = entry.slug === siteConfig.baseBarrioSlug;
-          return (
-          <li>
-            <a
-              href={`/cerrajero-urgente-24h/${entry.slug}`}
-              {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
-              class="flex min-h-11 items-center justify-between py-2 text-cream hover:underline"
-            >
-              <span>{esBase ? 'Cerrajero urgente Getafe' : entry.data.nombre}</span>
-              <span class="text-sm text-cream-muted">{esBase ? 'Base · 10-20 min' : copy.barrioLinkSuffix}</span>
-            </a>
-          </li>
-          );
-        })}
-      </ul>
-      <a
-        href="/cerrajero-urgente-24h"
-        {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
-        class="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-brass hover:underline"
-      >
-        {copy.areasSeeAll}
-      </a>
-    </aside>
+    <figure class="home-hero-media order-1 relative min-h-[16rem] overflow-hidden lg:order-2 lg:min-h-full">
+      <picture>
+        <source media="(max-width: 768px)" srcset="/images/cerrajero-24h-madrid-hero-662w.webp" type="image/webp" />
+        <source
+          srcset={`${MEDIA.heroPath} 1536w`}
+          type="image/webp"
+          sizes="(max-width: 1023px) 100vw, min(520px, 45vw)"
+        />
+        <img
+          src={MEDIA.heroPath}
+          alt={copy.heroImageAlt}
+          class="h-full w-full object-cover lg:absolute lg:inset-0"
+          width="1200"
+          height="800"
+          fetchpriority="high"
+          sizes="(max-width: 1023px) 100vw, min(520px, 45vw)"
+        />
+      </picture>
+      <div class="hero-scrim pointer-events-none absolute inset-x-0 bottom-0 h-1/2 lg:hidden" aria-hidden="true"></div>
+    </figure>
   </section>
 
-  <dl class="mt-8 grid gap-6 text-sm sm:grid-cols-2">
+  <ul class="mt-8 grid gap-2 text-sm text-cream sm:grid-cols-2">
+    {copy.bullets.map((line) => (
+      <li>{line}</li>
+    ))}
+  </ul>
+
+  <dl class="mt-10 grid gap-6 text-sm sm:grid-cols-2">
     <div>
       <dt class="font-semibold text-cream">{copy.stats.arrivalLabel}</dt>
       <dd class="mt-1 text-cream">20–30 min. {copy.stats.arrivalSub}</dd>
@@ -150,7 +142,7 @@ const ratingSub =
   </dl>
 
   {showReseñas && reseñas && (
-    <section class="reveal mt-10 space-y-4">
+    <section class="section-cream reveal -mx-4 mt-10 space-y-4 px-4 py-10">
       <h2 class="text-lg font-semibold tracking-tight">
         {copy.reviews.title}
       </h2>
@@ -165,7 +157,7 @@ const ratingSub =
             href={siteConfig.googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-brass hover:underline"
+            class="text-gold-ink hover:underline"
           >
             {copy.reviews.seeAllGoogle}
           </a>
@@ -204,28 +196,54 @@ const ratingSub =
       </h2>
       <p set:html={copy.block24h.bodyHtml} />
     </div>
-    <figure>
-      <picture>
-        <source media="(max-width: 768px)" srcset="/images/cerrajero-24h-madrid-hero-662w.webp" type="image/webp" />
-        <source
-          srcset="/images/cerrajero-24h-madrid-hero.webp 1536w"
-          type="image/webp"
-          sizes="(max-width: 768px) 100vw, min(662px, 90vw)"
-        />
-        <img
-          src="/images/cerrajero-24h-madrid-hero.webp"
-          alt={copy.heroImageAlt}
-          class="h-full w-full object-cover"
-          width="1200"
-          height="800"
-          fetchpriority="high"
-          sizes="(max-width: 768px) 100vw, min(662px, 90vw)"
-        />
-      </picture>
+    <figure class="overflow-hidden">
+      <img
+        src="/images/apertura-puerta-blindada.webp"
+        alt={workPhotoAlt}
+        class="h-full w-full object-cover"
+        width="1200"
+        height="800"
+        loading="lazy"
+        decoding="async"
+      />
     </figure>
   </section>
 
-  <section class="reveal mt-12 space-y-4 text-sm text-cream">
+  <section class="reveal mt-12 space-y-4">
+    <h2 class="text-lg font-semibold tracking-tight">
+      {copy.areasTitle}
+    </h2>
+    <p class="text-sm text-cream-muted" set:html={copy.areasIntroHtml} />
+    <ul class="grid max-w-xl text-sm">
+      {barriosDestacados.map((entry) => {
+        const esBase = entry.slug === siteConfig.baseBarrioSlug;
+        return (
+          <li>
+            <a
+              href={`/cerrajero-urgente-24h/${entry.slug}`}
+              {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
+              class="flex min-h-11 items-center justify-between gap-3 border-b border-[var(--line)] py-3 text-cream"
+            >
+              <span class="font-semibold">{esBase ? 'Cerrajero urgente Getafe' : entry.data.nombre}</span>
+              <span class="shrink-0 text-sm font-medium text-gold-ink">
+                {esBase ? 'Base · 10-20 min' : copy.barrioLinkSuffix}
+                <span aria-hidden="true"> →</span>
+              </span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+    <a
+      href="/cerrajero-urgente-24h"
+      {...(copy.areaLinksHreflang ? { hreflang: copy.areaLinksHreflang } : {})}
+      class="inline-flex min-h-11 items-center text-sm font-medium text-gold-ink hover:underline"
+    >
+      {copy.areasSeeAll}
+    </a>
+  </section>
+
+  <section class="section-cream reveal -mx-4 mt-12 space-y-4 px-4 py-10 text-sm text-cream">
     <h2 class="text-lg font-semibold tracking-tight">
       {whyTitle}
     </h2>
@@ -260,28 +278,15 @@ const ratingSub =
       <ul class="space-y-4">
         {featuredServicios.map((servicio) => (
           <li class="text-sm">
-            <h3 class="font-semibold text-cream">{servicio.nombre}</h3>
+            <h3 class="flex items-center gap-2 font-semibold text-cream">
+              <Icon name={servicio.icon} size={22} class="shrink-0 text-gold-ink" />
+              {servicio.nombre}
+            </h3>
             <p class="mt-1 text-cream">{servicio.descripcionCorta}</p>
           </li>
         ))}
       </ul>
       <p class="text-sm text-cream-muted" set:html={copy.servicesSection.footerHtml} />
-    </section>
-
-    <section class="mt-8 space-y-3">
-      <h2 class="text-lg font-semibold tracking-tight">
-        {copy.zonesSection.title}
-      </h2>
-      <p class="text-sm text-cream-muted" set:html={copy.zonesSection.bodyHtml} />
-      <p class="text-sm text-cream-muted">
-        <a
-          href={copy.zonesSection.linkHref}
-          {...(copy.locale === 'en' ? { hreflang: 'es' } : {})}
-          class="font-medium text-brass hover:underline"
-        >
-          {copy.zonesSection.linkText}
-        </a>
-      </p>
     </section>
 
     <section class="mt-10 max-w-xl">

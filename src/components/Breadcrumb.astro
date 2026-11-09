@@ -1,4 +1,4 @@
----
+﻿---
 /** Items de la miga. El último se muestra como página actual (sin enlace); el resto con `path` como enlace. */
 interface Item {
   name: string;
@@ -18,7 +18,7 @@ const { items } = Astro.props as Props;
       <>
         {i > 0 ? <span class="mx-1">/</span> : null}
         {showLink ? (
-          <a href={item.path!} class="hover:text-brass">{item.name}</a>
+          <a href={item.path!} class="hover:text-gold-ink">{item.name}</a>
         ) : (
           <span class="text-cream-muted">{item.name}</span>
         )}

@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../components/Layout.astro';
 import { siteConfig } from '../config/site';
 
@@ -20,7 +20,7 @@ const dev = siteConfig.desarrollador;
       <div class="space-y-3">
         <p class="font-semibold text-cream">
           {dev.url ? (
-            <a href={dev.url} class="text-brass hover:underline" target="_blank" rel="noopener noreferrer">
+            <a href={dev.url} class="text-gold-ink hover:underline" target="_blank" rel="noopener noreferrer">
               {dev.nombre}
             </a>
           ) : (
@@ -31,21 +31,21 @@ const dev = siteConfig.desarrollador;
         <ul class="space-y-1.5 text-sm text-cream">
           {dev.url && (
             <li>
-              <a href={dev.url} class="text-brass hover:underline" target="_blank" rel="noopener noreferrer">
+              <a href={dev.url} class="text-gold-ink hover:underline" target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
             </li>
           )}
           {dev.telefono && (
             <li>
-              <a href={`tel:+34${dev.telefono.replace(/\s/g, '')}`} class="text-brass hover:underline">
+              <a href={`tel:+34${dev.telefono.replace(/\s/g, '')}`} class="text-gold-ink hover:underline">
                 {dev.telefono}
               </a>
             </li>
           )}
           {dev.email && (
             <li>
-              <a href={`mailto:${dev.email}`} class="text-brass hover:underline break-all">
+              <a href={`mailto:${dev.email}`} class="text-gold-ink hover:underline break-all">
                 {dev.email}
               </a>
             </li>
@@ -61,7 +61,7 @@ const dev = siteConfig.desarrollador;
       </p>
     )}
     <p>
-      <a href="/" class="text-brass hover:underline">Volver al inicio</a>
+      <a href="/" class="text-gold-ink hover:underline">Volver al inicio</a>
     </p>
   </section>
 </Layout>

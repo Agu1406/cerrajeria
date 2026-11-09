@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../components/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CtaLlamar from '../../components/CtaLlamar.astro';
@@ -83,8 +83,8 @@ const otrosServicios = servicios
           valoramos la puerta y te proponemos la opción más adecuada y económica, con precio acordado antes de montar nada.
         </p>
         <p class="text-sm text-cream-muted">
-          Si solo necesitas <a href={`${basePath}/bombines-seguridad`} class="text-brass hover:underline">bombines de alta seguridad</a>
-          {' '}o <a href={`${basePath}/apertura-puertas`} class="text-brass hover:underline">apertura de puertas</a>, también lo cubrimos.
+          Si solo necesitas <a href={`${basePath}/bombines-seguridad`} class="text-gold-ink hover:underline">bombines de alta seguridad</a>
+          {' '}o <a href={`${basePath}/apertura-puertas`} class="text-gold-ink hover:underline">apertura de puertas</a>, también lo cubrimos.
         </p>
       </section>
     )}
@@ -106,9 +106,9 @@ const otrosServicios = servicios
         </ul>
         <p class="text-sm text-cream-muted">
           Si tras abrir conviene reforzar, también hacemos{' '}
-          <a href={`${basePath}/cambio-cerradura`} class="text-brass hover:underline">cambio de cerradura</a>
+          <a href={`${basePath}/cambio-cerradura`} class="text-gold-ink hover:underline">cambio de cerradura</a>
           {' '}y{' '}
-          <a href={`${basePath}/bombines-seguridad`} class="text-brass hover:underline">bombines de seguridad</a>.
+          <a href={`${basePath}/bombines-seguridad`} class="text-gold-ink hover:underline">bombines de seguridad</a>.
         </p>
       </section>
     )}
@@ -130,9 +130,9 @@ const otrosServicios = servicios
         </ul>
         <p class="text-sm text-cream-muted">
           Si la puerta no abre, primero{' '}
-          <a href={`${basePath}/apertura-puertas`} class="text-brass hover:underline">apertura de puertas</a>
+          <a href={`${basePath}/apertura-puertas`} class="text-gold-ink hover:underline">apertura de puertas</a>
           {' '}y luego el cambio. También{' '}
-          <a href={`${basePath}/cambio-cerradura`} class="text-brass hover:underline">cambio de cerradura completa</a>
+          <a href={`${basePath}/cambio-cerradura`} class="text-gold-ink hover:underline">cambio de cerradura completa</a>
           {' '}cuando hace falta.
         </p>
       </section>
@@ -148,7 +148,7 @@ const otrosServicios = servicios
         zonas, tiempos de llegada y teléfono de urgencias en la página de barrios.
       </p>
       <p>
-        <a href="/cerrajero-urgente-24h" class="font-semibold text-brass hover:underline">
+        <a href="/cerrajero-urgente-24h" class="font-semibold text-gold-ink hover:underline">
           Ver barrios y zonas donde atendemos
         </a>
       </p>
@@ -164,7 +164,7 @@ const otrosServicios = servicios
       <ul class="flex flex-wrap gap-x-2 gap-y-1">
         {otrosServicios.map((s, i) => (
           <li class="inline">
-            <a href={`${basePath}/${s.slug}`} class="text-brass hover:underline">
+            <a href={`${basePath}/${s.slug}`} class="text-gold-ink hover:underline">
               {s.nombre}
             </a>
             {i < otrosServicios.length - 1 && <span class="text-cream0"> · </span>}
@@ -172,7 +172,7 @@ const otrosServicios = servicios
         ))}
       </ul>
       <p class="mt-2">
-        <a href={basePath} class="text-brass hover:underline">Ver todos los servicios</a>
+        <a href={basePath} class="text-gold-ink hover:underline">Ver todos los servicios</a>
       </p>
     </section>
 

@@ -1,4 +1,4 @@
----
+﻿---
 import type { Locale } from '../i18n/config';
 import { DEFAULT_LOCALE } from '../i18n/config';
 
@@ -96,7 +96,7 @@ const labels = useEnglishForm
         id="contact-nombre"
         name="nombre"
         type="text"
-        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
+        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-gold"
         placeholder={labels.namePh}
       />
     </div>
@@ -108,7 +108,7 @@ const labels = useEnglishForm
         id="contact-movil"
         name="movil"
         type="tel"
-        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
+        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-gold"
         placeholder={labels.mobilePh}
       />
     </div>
@@ -121,7 +121,7 @@ const labels = useEnglishForm
         name="email"
         type="email"
         required
-        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
+        class="w-full rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-gold"
         placeholder={labels.emailPh}
       />
     </div>
@@ -134,7 +134,7 @@ const labels = useEnglishForm
         name="mensaje"
         rows="4"
         required
-        class="w-full resize-none rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-brass"
+        class="w-full resize-none rounded-[2px] border border-[var(--line)] bg-ink px-3 py-2 text-sm text-cream outline-none focus:border-gold"
         placeholder={labels.messagePh}
       />
     </div>
@@ -146,11 +146,11 @@ const labels = useEnglishForm
         type="checkbox"
         required
         value="1"
-        class="mt-0.5 h-4 w-4 shrink-0 rounded-[2px] border-[var(--line)] bg-ink text-brass focus:ring-brass"
+        class="mt-0.5 h-4 w-4 shrink-0 rounded-[2px] border-[var(--line)] bg-ink text-gold-ink focus:ring-gold"
       />
       <span>
         {labels.privacyCheck}{' '}
-        <a href="/politica-privacidad" hreflang="es" class="text-brass underline">{labels.privacy}</a>{' '}
+        <a href="/politica-privacidad" hreflang="es" class="text-gold-ink underline">{labels.privacy}</a>{' '}
         {labels.privacyAfter}
       </span>
     </label>

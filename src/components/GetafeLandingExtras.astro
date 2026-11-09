@@ -1,4 +1,4 @@
----
+﻿---
 import { siteConfig } from '../config/site';
 import {
   getafeBarrios,
@@ -111,7 +111,7 @@ const fotoPath = profesional?.fotoPath;
             {servicio.titulo} <span class="font-normal text-cream">({servicio.precio})</span>
           </h3>
           <p class="mt-1 text-cream">{servicio.bullets.join('. ')}.</p>
-          <a href={servicio.href} class="text-brass hover:underline">Ver más información</a>
+          <a href={servicio.href} class="text-gold-ink hover:underline">Ver más información</a>
         </li>
       ))}
     </ul>
@@ -159,7 +159,7 @@ const fotoPath = profesional?.fotoPath;
         <thead class="border-b border-[var(--line)] text-sm text-cream-muted">
           <tr>
             <th class="px-4 py-3 font-semibold">Criterio</th>
-            <th class="px-4 py-3 font-semibold text-brass">{siteConfig.nombreComercial}</th>
+            <th class="px-4 py-3 font-semibold text-gold-ink">{siteConfig.nombreComercial}</th>
             <th class="px-4 py-3 font-semibold">Otros cerrajeros</th>
           </tr>
         </thead>
@@ -190,12 +190,12 @@ const fotoPath = profesional?.fotoPath;
     ))}
     <p>
       También cubrimos municipios cercanos:{' '}
-      <a href="/cerrajero-urgente-24h/leganes" class="text-brass hover:underline">Leganés</a>,{' '}
-      <a href="/cerrajero-urgente-24h/fuenlabrada" class="text-brass hover:underline">Fuenlabrada</a>,{' '}
-      <a href="/cerrajero-urgente-24h/parla" class="text-brass hover:underline">Parla</a>,{' '}
-      <a href="/cerrajero-urgente-24h/pinto" class="text-brass hover:underline">Pinto</a>,{' '}
-      <a href="/cerrajero-urgente-24h/valdemoro" class="text-brass hover:underline">Valdemoro</a> y{' '}
-      <a href="/cerrajero-urgente-24h/villaverde" class="text-brass hover:underline">Villaverde</a>.
+      <a href="/cerrajero-urgente-24h/leganes" class="text-gold-ink hover:underline">Leganés</a>,{' '}
+      <a href="/cerrajero-urgente-24h/fuenlabrada" class="text-gold-ink hover:underline">Fuenlabrada</a>,{' '}
+      <a href="/cerrajero-urgente-24h/parla" class="text-gold-ink hover:underline">Parla</a>,{' '}
+      <a href="/cerrajero-urgente-24h/pinto" class="text-gold-ink hover:underline">Pinto</a>,{' '}
+      <a href="/cerrajero-urgente-24h/valdemoro" class="text-gold-ink hover:underline">Valdemoro</a> y{' '}
+      <a href="/cerrajero-urgente-24h/villaverde" class="text-gold-ink hover:underline">Villaverde</a>.
     </p>
   </section>
 
@@ -204,7 +204,7 @@ const fotoPath = profesional?.fotoPath;
     <a href={siteConfig.telefonoHref} class="btn-call">
       {siteConfig.telefono}
     </a>
-    <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="text-sm text-brass hover:underline">
+    <a href={whatsappHref} target="_blank" rel="noopener noreferrer" class="text-sm text-gold-ink hover:underline">
       WhatsApp
     </a>
   </div>

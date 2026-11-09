@@ -48,7 +48,7 @@ Excepción de este repo: el único degradado permitido es el scrim de legibilida
 37. Tres tarifas.
 38. Sin demos reales del producto.
 39. Esquinas blandas (radio 2 px).
-40. Morado y negro (paleta: urgencia diurna, gris frío + carbón + rojo).
+40. Morado y negro (paleta: urgencia diurna, acero claro + carbón + rojo CTA + oro de acento).
 41. Sin skeleton loaders (si hay carga asíncrona, estado de carga real).
 42. Orbes radiales.
 43. Rejillas de puntos.

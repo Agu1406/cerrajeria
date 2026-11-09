@@ -52,7 +52,7 @@ export const homeCopyEs: HomeCopy = {
   ],
   areasTitle: 'Barrios y zonas de cobertura',
   areasIntroHtml:
-    'Base operativa en <a href="/cerrajero-urgente-24h/getafe" class="text-brass underline decoration-brass/60 hover:decoration-brass">Getafe</a>. También sur de Madrid y 21 distritos de la capital.',
+    'Base operativa en <a href="/cerrajero-urgente-24h/getafe" class="text-gold-ink underline decoration-gold/60 hover:decoration-gold">Getafe</a>. También sur de Madrid y 21 distritos de la capital.',
   barrioLinkSuffix: 'Ver cerrajero 24h',
   areasSeeAll: 'Ver más zonas',
   areaLinksHreflang: null,
@@ -125,12 +125,12 @@ export const homeCopyEs: HomeCopy = {
     introHtml:
       'Estos son algunos de los trabajos que realizamos con más frecuencia. Todos los servicios están disponibles en la mayoría de barrios de la Comunidad de Madrid.',
     footerHtml:
-      'Puedes ver el listado completo en la página de <a href="/servicios" class="text-brass underline decoration-brass/60 hover:decoration-brass">servicios de cerrajería</a>.',
+      'Puedes ver el listado completo en la página de <a href="/servicios" class="text-gold-ink underline decoration-gold/60 hover:decoration-gold">servicios de cerrajería</a>.',
   },
   zonesSection: {
     title: 'Zonas de Madrid donde trabajamos',
     bodyHtml:
-      'Nuestra base está en <strong>Getafe</strong> (<a href="/cerrajero-urgente-24h/getafe" class="text-brass underline decoration-brass/60 hover:decoration-brass">cerrajero urgente Getafe 24h</a>). También atendemos Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés y los <strong>21 distritos de Madrid capital</strong>. Cada zona tiene su página con precio orientativo y teléfono de urgencias.',
+      'Nuestra base está en <strong>Getafe</strong> (<a href="/cerrajero-urgente-24h/getafe" class="text-gold-ink underline decoration-gold/60 hover:decoration-gold">cerrajero urgente Getafe 24h</a>). También atendemos Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés y los <strong>21 distritos de Madrid capital</strong>. Cada zona tiene su página con precio orientativo y teléfono de urgencias.',
     linkText: 'Ver listado completo de barrios y distritos',
     linkHref: '/cerrajero-urgente-24h',
   },

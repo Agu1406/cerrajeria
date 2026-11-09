@@ -1,4 +1,4 @@
----
+﻿---
 import { siteConfig } from '../config/site';
 import type { Locale } from '../i18n/config';
 import { DEFAULT_LOCALE } from '../i18n/config';
@@ -36,7 +36,7 @@ const mapsHref = siteConfig.googleMapsUrl
       )}
       {siteConfig.email && (
         <p>
-          <a href={`mailto:${siteConfig.email}`} class="text-brass hover:underline">
+          <a href={`mailto:${siteConfig.email}`} class="text-gold-ink hover:underline">
             {siteConfig.email}
           </a>
         </p>
@@ -47,7 +47,7 @@ const mapsHref = siteConfig.googleMapsUrl
         {f.emergencyLine}{' '}
         <a
           href={siteConfig.telefonoHref}
-          class="inline-block min-h-[44px] min-w-[44px] py-2 font-semibold text-brass underline decoration-brass/50 hover:decoration-brass"
+          class="inline-block min-h-[44px] min-w-[44px] py-2 font-semibold text-gold-ink underline decoration-gold/50 hover:decoration-gold"
           aria-label={`${f.callAria} ${siteConfig.telefono}`}
         >
           {siteConfig.telefono}
@@ -59,38 +59,38 @@ const mapsHref = siteConfig.googleMapsUrl
             href={mapsHref}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright"
+            class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright"
             aria-label={f.directions}
           >
             {f.directions}
           </a>
         )}
-        <a href="/blog" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright">
+        <a href="/blog" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright">
           Blog
         </a>
-        <a href="/sitemap.xml" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright">
+        <a href="/sitemap.xml" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright">
           {f.sitemap}
         </a>
-        <a href="/aviso-legal" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
+        <a href="/aviso-legal" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright" hreflang="es">
           {f.legal}
         </a>
-        <a href="/politica-privacidad" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
+        <a href="/politica-privacidad" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright" hreflang="es">
           {f.privacy}
         </a>
-        <a href="/politica-cookies" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
+        <a href="/politica-cookies" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright" hreflang="es">
           {f.cookies}
         </a>
-        <a href="/terminos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
+        <a href="/terminos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright" hreflang="es">
           {f.terms}
         </a>
-        <a href="/politica-reembolsos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
+        <a href="/politica-reembolsos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright" hreflang="es">
           {f.refunds}
         </a>
-        <a href="/derechos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
+        <a href="/derechos" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright" hreflang="es">
           {f.rights}
         </a>
         {showDesarrollador && (
-          <a href="/diseno-web" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-brass-bright" hreflang="es">
+          <a href="/diseno-web" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center py-2 px-1 -my-1 -mx-1 hover:text-gold-bright" hreflang="es">
             {f.webDesign}
           </a>
         )}

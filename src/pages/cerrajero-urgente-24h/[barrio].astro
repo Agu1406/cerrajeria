@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../components/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CtaLlamar from '../../components/CtaLlamar.astro';
@@ -133,7 +133,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
 
     <p class="mt-2 text-sm text-cream">
       Apertura sin romper desde {siteConfig.precioAperturaDesde} IVA incl.{' '}
-      <a href={siteConfig.telefonoHref} class="font-semibold text-brass hover:underline">
+      <a href={siteConfig.telefonoHref} class="font-semibold text-gold-ink hover:underline">
         {siteConfig.telefono}
       </a>
     </p>
@@ -143,7 +143,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
         <span aria-label={`Valoración: ${reseñas.valoracionMedia} de 5`}>{reseñas.valoracionMedia} de 5</span>
         {' '}· {reseñas.totalResenas} reseñas en Google
         {siteConfig.googleMapsUrl && (
-          <a href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-brass hover:underline">Ver reseñas</a>
+          <a href={siteConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-gold-ink hover:underline">Ver reseñas</a>
         )}
       </p>
     )}
@@ -253,7 +253,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       <p>
         Si quieres ver el detalle de todos los trabajos que realizamos como aperturas, cambios de cerradura o arreglos
         de ventanas, puedes visitar la página de{' '}
-        <a href="/servicios" class="text-brass underline decoration-brass/60 hover:decoration-brass">
+        <a href="/servicios" class="text-gold-ink underline decoration-gold/60 hover:decoration-gold">
           servicios de cerrajería
         </a>
         .
@@ -270,7 +270,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
             <li>
               <a
                 href={`${basePath}/${other.slug}`}
-                class="text-cream hover:text-brass hover:underline"
+                class="text-cream hover:text-gold-ink hover:underline"
               >
                 Cerrajero 24h en {other.data.nombre}
               </a>
@@ -278,7 +278,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
           ))}
         </ul>
         <p class="text-sm text-cream-muted">
-          <a href={basePath} class="text-brass hover:underline">Ver todas las zonas</a>
+          <a href={basePath} class="text-gold-ink hover:underline">Ver todas las zonas</a>
         </p>
       </section>
     )}
@@ -293,7 +293,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
             <li>
               <a
                 href={`/blog/${post.slug}`}
-                class="text-cream hover:text-brass hover:underline"
+                class="text-cream hover:text-gold-ink hover:underline"
               >
                 {post.data.title}
               </a>
@@ -304,7 +304,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
           ))}
         </ul>
         <p class="mt-3 text-sm text-cream-muted">
-          <a href="/blog" class="text-brass hover:underline">Ver todo el blog</a>
+          <a href="/blog" class="text-gold-ink hover:underline">Ver todo el blog</a>
         </p>
       </section>
     )}

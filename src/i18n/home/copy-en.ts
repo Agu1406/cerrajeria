@@ -131,7 +131,7 @@ export const homeCopyEn: HomeCopy = {
     introHtml:
       'These are some of the jobs we carry out most often. Full service descriptions are on our Spanish site; we provide the same work for English-speaking customers.',
     footerHtml:
-      '<a href="/servicios" hreflang="es" class="text-brass underline decoration-brass/60 hover:decoration-brass">Full list of locksmith services (Spanish)</a>',
+      '<a href="/servicios" hreflang="es" class="text-gold-ink underline decoration-gold/60 hover:decoration-gold">Full list of locksmith services (Spanish)</a>',
   },
   zonesSection: {
     title: 'Areas in Madrid where we work',

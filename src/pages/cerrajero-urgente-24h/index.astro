@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../components/Layout.astro';
 import BarrioLink from '../../components/BarrioLink.astro';
 import { siteConfig } from '../../config/site';
@@ -19,7 +19,7 @@ const barrios = sortBarriosByPriority(await getCollection('barrios'));
     <p class="text-sm text-cream sm:text-base">
       Servicio de cerrajería urgente con base en <strong>Getafe</strong>: priorizamos el sur de Madrid
       (Villaverde, Valdemoro, Fuenlabrada, Parla, Leganés…) y atendemos también los <strong>21 distritos de Madrid capital</strong>.
-      Cada zona tiene su página con precio orientativo y teléfono de urgencias: <a href={siteConfig.telefonoHref} class="text-brass hover:underline">{siteConfig.telefono}</a>.
+      Cada zona tiene su página con precio orientativo y teléfono de urgencias: <a href={siteConfig.telefonoHref} class="text-gold-ink hover:underline">{siteConfig.telefono}</a>.
     </p>
 
     <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

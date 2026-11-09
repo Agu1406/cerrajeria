@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../components/Layout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { siteConfig } from '../config/site';
@@ -30,7 +30,7 @@ const categorias = [
       Trabajamos en toda la Comunidad de Madrid y podemos desplazarnos rápidamente a barrios como Getafe, Las Rozas,
       Pinto o Leganés. También atendemos otros distritos de Madrid ciudad; puedes consultar las zonas actuales en la
       página de{' '}
-      <a href="/cerrajero-urgente-24h" class="text-brass hover:underline">
+      <a href="/cerrajero-urgente-24h" class="text-gold-ink hover:underline">
         barrios
       </a>
       .
@@ -58,11 +58,11 @@ const categorias = [
               return (
                 <li class="text-sm">
                   <a href={href} class="block">
-                    <h3 class="font-semibold text-brass hover:underline">{servicio.nombre}</h3>
+                    <h3 class="font-semibold text-gold-ink hover:underline">{servicio.nombre}</h3>
                     <p class="mt-1 text-sm text-cream-muted">
                       {servicio.descripcionCorta}
                     </p>
-                    <p class="mt-2 text-sm text-brass">{textoEnlace}</p>
+                    <p class="mt-2 text-sm text-gold-ink">{textoEnlace}</p>
                   </a>
                 </li>
               );

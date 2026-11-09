@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../components/Layout.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { siteConfig } from '../config/site';
@@ -33,7 +33,7 @@ const showMapBlock = direccion || siteConfig.googleMapsUrl;
         </h2>
         <p>
           Teléfono directo:{' '}
-          <a href={siteConfig.telefonoHref} class="font-semibold text-brass hover:underline">
+          <a href={siteConfig.telefonoHref} class="font-semibold text-gold-ink hover:underline">
             {siteConfig.telefono}
           </a>
         </p>
@@ -59,7 +59,7 @@ const showMapBlock = direccion || siteConfig.googleMapsUrl;
                 href={mapsHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 font-semibold text-brass hover:underline"
+                class="inline-flex items-center gap-1.5 font-semibold text-gold-ink hover:underline"
               >
                 {siteConfig.googleMapsUrl ? 'Ver en Google Maps' : 'Cómo llegar (Google Maps)'}
               </a>

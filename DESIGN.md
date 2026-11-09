@@ -4,25 +4,29 @@ Reglas visuales y de copy para no desviarnos. Los datos del negocio viven en `sr
 
 ## Idea
 
-Cerrajería de urgencia diurna con base en Getafe. Fondo claro frío, tipografía seria, precio claro y un CTA de llamar en rojo señal que se ve sin JavaScript. Nada que parezca plantilla ni barbería.
+Cerrajería de urgencia diurna con base en Getafe. Fondo acero claro, tipografía seria, acento oro (inspiración reloj/metal), precio claro y un CTA de llamar en rojo señal que se ve sin JavaScript. Nada que parezca plantilla, joyería a pantalla completa ni barbería.
 
 ## Color
 
-Los nombres de token (`ink`, `cream`, `brass`) se mantienen por compatibilidad con las clases CSS. El significado es urgencia diurna, no tinta/latón de barbería.
+Los nombres de token (`ink`, `cream`, `brass`) se mantienen por compatibilidad con las clases CSS. `brass*` es el rojo de urgencia (CTA); `gold*` es el acento Rolex. El plateado se traduce a acero claro / blanco, sin degradados metálicos.
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--ink` | `#F2F4F7` | Fondo de página (gris frío; no blanco puro) |
+| `--ink` | `#E8EBEE` | Fondo de página (acero frío; no blanco puro) |
 | `--ink-soft` | `#FFFFFF` | Bandas / superficie elevada; texto sobre botón rojo |
-| `--brass` | `#C23328` | Acento, `.btn-call`, enlaces, filetes (AA sobre `--ink`) |
-| `--brass-bright` | `#D63A2F` | Hover y foco |
-| `--brass-ink` | `#A82B22` | Acento más oscuro cuando haga falta más contraste |
-| `--brass-dim` | `#B84A40` | Solo decorativo. No usar para texto |
-| `--cream` | `#1C2430` | Texto principal (carbón) |
-| `--cream-muted` | `#5A6570` | Texto secundario |
-| `--line` | `rgba(28, 36, 48, 0.12)` | Separadores |
+| `--brass` | `#C23328` | `.btn-call`, sticky primario, skip-link (rojo señal) |
+| `--brass-bright` | `#D63A2F` | Hover y foco de CTA / urgencia |
+| `--brass-ink` | `#A82B22` | Rojo más oscuro si hace falta contraste en CTA |
+| `--brass-dim` | `#B84A40` | Solo decorativo en rojo. No usar para texto |
+| `--gold` | `#8A6B1F` | Acento usable (AA sobre `--ink`): filetes, subrayados |
+| `--gold-bright` | `#C4A035` | Hover / filete de citas |
+| `--gold-ink` | `#6E5518` | Enlaces de texto y acento más oscuro |
+| `--gold-dim` | `#D4AF37` | Solo decorativo. No usar para texto |
+| `--cream` | `#0E0E0E` | Texto principal (esfera) |
+| `--cream-muted` | `#5A636E` | Texto secundario (acero) |
+| `--line` | `rgba(14, 14, 14, 0.12)` | Separadores |
 
-Ritmo de fondos: página en gris frío; bandas elevadas en blanco (`.section-cream`); pie y cabecera sobre el mismo sistema claro. Sin verde esmeralda ni slate de plantilla. Sin azul noche ni latón.
+Ritmo de fondos: página en acero frío; bandas elevadas en blanco (`.section-cream`); pie y cabecera sobre el mismo sistema claro. CTA en rojo; oro solo en detalles. Sin oro como único botón de llamada. Sin verde esmeralda ni slate de plantilla. Sin azul noche, latón de barbería ni degradados metálicos.
 
 ## Tipografía
 
@@ -31,8 +35,8 @@ Ritmo de fondos: página en gris frío; bandas elevadas en blanco (`.section-cre
 
 ## Composición
 
-- Hero: marca fuerte, un `h1`, una frase corta, grupo CTA (llamar + WhatsApp). Sin badge encima del titular. Sin tarjetas en el primer viewport.
-- CTA principal: `.btn-call` (rojo señal, radio 2 px, min-height 44 px). Puede llevar flecha estática en el copy del botón; no animar la flecha.
+- Hero: marca fuerte, un `h1`, una frase corta, grupo CTA (llamar + WhatsApp) y **foto dominante** (`MEDIA.heroPath`; móvil con `.hero-scrim`). Sin badge encima del titular. Sin tarjetas, lista de zonas, bullets de confianza ni stats en el primer viewport.
+- CTA principal: `.btn-call` (rojo señal `--brass`, radio 2 px, min-height 44 px). Puede llevar flecha estática en el copy del botón; no animar la flecha. El oro no sustituye este botón.
 - Servicios: lista o filas (nombre + precio orientativo cuando exista en data). No tres cajas con icono ni carta de barbería con duración.
 - Opiniones: citas con filete superior, no tarjetas. Solo reseñas reales de `data.ts`.
 - Espaciado: solo la escala `--s1` a `--s8`.
@@ -63,7 +67,7 @@ Todo se desactiva con `prefers-reduced-motion`. No usar GSAP, Lenis ni Three.js.
 
 Degradados decorativos (también en texto), glassmorphism, sombras difusas, emojis, iconos genéricos en cajas, bento, badges sobre el titular, haz de luz que sigue al cursor, orbes, rejillas de puntos, destellos, grano sobre degradado, guiones largos en el copy, fórmulas «no es X, es Y», reseñas o cifras inventadas, imágenes generadas por IA presentadas como el negocio, Lucide en todas partes.
 
-Iconos: si hace falta, Phosphor en línea en el build y pocos; no una API de iconos.
+Iconos: si hace falta, Phosphor en línea en el build (`Icon.astro` + `@iconify-json/ph`) y pocos (p. ej. servicios destacados junto al título). Sin Lucide, sin CDN/API en el navegador, sin iconos dentro de cajas de color ni tres cajas con icono en fila.
 
 ## Accesibilidad
 

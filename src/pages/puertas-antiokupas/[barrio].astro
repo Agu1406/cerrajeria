@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../../components/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CtaLlamar from '../../components/CtaLlamar.astro';
@@ -77,19 +77,19 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </h2>
       <ul class="grid gap-2 text-sm text-cream sm:grid-cols-2">
         <li class="flex gap-2">
-          <span class="text-brass shrink-0" aria-hidden="true">•</span>
+          <span class="text-gold-ink shrink-0" aria-hidden="true">•</span>
           Vivienda o local vacío que quieres proteger frente a ocupación ilegal.
         </li>
         <li class="flex gap-2">
-          <span class="text-brass shrink-0" aria-hidden="true">•</span>
+          <span class="text-gold-ink shrink-0" aria-hidden="true">•</span>
           Refuerzo de cerraduras y bombines para mayor resistencia.
         </li>
         <li class="flex gap-2">
-          <span class="text-brass shrink-0" aria-hidden="true">•</span>
+          <span class="text-gold-ink shrink-0" aria-hidden="true">•</span>
           Instalación de puertas de seguridad o blindadas en segunda vivienda.
         </li>
         <li class="flex gap-2">
-          <span class="text-brass shrink-0" aria-hidden="true">•</span>
+          <span class="text-gold-ink shrink-0" aria-hidden="true">•</span>
           Asesoramiento para combinar cerraduras, herrajes y disuasión visual.
         </li>
       </ul>
@@ -150,8 +150,8 @@ const noindex = !isSurBarrioIndexable(entry.slug);
       </h2>
       <p>
         Además de puertas antiokupas, realizamos apertura de puertas, cambio e instalación de cerraduras y bombines, duplicado de llaves a domicilio y de coche, y arreglo de ventanas oscilobatientes. Si necesitas un cerrajero urgente 24 horas en {data.nombre}, tenemos página específica:{' '}
-        <a href={`/cerrajero-urgente-24h/${entry.slug}`} class="text-brass hover:underline">cerrajero 24h en {data.nombre}</a>. Listado completo en{' '}
-        <a href="/servicios" class="text-brass hover:underline">servicios de cerrajería</a>.
+        <a href={`/cerrajero-urgente-24h/${entry.slug}`} class="text-gold-ink hover:underline">cerrajero 24h en {data.nombre}</a>. Listado completo en{' '}
+        <a href="/servicios" class="text-gold-ink hover:underline">servicios de cerrajería</a>.
       </p>
     </section>
 
@@ -165,7 +165,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
             <li>
               <a
                 href={`${basePath}/${other.slug}`}
-                class="text-cream hover:text-brass hover:underline"
+                class="text-cream hover:text-gold-ink hover:underline"
               >
                 Puertas antiokupas en {other.data.nombre}
               </a>
@@ -173,7 +173,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
           ))}
         </ul>
         <p class="text-sm text-cream-muted">
-          <a href={basePath} class="text-brass hover:underline">Ver puertas antiokupas en Madrid</a>
+          <a href={basePath} class="text-gold-ink hover:underline">Ver puertas antiokupas en Madrid</a>
         </p>
       </section>
     )}

@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from '../components/Layout.astro';
 import { siteConfig } from '../config/site';
 import { domicilioLegal, legalRoutes } from '../data/legal';
@@ -17,7 +17,7 @@ const domicilio = domicilioLegal();
       <p class="text-sm text-cream">
         Estas condiciones regulan el servicio de cerrajería que presta {siteConfig.titular} (nombre comercial{' '}
         {siteConfig.nombreComercial}). Los datos identificativos están en el{' '}
-        <a href={legalRoutes.aviso} class="text-brass hover:underline">aviso legal</a>.
+        <a href={legalRoutes.aviso} class="text-gold-ink hover:underline">aviso legal</a>.
       </p>
     </header>
 
@@ -40,7 +40,7 @@ const domicilio = domicilioLegal();
         Los importes de la web (por ejemplo, apertura desde {siteConfig.precioAperturaDesde} IVA incluido) son
         orientativos. El precio del trabajo se explica antes de empezar y solo se actúa si lo aceptas. El detalle
         de cancelación, desistimiento y devoluciones está en la{' '}
-        <a href={legalRoutes.reembolsos} class="text-brass hover:underline">política de reembolsos</a>.
+        <a href={legalRoutes.reembolsos} class="text-gold-ink hover:underline">política de reembolsos</a>.
       </p>
     </section>
 
@@ -67,7 +67,7 @@ const domicilio = domicilioLegal();
       <p>
         Quien entra en el sitio se compromete a no usarlo para actividades ilícitas ni para dañar los sistemas. El
         tratamiento de datos personales se explica en la{' '}
-        <a href={legalRoutes.privacidad} class="text-brass hover:underline">política de privacidad</a>.
+        <a href={legalRoutes.privacidad} class="text-gold-ink hover:underline">política de privacidad</a>.
       </p>
     </section>
 

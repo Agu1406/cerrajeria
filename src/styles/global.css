@@ -10,27 +10,35 @@
 @theme {
   --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
-  --color-ink: #f2f4f7;
+  --color-ink: #e8ebee;
   --color-ink-soft: #ffffff;
   --color-brass: #c23328;
   --color-brass-bright: #d63a2f;
   --color-brass-ink: #a82b22;
   --color-brass-dim: #b84a40;
-  --color-cream: #1c2430;
-  --color-cream-muted: #5a6570;
-  --color-line: rgba(28, 36, 48, 0.12);
+  --color-gold: #8a6b1f;
+  --color-gold-bright: #c4a035;
+  --color-gold-ink: #6e5518;
+  --color-gold-dim: #d4af37;
+  --color-cream: #0e0e0e;
+  --color-cream-muted: #5a636e;
+  --color-line: rgba(14, 14, 14, 0.12);
 }
 
 :root {
-  --ink: #f2f4f7;
+  --ink: #e8ebee;
   --ink-soft: #ffffff;
   --brass: #c23328;
   --brass-bright: #d63a2f;
   --brass-ink: #a82b22;
   --brass-dim: #b84a40;
-  --cream: #1c2430;
-  --cream-muted: #5a6570;
-  --line: rgba(28, 36, 48, 0.12);
+  --gold: #8a6b1f;
+  --gold-bright: #c4a035;
+  --gold-ink: #6e5518;
+  --gold-dim: #d4af37;
+  --cream: #0e0e0e;
+  --cream-muted: #5a636e;
+  --line: rgba(14, 14, 14, 0.12);
   --s1: 0.25rem;
   --s2: 0.5rem;
   --s3: 0.75rem;
@@ -209,7 +217,7 @@ body.has-sticky {
   min-width: 0;
 }
 .cookie-banner-text a {
-  color: var(--brass-ink);
+  color: var(--gold-ink);
 }
 .cookie-banner-actions {
   display: flex;
@@ -240,8 +248,8 @@ body.has-sticky {
   border: 2px solid var(--cream);
 }
 .cookie-banner-btn--secondary:hover {
-  border-color: var(--brass);
-  color: var(--brass-bright);
+  border-color: var(--gold);
+  color: var(--gold-ink);
 }
 
 .btn-call {
@@ -282,15 +290,15 @@ body.has-sticky {
   text-decoration: none;
 }
 .btn-quiet:hover {
-  border-color: var(--brass-ink);
-  color: var(--brass-ink);
+  border-color: var(--gold-ink);
+  color: var(--gold-ink);
 }
 .hero-rule {
   display: block;
   width: 4.5rem;
   height: 2px;
   margin-top: 0.75rem;
-  background-color: var(--brass);
+  background-color: var(--gold);
   transform-origin: left center;
 }
 html[data-motion='on'] .hero-rule {
@@ -310,7 +318,15 @@ html[data-motion='on'] .hero-rule {
 }
 
 .hero-scrim {
-  background: linear-gradient(to top, rgba(242, 244, 247, 0.96), rgba(242, 244, 247, 0.45) 55%, transparent);
+  background: linear-gradient(to top, rgba(232, 235, 238, 0.96), rgba(232, 235, 238, 0.45) 55%, transparent);
+}
+.home-hero-media {
+  aspect-ratio: 4 / 3;
+}
+@media (min-width: 1024px) {
+  .home-hero-media {
+    aspect-ratio: auto;
+  }
 }
 
 .reveal {
@@ -329,7 +345,7 @@ html[data-motion='on'] .reveal.is-visible {
 
 .nav-link {
   text-decoration: none;
-  background-image: linear-gradient(var(--brass), var(--brass));
+  background-image: linear-gradient(var(--gold), var(--gold));
   background-position: 0 100%;
   background-repeat: no-repeat;
   background-size: 0 1px;
@@ -338,7 +354,7 @@ html[data-motion='on'] .reveal.is-visible {
 .nav-link:hover,
 .nav-link[aria-current='page'] {
   background-size: 100% 1px;
-  color: var(--brass-ink);
+  color: var(--gold-ink);
 }
 
 .section-cream {
@@ -350,11 +366,11 @@ html[data-motion='on'] .reveal.is-visible {
   color: var(--cream-muted);
 }
 .section-cream a:not(.btn-call):not(.btn-quiet) {
-  color: var(--brass-ink);
+  color: var(--gold-ink);
 }
 
 .quote-rule {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--gold-bright);
   padding-top: var(--s4);
 }
 

@@ -13,7 +13,7 @@ export function bindAjaxForm(form: HTMLFormElement) {
     if (!feedback || !submitBtn) return;
 
     feedback.classList.add('hidden');
-    feedback.classList.remove('text-red-400', 'text-brass');
+    feedback.classList.remove('text-red-400', 'text-gold-ink');
 
     const privacy = form.querySelector('[name="privacyConsent"]') as HTMLInputElement | null;
     if (privacy && !privacy.checked) {
@@ -41,7 +41,7 @@ export function bindAjaxForm(form: HTMLFormElement) {
 
       if (res.ok && !json.error) {
         feedback.textContent = form.dataset.msgSuccess || 'Enviado.';
-        feedback.classList.add('text-brass');
+        feedback.classList.add('text-gold-ink');
         feedback.classList.remove('hidden');
         form.reset();
       } else {

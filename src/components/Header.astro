@@ -25,8 +25,22 @@ const whatsappHref =
 
 <header class="site-header border-b border-[var(--line)] bg-ink">
   <div class="site-header-wrap mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:py-4">
-    <a href={homePath} class="brand font-display text-xl font-semibold tracking-tight text-cream sm:text-2xl">
-      {siteConfig.nombreComercial}
+    <a
+      href={homePath}
+      class="brand flex min-h-11 items-center gap-2 font-display text-xl font-semibold tracking-tight text-cream sm:text-2xl"
+    >
+      <svg
+        class="h-9 w-9 shrink-0 rounded-[2px]"
+        viewBox="0 0 64 64"
+        width="36"
+        height="36"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect width="64" height="64" fill="#E8EBEE"></rect>
+        <path fill="#6E5518" d="M50 12H36L18 22v20l18 10h14v-8H38l-10-6V28l10-6h12z"></path>
+      </svg>
+      <span>{siteConfig.nombreComercial}</span>
     </a>
     <nav class="nav-desktop hidden items-center gap-4 text-sm font-medium text-cream sm:flex" aria-label={nav.ariaNav}>
       <a href={homePath} class="nav-link">{nav.home}</a>

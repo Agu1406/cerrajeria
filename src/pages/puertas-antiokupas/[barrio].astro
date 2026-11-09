@@ -138,7 +138,7 @@ const noindex = !isSurBarrioIndexable(entry.slug);
         </div>
       </dl>
       {entry.data.actualizado && (
-        <p class="mt-3 text-sm text-cream0">
+        <p class="mt-3 text-sm text-cream-muted">
           Contenido revisado: <time datetime={entry.data.actualizado.toISOString()}>{entry.data.actualizado.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</time>
         </p>
       )}

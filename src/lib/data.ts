@@ -15,18 +15,33 @@ export const LEGAL = {
 export const MEDIA = {
   provisional: false as boolean,
   heroPath: '/images/cerrajero-24h-madrid-hero.webp',
-  logoDarkPath: '/images/logotipo-oscuro.webp',
-  logoLightPath: '/images/logotipo-claro.webp',
+  /** Isotipo SVG (paleta DESIGN). Cabecera, favicon y schema. */
+  brandMarkPath: '/favicon.svg',
+  logoDarkPath: '/favicon.svg',
+  logoLightPath: '/favicon.svg',
   photoAlt: {
     hero: 'Cerrajero urgente 24 horas en Madrid',
     apertura: 'Detalle de apertura de cerradura blindada',
     ventana: 'Ajuste de ventana oscilobatiente',
   } as Record<string, string>,
+  /** Pares reales antes/después (home). Copy/alts por id en i18n home. */
+  workPairs: [
+    {
+      id: 'carabanchel',
+      beforePath: '/images/servicio-urgente-cerrajero-carabanchel-antes.webp',
+      afterPath: '/images/servicio-urgente-cerrajero-carabanchel-despues.webp',
+    },
+    {
+      id: 'vallecas',
+      beforePath: '/images/sustitucion-robo-inmobiliaria-valllecas-antes.webp',
+      afterPath: '/images/sustitucion-robo-inmobiliaria-valllecas-despues-5.webp',
+    },
+  ] as const,
 };
 
 export const siteData = {
   nombreComercial: 'Los Cerrajeros Madrid',
-  logoPath: MEDIA.logoDarkPath,
+  logoPath: MEDIA.brandMarkPath,
   sameAs: ['https://share.google/kmn3PFdaazgVkGVQ8'] as string[],
   telefono: '659 81 05 70',
   telefonoHref: 'tel:+34659810570',

@@ -66,6 +66,18 @@ export type HomeCopy = {
     title: string;
     introHtml: string;
     footerHtml: string;
+    linkSuffix: string;
+  };
+
+  works: {
+    title: string;
+    intro: string;
+    beforeLabel: string;
+    afterLabel: string;
+    items: Record<
+      string,
+      { caption: string; beforeAlt: string; afterAlt: string }
+    >;
   };
 
   zonesSection: {

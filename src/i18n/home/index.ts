@@ -23,6 +23,14 @@ export const FEATURED_SERVICE_ICONS: Record<string, string> = {
   'duplicado-llaves-domicilio': 'key',
 };
 
+/** Iconos Phosphor del bloque de métricas en la home. */
+export const HOME_STATS_ICONS = {
+  arrival: 'timer',
+  availability: 'moon-stars',
+  price: 'key',
+  rating: 'star',
+} as const;
+
 export type FeaturedServicio = {
   slug: string;
   nombre: string;

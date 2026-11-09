@@ -126,6 +126,25 @@ export const homeCopyEs: HomeCopy = {
       'Estos son algunos de los trabajos que realizamos con más frecuencia. Todos los servicios están disponibles en la mayoría de barrios de la Comunidad de Madrid.',
     footerHtml:
       'Puedes ver el listado completo en la página de <a href="/servicios" class="text-gold-ink underline decoration-gold/60 hover:decoration-gold">servicios de cerrajería</a>.',
+    linkSuffix: 'Ver servicio',
+  },
+  works: {
+    title: 'Trabajos recientes',
+    intro: 'Fotos reales de intervenciones. Sin montajes ni imágenes generadas.',
+    beforeLabel: 'Antes',
+    afterLabel: 'Después',
+    items: {
+      carabanchel: {
+        caption: 'Urgencia en Carabanchel',
+        beforeAlt: 'Cerradura dañada antes de la intervención en Carabanchel',
+        afterAlt: 'Cerradura nueva con juego de llaves tras la intervención en Carabanchel',
+      },
+      vallecas: {
+        caption: 'Sustitución tras robo en Vallecas',
+        beforeAlt: 'Marco y cerradura forzados en una inmobiliaria de Vallecas, antes de la reparación',
+        afterAlt: 'Cerradura multipunto TESA instalada tras la sustitución en Vallecas',
+      },
+    },
   },
   zonesSection: {
     title: 'Zonas de Madrid donde trabajamos',

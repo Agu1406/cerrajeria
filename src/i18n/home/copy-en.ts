@@ -132,6 +132,25 @@ export const homeCopyEn: HomeCopy = {
       'These are some of the jobs we carry out most often. Full service descriptions are on our Spanish site; we provide the same work for English-speaking customers.',
     footerHtml:
       '<a href="/servicios" hreflang="es" class="text-gold-ink underline decoration-gold/60 hover:decoration-gold">Full list of locksmith services (Spanish)</a>',
+    linkSuffix: 'View service',
+  },
+  works: {
+    title: 'Recent jobs',
+    intro: 'Real photos from jobs we carried out. No staging and no AI-generated images.',
+    beforeLabel: 'Before',
+    afterLabel: 'After',
+    items: {
+      carabanchel: {
+        caption: 'Emergency job in Carabanchel',
+        beforeAlt: 'Damaged lock before the Carabanchel call-out',
+        afterAlt: 'New lock with spare keys after the Carabanchel call-out',
+      },
+      vallecas: {
+        caption: 'Lock replacement after a break-in in Vallecas',
+        beforeAlt: 'Forced door frame and lock at a Vallecas estate agency, before repair',
+        afterAlt: 'TESA multipoint lock installed after the Vallecas replacement',
+      },
+    },
   },
   zonesSection: {
     title: 'Areas in Madrid where we work',

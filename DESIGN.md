@@ -75,9 +75,19 @@ Iconos: si hace falta, Phosphor en línea en el build (`Icon.astro` + `@iconify-
 - Skip link, `lang="es"`, un solo `h1`, enlaces externos con aviso de nueva pestaña cuando aplique.
 - Todo el contenido usable por teclado. La llamada funciona sin JavaScript.
 
+## Marca y favicon (proceso estándar, estilo de esta web)
+
+El **proceso** (SVG 64×64 → `public/favicon.svg` → layout/cabecera) es el mismo entre webs. Los **colores, la letra y la forma** salen solo de **este** `DESIGN.md`; no copiar la paleta ni el monograma de Ikaro u otro proyecto.
+
+1. Tomar 2 colores de **esta** paleta (fondo de marca + acento). Aquí: acero `#E8EBEE` (`--ink`) + oro oscuro `#6E5518` (`--gold-ink`, contraste sobre el fondo claro).
+2. Dibujar monograma o marca geométrica en SVG 64×64 (una letra o símbolo; sin foto, sin IA como logo). Aquí: «C» en `public/favicon.svg`.
+3. Enlazar el SVG en el layout (`rel="icon" type="image/svg+xml"`).
+4. Cabecera: tipografía de marca ± el mismo SVG (`MEDIA.brandMarkPath`). No raster verde/de terceros salvo marca oficial del cliente.
+5. No Lucide ni emoji como logo. El rojo CTA no es el color del isotipo.
+
 ## Fotos
 
-Viven en `public/images/`. Revisar alternativas en código. Prioridad: trabajos reales (antes/después) y logo. Foto de Erickson opcional hasta que exista archivo.
+Viven en `public/images/`. Revisar alternativas en código. Prioridad: trabajos reales (antes/después). Foto de Erickson opcional hasta que exista archivo. La marca de UI es el SVG de favicon, no los WebP verdes antiguos.
 
 ## Copy
 

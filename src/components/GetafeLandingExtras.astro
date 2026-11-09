@@ -61,10 +61,10 @@ const fotoPath = profesional?.fotoPath;
           />
         ) : (
           <div
-            class="flex aspect-square w-full flex-col items-center justify-center px-3 text-center text-sm text-cream0"
+            class="flex aspect-square w-full flex-col items-center justify-center px-3 text-center text-sm text-cream-muted"
             aria-hidden="true"
           >
-            <span class="font-display text-3xl font-semibold text-cream0">{profesional.nombre.charAt(0)}</span>
+            <span class="font-display text-3xl font-semibold text-cream-muted">{profesional.nombre.charAt(0)}</span>
             <span class="mt-2">{profesional.nombre}</span>
           </div>
         )}
@@ -145,7 +145,7 @@ const fotoPath = profesional?.fotoPath;
         <li>{barrio}</li>
       ))}
     </ul>
-    <p class="text-sm text-cream0">
+    <p class="text-sm text-cream-muted">
       Códigos postales: {getafeCodigosPostales.join(', ')}.
     </p>
   </section>

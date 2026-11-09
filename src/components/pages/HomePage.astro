@@ -8,7 +8,7 @@ import type { Locale } from '../../i18n/config';
 import { getHreflangAlternatesForRoute, pathForRoute } from '../../i18n/routes';
 import { HOME_FEATURED_BARRIO_SLUGS } from '../../i18n/home/constants';
 import { buildHomeFaqSchema } from '../../i18n/home/schema';
-import { getHomeCopy, getHomeFeaturedServicios } from '../../i18n/home/index';
+import { getHomeCopy, getHomeFeaturedServicios, HOME_STATS_ICONS } from '../../i18n/home/index';
 import { WHATSAPP_PREFILL } from '../../i18n/ui';
 interface Props {
   locale: Locale;
@@ -38,12 +38,6 @@ const featuredServicios = getHomeFeaturedServicios(copy);
 const homePath = pathForRoute('home', locale);
 const hreflangAlternates = getHreflangAlternatesForRoute(siteConfig.baseUrl, 'home');
 
-const ratingSummary =
-  showReseñas && reseñas
-    ? copy.reviews.summaryGoogleTemplate
-        .replace('{rating}', String(reseñas.valoracionMedia))
-        .replace('{count}', String(reseñas.totalResenas))
-    : '';
 const ratingAria =
   showReseñas && reseñas
     ? copy.reviews.ratingAriaTemplate.replace('{rating}', String(reseñas.valoracionMedia))
@@ -54,6 +48,13 @@ const ratingSub =
     : copy.stats.ratingSubFallback;
 
 const workPhotoAlt = MEDIA.photoAlt.apertura;
+const workPairs = MEDIA.workPairs
+  .map((pair) => {
+    const item = copy.works.items[pair.id];
+    if (!item) return null;
+    return { ...pair, ...item };
+  })
+  .filter((p): p is (typeof MEDIA.workPairs)[number] & (typeof copy.works.items)[string] => Boolean(p));
 ---
 
 <Layout
@@ -120,62 +121,92 @@ const workPhotoAlt = MEDIA.photoAlt.apertura;
     ))}
   </ul>
 
-  <dl class="mt-10 grid gap-6 text-sm sm:grid-cols-2">
+  <dl class="mt-10 grid gap-6 sm:grid-cols-2">
     <div>
-      <dt class="font-semibold text-cream">{copy.stats.arrivalLabel}</dt>
-      <dd class="mt-1 text-cream">20–30 min. {copy.stats.arrivalSub}</dd>
+      <dt class="flex items-center gap-2 text-sm text-cream-muted">
+        <Icon name={HOME_STATS_ICONS.arrival} size={18} class="shrink-0 text-gold-ink" />
+        {copy.stats.arrivalLabel}
+      </dt>
+      <dd>
+        <p class="font-display text-2xl font-bold tracking-tight text-cream">20–30 min</p>
+        <p class="mt-1 text-sm text-cream-muted">{copy.stats.arrivalSub}</p>
+      </dd>
     </div>
     <div>
-      <dt class="font-semibold text-cream">{copy.stats.availLabel}</dt>
-      <dd class="mt-1 text-cream">24/7. {copy.stats.availSub}</dd>
+      <dt class="flex items-center gap-2 text-sm text-cream-muted">
+        <Icon name={HOME_STATS_ICONS.availability} size={18} class="shrink-0 text-gold-ink" />
+        {copy.stats.availLabel}
+      </dt>
+      <dd>
+        <p class="font-display text-2xl font-bold tracking-tight text-cream">24/7</p>
+        <p class="mt-1 text-sm text-cream-muted">{copy.stats.availSub}</p>
+      </dd>
     </div>
     <div>
-      <dt class="font-semibold text-cream">{copy.stats.priceLabel}</dt>
-      <dd class="mt-1 text-cream">{copy.stats.priceValue}. {copy.stats.priceSub}</dd>
+      <dt class="flex items-center gap-2 text-sm text-cream-muted">
+        <Icon name={HOME_STATS_ICONS.price} size={18} class="shrink-0 text-gold-ink" />
+        {copy.stats.priceLabel}
+      </dt>
+      <dd>
+        <p class="font-display text-2xl font-bold tracking-tight text-cream">{copy.stats.priceValue}</p>
+        <p class="mt-1 text-sm text-cream-muted">{copy.stats.priceSub}</p>
+      </dd>
     </div>
     {showReseñas && reseñas ? (
       <div>
-        <dt class="font-semibold text-cream">{copy.stats.ratingLabel}</dt>
-        <dd class="mt-1 text-cream">{reseñas.valoracionMedia} de 5. {ratingSub}</dd>
+        <dt class="flex items-center gap-2 text-sm text-cream-muted">
+          <Icon name={HOME_STATS_ICONS.rating} size={18} class="shrink-0 text-gold-ink" />
+          {copy.stats.ratingLabel}
+        </dt>
+        <dd>
+          <p class="font-display text-2xl font-bold tracking-tight text-cream">
+            {reseñas.valoracionMedia} de 5
+          </p>
+          <p class="mt-1 text-sm text-cream-muted">{ratingSub}</p>
+        </dd>
       </div>
     ) : null}
   </dl>
 
   {showReseñas && reseñas && (
-    <section class="section-cream reveal -mx-4 mt-10 space-y-4 px-4 py-10">
-      <h2 class="text-lg font-semibold tracking-tight">
-        {copy.reviews.title}
-      </h2>
-      {copy.reviews.noteHtml ? (
-        <p class="text-sm text-cream-muted">{copy.reviews.noteHtml}</p>
-      ) : null}
-      <div class="flex flex-wrap items-center gap-3 text-sm">
-        <span class="text-cream" aria-label={ratingAria}>{reseñas.valoracionMedia} de 5</span>
-        <span class="text-cream">{ratingSummary}</span>
-        {siteConfig.googleMapsUrl && (
-          <a
-            href={siteConfig.googleMapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-gold-ink hover:underline"
-          >
-            {copy.reviews.seeAllGoogle}
-          </a>
-        )}
+    <section class="section-cream reveal -mx-4 mt-10 space-y-6 px-4 py-10">
+      <div class="space-y-2">
+        <h2 class="text-lg font-semibold tracking-tight">
+          {copy.reviews.title}
+        </h2>
+        {copy.reviews.noteHtml ? (
+          <p class="text-sm text-cream-muted">{copy.reviews.noteHtml}</p>
+        ) : null}
+        <p class="flex flex-wrap items-baseline gap-x-3 gap-y-1" aria-label={ratingAria}>
+          <span class="font-display text-2xl font-bold tracking-tight text-cream">
+            {reseñas.valoracionMedia} de 5
+          </span>
+          <span class="text-sm text-cream-muted">{ratingSub}</span>
+          {siteConfig.googleMapsUrl && (
+            <a
+              href={siteConfig.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-sm font-medium text-gold-ink hover:underline"
+            >
+              {copy.reviews.seeAllGoogle}
+            </a>
+          )}
+        </p>
       </div>
       {reseñas.reseñas?.length > 0 && (
-        <ul class="grid gap-4 sm:grid-cols-2">
+        <ul class="grid gap-6 sm:grid-cols-2">
           {reseñas.reseñas.slice(0, 4).map((r) => (
             <li
               class="quote-rule text-sm"
               {...(copy.locale === 'en' ? { lang: 'es' } : {})}
             >
-              <div class="mb-2 flex items-center justify-between gap-3">
+              <div class="mb-3 flex items-baseline justify-between gap-3">
                 <span class="font-medium text-cream">{r.autor}</span>
-                <span class="text-cream">{r.valoracion} de 5</span>
+                <span class="shrink-0 text-cream-muted">{r.valoracion} de 5</span>
               </div>
               <p class="text-cream leading-relaxed">"{r.texto}"</p>
-              <time datetime={r.fecha} class="mt-2 block text-sm text-cream-muted">
+              <time datetime={r.fecha} class="mt-3 block text-sm text-cream-muted">
                 {new Date(r.fecha).toLocaleDateString(copy.dateLocale, {
                   day: 'numeric',
                   month: 'long',
@@ -208,6 +239,46 @@ const workPhotoAlt = MEDIA.photoAlt.apertura;
       />
     </figure>
   </section>
+
+  {workPairs.length > 0 && (
+    <section class="reveal mt-12 space-y-4">
+      <h2 class="text-lg font-semibold tracking-tight">{copy.works.title}</h2>
+      <p class="text-sm text-cream-muted">{copy.works.intro}</p>
+      <ul class="grid gap-8 sm:grid-cols-2">
+        {workPairs.map((job) => (
+          <li class="space-y-3">
+            <p class="text-sm font-semibold text-cream">{job.caption}</p>
+            <div class="grid grid-cols-2 gap-2">
+              <figure class="space-y-1">
+                <img
+                  src={job.beforePath}
+                  alt={job.beforeAlt}
+                  class="aspect-[4/3] w-full bg-[var(--ink-soft)] object-cover object-center"
+                  width="600"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="text-sm font-medium text-cream-muted">{copy.works.beforeLabel}</figcaption>
+              </figure>
+              <figure class="space-y-1">
+                <img
+                  src={job.afterPath}
+                  alt={job.afterAlt}
+                  class="aspect-[4/3] w-full bg-[var(--ink-soft)] object-cover object-center"
+                  width="600"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption class="text-sm font-medium text-cream-muted">{copy.works.afterLabel}</figcaption>
+              </figure>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   <section class="reveal mt-12 space-y-4">
     <h2 class="text-lg font-semibold tracking-tight">
@@ -248,53 +319,66 @@ const workPhotoAlt = MEDIA.photoAlt.apertura;
       {whyTitle}
     </h2>
     <p set:html={copy.why.leadHtml} />
-    <ul class="space-y-4">
+    <ul class="mt-2">
       {copy.why.cards.map((card) => (
-        <li>
+        <li class="border-b border-[var(--line)] py-4">
           <h3 class="text-base font-semibold text-cream">{card.title}</h3>
-          <p class="mt-1 text-sm text-cream">{card.body}</p>
+          <p class="mt-1 text-sm text-cream-muted">{card.body}</p>
         </li>
       ))}
     </ul>
+  </section>
 
-    <section class="mt-6 space-y-3">
-      <h2 class="text-lg font-semibold tracking-tight">
-        {copy.faqSectionTitle}
-      </h2>
-      <div class="space-y-2 text-sm text-cream">
-        {copy.faqInline.map((item) => (
-          <p>
-            <strong>{item.q}</strong> <span set:html={item.aHtml} />
-          </p>
-        ))}
-      </div>
-    </section>
+  <section class="reveal mt-12 space-y-3 text-sm text-cream">
+    <h2 class="text-lg font-semibold tracking-tight">
+      {copy.faqSectionTitle}
+    </h2>
+    <div class="faq-list">
+      {copy.faqInline.map((item) => (
+        <details class="faq-item">
+          <summary>{item.q}</summary>
+          <div class="faq-a" set:html={item.aHtml} />
+        </details>
+      ))}
+    </div>
+  </section>
 
-    <section class="mt-8 space-y-3">
-      <h2 class="text-lg font-semibold tracking-tight">
-        {servicesTitle}
-      </h2>
-      <p class="text-sm text-cream-muted" set:html={copy.servicesSection.introHtml} />
-      <ul class="space-y-4">
-        {featuredServicios.map((servicio) => (
-          <li class="text-sm">
-            <h3 class="flex items-center gap-2 font-semibold text-cream">
-              <Icon name={servicio.icon} size={22} class="shrink-0 text-gold-ink" />
-              {servicio.nombre}
-            </h3>
-            <p class="mt-1 text-cream">{servicio.descripcionCorta}</p>
-          </li>
-        ))}
-      </ul>
-      <p class="text-sm text-cream-muted" set:html={copy.servicesSection.footerHtml} />
-    </section>
+  <section class="section-cream reveal -mx-4 mt-12 space-y-3 px-4 py-10 text-sm text-cream">
+    <h2 class="text-lg font-semibold tracking-tight">
+      {servicesTitle}
+    </h2>
+    <p class="text-cream-muted" set:html={copy.servicesSection.introHtml} />
+    <ul class="grid">
+      {featuredServicios.map((servicio) => (
+        <li>
+          <a
+            href={`/servicios/${servicio.slug}`}
+            {...(copy.locale === 'en' ? { hreflang: 'es' } : {})}
+            class="flex min-h-11 items-start justify-between gap-3 border-b border-[var(--line)] py-3 text-cream"
+          >
+            <span class="min-w-0">
+              <span class="flex items-center gap-2 font-semibold">
+                <Icon name={servicio.icon} size={22} class="shrink-0 text-gold-ink" />
+                {servicio.nombre}
+              </span>
+              <span class="mt-1 block text-cream-muted">{servicio.descripcionCorta}</span>
+            </span>
+            <span class="shrink-0 pt-0.5 text-sm font-medium text-gold-ink">
+              {copy.servicesSection.linkSuffix}
+              <span aria-hidden="true"> →</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p class="text-cream-muted" set:html={copy.servicesSection.footerHtml} />
+  </section>
 
-    <section class="mt-10 max-w-xl">
-      <ContactForm
-        locale={copy.locale}
-        title={copy.contactForm.title}
-        subtitle={copy.contactForm.subtitle}
-      />
-    </section>
+  <section class="reveal mt-12 max-w-xl">
+    <ContactForm
+      locale={copy.locale}
+      title={copy.contactForm.title}
+      subtitle={copy.contactForm.subtitle}
+    />
   </section>
 </Layout>

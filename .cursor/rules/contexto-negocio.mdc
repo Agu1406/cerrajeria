@@ -11,6 +11,7 @@ Antes de inventar un dato, un precio, un horario o una afirmación, leer `CONTEX
 - Titular, NIF, email: `src/data/legal.json` (el build falla si el titular es inválido).
 - Plazos y rutas legales: `src/data/retention.js`, `src/data/legal.ts`.
 - Visual: `DESIGN.md` (urgencia diurna: acero claro + carbón + rojo CTA + oro de acento; Cormorant + Manrope).
+- Marca: isotipo SVG en `public/favicon.svg` (`MEDIA.brandMarkPath`); proceso común, colores de **este** `DESIGN.md` (no copiar Ikaro).
 - CTAs móviles: bloque «CTAs móviles (estándar)» en `DESIGN.md` (Llamar + Menú en cabecera; barra Llamar/WhatsApp; dock encima del banner de cookies).
 - No reseñas, cifras ni fotos de IA presentadas como el negocio.
 - Medios provisionales: `MEDIA` en `data.ts` hasta confirmar permisos.

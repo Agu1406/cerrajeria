@@ -119,7 +119,7 @@ export const siteData = {
     url: 'https://www.linkedin.com/in/agustin6041/',
     texto: 'Diseño y desarrollo web',
     telefono: '691 64 36 61',
-    email: 'agustin6041@outlook.com',
+    email: 'agustin6041@outlook.es',
   } as { nombre: string; url?: string; texto?: string; telefono?: string; email?: string } | null,
 };
 

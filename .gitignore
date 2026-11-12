@@ -37,3 +37,7 @@ public/images/*.jpg
 
 # excepción: permitimos el Apple touch icon en la raíz de public
 !public/apple-touch-icon.png
+
+# datos legales del titular y contexto de negocio con datos personales (nunca en un repo público)
+src/data/legal.local.json
+CONTEXT.md

@@ -8,7 +8,7 @@ alwaysApply: true
 Antes de inventar un dato, un precio, un horario o una afirmación, leer `CONTEXT.md`. Las notas de diseño, legal y arquitectura están en `IGNORAR.md`. Las reglas de Cursor las aplican; si hay conflicto, gana la ley española, luego `IGNORAR.md` y `DESIGN.md`, luego el código.
 
 - Datos de negocio: `src/lib/data.ts` (origen: `CONTEXT.md`). `src/config/site.ts` reexporta para compatibilidad.
-- Titular, NIF, email: `src/data/legal.json` (el build falla si el titular es inválido).
+- Titular, NIF, email: `LEGAL_JSON` (hosting) o `src/data/legal.local.json` (local, fuera de git); el build falla si el titular es inválido.
 - Plazos y rutas legales: `src/data/retention.js`, `src/data/legal.ts`.
 - Visual: `DESIGN.md` (urgencia diurna: acero claro + carbón + rojo CTA + oro de acento; Cormorant + Manrope).
 - Marca: isotipo SVG en `public/favicon.svg` (`MEDIA.brandMarkPath`); proceso común, colores de **este** `DESIGN.md` (no copiar Ikaro).

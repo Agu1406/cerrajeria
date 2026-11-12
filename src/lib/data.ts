@@ -1,4 +1,4 @@
-import legalJson from '../data/legal.json';
+import { legal as legalJson } from './legal';
 
 const BASE_URL_PLACEHOLDER = 'https://TU-DOMINIO-AQUI';
 /** Única cifra de apertura orientativa (CONTEXT.md). */
@@ -150,7 +150,7 @@ export function assertSiteLegal() {
     !/\s/.test(titular)
   ) {
     fallos.push(
-      'titular (nombre y apellidos o razón social en src/data/legal.json, o variable SITE_TITULAR)'
+      'titular (nombre y apellidos o razón social en LEGAL_JSON, en src/data/legal.local.json o en SITE_TITULAR)'
     );
   }
   if (!siteData.nif.trim()) fallos.push('nif');
